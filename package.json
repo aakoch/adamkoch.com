@@ -1,0 +1,39 @@
+{
+  "name": "adamkoch.com",
+  "version": "0.1.0-SNAPSHOT",
+  "description": "Adam Koch homepage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel ./src/*.pug --open",
+    "build": "parcel build ./src/index.pug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aakoch/adamkoch.com.git"
+  },
+  "keywords": [
+    "adam",
+    "koch",
+    "software"
+  ],
+  "author": "Adam Koch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aakoch/adamkoch.com/issues"
+  },
+  "homepage": "https://github.com/aakoch/adamkoch.com#readme",
+  "devDependencies": {
+    "@parcel/packager-raw-url": "^2.0.0-beta.3.1",
+    "@parcel/transformer-pug": "^2.0.0-beta.3.1",
+    "@parcel/transformer-vue": "^2.0.0-beta.3.1",
+    "@parcel/transformer-webmanifest": "^2.0.0-beta.3.1",
+    "parcel": "^2.0.0-beta.3.1"
+  },
+  "alias": {
+    "vue": "./node_modules/vue/dist/vue.esm-bundler.js"
+  },
+  "dependencies": {
+    "vue": "^3.1.5"
+  }
+}
