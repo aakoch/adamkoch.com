@@ -8,8 +8,7 @@
     "watch": "parcel ./src/*.pug --open",
     "build": "parcel build --no-scope-hoist ./src/index.pug",
     "clean": "rm -rf ./dist/",
-    "preversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/*",
-    "postversion": "git push && git push --tags"
+    "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && git push && git push --tags"
   },
   "repository": {
     "type": "git",
