@@ -1,0 +1,62 @@
+doctype html
+html
+  head
+    title Adam Koch - Character 160, JavaScript and Regular Expressions text
+    meta(content='JavaScript, char, character, 160, non-breaking, space, regular expression, regex' name='keywords')
+    meta(content='Adam Koch' name='author')
+  body
+    p My string was created with this: 
+      code String.fromCharCode(160) + &quot; \\t\\n\\r\u00A0&quot;
+    div(style='font-family: Courier, monospace')
+      script(type='text/javascript').
+        var text = String.fromCharCode(160) + " \t\n\r\u00A0";// + "&#160;";
+        document.write("text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= \"" + text + "\"<br/>");
+        
+        function trim(text) {
+        return text.replace( /^\s+|\s+$/g, "" );
+        }
+        
+        document.write("jQuery.trim(text) = \"" + trim(text) + "\"<br/>");
+        
+        function trim2(text) {
+        return text.replace( /^(\s|\u00A0)+|(\s|\u00A0)+$/g, "" );
+        }
+        
+        document.write("my trim(text)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= \"" + trim2(text) + "\"<br/><br/>");
+        
+        function searchFor(pattern, text) {
+        for (var i = 0; i < text.length; i++) {
+        if (text.charAt(i).search(pattern) > -1) {
+        document.write("#");
+        }
+        else {
+        document.write("_");
+        }
+        }
+        document.write("<br/><br/>");
+        }
+        
+        if (text.search(/\s/g) > -1) {
+        document.write("replacing \\s with #<br/>");
+        searchFor(/\s/g, text);
+        }
+        
+        if (text.search(/\u00A0+/g) > -1) {
+        document.write("replacing \\u00A0 with #<br/>");
+        searchFor(/\u00A0+/g, text);
+        }
+        
+        if (text.search(/&#160;+/g) > -1) {
+        document.write("replacing \&amp;#160; with #<br/>");
+        searchFor(/&#160;+/g, text);
+        }
+        
+        if (text.search(/z+/g) > -1) {
+        document.write("replacing z at with #<br/>");
+        searchFor(/z+/g, text);
+        }
+        
+        if (text.search(String.fromCharCode(160)) > -1) {
+        document.write("replacing String.fromCharCode(160) at  with *<br/>");
+        searchFor(String.fromCharCode(160), text);
+        }
