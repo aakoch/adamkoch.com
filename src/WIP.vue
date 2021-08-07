@@ -27,7 +27,7 @@ div.wip
 
 <style lang="scss">
 .wip {
-  padding: 3rem;
+  padding: 20% 15%;
 }
 
 @media screen and (min-width: 900px) { 
