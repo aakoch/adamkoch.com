@@ -1,13 +1,14 @@
 {
   "name": "adamkoch.com",
-  "version": "0.2.0",
+  "version": "0.1.1",
   "description": "Adam Koch homepage",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel ./src/*.pug --open",
     "watch": "parcel ./src/*.pug --open",
     "build": "parcel build --no-scope-hoist ./src/index.pug",
-    "clean": "rm -rf ./dist/"
+    "clean": "rm -rf ./dist/",
+    "preversion": "jq '.version' package.json | xargs -I{} tar -czf {}.gzip dist/*"
   },
   "repository": {
     "type": "git",
