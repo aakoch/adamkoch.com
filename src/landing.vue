@@ -3,20 +3,20 @@
   .row
     .col
       .container
-        .row
+        .row.justify-content-center.align-items-center
           .col(v-for="card in cards")
             card(:key='card.id' :cardTitle='card.title' :excerpt='card.excerpt' :icon='card.icon' :buttonText='card.button')
-  hr(width="80%" align=center)
+  hr(width="80%" align="center")
   div More stuff
 </template>
 
 <style lang="scss">
 $primary: #406275;
 $light: #DEE3E6;
+$dark: #43464A;
 $white: tint-color($light, 70);
-
 .center-row {
-  background: linear-gradient(0deg, $white 50%, $primary 50%);
+  background: linear-gradient(0deg, $white 50%, $dark 50%);
 }
 </style>
 
