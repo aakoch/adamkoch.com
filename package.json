@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel ./src/*.pug --open",
     "watch": "parcel ./src/*.pug --open",
-    "build": "parcel build --no-scope-hoist ./src/index.pug",
+    "build": "parcel build --no-scope-hoist ./src/index.pug ./src/2009/07/25/white-space-and-character-160/index.pug",
     "clean": "rm -rf ./dist/",
     "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && git push && git push --tags"
   },
