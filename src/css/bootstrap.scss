@@ -15,10 +15,10 @@ $info: #406275;
 $warning: #B89060;
 $danger: #B87460;
 
-// @import url('https://fonts.googleapis.com/css2?family=Georama&display=swap');
-// $font-family-base: 'Georama', sans-serif;
-// $link-color: $primary;
-// $body-bg: $white;
+@import url('https://fonts.googleapis.com/css2?family=Georama&display=swap');
+$font-family-base: 'Georama', sans-serif;
+$link-color: $primary;
+$body-bg: $white;
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../node_modules/bootstrap/scss/variables";
@@ -38,92 +38,91 @@ $danger: #B87460;
 
 // 5. Add additional custom code here
 
-// html, body {
-//   height: 100%;
-// }
+html, body {
+  height: 100%;
+}
 
-// body {
-//   padding: 0px;
-//   background: $white;
-// }
+body {
+  padding: 0px;
+  background: $white;
+}
 
+@font-face {
+  font-family: 'spacemonkeymedium';
+  src: url('../fonts/spacemonkey-webfont.woff2') format('woff2'),
+       url('../fonts/spacemonkey-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
-// @font-face {
-//   font-family: 'spacemonkeymedium';
-//   src: url('../fonts/spacemonkey-webfont.woff2') format('woff2'),
-//        url('../fonts/spacemonkey-webfont.woff') format('woff');
-//   font-weight: normal;
-//   font-style: normal;
-// }
+#header {
+  background-color: $primary;
+  // position: relative;
 
-// #header {
-//   background-color: $primary;
-//   // position: relative;
-
-//   // padding-top: 20px;
+  // padding-top: 20px;
   
-//   $backgound-dark: $primary;
-//   // background: $backgound-dark; /* Old browsers */
-//   // background: -moz-linear-gradient(top, $backgound-dark 1%, $backgound-dark 50%, $white 51%, $white 100%); /* FF3.6-15 */
-//   // background: -webkit-linear-gradient(top, $backgound-dark 1%,$backgound-dark 50%,$white 51%,$white 100%); /* Chrome10-25,Safari5.1-6 */
-//   // background: linear-gradient(to bottom, $backgound-dark 1%,$backgound-dark 50%,$white 51%,$white 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-//   // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$backgound-dark', endColorstr='$white',GradientType=0 ); /* IE6-9 */
+  $backgound-dark: $primary;
+  // background: $backgound-dark; /* Old browsers */
+  // background: -moz-linear-gradient(top, $backgound-dark 1%, $backgound-dark 50%, $white 51%, $white 100%); /* FF3.6-15 */
+  // background: -webkit-linear-gradient(top, $backgound-dark 1%,$backgound-dark 50%,$white 51%,$white 100%); /* Chrome10-25,Safari5.1-6 */
+  // background: linear-gradient(to bottom, $backgound-dark 1%,$backgound-dark 50%,$white 51%,$white 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$backgound-dark', endColorstr='$white',GradientType=0 ); /* IE6-9 */
 
-//   // height: 200px;
+  // height: 200px;
 
-//   .icon {
-//     position: relative;
-//     float: left;
-//     background-image: url(../img/cropped-brainscan-copy-2.jpg);
-//     // background-color: $backgound-dark;
-//     background-size: 200px;
-//     width: 200px;
-//     // height: 200px;
-//     border-radius: 10px;
-//     // clip-path: inset(0 0 60% 0);
-//     transform: skewX(0deg);
-//     transition: transform 1s;
-//     margin: 20px;
+  .icon {
+    position: relative;
+    float: left;
+    background-image: url(../img/cropped-brainscan-copy-2.jpg);
+    // background-color: $backgound-dark;
+    background-size: 200px;
+    width: 200px;
+    // height: 200px;
+    border-radius: 10px;
+    // clip-path: inset(0 0 60% 0);
+    transform: skewX(0deg);
+    transition: transform 1s;
+    margin: 20px;
 
-//     &:hover {
-//       transform: skewX(10deg)
-//     }
+    &:hover {
+      transform: skewX(10deg)
+    }
 
-//     div {
-//       color: $primary;
-//       position: absolute;
-//       bottom: 0px;
-//       text-align: center;
-//       left: 50%;
-//       transform: translateX(-50%);
-//     }
+    div {
+      color: $primary;
+      position: absolute;
+      bottom: 0px;
+      text-align: center;
+      left: 50%;
+      transform: translateX(-50%);
+    }
     
-//   }
+  }
 
 
-//   nav {
-//     color: $dark;
-//   }
+  nav {
+    color: $dark;
+  }
 
+}
+
+h1 {
+  padding-top: .5em;
+  font-size: 6em;
+  font-family: 'spacemonkeymedium';
+  text-align: center;
+  color: $white;
+  margin-bottom: 0;
+}
+
+// #main .row div div {
+//   height: 100px;
+//   border: $light 5px solid;
 // }
 
-// h1 {
-//   padding-top: .5em;
-//   font-size: 6em;
-//   font-family: 'spacemonkeymedium';
-//   text-align: center;
-//   color: $white;
-//   margin-bottom: 0;
-// }
-
-// // #main .row div div {
-// //   height: 100px;
-// //   border: $light 5px solid;
-// // }
-
-// .row {
-//   background: linear-gradient(0deg, $white 50%, $primary 50%);
-// }
+.center-row {
+  background: linear-gradient(0deg, $white 50%, $primary 50%);
+}
 
 #footer {
   color: $gray-300;
@@ -131,11 +130,3 @@ $danger: #B87460;
   bottom: 1rem;
   right: 2rem;
 }
-
-// .fas {
-//   color: $primary;
-//   font-size: 2em;
-//   position: absolute;
-//   right: 0;
-//   top: 0;
-// }

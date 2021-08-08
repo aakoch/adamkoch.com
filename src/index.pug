@@ -5,17 +5,13 @@ html.no-js(lang="en")
 
   head
     include templates/head
-    block head_scripts
   body
-    //include templates/header
-    block header
+    include templates/landing-header
     
-    include templates/center
-    block center
+    include templates/landing-content
 
-    include templates/footer
-    block footer 
+    include templates/landing-footer
 
     block body_scripts
 
-    script(src="js/entry.js")
+    script(src="js/landing.js")
