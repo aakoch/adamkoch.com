@@ -5,8 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel ./src/*.pug --open",
-    "watch": "parcel ./src/*.pug --open",
-    "build": "parcel build --no-scope-hoist ./src/index.pug ./src/2009/07/25/white-space-and-character-160/index.pug",
+    "watch": "parcel ./src/*.pug",
+    "build": "parcel build ./src/*.pug ./src/2009/07/25/white-space-and-character-160/index.pug",
     "clean": "rm -rf ./dist/",
     "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && git push && git push --tags"
   },
@@ -26,12 +26,13 @@
   },
   "homepage": "https://github.com/aakoch/adamkoch.com#readme",
   "devDependencies": {
-    "@parcel/packager-raw-url": "^2.0.0-beta.3.1",
-    "@parcel/transformer-pug": "^2.0.0-beta.3.1",
-    "@parcel/transformer-sass": "^2.0.0-beta.3.1",
-    "@parcel/transformer-vue": "^2.0.0-beta.3.1",
-    "@parcel/transformer-webmanifest": "^2.0.0-beta.3.1",
-    "parcel": "^2.0.0-beta.3.1"
+    "@parcel/packager-raw-url": "v2.0.0-rc.0",
+    "@parcel/transformer-image": "^2.0.0-rc.0",
+    "@parcel/transformer-pug": "v2.0.0-rc.0",
+    "@parcel/transformer-sass": "v2.0.0-rc.0",
+    "@parcel/transformer-vue": "v2.0.0-rc.0",
+    "@parcel/transformer-webmanifest": "v2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.esm-bundler.js"
