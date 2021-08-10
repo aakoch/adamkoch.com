@@ -1,14 +1,13 @@
 <template lang="pug">
 .container
   div.row(v-for="post in sort($options.myJson)") 
-    postcard(:key='post["wp:post_id"]' :id='post["wp:post_id"]' :postTitle='post.title' :excerpt='post["excerpt:encoded"]' :date='post.pubDate' :url='post.link')
-    p {{ post.link }}
-
+    postcard(:key='post["wp:post_id"]' :id='post["wp:post_id"]' :postTitle='post.title' :excerpt='post["excerpt:encoded"]' :date='post["wp:post_date"]' :link='post.link' :name='post["wp:post_name"]')
 </template>
 
 <script>
 import postcard from './postcard'
 import MY_JSON from "../data/professional_publish.json";
+//https://www.adamkoch.com/2017/08/28/speed-of-trust/
 
 export default {
   components: {
@@ -26,10 +25,10 @@ export default {
 
         // by date:
         // console.log(Date.parse(post1["wp:post_date"]))
-        // return Date.parse(post1["wp:post_date"]) - Date.parse(post2["wp:post_date"]);
+        return Date.parse(post2["wp:post_date"]) - Date.parse(post1["wp:post_date"]); // descending
 
         // by id:
-        return post1["wp:post_id"] - post2["wp:post_id"];
+        // return post1["wp:post_id"] - post2["wp:post_id"];
       });
     }
   }

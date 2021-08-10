@@ -8,7 +8,6 @@ div
       p.card-text {{ excerpt }}
     .card-text
       a.btn.btn-primary(v-bind:href='url') {{ buttonText }}
-      a(href="./posts/index.html") Posts
 </template>
 
 <style lang="scss" scoped>

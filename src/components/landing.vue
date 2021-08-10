@@ -55,8 +55,8 @@ export default {
       one: 'fsdfasdfasdfasdfa',
       cards: [
         { id: 1, title: 'Blog', icon: 'fas fa-feather', excerpt: 'Thoughts on the current state of things', button: 'Read on', url: '/posts/'  },
-        { id: 2, title: 'Current Projects', icon: 'fas fa-pencil-ruler', excerpt: 'Things I\'m working on now', button: 'Dive in' },
-        { id: 3, title: 'Past Projects', icon: 'fas fa-archive', excerpt: 'Old or abandoned projects', button: 'Dig Deep' }
+        { id: 2, title: 'Current Projects', icon: 'fas fa-pencil-ruler', excerpt: 'Things I\'m working on now', button: 'Dive in', url: '/projects/' },
+        { id: 3, title: 'Past Projects', icon: 'fas fa-archive', excerpt: 'Old or abandoned projects', button: 'Dig Deep', url: '/past_projects/' }
       ],
       links: [
         { id: 1, title: 'GitHub', icon: 'fas fa-code-branch', excerpt: 'Source code' },
