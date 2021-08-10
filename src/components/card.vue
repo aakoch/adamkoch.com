@@ -1,13 +1,14 @@
 <template lang="pug">
 div
-  .card(style='width: 18rem;')
+  .card
     .icon-container
       i.card-img-top(v-bind:class='icon')
     .card-body
       h5.card-title {{ cardTitle }}
       p.card-text {{ excerpt }}
     .card-text
-      a.btn.btn-primary(href='#') {{ buttonText }}
+      a.btn.btn-primary(v-bind:href='url') {{ buttonText }}
+      a(href="./posts/index.html") Posts
 </template>
 
 <style lang="scss" scoped>
@@ -22,6 +23,7 @@ $white: #f5f7f8;
   // border: red solid 2px;
   // border-top: 0;
   height: 20rem;
+  width: 18rem;
 
   .card-text > .btn {
     position: absolute;
@@ -98,7 +100,10 @@ $white: #f5f7f8;
 </style>
 
 <script>
+import { RouterLink } from "vue-router";
+
 export default {
-  props: ['cardTitle', 'excerpt', 'icon', 'buttonText']
+  props: ['cardTitle', 'excerpt', 'icon', 'buttonText', 'url']
 }
+
 </script>

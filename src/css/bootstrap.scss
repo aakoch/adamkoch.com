@@ -6,17 +6,17 @@
 
 // 2. Include any default variable overrides here
 $primary: #406275;
-$secondary: #B89160;
-$light: #DEE3E6;
+$secondary: #b89160;
+$light: #dee3e6;
 $white: tint-color($light, 70);
-$dark: #43464A;
+$dark: #43464a;
 $success: #448261;
 $info: #406275;
-$warning: #B89060;
-$danger: #B87460;
+$warning: #b89060;
+$danger: #b87460;
 
-@import url('https://fonts.googleapis.com/css2?family=Georama&display=swap');
-$font-family-base: 'Georama', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Georama&display=swap");
+$font-family-base: "Georama", sans-serif;
 $link-color: $primary;
 $body-bg: $white;
 
@@ -35,32 +35,41 @@ $body-bg: $white;
 @import "../../node_modules/bootstrap/scss/card";
 @import "../../node_modules/bootstrap/scss/buttons";
 
-
 // 5. Add additional custom code here
 
-html, body {
-  height: 100%;
-}
+// html, body {
+//   height: 100%;
+// }
 
 body {
-  padding: 0px;
+  padding: 0 0 100px 0;
   background: $white;
 }
 
 @font-face {
-  font-family: 'spacemonkeymedium';
-  src: url('../fonts/spacemonkey-webfont.woff2') format('woff2'),
-       url('../fonts/spacemonkey-webfont.woff') format('woff');
+  font-family: "spacemonkeymedium";
+  src: url("../fonts/spacemonkey-webfont.woff2") format("woff2"),
+    url("../fonts/spacemonkey-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 #header {
   background-color: $primary;
+  height: 100px;
+  svg {
+    width: 20%;
+    transform: translateY(-100px);
+  }
+}
+
+#landing-header {
+  background-color: $primary;
+  height: 270px;
   // position: relative;
 
   // padding-top: 20px;
-  
+
   $backgound-dark: $primary;
   // background: $backgound-dark; /* Old browsers */
   // background: -moz-linear-gradient(top, $backgound-dark 1%, $backgound-dark 50%, $white 51%, $white 100%); /* FF3.6-15 */
@@ -85,7 +94,7 @@ body {
     margin: 20px;
 
     &:hover {
-      transform: skewX(10deg)
+      transform: skewX(10deg);
     }
 
     div {
@@ -96,23 +105,24 @@ body {
       left: 50%;
       transform: translateX(-50%);
     }
-    
   }
-
 
   nav {
     color: $dark;
   }
 
+  svg {
+    transform: translateX(35%) translateY(40px);
+  }
 }
 
-h1 {
-  padding-top: .5em;
-  font-size: 6em;
-  text-align: center;
-  color: $white;
-  margin-bottom: 0;
-}
+// h1 {
+//   padding-top: .5em;
+//   font-size: 6em;
+//   text-align: center;
+//   color: $white;
+//   margin-bottom: 0;
+// }
 
 // #main .row div div {
 //   height: 100px;
@@ -125,7 +135,7 @@ h1 {
 
 #footer {
   color: $gray-300;
-  position: absolute;
+  position: fixed;
   bottom: 1rem;
   right: 2rem;
 }
@@ -133,5 +143,4 @@ h1 {
 svg {
   fill: $white;
   stroke: $dark;
-  transform: translateX(50%) translateY(40px);
 }
