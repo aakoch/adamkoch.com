@@ -1,6 +1,6 @@
 <template lang="pug">
-.container-fluid.g-0#main
-  .row.g-0.center-row
+#main
+  .row.center-row.gx-md-0.gx-sm-3.gx-xs-3.gy-4
     .col
       .container
         .row.justify-content-center.align-items-center.g-2
@@ -37,6 +37,9 @@
   margin: 1em 0 3em 25%;
   text-align: center;
   margin-bottom: 1em;
+}
+#main {
+  padding: 0;
 }
 </style>
 
