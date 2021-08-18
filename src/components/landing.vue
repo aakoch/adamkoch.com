@@ -38,12 +38,6 @@
   text-align: center;
   margin-bottom: 1em;
 }
-#landing-header {
-
-  svg {
-    left: 50%;
-  }
-}
 </style>
 
 <script>
