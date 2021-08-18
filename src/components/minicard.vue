@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  .card(style='width: 18rem;')
+  .card
     .card-body
       div.link
         a(href='#') 

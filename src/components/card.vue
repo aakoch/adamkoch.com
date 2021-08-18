@@ -22,7 +22,7 @@ $white: #f5f7f8;
   // border: red solid 2px;
   // border-top: 0;
   height: 20rem;
-  width: 18rem;
+  min-width: 5rem;
 
   .card-text > .btn {
     position: absolute;

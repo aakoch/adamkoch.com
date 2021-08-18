@@ -3,10 +3,10 @@
   .row.g-0.center-row
     .col
       .container
-        .row.justify-content-center.align-items-center
+        .row.justify-content-center.align-items-center.g-2
           .col(v-for="card in cards")
             card(:key='card.id' :cardTitle='card.title' :excerpt='card.excerpt' :icon='card.icon' :buttonText='card.button' :url='card.url')
-.col-md-8.offset-md-1#adamexcerpt
+.col-md-8.col-sm-10.col-xs-11.offset-md-1#adamexcerpt
   p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things" 
     | are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
   
@@ -14,7 +14,7 @@
   h3 More Stuff
 .container
   .row.g-2
-    .col-xxl-3.col-xl-4.g-1(v-for="link in links")
+    .col-lg-3.col-md-4.g-1(v-for="link in links")
       minicard(:key='link.id' :cardTitle="link.title" :icon="link.icon" :excerpt="link.excerpt")
     //- .container
     //-   .row.justify-content-center.align-items-center.g-3
@@ -37,6 +37,12 @@
   margin: 1em 0 3em 25%;
   text-align: center;
   margin-bottom: 1em;
+}
+#landing-header {
+
+  svg {
+    left: 50%;
+  }
 }
 </style>
 

@@ -65,7 +65,7 @@ body {
 
 #landing-header {
   background-color: $primary;
-  height: 270px;
+  // height: 270px;
   // position: relative;
 
   // padding-top: 20px;
@@ -112,7 +112,15 @@ body {
   }
 
   svg {
-    transform: translateX(35%) translateY(40px);
+    // transform: translateX(35%) translateY(40px) scale(calc(50% - 80px));
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    
+    @media only screen and (max-width: 500px) {
+      transform: scale(50%)
+      /* Style adjustments for viewports that meet the condition */
+    }
   }
 }
 
