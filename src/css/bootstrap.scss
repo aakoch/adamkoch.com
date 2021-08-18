@@ -57,67 +57,8 @@ body {
 #header {
   background-color: $primary;
   height: 100px;
-  svg {
-    width: 20%;
-    transform: translateY(-100px);
-  }
 }
 
-#landing-header {
-  background-color: $primary;
-  // height: 270px;
-  // position: relative;
-
-  // padding-top: 20px;
-
-  $backgound-dark: $primary;
-  // background: $backgound-dark; /* Old browsers */
-  // background: -moz-linear-gradient(top, $backgound-dark 1%, $backgound-dark 50%, $white 51%, $white 100%); /* FF3.6-15 */
-  // background: -webkit-linear-gradient(top, $backgound-dark 1%,$backgound-dark 50%,$white 51%,$white 100%); /* Chrome10-25,Safari5.1-6 */
-  // background: linear-gradient(to bottom, $backgound-dark 1%,$backgound-dark 50%,$white 51%,$white 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$backgound-dark', endColorstr='$white',GradientType=0 ); /* IE6-9 */
-
-  // height: 200px;
-
-  .icon {
-    position: relative;
-    float: left;
-    background-image: url(../img/cropped-brainscan-copy-2.jpg);
-    // background-color: $backgound-dark;
-    background-size: 200px;
-    width: 200px;
-    // height: 200px;
-    border-radius: 10px;
-    // clip-path: inset(0 0 60% 0);
-    transform: skewX(0deg);
-    transition: transform 1s;
-    margin: 20px;
-
-    &:hover {
-      transform: skewX(10deg);
-    }
-
-    div {
-      color: $primary;
-      position: absolute;
-      bottom: 0px;
-      text-align: center;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-
-  nav {
-    color: $dark;
-  }
-
-  svg {
-    max-width: 800px;
-    left: 50%;
-    position: relative;
-    transform: translateX(-50%) translateY(20%);
-  }
-}
 
 // h1 {
 //   padding-top: .5em;

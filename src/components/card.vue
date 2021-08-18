@@ -30,13 +30,15 @@ $white: #f5f7f8;
     bottom: 1rem;
   }
 
+  .card-body {
+    padding: 20px 30px 30px;
+  }
+
   .icon-container {
     border: $primary solid 2px;
     border-radius: 100px;
-    margin-top: 20px;
-    margin-left: 40px;
-    margin-bottom: 2rem;
-    padding: 2rem;
+    margin: 20px auto;
+    padding: 30px;
     width: 200px;
   }
 
