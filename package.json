@@ -4,9 +4,9 @@
   "description": "Adam Koch homepage",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel ./src/index.pug ./src/posts/index.pug --open",
-    "watch": "parcel ./src/index.pug ./src/posts/index.pug ./src/2009/07/25/white-space-and-character-160/index.pug",
-    "build": "mkdir -p dist/site && cp -R src/site/* dist/site/ && parcel build ./src/index.pug ./src/posts/index.pug ./src/2009/07/25/white-space-and-character-160/index.pug",
+    "start": "parcel ./src/index.pug ./src/posts/index.pug ./src/projects/index.pug ./src/past_projects/index.pug --open",
+    "watch": "parcel ./src/index.pug ./src/posts/index.pug ./src/projects/index.pug ./src/past_projects/index.pug ./src/2009/07/25/white-space-and-character-160/index.pug",
+    "build": "mkdir -p dist/site && cp -R src/site/* dist/site/ && parcel build ./src/index.pug ./src/posts/index.pug ./src/projects/index.pug ./src/past_projects/index.pug ./src/2009/07/25/white-space-and-character-160/index.pug",
     "clean": "rm -rf ./dist/",
     "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && git push && git push --tags"
   },
