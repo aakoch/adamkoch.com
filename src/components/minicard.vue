@@ -3,7 +3,7 @@ div
   .card
     .card-body
       div.link
-        a(href='#') 
+        a(v-bind:href='link') 
           i(class='fas fa-angle-double-right')
       h5.card-title 
         i.card-img-top(v-bind:class='icon')
@@ -109,6 +109,6 @@ $white: #f5f7f8;
 
 <script>
 export default {
-  props: ['cardTitle', 'excerpt', 'icon', 'buttonText']
+  props: ['cardTitle', 'excerpt', 'icon', 'buttonText', 'link']
 }
 </script>

@@ -1,5 +1,7 @@
 <template lang="pug">
 .container
+  p 
+  p If you're thinking "2017 can't be the last time he posted", well, it was.
   div.row(v-for="post in sort($options.myJson)") 
     postcard(:key='post["wp:post_id"]' :id='post["wp:post_id"]' :postTitle='post.title' :excerpt='post["excerpt:encoded"]' :date='post["wp:post_date"]' :link='post.link' :name='post["wp:post_name"]')
 </template>

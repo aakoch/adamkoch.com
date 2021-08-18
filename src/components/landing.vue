@@ -19,7 +19,7 @@
 .container
   .row.g-2
     .col-lg-3.col-md-4.g-1(v-for="link in links")
-      minicard(:key='link.id' :cardTitle="link.title" :icon="link.icon" :excerpt="link.excerpt")
+      minicard(:key='link.id' :cardTitle="link.title" :icon="link.icon" :excerpt="link.excerpt" :link="link.link")
     //- .container
     //-   .row.justify-content-center.align-items-center.g-3
     //-     .col-2.g-6(v-for="link in links")
