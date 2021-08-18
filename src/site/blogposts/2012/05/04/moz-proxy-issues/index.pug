@@ -1,0 +1,76 @@
+| I like 
+a(href='http://getfirefox.com') Firefox
+| . A lot. Even 
+a(href='http://en.wikipedia.org/wiki/History_of_Firefox') when it was named Phoenix
+| . I even use it at work (using 
+a(title='Apps you can take anywhere' href='http://portableapps.com') PortableApps.com
+| ). But some sites (ok, only 
+a(href='http://stackexchange.com/') StackExchange
+|  sites) I visit I get multiple popups asking for my user name and password. Because I'm behind a firewall I have to enter my credentials, no big deal. But they don't work! So I have to hit Cancel. Not just once, but, like, 4 times!
+
+// more
+| 
+[caption id="attachment_2169" align="alignnone" width="647" caption="Annoying Popup"]
+a(href='http://www.adamkoch.com/wp-content/uploads/2012/04/proxy1.png')
+  img.size-full.wp-image-2169(title='Annoying Proxy Authentication Popup' src='http://www.adamkoch.com/wp-content/uploads/2012/04/proxy1.png' alt='Annoying Popup' width='647' height='183')
+| [/caption] [caption id="attachment_2170" align="alignnone" width="647" caption="Annoying Popup 2"]
+a(href='http://www.adamkoch.com/wp-content/uploads/2012/04/proxy2.png')
+  img.size-full.wp-image-2170(title='Annoying Proxy Authentication Popup 2' src='http://www.adamkoch.com/wp-content/uploads/2012/04/proxy2.png' alt='Annoying Popup 2' width='647' height='183')
+| [/caption] And it's not the HTTP proxy, it's asking for a "moz-proxy". I finally decided to 
+a(href='http://www.google.com/search?q=moz-proxy') Google my issue
+| . I found 
+a(href='http://support.mozilla.org/en-US/questions/850627') some
+|  
+a(href='http://support.mozilla.org/en-US/questions/814632') reports
+|  of 
+a(href='http://support.mozilla.org/en-US/questions/890084') others
+|  with 
+a(href='http://support.mozilla.org/en-US/questions/920057') the
+|  
+a(href='http://support.mozilla.org/en-US/questions/890084') same
+|  
+a(href='http://superuser.com/questions/398740/firefox-asks-for-proxy-details-but-only-when-accessing-facebook') issue
+| . (Ironically, the last page was from a 
+a(href='http://stackexchange.com/') StackExchange
+|  site and produced the error.) When I found 
+a(title='Firefox Proxy.InstallTrigger bug report' href='https://bugzilla.mozilla.org/show_bug.cgi?id=701029') a page suggesting
+|  it was a 
+a(title='Firebug Proxy.InstallTrigger issue' href='http://code.google.com/p/fbug/issues/detail?id=4991') Firebug issue
+|  I opened it and found a bunch of "407 Proxy Authentication Required" errors for 
+a(href='http://sockets.ny.stockexchange.com') http://sockets.ny.stockexchange.com
+| .
+
+a(href='http://www.adamkoch.com/wp-content/uploads/2012/04/firebug.png')
+  img.alignnone.size-large.wp-image-2168(title='firebug' src='http://www.adamkoch.com/wp-content/uploads/2012/04/firebug-1024x510.png' alt width='640' height='318')
+| 
+I also found these errors in the Javascript Console.
+
+a(href='http://www.adamkoch.com/wp-content/uploads/2012/04/console.png')
+  img.alignnone.size-large.wp-image-2167(title='console' src='http://www.adamkoch.com/wp-content/uploads/2012/04/console-1024x649.png' alt width='640' height='405')
+| 
+When I saw the "ws" protocol I was pretty sure the issue was with 
+a(title='Web Sockets on MDN' href='https://developer.mozilla.org/en/WebSockets') web sockets
+| . I decided to look to see if I could turn this off. Google didn't provide any obvious 
+a(title='Google search for turning off web sockets' href='https://www.google.com/search?q=turn+off+web+sockets+in+firefox') hits
+| , but at the bottom of 
+a(title='Web Sockets on MDN' href='https://developer.mozilla.org/en/WebSockets') this page
+|  it mentioned turning 
+strong on
+|  web sockets. So I looked in "
+a(href='about:config') about:config
+| " and filtered on "socket".
+
+a(href='http://www.adamkoch.com/wp-content/uploads/2012/04/about-config.png')
+  img.alignnone.size-full.wp-image-2166(title='about-config' src='http://www.adamkoch.com/wp-content/uploads/2012/04/about-config.png' alt width='853' height='408')
+| 
+Sure enough, I was able to disable web sockets! Hurray! And now I don't get those popups! Problem solved! (This 
+a(href='https://bugzilla.mozilla.org/show_bug.cgi?id=701029') bug
+|  seems to be related.) (Maybe I can make 
+a(href='http://www.thedreaming.org/2008/06/18/things-i-hate-about-firefox-3-and-how-to-fix-them/') this guy
+|  hate Firefox a little less.)
+
+a(href='http://forums.mozillazine.org/viewtopic.php?f=38&t=2341325') More discussion
+|  and a  
+a(href='http://support.mozilla.org/en-US/questions/830546') possible solution
+| .
+

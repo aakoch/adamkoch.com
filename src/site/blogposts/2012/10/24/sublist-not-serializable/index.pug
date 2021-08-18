@@ -1,0 +1,25 @@
+| I guess this was already 
+a(href='http://stackoverflow.com/questions/11045850/error-jsf-primefaces-serializable-of-arraylist-doesnt-work') known
+|  
+a(href='http://stackoverflow.com/questions/10797663/removing-tail-of-x-elements-from-a-list') by
+|  
+a(href='http://stackoverflow.com/questions/11685751/no-enclosed-type-error-how-does-it-work') some
+| , but I didn't know that if you 
+a(href='http://docs.oracle.com/javase/6/docs/api/java/util/List.html#subList(int, int)') sublist
+|  a 
+a(href='http://docs.oracle.com/javase/6/docs/api/java/util/List.html') List
+|  that was 
+a(href='http://docs.oracle.com/javase/6/docs/api/java/io/Serializable.html') Serializable
+| , you will get back a list that is not.
+
+code
+  | 
+import java.io.Serializable; import java.util.ArrayList; import java.util.List; public class SerializableSubListTest {    public static void main(String[] args) {      List
+  serializable
+    | list = new ArrayList
+    serializable
+      | ();      list.add(new Serializable(){private static final long serialVersionUID = 1L;});      System.out.println("list instanceof Serializable = " + (list instanceof Serializable));      List
+      serializable.
+        subList = list.subList(0, 1); System.out.println("subList instanceof Serializable = " + (subList instanceof Serializable));    } }
+        
+code list instanceof Serializable = true subList instanceof Serializable = false

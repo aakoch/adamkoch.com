@@ -1,0 +1,29 @@
+| I was looking at 
+a(href='http://twitter.com/kangax') kangax
+| 's 
+a(href='http://code.google.com/p/closure-compiler/issues/detail?id=36&can=1&q=increment&colspec=ID%20Type%20Status%20Priority%20Component%20Owner%20Summary') suggestions
+|  for 
+a(href='http://code.google.com/closure/compiler/') Google Closure
+|  compression techniques and I wanted to know how 
+a(href='http://github.com/mishoo/UglifyJS/') UglifyJS
+|  handled it. Input:
+code.
+  
+  var i = 10000, j = 0.1, k = /[\w]/, m = new Array(1, 2, 3); throw 0.1;
+a(href='http://closure-compiler.appspot.com/home') Closure
+| :
+
+code var i=1E4,j=0.1,k=/[\w]/,m=[1,2,3];throw 0.1;
+a(href='http://marijnhaverbeke.nl/uglifyjs') UglifyJS
+| :
+
+code var i=1e4,j=.1,k=/[\w]/,m=new Array(1,2,3);throw.1
+| 
+Interesting that 
+a(href='http://github.com/mishoo/UglifyJS/') UglifyJS
+|  doesn't compress the Array declaration, but does compress 2 other statements that 
+a(href='http://code.google.com/closure/compiler/') Google Closure
+|  doesn't/won't. In UglifyJS's 
+a(href='https://github.com/mishoo/UglifyJS/#readme') README
+|  it states that Google Closure "runs terribly slow". Why is this an issue? Won't you only compress when pushing to prod?
+

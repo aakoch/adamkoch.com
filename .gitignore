@@ -4,7 +4,7 @@ node_modules
 .idea
 dist
 .cache
-site
+/site
 archive
 .alias
 src/data/null.json

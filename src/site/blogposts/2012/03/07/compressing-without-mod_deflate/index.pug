@@ -1,0 +1,7 @@
+| So, what do you do when you hosting company won't allow you to use Apache's mod_deflate? I wanted to use PHP's "auto_prepend_file" and php_value directive in .htaccess to automatically prepend a file, but my server evidently doesn't support "php_value" directives. method I found 
+a(href='http://viralpatel.net/blogs/2009/02/compress-php-css-js-javascript-optimize-website-performance.html') here
+|  which ________ Here's what I came up with. The first step was to tell the PHP engine to compress all PHP files. php.ini: zlib.output_compression=on # let the server decide which level to use zlib.output_compression_level=-1
+
+a(href='http://www.php.net/manual/en/ini.core.php#ini.auto-prepend-file') auto_prepend_file
+| = Now, I had to make my static files PHP files. That was fine, but then it was returning the Content-Type as "". styles.css.php: <?php header ("Content-Type: text/css"); ?> combined.js.php: <?php header ("Content-Type: application/x-javascript"); ?> .htaccess: # Check to see if the browser accepts gzipped files RewriteCond %{HTTP:ACCEPT-ENCODING} ^.*gzip.*$ # Now, see if that file appended with ".php" exists. RewriteCond %{REQUEST_FILENAME}.php -f # If so, point to that file. (Don't allow files that start with ".".) RewriteRule ^([^.]+.+) /home/path/public_html/$1.php [L]
+

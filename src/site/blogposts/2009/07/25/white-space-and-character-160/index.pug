@@ -1,0 +1,64 @@
+style(type='text/css').
+  
+  .pass {
+      background-color: #ADFFAD;
+  }
+  .fail {
+      background-color: #FFADAD;
+  }
+  table#whitespacedata, 
+  table#whitespacedata tr,
+  table#whitespacedata tr td,
+  table#whitespacedata tr th {
+      color: black;
+      border: solid 1px black;
+  }
+  table#whitespacedata, 
+  table#whitespacedata tr,
+  table#whitespacedata tr td,
+  table#whitespacedata tr th {
+      color: black;
+      border: solid 1px black;
+  }
+  table#whitespacedata td,
+  table#whitespacedata th {
+      padding: 3px;
+  }
+  
+| 
+I came across a problem in Internet Explorer (it wasn't a problem with Firefox) when I was trying to compare two strings. To me, one string looked to have an extra space in the front. No problem, I'll just call the 
+a(href='http://docs.jquery.com/Utilities/jQuery.trim#str') jQuery trim function
+| . Well, that didn't work. So I used 
+a(href='https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/String/charCodeAt') charCodeAt
+|  and found it was ASCII character 160. I looked up 
+a(title='char code 160' href='http://htmlhelp.com/reference/charset/iso160-191.html') char code 160
+|  and saw that it is a "Non-breaking space". You would think that a "space" character would be trimmed. I looked at the jQuery code that does the trimming and the grep pattern uses 
+code \s
+| . So, evidently you can't use 
+code \s
+|  to catch the "Non-breaking space" in IE. I wonder why no one else has seen this. I wrote up a 
+a(href='/char160test.html') test page
+|  to illustrate this. To create the non-breaking space, you can use 
+code String.fromCharCode(160)
+|  or the Unicode representation "\u00A0". "&#160;" doesn't seem to work when using regular expressions, although it behaves the same when printed.
+
+table#whitespacedata(border='1' cellspacing='3' cellpadding='3')
+  tbody
+    tr(style='background-color: #ADD6FF')
+      th Browser
+      th Evaluates character 160 as white-space
+    tr.pass
+      td Firefox 3, 3.5
+      td Yes
+    tr.pass
+      td Chrome 3.0
+      td Yes
+    tr.fail
+      td Internet Explorer 7, 8
+      td No
+    tr.fail
+      td Safari 3.2
+      td No
+    tr.pass
+      td Opera 9
+      td Yes

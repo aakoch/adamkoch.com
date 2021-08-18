@@ -1,0 +1,499 @@
+// start_raw
+style(type='text/css').
+  
+  h2 {
+      margin-top: 20px;
+  }
+  h2:first-child {
+      margin-top: 0px;
+  }
+  h3 {
+      margin-top: 25px;
+      margin-bottom: -10px;
+  }
+  .fail {
+      background-color: red;
+  }
+  .some {
+      background-color: #ff0;
+  }
+  .pass {
+      background-color: green;
+  }
+  .almost {
+      background-color: #990;
+  }
+  .fail, .some, .pass, .almost {
+      color: black;
+  }
+  th {
+      vertical-align: bottom;
+  }
+  #a td, #a th {
+      border: solid #000 1px;
+      border-width: 1px 0;
+  }
+  #a tr:first-child td, #a tr:first-child th {
+      border: none;
+      border-right: solid #000 1px;
+  }
+  #a tr:first-child td {
+      border: none;
+      border-left: solid #000 1px;
+  }
+  
+p I decided to evaluate different CSS compressors to see which one was "the best". I really didn't expect it to take a week to put this together. Along the way I discovered more ways of compression: some from the tools I evaluated and some I thought of along the way.
+p
+  | I began my research by taking the list of 10 compressors from 
+  a(href='http://designshack.co.uk/') Design Shack's
+  |  
+  a(href='http://designshack.co.uk/articles/css/18-css-compression-tools-and-techniques') 18 CSS Compression Tools and Techniques article
+  |  by 
+  a(title='Posts by Joshua Johnson' href='http://designshack.co.uk/author/joshuajohnson/') Joshua Johnson
+  | . I replaced one with the tool I currently use, 
+  a(href='http://developer.yahoo.com/yui/compressor/') YUI compressor
+  | . 
+  a(href='http://developer.yahoo.com/yui/compressor/') YUI compressor
+  |  is the only tool that can be downloaded and added to the build process. I also consulted the wonderful resource found at 
+  a(href='http://www.lotterypost.com/css-compress.aspx') Lottery Post
+  | . The next step was to create a 
+  a(href='/10csscompressors/simple.css') CSS file
+  | , feed it to each of the compressors and compared them. I was going to use the color name "ForestGreen" but because it wouldn't pass 
+  a(href='http://jigsaw.w3.org/css-validator/') CSS validation
+  |  I used the CSS-compliant color name "fuchsia". The original file has a size of 4.01KB. Keeping the CSS file simple was difficult. Compressors were thrown off I placed comments in strange places, but in the end I left those fringe cases out.
+h2 Compressors
+p Here are the compressors, listed alphabetically.
+ul
+  li
+    a(href='#arantius') Arantius CSS Compressor
+  li
+    a(href='#cleancss') CleanCSS
+  li
+    a(href='#csscompressor') CSS Compressor
+  li
+    a(href='#cssdrive') CSS Drive
+  li
+    a(href='#cssoptimiser') CSS Optimiser
+  li
+    a(href='#lotterypost') Lottery Post
+  li
+    a(href='#phpinsider') PHP Insider
+  li
+    a(href='#pingates') Pingates
+  li
+    a(href='#sevenforty') Seven-forty
+  li
+    a(href='#yui') YUI compressor
+h2 Compression Techniques
+p
+  | The compression techniques that I was looking for spanned from "simple and expected" to "difficult and potentially behavior-changing". 
+  a(href='http://www.lotterypost.com/css-compress.aspx') Lottery Post
+  |  does a good job explaining some advanced compression techniques and why they are dangerous. I decided to break up the compression techniques into categories.
+ol
+  li Safe
+  li Unconventional
+  li Dangerous
+h3 Safe
+ol
+  li Removes comments
+  li Removes whitespace
+  li Removes empty blocks
+  li Removes decimals
+  li Removes units from zero values¹
+  li Removes quotes from URIs
+  li Reduces margin, padding, border-width
+  li Compresses hex colors
+  li Compresses colors by hex or name, whichever is shorter
+  li Converts RGB to hex
+p The "safe" techniques I expected to see from most compressors, although some did surprise me. These should have no ill effects, such as removing quotes around URIs².
+h3 Unconventional
+ol
+  li Removes duplicate rules
+  li Removes overwritten rules
+  li Compresses font weight
+  li Changes color names to lowercase
+  li Changes color hex values to lowercase
+p
+  | These techniques shouldn't affect the behavior of the page and were either not very common or I hadn't seen them before -- especially compressing the font weight. Only two compressors did this -- 
+  a(href='http://www.csscompressor.com/') CSS Compressor
+  |  and 
+  a(href='http://www.cleancss.com/') CleanCSS
+  | . You might wonder why changing the colors to lowercase would help. Well, using lowercase letters helps when you GZIP your files³. In a simple test, using lowercase RBG hex values saved me two bytes after GZIP compression.
+h3 Dangerous
+ol
+  li Converts tag names to lowercase
+  li Combines styles for the same element
+  li Combines font styles
+  li Combines margins, paddings, borders
+  li Combines same styles from different elements
+p
+  | Techniques 2-5 match up to the ones 
+  a(href='http://www.lotterypost.com/css-compress.aspx') Lottery Post
+  |  won't perform because of the possibility of changing the behavior. I often don't use the "Cascading" part of "Cascading Style Sheets" so I don't think it would affect any of my CSS. Again, changing the case where you can will help GZIP compression. Beware, though. This is safe for HTML, but not safe for XML
+  sup 4
+  | . In a simple test, changing "DIV" to "div" did save one byte after GZIP compression. (I know, "1 byte". But we're talking about 
+  a(href='http://twitter.com/zachleat/status/6902476988') micro-optimizations
+  | .) Since none of the compressors changed the tags' case, I didn't include it in the summary table.
+h2 Commonalities
+p All compressors removed some comments and most whitespace. Most compressors tried to compress hex color values. But besides this, there were very little that all compressors shared.
+h2 Compressor Results
+h3
+  a#arantius(name='arantius' href='http://tools.arantius.com/css-compressor') Arantius CSS Compressor
+p
+  | I wasn't too impressed with the Arantius compressor. It removed spaces and single line comments, but not multi-line ones. The compressor removed all possible semicolons, minus the extra one in the "removesExtraSemicolons" class. Everything else was unchanged.
+
+  a(href='/10csscompressors/arantius.css') Output CSS
+  |  - 1.95KB
+h3
+  a#cleancss(name='cleancss' href='http://www.cleancss.com/') CleanCSS
+p
+  | CleanCSS applied most techniques, but did miss 2 "safe" ones (removing the decimals and removing quotes around URLs) and one "dangerous" technique of combining font styles. Otherwise, it was one of the better compressors. It was one of only two that compressed the font-weight and was smart enough to remove overwritten and duplicate rules. It combined individual margins and paddings when all four sides were present and grouped classes with the same style. It tied for second place in smallest file size.
+  br
+  a(href='/10csscompressors/cleancss.css') Output CSS
+  |  - 1.51KB
+h3
+  a#csscompressor(name='csscompressor' href='http://www.csscompressor.com/') CSS Compressor
+p
+  | CSS Compressor had some options and I tried to use the most aggresive ones. Here is the setup I used: "Highest" compression mode, checked "Remove last ;" and unchecked "Only safe optimisations"
+  br
+  | 
+This compressor was the best. It removed all possible spaces and semicolons. CSS compressor also compressed the font-weight and did a remarkable job of combining rules, even combining the "removesURLSingleQuotes" and "removesURLDoubleQuotes" which some other compressors missed. CSS Compressor had the smallest compressed file size.
+
+  br
+  a(href='/10csscompressors/csscompressor.css') Output CSS
+  |  - 1.50KB
+h3
+  a#cssdrive(name='cssdrive' href='http://www.cssdrive.com/index.php/main/csscompressor/') CSS Drive
+p
+  | CSS drive didn't do a very good job. It did a mediocre job removing spaces. It didn't remove any empty blocks or change RGB colors. It had the second to largest file size.
+  br
+  a(href='/10csscompressors/cssdrive.css') Output CSS
+  |  - 1.94KB
+h3
+  a#cssoptimiser(name='cssoptimiser' href='http://www.cssoptimiser.com/index.php') CSS Optimiser
+p
+  | This compressor did an adequate job compressing styles. Some quirks though: it took my one class of "removesDuplicateRules" and declared it twice.
+  br
+  code(style='display:inline') .removesDuplicateRules,.removesDuplicateRules{width:4%}
+  br
+  | 
+It removed zero value pixel units, but not percentages or 
+  code(style='display:inline') em
+  | s. It did simple hex color compression, but didn't touch the RGB colors. It was one of two that compressed my font styles into one font declaration. It tried to reduce the size of the margin classes, but because of the length of the class name, actually increased the size of the file. (".combineIndividualMargins3" is larger than "margin-left:2px".)
+
+  br
+  a(href='/10csscompressors/cssoptimiser.css') Output CSS
+  |  - 1.57KB
+h3
+  a#lotterypost(name='lotterypost' href='http://www.lotterypost.com/css-compress.aspx') Lottery Post
+p
+  | Lottery Post is a very good CSS compressor for what it says it will do. 
+  del(datetime='2010-01-29T19:01:00-06:00') Except for removing decimals
+  |  it used all the 
+  del(datetime='2010-01-29T19:01:00-06:00') other
+  |  "easy" techniques. It doesn't try the "unconventional" or "dangerous" techniques and gives good reason not to. Lottery Post also boasts that it is the only compressor to fix a CSS bug in IE6 pertaining to ":first-line" and ":first-letter". I was disappointed to see my decimal RGB colors incorrectly converted. "rgb(250, 150, 50)" should have changed to "#fa9632" but instead was "#FAFAFA". And both RGB percentages were converted to "#FFF" If those two issues were fixed I would confidentally call this one a very good "safe" compressor.
+  br
+  a(href='/10csscompressors/lotterypost.css') Output CSS
+  |  - 1.75KB
+h3
+  a#phpinsider(name='phpinsider' href='http://www.phpinsider.com/compress_css.php') PHP Insider
+p
+  | This compressor removed new lines, tabs and comments. And that's it. It had the largest compressed file size.
+  br
+  a(href='/10csscompressors/phpinsider.css') Output CSS
+  |  - 2.00KB
+h3
+  a#pingates(name='pingates' href='http://tools.pingates.com/') Pingates
+p
+  | The good: Pingates did a good job of removing spaces and combining styles. It removed duplicate and overwritten rules. It was one of only two to compress the font styles and the only one to change color values to lowercase.
+  br
+  | 
+The bad: RGB colors were incorrectly changed. URL quotes values were escaped instead of removed.
+  br
+  | 
+The ugly: It replaced my class name "removesAllWhiteSpace" to "removesAll#ffffffSpace".
+  br
+  a(href='/10csscompressors/pingates.css') Output CSS
+  |  - 1.51KB
+h3
+  a#sevenforty(name='sevenforty' href='http://www.sevenforty.com/tools/csscompressor') Seven-forty
+p
+  | A light compressor, it only tried the "easy" compression techniques and then, not real well. Whitespace was removed, but it didn't remove trailing semicolons, something I've come to expect. It incorrectly changed my "background-color: rgb(255, 0, 0)" to "#ff00".
+  br
+  a(href='/10csscompressors/sevenforty.css') Output CSS
+  |  - 1.86KB
+h3
+  a#yui(name='yui' href='http://developer.yahoo.com/yui/compressor/') YUI compressor
+p
+  | "Ah. Saving the best for last," I thought. I thought wrong. I was surprised when the YUI compressor didn't even remove trailing semicolons! Yikes! Because it is open-source, you can download it and change what you want to. And because it is packaged as a jar file, it can be easily integrated into an Ant build process. But as far as removing bits, it lacked, settling only on trying the "safe" techniques.
+  br
+  a(href='/10csscompressors/yui.css') Output CSS
+  |  - 1.84KB
+h2 Conclusion
+p The conclusion I came to is no compressor does it all. And as for my development, I should probably look for something other than YUI compressor. I might have to develop my own compressor that I can plug into my build process.
+table#a(cellspacing='2' cellpadding='2' style='border-spacing: 2px;')
+  tbody
+    tr
+      th
+      td
+        a(href='http://tools.arantius.com/css-compressor') Arantius CSS Compressor
+      td
+        a(href='http://www.cleancss.com/') CleanCSS
+      td
+        a(href='http://www.csscompressor.com/') CSS Compressor
+      td
+        a(href='http://www.cssdrive.com/index.php/main/csscompressor/') CSS Drive
+      td
+        a(href='http://www.cssoptimiser.com/index.php') CSS Optimizer/ Optimiser
+      td
+        a(href='http://www.lotterypost.com/css-compress.aspx') Lottery Post
+      td
+        a(href='http://www.phpinsider.com/compress_css.php') PHP Insider
+      td
+        a(href='http://tools.pingates.com/css_compress.php')
+          | Pingates 
+          //  broke the css by adding a colon in one spot and escaping quotes and backslashes 
+      td
+        a(href='http://www.sevenforty.com/tools/csscompressor') Seven- forty
+      td
+        a(href='http://developer.yahoo.com/yui/compressor/') YUI compressor
+    tr
+      th Removes trailing semi-colons
+      td.pass Yes
+      td.pass Yes
+      td.pass Yes
+      td.pass Yes
+      td.pass Yes
+      td.pass Yes
+      td.some Some
+      td.pass Yes
+      td.fail No
+      td.fail No
+    tr
+      th Removes empty blocks
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+      td.fail No
+      td.pass Yes
+      td.some Some
+      td.pass Yes
+    tr
+      th Removes decimals
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+    tr
+      th Removes units on zero lengths/widths/size
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+      td.fail No
+      td.some Only for "px"
+      td.pass Yes
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+      td.pass Yes
+    tr
+      th Removes quotes from url() values
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail Escapes them instead
+      td.fail No
+      td.fail No
+    tr
+      th Reduces the number of sides specified for margin, padding, and border-width
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.some Not border-width
+      td.fail No
+      td.fail No
+    tr
+      th Compresses 6-digit hex colors to 3-digits
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+      td.pass Yes
+      td.pass Yes
+      td.pass Yes
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+      td.pass Yes
+    tr
+      th Reduces colors by color name or hex
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+      td.fail No
+      td.fail No
+    tr
+      th Changes rgb() values
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+      td.pass Yes
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.pass Yes
+      td.fail Error
+      td.some
+        | Not %
+        // percentages
+    tr
+      th Removes duplicate rules
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+      td.fail No
+      td.fail No
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+    tr
+      th Removes overwritten styles
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+      td.fail No
+      td.fail No
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+    tr
+      th Uses lowercase color names/hex values
+      td.fail No
+      td.pass
+        | Yes
+        // but won't change hex values, only when making it's own replacements
+      td.pass Yes
+      td.fail No
+      td.fail No
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+    tr
+      th
+        | Combines styles for the same element
+        //  that are specified in different style blocks
+      td.fail No
+      td.pass Yes
+      td.pass
+        | Yes
+        // but reordered
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+    tr
+      th Combines individual font styles
+      td.fail No
+      td.fail No
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+    tr
+      th Combines individual margin, padding, or border styles
+      td.fail No
+      td.some
+        | One case
+        // Only on all four
+      td.some
+        | One case
+        // Only on all four
+      td.fail No
+      td.fail
+        | Error
+        // Incorrectly combined elements
+      td.fail No
+      td.fail No
+      td.some
+        | Once case
+        // Only on all four
+      td.fail No
+      td.fail No
+    tr
+      th
+        | Combines styles for multiple elements
+        //  that share the same style definition
+      td.fail No
+      td.pass Yes
+      td.pass Yes
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+      td.pass Yes
+      td.fail No
+      td.fail No
+h2 References:
+a#one(name='one') ¹
+|  "After a zero length, the unit identifier is optional." - 
+cite http://www.w3.org/TR/CSS2/syndata.html#length-units
+br
+a#two(name='two') ²
+|  "The format of a URI value is 'url(' followed by optional white space followed by an optional single quote (') or double quote (") character followed by the URI itself, followed by an optional single quote (') or double quote (") character followed by optional white space followed by ')'. The two quote characters must be the same." - 
+cite http://www.w3.org/TR/CSS2/syndata.html#uri
+br
+a#three(name='three') ³
+|  
+cite http://www.julienlecomte.net/yuicompressor/CHANGELOG
+br
+a#four(name='four')
+  sup 4
+|  "The case-sensitivity of document language element names in selectors depends on the document language. For example, in HTML, element names are case-insensitive, but in XML they are case-sensitive." - 
+cite http://www.w3.org/TR/CSS2/selector.html
+br
+br
+p
+  ins(datetime='2010-01-29T19:09:00-06:00')
+    strong Friday, January 29 at 7:09 PM: Updated
+    |  table to reflect that 
+    a#lotterypost(name='lotterypost' href='http://www.lotterypost.com/css-compress.aspx') Lottery Post's compressor
+    |  does remove decimals and therefore uses 
+    em all
+    |  "safe" compressions (including two I forgot!). Thanks to 
+    a(href='http://www.lotterypost.com/') Todd
+    |  for pointing that out.
+// end_raw

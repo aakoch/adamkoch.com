@@ -1,0 +1,8 @@
+| I was reading 
+a(title='Juriy Zaytsev\'s website' href='http://perfectionkills.com/') Juriy Zaytsev
+| 's (
+a(title='kangax on Twitter' href='http://twitter.com/kangax') @kangax
+| ) 
+a(title='Optimizing HTML article' href='http://perfectionkills.com/optimizing-html/') article "Optimizing HTML"
+|  and had a few comments. 1. I have used <!CDATA[...]> sections when I'm embedding "<" and ">" but I think that's just because I've used XSL before and they have caused problems when performing transformations. But I'll try to remove it from my HTML as he suggests. 2. If I don't have a URL to use in the href attribute, I'll still use "javascript:void(0)" because I really don't like the hash being added to my URL. Perhaps I should just add some jQuery code: $("a[href='#']").click(function(){return false;}); That's 49 characters, so I would have to change only 3 links to use the hash instead of "javascript:void(0)" to save space.
+

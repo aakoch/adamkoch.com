@@ -1,0 +1,27 @@
+| There is a 
+a(href='http://pmd.sourceforge.net/') PMD
+|  rule that checks for mutators (getters and setters) on Java Beans: 
+a(href='http://pmd.sourceforge.net/snapshot/rules/java/javabeans.html') BeanMembersShouldSerialize
+| . I have a lot of these violations in my code. I'd rather understand the issue than just turn it off, but I'm struggling with what it means. What I learned is: being Serializable does not make a class a Java Bean. 
+ins And, to be Serializeable, you don't need mutators.
+| 
+But PMD thinks my object is a bean. Why?
+// more
+| 
+After reading 
+a(href='http://pmd.sourceforge.net/snapshot/xref/net/sourceforge/pmd/lang/java/rule/javabeans/BeanMembersShouldSerializeRule.html') the source
+| , I determined that there are only a few criteria that exclude classes:
+
+ol
+  li if it's an interface
+  li if the variable is transient
+  li if the variable is static
+| 
+Otherwise, PMD assumes it's a bean and tries to match variables with methods. If there isn't both a setter and getter, it creates a violation. My Serializable classes are not Beans and do not need getters and setters. So I think I can safely turn off this warning. Thoughts?
+
+ins
+  | Edit: PMD should change the rule:
+
+  ol
+    li Only check Java Beans (or at least Serializable classes)
+    li Re-word the rule to something like "Java Beans should have mutators (getters and setters)"
