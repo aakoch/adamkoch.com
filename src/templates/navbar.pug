@@ -1,0 +1,22 @@
+nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+  .navbar-brand 
+    include ../img/header_name.svg
+  .navbar-nav
+    .nav-item
+      a(href="/").nav-link Home
+    .nav-item
+      if title=="Blog"
+        .nav-link.active Blog
+      else
+        a(href="/posts").nav-link Blog
+    .nav-item
+      if title=="Current Projects"
+        .nav-link.active Current Projects
+      else
+        a(href="/projects").nav-link Current Projects
+    .nav-item
+      if title=="Past Projects"
+        .nav-link.active Past Projects
+      else
+        a(href="/past_projects").nav-link Past Projects
+    

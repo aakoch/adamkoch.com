@@ -1,15 +1,39 @@
-- var title = 'Software Developer and Clean Code Advocate'
+- var title = 'Past Projects'
+mixin project(title, status)
+  .project
+    .project-wrapper
+      h2= title
+      .project-body
+        if block
+          block
+        else
+          p No description yet
+        .status-wrapper Status: 
+          span.status #{status}
+
 block variables
 doctype html
 html.no-js(lang="en")
 
   head
     include ../templates/head
+    include ../templates/projects
   body
-    include ../templates/header
+    include ../templates/pageheader
 
-    h1 Oooo... sorry
-    p This page isn't here yet. Come back in a week    
+    .container
+      h1 #{title}
+      
+      +project('Headphones Holder', 'Completed ')
+        p I designed and printed a thing that would clip to my desk at work and have a hook to hold my headphones. I wanted to keep the cord 
+          | from getting tangled up, so I created a groove that would allow for swapping of different other pieces so I could prototype different ideas.
+        img(src="../img/headphone_table_holder.png" width="300")
+        p I used my "wood" filament which allowed me to lightly sand it in the end and I think it turned out well.
+
+      +project('MacBook Pro Laptop Stand', 'Completed ')
+        img(src="../img/laptop_stand_preview.png" width="300")
+        div
+          a(href="https://www.thingiverse.com/thing:4673645") Thingiverse
 
     include ../templates/footer
 

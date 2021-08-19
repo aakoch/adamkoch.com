@@ -15,6 +15,8 @@ $info: #406275;
 $warning: #b89060;
 $danger: #b87460;
 
+$navbar-padding-x: 2rem;
+
 @import url("https://fonts.googleapis.com/css2?family=Georama&display=swap");
 $font-family-base: "Georama", sans-serif;
 $link-color: $primary;
@@ -59,6 +61,22 @@ body {
   height: 100px;
 }
 
+nav {
+  background-color: $primary;
+  height: 100px;
+  padding-left: 40px;
+}
+
+.navbar-nav {
+  margin-top: auto;
+  margin-left: 40px;
+  font-size: 1.6em;
+}
+
+.nav-link {
+  margin-right: 1em;
+}
+
 
 // h1 {
 //   padding-top: .5em;
@@ -73,8 +91,13 @@ body {
 //   border: $light 5px solid;
 // }
 
-.center-row {
+.center-row, .divider {
   background: linear-gradient(0deg, $white 50%, $primary 50%);
+}
+
+.divider {
+  height: 20px;
+  margin-bottom: 20px;
 }
 
 #footer {
@@ -87,4 +110,18 @@ body {
 svg {
   fill: $white;
   stroke: $dark;
+}
+
+.project {
+  margin-top: 40px;
+  .project-body {
+    border-left: solid $primary 5px;
+    padding-left: 20px;
+  }
+  .status-wrapper {
+    font-size: 1.4em;
+    .status {
+      font-family: monospace;
+    }
+  }
 }

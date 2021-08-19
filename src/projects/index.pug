@@ -1,4 +1,16 @@
-- var title = 'Software Developer and Clean Code Advocate'
+- var title = 'Current Projects'
+mixin project(title, status)
+  .project
+    .project-wrapper
+      h2= title
+      .project-body
+        if block
+          block
+        else
+          p No description yet
+        .status-wrapper Status: 
+          span.status #{status}
+
 block variables
 doctype html
 html.no-js(lang="en")
@@ -6,11 +18,12 @@ html.no-js(lang="en")
   head
     include ../templates/head
   body
-    include ../templates/header
-    
+    include ../templates/pageheader
 
-    h1 Oooo... sorry
-    p This page isn't here yet. Come back in a week    
+    .container
+      h1 #{title}
+      
+      +project('Swamp Fan', 'Stage One Complete')
 
     include ../templates/footer
 

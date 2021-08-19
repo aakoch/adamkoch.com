@@ -85,7 +85,9 @@ $danger: #b87460;
   nav {
     color: $dark;
   }
+}
 
+#landing-header, .page-header {
   svg {
     max-width: 600px;
     left: 50%;
