@@ -1,5 +1,5 @@
 <template lang="pug">
-div.col-6.g-2
+div.col.g-2
   .card
     .card-body
       h5.card-title {{ postTitle }}

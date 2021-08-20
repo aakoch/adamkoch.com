@@ -1,22 +1,46 @@
 nav.navbar.navbar-expand-md.navbar-dark.bg-dark
   .navbar-brand 
     include ../img/header_name.svg
-  .navbar-nav
+  button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  .collapse.navbar-collapse.navbar-nav.me-auto.mb-2.mb-lg-0
     .nav-item
       a(href="/").nav-link Home
     .nav-item
       if title=="Blog"
-        .nav-link.active Blog
+        .nav-link.active(aria-current="page") Blog
       else
         a(href="/posts").nav-link Blog
     .nav-item
       if title=="Current Projects"
-        .nav-link.active Current Projects
+        .nav-link.active(aria-current="page") Current Projects
       else
         a(href="/projects").nav-link Current Projects
     .nav-item
       if title=="Past Projects"
-        .nav-link.active Past Projects
+        .nav-link.active(aria-current="page") Past Projects
       else
         a(href="/past_projects").nav-link Past Projects
+    
+//- nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+//-   .navbar-brand 
+//-     include ../img/header_name.svg
+//-   .navbar-nav
+//-     .nav-item
+//-       a(href="/").nav-link Home
+//-     .nav-item
+//-       if title=="Blog"
+//-         .nav-link.active Blog
+//-       else
+//-         a(href="/posts").nav-link Blog
+//-     .nav-item
+//-       if title=="Current Projects"
+//-         .nav-link.active Current Projects
+//-       else
+//-         a(href="/projects").nav-link Current Projects
+//-     .nav-item
+//-       if title=="Past Projects"
+//-         .nav-link.active Past Projects
+//-       else
+//-         a(href="/past_projects").nav-link Past Projects
     

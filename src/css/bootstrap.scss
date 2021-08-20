@@ -64,13 +64,30 @@ body {
 nav {
   background-color: $primary;
   height: 100px;
-  padding-left: 40px;
 }
 
 .navbar-nav {
   margin-top: auto;
-  margin-left: 40px;
-  font-size: 1.6em;
+}
+
+@media screen and (min-width: 1048px) {
+
+  nav {
+    padding-left: 40px;
+  }
+  
+  .navbar-nav {
+    margin-left: 40px;
+  }
+  .navbar-nav {
+    // font-size: 1.6em;
+  }
+}
+
+@media screen and (min-width: 942px) and (max-width: 1048px) {
+  .navbar-nav {
+    // font-size: 1.4em;
+  }
 }
 
 .nav-link {
