@@ -19,7 +19,7 @@
 .container
   .row.g-2
     .col-lg-3.col-md-4.g-1(v-for="link in links")
-      minicard(:key='link.id' :cardTitle="link.title" :icon="link.icon" :excerpt="link.excerpt" :link="link.link")
+      minicard(:key='link.id' :cardTitle="link.title" :icon="link.icon" :excerpt="link.excerpt" :link="link.link" :isExternal="link.isExternal")
     //- .container
     //-   .row.justify-content-center.align-items-center.g-3
     //-     .col-2.g-6(v-for="link in links")
@@ -183,21 +183,39 @@ export default {
       ],
       links: [
         {
+          id: 5,
+          title: "Tech",
+          icon: "fas fa-microchip",
+          excerpt: "Some hardware, but mostly software",
+          link: "/tech/"
+        },
+        {
+          id: 6,
+          title: "Art",
+          icon: "fas fa-paint-brush",
+          excerpt: "Design, music",
+          link: "/art/"
+        },
+        {
           id: 1,
           title: "GitHub",
           icon: "fas fa-code-branch",
           excerpt: "Source code",
-          link: "https://github.com/aakoch/"
+          link: "https://github.com/aakoch/",
+          isExternal: true
         },
         {
           id: 2,
           title: "Thingiverse",
           icon: "fas fa-cube",
           excerpt: "3D prints",
-          link: "https://www.thingiverse.com/aakoch/designs"
+          link: "https://www.thingiverse.com/aakoch/designs",
+          isExternal: true
         },
-        { id: 3, title: "Resume", icon: "fas fa-id-card", excerpt: "CV", link: "https://aakoch.github.io/" },
-        { id: 4, title: "Twitter", icon: "fab fa-twitter", excerpt: "Tweet", link: "https://twitter.com/aakoch" },
+        { id: 3, title: "Resume", icon: "fas fa-id-card", excerpt: "CV", link: "https://aakoch.github.io/",
+          isExternal: true },
+        { id: 4, title: "Twitter", icon: "fab fa-twitter", excerpt: "Tweet", link: "https://twitter.com/aakoch",
+          isExternal: true },
       ],
     };
   },

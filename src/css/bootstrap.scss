@@ -17,14 +17,14 @@ $danger: #b87460;
 
 $navbar-padding-x: 2rem;
 
-@import url("https://fonts.googleapis.com/css2?family=Georama&display=swap");
-$font-family-base: "Georama", sans-serif;
+$font-family-base: sans-serif;
 $link-color: $primary;
 $body-bg: $white;
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";
 
 // 4. Include any optional Bootstrap components as you like
 @import "../../node_modules/bootstrap/scss/root";
@@ -36,6 +36,7 @@ $body-bg: $white;
 @import "../../node_modules/bootstrap/scss/navbar";
 @import "../../node_modules/bootstrap/scss/card";
 @import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/utilities/api";
 
 // 5. Add additional custom code here
 
@@ -48,13 +49,27 @@ body {
   background: $white;
 }
 
-@font-face {
-  font-family: "spacemonkeymedium";
-  src: url("../fonts/spacemonkey-webfont.woff2") format("woff2"),
-    url("../fonts/spacemonkey-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+.fonts-loaded body {
+  font-family: Georama, sans-serif;
 }
+
+@font-face {
+  font-family: 'Georama';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/georama/v1/MCo5zAn438bIEyxFf6swMnNpvPcUwW4u4yRcDh-ZjxApn9K5GvgdngEMxf5wbxXT.woff) format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+// @font-face {
+//   font-family: "spacemonkeymedium";
+//   src: url("../fonts/spacemonkey-webfont.woff2") format("woff2"),
+//     url("../fonts/spacemonkey-webfont.woff") format("woff");
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 #header {
   background-color: $primary;

@@ -1,0 +1,55 @@
+- var title = 'Tech I Dig'
+mixin project(title, status)
+  .project
+    .project-wrapper
+      h2= title
+      .project-body
+        if block
+          block
+        else
+          p No description yet
+        .status-wrapper Status: 
+          span.status #{status}
+
+block variables
+doctype html
+html.no-js(lang="en")
+
+  head
+    include ../templates/head
+  body
+    include ../templates/pageheader
+
+    .container
+      h1 #{title}
+      
+      p As I'm thinking of what I want to put on this page, the list is growing...
+
+      ul
+        li
+          a(href="https://pugjs.org/") Pug 
+            i.fas.fa-external-link-alt
+        li 
+          a(href="https://v2.parceljs.org/") Parcel 
+            i.fas.fa-external-link-alt
+        li 
+          a(href="https://www.moddable.com/moddable-two.php") Moddable 
+            i.fas.fa-external-link-alt
+        li
+          a(href="https://openmv.io/") OpenMV  
+            i.fas.fa-external-link-alt
+        li Node/NPM
+        li Vue
+        li vi
+        li 
+          a(href="/jq") jq 
+        li zsh
+        li scripts
+        li AWS
+        li neo4j
+        li Kotlin
+        li ...
+
+    include ../templates/footer
+
+    block body_scripts

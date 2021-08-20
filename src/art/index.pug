@@ -1,4 +1,4 @@
-- var title = 'Current Projects'
+- var title = 'Art'
 mixin project(title, status)
   .project
     .project-wrapper
@@ -22,12 +22,16 @@ html.no-js(lang="en")
 
     .container
       h1 #{title}
-      
-      +project('Swamp Fan', 'Stage One Complete')
-      
-      +project('This Page', 'In Progress')
 
-      +project('SLAB', 'Let\'s not talk about it')
+      p Things I'm considering having here are:
+      ul
+        li Music
+        li Audio and video editing
+        li CAD
+        li
+          abbr(title="Human-computer interaction") HCI
+        li 
+          abbr(title="Marble Machine X") MMX
 
     include ../templates/footer
 

@@ -1,4 +1,4 @@
-nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+nav.navbar.navbar-expand-md.navbar-dark
   .navbar-brand 
     include ../img/header_name.svg
   button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
@@ -21,6 +21,16 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark
         .nav-link.active(aria-current="page") Past Projects
       else
         a(href="/past_projects").nav-link Past Projects
+    .nav-item
+      if title=="Tech I Dig"
+        .nav-link.active(aria-current="page") Tech
+      else
+        a(href="/tech").nav-link Tech
+    .nav-item
+      if title=="Art"
+        .nav-link.active(aria-current="page") Art
+      else
+        a(href="/art").nav-link Art
     
 //- nav.navbar.navbar-expand-md.navbar-dark.bg-dark
 //-   .navbar-brand 

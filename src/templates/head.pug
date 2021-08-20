@@ -29,3 +29,24 @@ script.
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'UA-452464-5');
+
+script.
+  let fouc = function() {
+    // Optimization for Repeat Views
+    if(sessionStorage.fontsLoadedFoutWithClass) {
+      document.documentElement.className += " fonts-loaded";
+      return;
+    }
+    
+    if("fonts" in document) {
+      Promise.all([
+        document.fonts.load("1em Georama")
+      ]).then(function () {
+        document.documentElement.className += " fonts-loaded";
+
+        // Optimization for Repeat Views
+        sessionStorage.fontsLoadedFoutWithClass = true;
+      });
+    }
+  }
+  fouc()
