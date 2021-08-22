@@ -30,7 +30,7 @@ $white: #f5f7f8;
   }
 
   a i.fas, a i.fab {
-    font-size: 3em;
+    font-size: 2em;
   }
 }
 </style>

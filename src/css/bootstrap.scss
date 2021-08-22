@@ -8,7 +8,7 @@
 $primary: #406275;
 $secondary: #b89160;
 $light: #dee3e6;
-$white: tint-color($light, 70);
+$white: tint-color($light, 70); // f5f7f8
 $dark: #43464a;
 $success: #448261;
 $info: #406275;
@@ -156,4 +156,10 @@ svg {
       font-family: monospace;
     }
   }
+}
+
+.not-mono {
+  font-family: inherit;
+  font-size: inherit;
+  white-space: pre-wrap;
 }
