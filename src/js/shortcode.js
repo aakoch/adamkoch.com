@@ -5,10 +5,10 @@ export default function (input) {
   let shortCodeReplacements = {
     caption: {
       prefix: function(shortCode) {
-        return `<div class="imageWithCaptionContainer" style="margin-left:auto;margin-right:auto;width:${shortCode.width}px">`        
+        return `<div class="imageWithCaptionContainer" style="margin-left:auto;margin-right:auto;width:${shortCode.width}px;max-width:100%">`        
       },
       suffix: function(shortCode) {
-        return `<div class="caption" style="text-align:center;width:${shortCode.width}px">${shortCode.caption}</div></div>`
+        return `<div class="caption" style="text-align:center;width:${shortCode.width}px;max-width:100%">${shortCode.caption}</div></div>`
       }
     },
     java: {

@@ -16,11 +16,12 @@ div.col.g-2
             i(class='fas fa-angle-double-right')
 
         div(v-if="loaded")
-          div(v-html="postContent")
+          .postContent(v-html="postContent")
           div.mt-2
             a(:href="link") Original post
 
-          comments(:comments="comments")
+          div(v-for="comment in comments")
+            comment(:author="comment['wp:comment_author'][0]" :content="comment['wp:comment_content'][0]" :date="comment['wp:comment_date'][0]" :email="comment['wp:comment_author_email'][0]" :url="comment['wp:comment_author_url'][0]")
 </template>
 
 <style lang="scss" scoped>
@@ -36,13 +37,20 @@ code {
 }
 </style>
 
+<style lang="css">
+.postContent img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+
 <script>
 import shortcode from "../js/shortcode";
-import comments from "./comments";
+import comment from "./comment";
 
 export default {
   components: {
-    comments,
+    comment,
   },
   props: ["id", "postTitle", "excerpt", "date", "link", "name"],
   computed: {
@@ -59,7 +67,6 @@ export default {
   methods: {
     getData: function (postselected) {
       this.clicked = true;
-      // postselected.target.parentNode.parentNode.childNodes.forEach(el => { if(el.tagName == "A") { el.remove() } })
 
       var newLink =
         "/site/blogposts/" +
@@ -71,9 +78,6 @@ export default {
         })
         .then(
           (postJson) => {
-            // document.getElementById(this.id).innerHTML = shortcode(postJson["content:encoded"]
-            //   + "<div class=\"mt-2\"><a href=\"" + this.link + "\">Original post</a></div>").replaceAll("\r\n\r\n", "<br>")
-
             this.postContent = shortcode(
               postJson["content:encoded"]
             ).replaceAll("\r\n\r\n", "<br>");

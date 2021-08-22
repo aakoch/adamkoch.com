@@ -1,32 +1,37 @@
 <template lang="pug">
-.comment.row
-  .commentPic.col-1
+.comment
+  .commentPic
     img(v-bind:src="'https://secure.gravatar.com/avatar/' + hash" crossorigin)
-  .col.commentMain
-    .row
-      .col.commentAuthor(v-if="url")
-        a(v-bind:href="url") {{ author }}  
-        |  said on {{ date }}...
-      .col.commentAuthor(v-if="!url")
-        span {{ author }} said on {{ date }}...
-    .row
-      .col.commentContent {{ content }}
+  .commentMain
+    .commentMeta(v-if="url")
+      a(v-bind:href="url") {{ author }}  
+      |  said on {{ date }}...
+    .commentMeta(v-if="!url")
+      span {{ author }} said on {{ date }}...
+  
+    .commentContent {{ content }}
 </template>
 
 <style lang="scss" scoped>
 .comment {
   min-height: 80px;
+  margin: 10px 0;
   .commentPic {
     float: left;
+    margin-right: 10px;
     img {
       border-radius: 5px;
     }
   }
   .commentMain {
-    padding: 10px;
+    padding: 0 10px;
+  }
+  .commentMeta:first-child {
+    margin-bottom: auto;
   }
 }
 </style>
+
 
 <script>
 import md5 from "../../node_modules/blueimp-md5/js/md5";
