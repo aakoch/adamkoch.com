@@ -37,7 +37,7 @@ code \s
 | . So, evidently you can't use 
 code \s
 |  to catch the "Non-breaking space" in IE. I wonder why no one else has seen this. I wrote up a 
-a(href='/char160test.html') test page
+a(href='/src/char160test.pug') test page
 |  to illustrate this. To create the non-breaking space, you can use 
 code String.fromCharCode(160)
 |  or the Unicode representation "\u00A0". "&#160;" doesn't seem to work when using regular expressions, although it behaves the same when printed.

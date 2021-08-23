@@ -9,8 +9,7 @@ a(href='http://stackexchange.com/') StackExchange
 |  sites) I visit I get multiple popups asking for my user name and password. Because I'm behind a firewall I have to enter my credentials, no big deal. But they don't work! So I have to hit Cancel. Not just once, but, like, 4 times!
 
 // more
-| 
-[caption id="attachment_2169" align="alignnone" width="647" caption="Annoying Popup"]
+| [caption id="attachment_2169" align="alignnone" width="647" caption="Annoying Popup"]
 a(href='http://www.adamkoch.com/wp-content/uploads/2012/04/proxy1.png')
   img.size-full.wp-image-2169(title='Annoying Proxy Authentication Popup' src='http://www.adamkoch.com/wp-content/uploads/2012/04/proxy1.png' alt='Annoying Popup' width='647' height='183')
 | [/caption] [caption id="attachment_2170" align="alignnone" width="647" caption="Annoying Popup 2"]
@@ -42,13 +41,11 @@ a(href='http://sockets.ny.stockexchange.com') http://sockets.ny.stockexchange.co
 
 a(href='http://www.adamkoch.com/wp-content/uploads/2012/04/firebug.png')
   img.alignnone.size-large.wp-image-2168(title='firebug' src='http://www.adamkoch.com/wp-content/uploads/2012/04/firebug-1024x510.png' alt width='640' height='318')
-| 
-I also found these errors in the Javascript Console.
+| I also found these errors in the Javascript Console.
 
 a(href='http://www.adamkoch.com/wp-content/uploads/2012/04/console.png')
   img.alignnone.size-large.wp-image-2167(title='console' src='http://www.adamkoch.com/wp-content/uploads/2012/04/console-1024x649.png' alt width='640' height='405')
-| 
-When I saw the "ws" protocol I was pretty sure the issue was with 
+| When I saw the "ws" protocol I was pretty sure the issue was with 
 a(title='Web Sockets on MDN' href='https://developer.mozilla.org/en/WebSockets') web sockets
 | . I decided to look to see if I could turn this off. Google didn't provide any obvious 
 a(title='Google search for turning off web sockets' href='https://www.google.com/search?q=turn+off+web+sockets+in+firefox') hits
@@ -62,8 +59,7 @@ a(href='about:config') about:config
 
 a(href='http://www.adamkoch.com/wp-content/uploads/2012/04/about-config.png')
   img.alignnone.size-full.wp-image-2166(title='about-config' src='http://www.adamkoch.com/wp-content/uploads/2012/04/about-config.png' alt width='853' height='408')
-| 
-Sure enough, I was able to disable web sockets! Hurray! And now I don't get those popups! Problem solved! (This 
+| Sure enough, I was able to disable web sockets! Hurray! And now I don't get those popups! Problem solved! (This 
 a(href='https://bugzilla.mozilla.org/show_bug.cgi?id=701029') bug
 |  seems to be related.) (Maybe I can make 
 a(href='http://www.thedreaming.org/2008/06/18/things-i-hate-about-firefox-3-and-how-to-fix-them/') this guy

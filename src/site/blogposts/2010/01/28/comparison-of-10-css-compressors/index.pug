@@ -57,7 +57,7 @@ p
   |  is the only tool that can be downloaded and added to the build process. I also consulted the wonderful resource found at 
   a(href='http://www.lotterypost.com/css-compress.aspx') Lottery Post
   | . The next step was to create a 
-  a(href='/10csscompressors/simple.css') CSS file
+  a(href='https://www.adamkoch.com/10csscompressors/simple.css') CSS file
   | , feed it to each of the compressors and compared them. I was going to use the color name "ForestGreen" but because it wouldn't pass 
   a(href='http://jigsaw.w3.org/css-validator/') CSS validation
   |  I used the CSS-compliant color name "fuchsia". The original file has a size of 4.01KB. Keeping the CSS file simple was difficult. Compressors were thrown off I placed comments in strange places, but in the end I left those fringe cases out.
@@ -142,14 +142,14 @@ h3
 p
   | I wasn't too impressed with the Arantius compressor. It removed spaces and single line comments, but not multi-line ones. The compressor removed all possible semicolons, minus the extra one in the "removesExtraSemicolons" class. Everything else was unchanged.
 
-  a(href='/10csscompressors/arantius.css') Output CSS
+  a(href='https://www.adamkoch.com/10csscompressors/arantius.css') Output CSS
   |  - 1.95KB
 h3
   a#cleancss(name='cleancss' href='http://www.cleancss.com/') CleanCSS
 p
   | CleanCSS applied most techniques, but did miss 2 "safe" ones (removing the decimals and removing quotes around URLs) and one "dangerous" technique of combining font styles. Otherwise, it was one of the better compressors. It was one of only two that compressed the font-weight and was smart enough to remove overwritten and duplicate rules. It combined individual margins and paddings when all four sides were present and grouped classes with the same style. It tied for second place in smallest file size.
   br
-  a(href='/10csscompressors/cleancss.css') Output CSS
+  a(href='https://www.adamkoch.com/10csscompressors/cleancss.css') Output CSS
   |  - 1.51KB
 h3
   a#csscompressor(name='csscompressor' href='http://www.csscompressor.com/') CSS Compressor
@@ -160,14 +160,14 @@ p
 This compressor was the best. It removed all possible spaces and semicolons. CSS compressor also compressed the font-weight and did a remarkable job of combining rules, even combining the "removesURLSingleQuotes" and "removesURLDoubleQuotes" which some other compressors missed. CSS Compressor had the smallest compressed file size.
 
   br
-  a(href='/10csscompressors/csscompressor.css') Output CSS
+  a(href='https://www.adamkoch.com/10csscompressors/csscompressor.css') Output CSS
   |  - 1.50KB
 h3
   a#cssdrive(name='cssdrive' href='http://www.cssdrive.com/index.php/main/csscompressor/') CSS Drive
 p
   | CSS drive didn't do a very good job. It did a mediocre job removing spaces. It didn't remove any empty blocks or change RGB colors. It had the second to largest file size.
   br
-  a(href='/10csscompressors/cssdrive.css') Output CSS
+  a(href='https://www.adamkoch.com/10csscompressors/cssdrive.css') Output CSS
   |  - 1.94KB
 h3
   a#cssoptimiser(name='cssoptimiser' href='http://www.cssoptimiser.com/index.php') CSS Optimiser
@@ -182,7 +182,7 @@ It removed zero value pixel units, but not percentages or
   | s. It did simple hex color compression, but didn't touch the RGB colors. It was one of two that compressed my font styles into one font declaration. It tried to reduce the size of the margin classes, but because of the length of the class name, actually increased the size of the file. (".combineIndividualMargins3" is larger than "margin-left:2px".)
 
   br
-  a(href='/10csscompressors/cssoptimiser.css') Output CSS
+  a(href='https://www.adamkoch.com/10csscompressors/cssoptimiser.css') Output CSS
   |  - 1.57KB
 h3
   a#lotterypost(name='lotterypost' href='http://www.lotterypost.com/css-compress.aspx') Lottery Post
@@ -193,14 +193,14 @@ p
   del(datetime='2010-01-29T19:01:00-06:00') other
   |  "easy" techniques. It doesn't try the "unconventional" or "dangerous" techniques and gives good reason not to. Lottery Post also boasts that it is the only compressor to fix a CSS bug in IE6 pertaining to ":first-line" and ":first-letter". I was disappointed to see my decimal RGB colors incorrectly converted. "rgb(250, 150, 50)" should have changed to "#fa9632" but instead was "#FAFAFA". And both RGB percentages were converted to "#FFF" If those two issues were fixed I would confidentally call this one a very good "safe" compressor.
   br
-  a(href='/10csscompressors/lotterypost.css') Output CSS
+  a(href='https://www.adamkoch.com/10csscompressors/lotterypost.css') Output CSS
   |  - 1.75KB
 h3
   a#phpinsider(name='phpinsider' href='http://www.phpinsider.com/compress_css.php') PHP Insider
 p
   | This compressor removed new lines, tabs and comments. And that's it. It had the largest compressed file size.
   br
-  a(href='/10csscompressors/phpinsider.css') Output CSS
+  a(href='https://www.adamkoch.com/10csscompressors/phpinsider.css') Output CSS
   |  - 2.00KB
 h3
   a#pingates(name='pingates' href='http://tools.pingates.com/') Pingates
@@ -213,21 +213,21 @@ The bad: RGB colors were incorrectly changed. URL quotes values were escaped ins
   | 
 The ugly: It replaced my class name "removesAllWhiteSpace" to "removesAll#ffffffSpace".
   br
-  a(href='/10csscompressors/pingates.css') Output CSS
+  a(href='https://www.adamkoch.com/10csscompressors/pingates.css') Output CSS
   |  - 1.51KB
 h3
   a#sevenforty(name='sevenforty' href='http://www.sevenforty.com/tools/csscompressor') Seven-forty
 p
   | A light compressor, it only tried the "easy" compression techniques and then, not real well. Whitespace was removed, but it didn't remove trailing semicolons, something I've come to expect. It incorrectly changed my "background-color: rgb(255, 0, 0)" to "#ff00".
   br
-  a(href='/10csscompressors/sevenforty.css') Output CSS
+  a(href='https://www.adamkoch.com/10csscompressors/sevenforty.css') Output CSS
   |  - 1.86KB
 h3
   a#yui(name='yui' href='http://developer.yahoo.com/yui/compressor/') YUI compressor
 p
   | "Ah. Saving the best for last," I thought. I thought wrong. I was surprised when the YUI compressor didn't even remove trailing semicolons! Yikes! Because it is open-source, you can download it and change what you want to. And because it is packaged as a jar file, it can be easily integrated into an Ant build process. But as far as removing bits, it lacked, settling only on trying the "safe" techniques.
   br
-  a(href='/10csscompressors/yui.css') Output CSS
+  a(href='https://www.adamkoch.com/10csscompressors/yui.css') Output CSS
   |  - 1.84KB
 h2 Conclusion
 p The conclusion I came to is no compressor does it all. And as for my development, I should probably look for something other than YUI compressor. I might have to develop my own compressor that I can plug into my build process.

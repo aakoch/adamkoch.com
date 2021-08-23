@@ -2,7 +2,7 @@
 mixin project(title, status)
   .project
     .project-wrapper
-      h2= title
+      h3= title
       .project-body
         if block
           block
@@ -17,6 +17,10 @@ html.no-js(lang="en")
 
   head
     include ../templates/head
+    style.
+      img {
+        max-width: 700px;
+      }
   body
     include ../templates/pageheader
 
@@ -32,6 +36,16 @@ html.no-js(lang="en")
           abbr(title="Human-computer interaction") HCI
         li 
           abbr(title="Marble Machine X") MMX
+
+      h2 Designs of mine
+      +project('Team Elijah', 'Completed')
+        img(src="../img/design3_80.png")
+
+      +project('Moral Quote', 'Completed')
+        img(src="../img/quote.png")
+
+      +project('Sonshine Preschool', 'Completed')
+        img(src="../img/sonshine.png")
 
     include ../templates/footer
 

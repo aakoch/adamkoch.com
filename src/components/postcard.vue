@@ -9,6 +9,7 @@ div.col.g-2
         p(v-if="!clicked && !loaded") {{ excerpt }}
         div(v-if="clicked && !loaded") Loading...
         div(v-if="!clicked" @click="getData")
+
           a.href Read
           a.href(v-if="excerpt")  more
           |  
@@ -48,7 +49,21 @@ code {
 import shortcode from "../js/shortcode";
 import comment from "./comment";
 
+
 export default {
+  // setup: function() {
+  //   onMounted(() => {
+  //     let currentState = history.state
+  //     console.log("location: " + document.location + ", state: " + JSON.stringify(currentState))
+  //     if (currentState == null) {
+  //       this.getData()
+  //     }
+
+  //     window.onpopstate = function(event) {
+  //       alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+  //     };
+  //   })
+  // },
   components: {
     comment,
   },
@@ -62,6 +77,9 @@ export default {
     },
   },
   data: function () {
+
+
+
     return { clicked: false, loaded: false };
   },
   methods: {
@@ -76,29 +94,27 @@ export default {
         .then((response) => {
           return response.json();
         })
-        .then(
-          (postJson) => {
-            this.postContent = shortcode(
-              postJson["content:encoded"]
-            ).replaceAll("\r\n\r\n", "<br>");
-              this.loaded = true;
+        .then((postJson) => {
+          this.postContent = shortcode(postJson["content:encoded"]).replaceAll("\r\n\r\n", "<br>");
+          this.loaded = true;
 
-              if (postJson["wp:comment"]) {
-                postJson["wp:comment"].sort((comment1, comment2) => {
-                  return (
-                    parseInt(comment1["wp:comment_id"][0]) -
-                    parseInt(comment2["wp:comment_id"][0])
-                  )
-                }
-              )
+          if (postJson["wp:comment"]) {
+            postJson["wp:comment"].sort((comment1, comment2) => {
+                parseInt(comment1["wp:comment_id"][0]) -
+                parseInt(comment2["wp:comment_id"][0])
+            });
 
-              this.comments = postJson["wp:comment"];
-            }
-          },
-          function (error) {
-            console.log(error.statusText);
+            this.comments = postJson["wp:comment"];
           }
-        );
+
+          if (history.pushState) {
+            history.pushState(this.postContent, null, '/posts/' + this.link.replace('https://www.adamkoch.com/', ''))
+          }
+        },
+        function (error) {
+          console.log(error.statusText);
+        }
+      );
 
       return false;
     },
