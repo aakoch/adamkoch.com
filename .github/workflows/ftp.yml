@@ -10,7 +10,7 @@ jobs:
     - name: Build
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '15.4'
     - run: npm run build
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
