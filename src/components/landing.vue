@@ -191,10 +191,10 @@ export default {
         },
         {
           id: 6,
-          title: "Art",
+          title: "Design",
           icon: "fas fa-paint-brush",
-          excerpt: "Design, music",
-          link: "/art/"
+          excerpt: "Drawings, websites, music",
+          link: "/design/"
         },
         {
           id: 1,

@@ -1,0 +1,71 @@
+- var title = 'Design'
+mixin project(title)
+  .project
+    .project-wrapper
+      h3= title
+      .project-body
+        if block
+          block
+        else
+          p No description yet
+
+block variables
+doctype html
+html.no-js(lang="en")
+
+  head
+    include ../templates/head
+    style.
+      img {
+        max-width: 600px;
+      }
+  body
+    include ../templates/pageheader
+
+    .container
+      h1 #{title}
+
+      h2 Designs of Mine
+
+      +project('Images', 'On going')
+        h4 
+          | As featured on 
+          a(href="https://pixabay.com/users/aakoch-4434016/") Pixabay
+        a(href="https://pixabay.com/users/aakoch-4434016/")
+          img(src="../img/Canadian_Maple_Leaf.png")
+          img(src="../img/oak_leaf.png")
+          img(src="../img/oak_leaf2.png")
+          img(src="../img/ornament.png")
+          img(src="../img/snowman.png")
+
+      +project('A-words', 'Completed')
+        p Currently hosted on 
+          a(href="https://www.troop308omaha.com/news/a-words/") Troop 308's Website
+        
+        div(style="width:554px")
+          a(href="https://www.troop308omaha.com/wp-content/uploads/2018/10/a-words-2018-08-08.pdf")
+            img(src="../img/A_words_20181008.png" srcset="../img/A_words_20181008.png 1x, ../img/A_words_20181008.2x.png 2x")
+          a(href="https://www.troop308omaha.com/wp-content/uploads/2020/02/a-words-2020-02-17.pdf")
+            img(src="../img/A_words_20200217.png" srcset="../img/A_words_20200217.png 1x, ../img/A_words_20200217.2x.png 2x")
+        div(style="width:554px;text-align:center")
+          a(href="https://www.troop308omaha.com/wp-content/uploads/2018/10/a-words-2018-08-08.pdf")
+            caption October 8, 2018 - 
+          a(href="https://www.troop308omaha.com/wp-content/uploads/2020/02/a-words-2020-02-17.pdf")
+            caption February 17, 2020
+
+      +project('Team Elijah', 'Completed')
+        img(src="../img/design3_80.png" width="400px")
+
+      +project('Moral Quote', 'Completed')
+        img(src="../img/quote.png" width="400px")
+
+      +project('Sonshine Preschool', 'Completed')
+        p Just a proof of concept turned sticker for my wife's prior place of employment
+        img(src="../img/sonshine.png" width="300px")
+
+      +project('Troop 308 Website', 'Completed')
+        a(href="https://www.troop308omaha.com/") Website
+
+    include ../templates/footer
+
+    block body_scripts
