@@ -12,6 +12,7 @@ import postcard from './postcard'
 import MY_JSON from "../data/professional_publish.json";
 
 let idx = 5
+let fullPosts = sort(MY_JSON);
 let posts1 = MY_JSON.slice(0, idx)
 
 function sort(posts) {
