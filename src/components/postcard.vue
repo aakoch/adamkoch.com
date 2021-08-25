@@ -19,7 +19,7 @@ div.col.g-2
         div(v-if="loaded")
           .postContent(v-html="postContent")
           div.mt-2
-            a(:href="link") Original post
+            a(:href="link.replace('https://www.adamkoch.com/', 'https://wordpress.adamkoch.com/')") Original post
 
           div(v-for="comment in comments")
             comment(:author="comment['wp:comment_author'][0]" :content="comment['wp:comment_content'][0]" :date="comment['wp:comment_date'][0]" :email="comment['wp:comment_author_email'][0]" :url="comment['wp:comment_author_url'][0]")
