@@ -6,7 +6,7 @@
     h5.card-title {{ cardTitle }}
     p.card-text {{ excerpt }}
   .card-text
-    a.btn.btn-primary(v-bind:href='url') {{ buttonText }}
+    a.btn.btn-primary(v-bind:href='url' v-bind:title='cardTitle') {{ buttonText }}
 </template>
 
 <style lang="scss" scoped>

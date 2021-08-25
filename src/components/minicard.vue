@@ -2,10 +2,10 @@
 .card(v-on:click='goto(link)')
   .card-body
     div.link
-      a(v-bind:href='link') 
+      a(v-bind:href='link' v-bind:title='cardTitle') 
         i(v-if="!isExternal" class='fas fa-angle-double-right')
         i(v-if="isExternal" class='fas fa-external-link-alt')
-    h5.card-title 
+    h4.card-title 
       i.card-img-top(v-bind:class='icon')
       | {{ cardTitle }}
     p.card-text {{ excerpt }}
