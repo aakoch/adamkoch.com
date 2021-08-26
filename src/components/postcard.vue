@@ -87,7 +87,7 @@ export default {
       this.clicked = true;
 
       var newLink =
-        "/site/blogposts/" +
+        "/blogposts/" +
         this.link.replace("https://www.adamkoch.com/", "") +
         "index.json";
       fetch(newLink, {})

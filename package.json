@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel ./src/index.pug './src/**/index.pug' --open",
     "watch": "parcel ./src/index.pug './src/**/index.pug'",
-    "build": "mkdir -p dist/site && cp -R src/site/* dist/site/ && parcel build ./src/index.pug './src/**/index.pug'",
+    "build": "cp -R src/assets/* dist/ && parcel build ./src/index.pug './src/**/index.pug'",
     "clean": "rm -rf ./dist/",
     "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && git push && git push --tags"
   },
@@ -46,5 +46,6 @@
     "html2pug": "^4.0.0",
     "vue": "^3.2.4",
     "vue-router": "^4.0.11"
-  }
+  },
+  "assetsPath": "src/assets/"
 }
