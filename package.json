@@ -32,6 +32,7 @@
     "@parcel/transformer-sass": "v2.0.0-rc.0",
     "@parcel/transformer-vue": "v2.0.0-rc.0",
     "@parcel/transformer-webmanifest": "v2.0.0-rc.0",
+    "fontawesome-subset": "^2.0.0",
     "parcel": "^2.0.0-rc.0"
   },
   "alias": {
