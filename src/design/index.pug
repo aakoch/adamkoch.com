@@ -15,10 +15,6 @@ html.no-js(lang="en")
 
   head
     include ../templates/head
-    style.
-      img {
-        max-width: 600px;
-      }
   body
     include ../templates/pageheader
 
@@ -26,6 +22,8 @@ html.no-js(lang="en")
       h1 #{title}
 
       h2 Designs of Mine
+
+      //- #designs-app
 
       +project('Images', 'On going')
         h4 
@@ -54,14 +52,23 @@ html.no-js(lang="en")
             caption February 17, 2020
 
       +project('Team Elijah', 'Completed')
-        img(src="../img/design3_80.png" width="400px" srcset="../img/design3_80.png 1x, ../img/design3_80.2x.png 2x")
+        picture
+          source(type="image/webp" srcset="../img/design3_80.png?as=webp&width=400 1x, ../img/design3_80.2x.png?as=webp&width=800 2x")
+          source(type="image/png" srcset="../img/design3_80.png?width=400 1x, ../img/design3_80.png?width=800 2x")
+          img(src="../img/design3_80.png?width=400" width="400")
 
       +project('Moral Quote', 'Completed')
-        img(src="../img/quote.png" width="400px")
+        picture
+          source(type="image/webp" srcset="../img/quote.png?as=webp&width=400 1x, ../img/quote.png?as=webp&width=800 2x")
+          source(type="image/png" srcset="../img/quote.png?width=400 1x, ../img/quote.png?width=800 2x")
+          img(src="../img/quote.png?width=400" width="400")
 
       +project('Sonshine Preschool', 'Completed')
         p Just a proof of concept turned sticker for my wife's prior place of employment
-        img(src="../img/sonshine.png" width="300px")
+        picture
+          source(type="image/webp" srcset="../img/sonshine.png?as=webp&width=300 1x, ../img/sonshine.png?as=webp&width=600 2x")
+          source(type="image/png" srcset="../img/sonshine.png?width=300 1x, ../img/sonshine.png?width=600 2x")
+          img(src="../img/sonshine.png?width=300" width="300")
 
       +project('Troop 308 Website', 'Completed')
         a(href="https://www.troop308omaha.com/") Website
@@ -69,3 +76,5 @@ html.no-js(lang="en")
     include ../templates/footer
 
     block body_scripts
+
+    //- script(src="../js/designs.js" type="module")
