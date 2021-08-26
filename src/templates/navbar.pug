@@ -1,10 +1,11 @@
+//- script(type="module" src="~/node_modules/bootstrap/js/dist/collapse")
 nav.navbar.navbar-expand-md.navbar-dark
   .navbar-brand 
     a(href="/")
       include ../img/header_name.svg
-  button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+  button.navbar-toggler.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
     span.navbar-toggler-icon
-  .collapse.navbar-collapse.navbar-nav.me-auto.mb-2.mb-lg-0
+  .navbar-collapse.navbar-nav.me-auto.mb-2.mb-lg-0.collapse#navbarSupportedContent
     .nav-item
       if title=="Blog"
         .nav-link.active(aria-current="page") Blog
@@ -30,7 +31,8 @@ nav.navbar.navbar-expand-md.navbar-dark
         .nav-link.active(aria-current="page") Design
       else
         a(href="/design").nav-link Design
-    .gcse-search
+    .nav-item
+      .gcse-search
     
 //- nav.navbar.navbar-expand-md.navbar-dark.bg-dark
 //-   .navbar-brand 
