@@ -1,0 +1,32 @@
+- var title = 'Software Developer and Clean Code Advocate'
+block variables
+doctype html
+html.no-js(lang="en")
+
+  head
+    include head
+  body
+    include header
+    
+    form(name='contact' method='POST' data-netlify='true')
+      p
+        label Your Name: 
+          input(type='text' name='name')
+      p
+        label Your Email: 
+          input(type='email' name='email')
+      p
+        label Your Role: 
+          select(name='role[]' multiple)
+            option(value='leader') Leader
+            option(value='follower') Follower
+      p
+        label Message: 
+          textarea(name='message')
+      p
+        button(type='submit') Send
+
+    include footer
+
+    block body_scripts
+    
