@@ -1,0 +1,7 @@
+img {
+  width: 100px !important;
+  max-width: 400px;
+}
+div:has(caption) {
+  text-align: center;
+}
