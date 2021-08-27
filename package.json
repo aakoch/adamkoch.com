@@ -35,8 +35,7 @@
     "@parcel/transformer-vue": "v2.0.0-rc.0",
     "@parcel/transformer-webmanifest": "v2.0.0-rc.0",
     "fontawesome-subset": "^2.0.0",
-    "parcel": "^2.0.0-rc.0",
-    "sharp": "^0.29.0"
+    "parcel": "^2.0.0-rc.0"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.esm-bundler.js"
