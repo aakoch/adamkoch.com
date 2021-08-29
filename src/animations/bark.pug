@@ -102,7 +102,7 @@ block body
         let debouncedUpdateCoordinates = _.debounce(updateCoordinates, 20)
         
         function updateCoordinates(event) {
-          if (process.env.NODE_ENV === 'development') console.debug("inside updateCoordinates")
+          if (process.env.NODE_ENV !== 'production') console.debug("inside updateCoordinates")
           if (canMove) {
             x = event.pageX
             y = event.pageY
@@ -114,15 +114,15 @@ block body
           console.log(process)
           if (process.env.NODE_ENV !== 'production') console.debug("inside movePug")
           if (canMove) {
-            if (process.env.NODE_ENV === 'development') console.log(parseInt(pugImg.css("left"), 10) + ',' + parseInt(pugImg.css("top"), 10) + ' -> ' + x + ',' + y);
+            if (process.env.NODE_ENV !== 'production') console.log(parseInt(pugImg.css("left"), 10) + ',' + parseInt(pugImg.css("top"), 10) + ' -> ' + x + ',' + y);
             let distX = x - parseInt(pugImg.css("left"), 10)
             let distY = y - parseInt(pugImg.css("top"), 10)
             let dist = distX + distY
 
             let fromTransform = 'translate(0px, 0px)'
-            if (process.env.NODE_ENV === 'development') console.log(`fromTransform=${fromTransform}`)
+            if (process.env.NODE_ENV !== 'production') console.log(`fromTransform=${fromTransform}`)
             let toTransform = 'translate(' + distX + 'px, ' + distY + 'px)'
-            if (process.env.NODE_ENV === 'development') console.log(`toTransform=${toTransform}`)
+            if (process.env.NODE_ENV !== 'production') console.log(`toTransform=${toTransform}`)
             $.keyframe.define({
                 name: 'move',
                 from: {
@@ -133,11 +133,11 @@ block body
                 }
             });
             pugImg.resetKeyframe();
-            if (process.env.NODE_ENV === 'development') console.debug("calling playKeyframe")
+            if (process.env.NODE_ENV !== 'production') console.debug("calling playKeyframe")
             pugImg.playKeyframe(
                 'move 1s ease-in-out .1s forwards',
                 function() {
-                  if (process.env.NODE_ENV === 'development') console.log("inside end of move")
+                  if (process.env.NODE_ENV !== 'production') console.log("inside end of move")
                   canMove = true;
                   pugImg.css("left", x + "px")
                   pugImg.css("top", y + "px")
@@ -159,7 +159,7 @@ block body
                   const currentX = x
                   const currentY = y
                   function go(i, keyframeIdx) {
-                    if (process.env.NODE_ENV === 'development') console.debug("inside go")
+                    if (process.env.NODE_ENV !== 'production') console.debug("inside go")
                     woofs[i].css("left", (currentX+15) + "px")
                     woofs[i].css("top", (currentY-15) + "px")
 
