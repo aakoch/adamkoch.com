@@ -71,7 +71,7 @@ $white: #f5f7f8;
 </style>
 
 <script>
-import debounce from 'lodash.debounce';
+import debounce from 'lodash/debounce';
 
 export default {
   created() {
