@@ -1,7 +1,7 @@
 <template lang="pug">
-.card(v-on:click='goto(link)')
+.card(@click='goto(link)' @mouseover='debouncedPrefetch(link)')
   .card-body
-    div.link
+    .link
       a(v-bind:href='link' v-bind:title='cardTitle') 
         i(v-if="!isExternal" class='fas fa-angle-double-right')
         i(v-if="isExternal" class='fas fa-external-link-alt')
@@ -23,6 +23,7 @@ $white: #f5f7f8;
     }
   }
   &:hover {
+    cursor: pointer;
     border-color: $primary;
   }
   .fas, .fab {
@@ -36,11 +37,35 @@ $white: #f5f7f8;
 </style>
 
 <script>
+import debounce from 'lodash.debounce';
+
 export default {
+  created() {
+    // Debouncing with Lodash
+    this.debouncedPrefetch = debounce(this.prefetch, 10)
+  },
+  unmounted() {
+    // Cancel the timer when the component is removed
+    this.debouncedPrefetch.cancel()
+  },
   props: ['cardTitle', 'excerpt', 'icon', 'buttonText', 'link', 'isExternal'],
+  data() {
+    return {
+      prefetchedLocations: []
+    }
+  },
   methods: {
     goto: function (gotoLocation) {
       document.location = gotoLocation
+    },
+    prefetch: function (gotoLocation) {
+      if (this.prefetchedLocations.includes(gotoLocation))
+        return;
+      let link = document.createElement("link")
+      link.setAttribute("rel", "prefetch")
+      link.setAttribute("href", gotoLocation)
+      document.body.appendChild(link)
+      this.prefetchedLocations.push(gotoLocation)
     }
   }
 }

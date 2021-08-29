@@ -1,0 +1,715 @@
+extends ../templates/blogpost
+
+block morehead
+  script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+  script(src="/node_modules/jquerykeyframes/dist/jquery.keyframes.min.js")
+  script(src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous")
+
+block body
+
+  style.
+    #bandwagonLink img {
+      vertical-align: top;
+    }
+    #pugImg {
+      display: block;
+      position: absolute;
+      width: 100px;
+      transition-timing-function: ease-in-out;
+    }
+    #woof1, #woof2 {
+      display: block;
+      position: absolute;
+      visibility: hidden;
+    }
+    #parcel3 {
+      position: relative;
+    }
+    #parcel span, 
+    #parcel2 span, 
+    #parcel3 span {
+      display: inline-block;
+    }
+    #parcel span.myFadeOut,
+    #parcel2 span.myFadeOut {
+      animation: myFadeOut 2s forwards;
+    }
+    #parcel2 span.addBorder {
+      border: 1px solid red;
+    }
+    #parcel3 span {
+      transform: translateX(0) rotate(0deg);
+      transform-origin: right;
+    }
+    #parcel3 span.shake {
+      animation: shake .3s normal both linear;
+      animation-iteration-count: var(--shakes);
+      animation-delay: 0s;
+    }
+    #parcel3 span.moveToBox {
+      animation: moveOffScreen forwards linear;
+      animation-duration: var(--wind-speed);
+      animation-delay: 0s;
+    }
+    .redBorder {
+      border: 1px solid red;
+    }
+    @keyframes woof0 {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(30px, -30px) scale(2.2) rotate(30deg);
+        opacity: 0;
+      }
+    }
+    @keyframes woof1 {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(-30px, -30px) scale(2.2) rotate(-30deg);
+        opacity: 0;
+      }
+    }
+    @keyframes bark {
+      from {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    @keyframes bark2 {
+      from {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.05);
+      }
+      50% {
+        transform: scale(1);
+      }
+      75% {
+        transform: scale(1.05);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    @keyframes myFadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+    @keyframes shake {
+      from {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(var(--negative-rotation));
+      }
+      50% {
+        transform: rotate(var(--random-rotation));
+      }
+      75% {
+        transform: rotate(var(--positive-rotation));
+      }
+      to {
+        transform: rotate(0deg);
+      }
+    }
+    @keyframes fadeOutAtLast {
+      from {
+        opacity: 1;
+      }
+      99% {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+    @keyframes moveOffScreen {
+      from {
+        transform: rotate(0deg) translateX(0);
+      }
+      5% {
+        transform: rotate(var(--negative-rotation)) translateX(calc(var(--distance) * .05));
+      }
+      20% {
+        transform: rotate(var(--positive-rotation)) translateX(calc(var(--distance) * .2));
+      }
+      50% {
+        transform: rotate(0deg) translateX(calc(var(--distance) * .5));
+      }
+      to {
+        transform: rotate(0deg) translateX(var(--distance));
+      }
+    }
+  .container
+    h1 Moving off Wordpress and on to Netlify
+    p Even when I told myself I was going to write this post, I got sidetracked adding animations and adding prefetch logic. By the time I finish this, it will be Friday, August 26.
+    p I started down the path of converting my Wordpress site to a static site because I started getting (or at least started getting notified of) &quot;hackers&quot; scanning my site for Wordpress vulnerabilities. 
+      | I installed a plugin called 
+      a(href="https://www.wordfence.com/") Wordfence
+      | , which I have to say, is an awesome app for being free. It could block IPs that were hitting the site and you could configure it with how many hits before blocking or if they hit a specific URL known for a vulnerability. 
+      | I don't know if there was an upgrade but I started seeing my site getting hit and I wanted to jump on the static site generator bandwagon before it was, you know, gone.
+      a#bandwagonLink(title='Influx, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons' href='https://commons.wikimedia.org/wiki/File:Bandwagon.jpg')
+        img(alt='Bandwagon' src='/src/img/bandwagon.png')
+    #pug
+      p I've used Parcel before and love it because it supports 
+        a(href="https://pugjs.org/api/getting-started.html") Pug
+        |  out of the box. Pug is my favorite HTML template engine. (TODO: insert link to page about Pug.) Well, it's not as if there are hundreds or something. But I like it a lot better than Markdown. Yes, Pug is a <em>little</em> more verbose, but it makes up for it by allowing you to do more than a handful of things! The limitations of Markdown make me wonder why so many people like it. Anyway... I ❤️ Pug and tools that support Pug.
+      img#pugImg(src="/src/img/pug.svg")
+      #woof1: h3 Woof!
+      #woof2: h3 Woof!
+
+    a(href="https://html2pug.vercel.app/") Tool for taking some HTML and converting it to Pug
+
+    #parcel
+      p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel massa non enim rhoncus blandit. Nullam tristique diam orci. Pellentesque hendrerit arcu eros. Curabitur bibendum eros vitae tortor fringilla, nec cursus dolor euismod. Mauris quam elit, dignissim vel iaculis id, maximus feugiat enim. Morbi fermentum congue tortor in rhoncus. Cras vehicula consectetur fringilla. Donec venenatis sit amet tellus in iaculis. Maecenas vitae urna leo. Nulla tempor vulputate purus quis lobortis. Pellentesque mattis, orci cursus viverra mattis, ex mi vehicula risus, quis pretium ante orci sit amet nisl.
+
+    #parcel2
+      p In hac habitasse platea dictumst. Vestibulum euismod nibh erat, vitae mattis justo vestibulum eu. Fusce eleifend nisi leo, ac gravida est varius vitae. Duis ultricies, neque quis fermentum scelerisque, velit nulla feugiat tortor, eget pharetra dolor tortor in eros. Aenean sagittis sodales accumsan. Donec fermentum eros mauris, id mattis diam vulputate nec. Sed maximus vel turpis nec semper. Praesent pellentesque vitae felis at lobortis. Donec accumsan felis ut dolor lacinia iaculis. Vestibulum aliquam orci hendrerit est pretium feugiat.
+
+    #parcel3
+      p Aliquam quis massa sed dui aliquam fermentum. Proin massa orci, tristique eget varius vulputate, pretium mollis mauris. Praesent interdum congue nisl, at eleifend ligula volutpat ac. Phasellus scelerisque felis efficitur mattis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus non diam nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc iaculis aliquet felis. Curabitur placerat lorem mauris, tempus tempor magna placerat vitae.
+
+    #nearest
+      p Maecenas pulvinar, nulla a dictum pulvinar, sapien justo dapibus metus, et luctus libero dolor elementum dui. Praesent et libero sed odio dapibus accumsan ac sit amet justo. Vivamus eu massa nec nunc fringilla mollis et sed enim. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam iaculis sollicitudin sodales. Sed gravida vel magna nec mollis. Vestibulum eget nibh magna. Nunc congue vitae purus id mattis. Nunc malesuada non eros in facilisis. Nunc blandit lectus hendrerit blandit facilisis. Quisque vitae dolor lectus. Duis tortor erat, pharetra a nulla ac, varius porttitor sapien. Sed tellus lectus, posuere ut tincidunt sit amet, eleifend id neque. Vestibulum sed commodo nunc, ac maximus nunc.
+
+
+
+    script.
+      function a() {
+        const parcelEl = document.getElementById('parcel')
+
+        const words = parcelEl.innerText.split(' ');
+        function wrap(word) {
+
+          const node = document.createElement('span')
+          node.textContent = word
+
+          return node.outerHTML
+        }
+        parcelEl.innerHTML = words.map(wrap).join(' ')
+
+        $(parcelEl).find("span").one('mouseenter', function(event) {
+          $(this).addClass('myFadeOut')
+        });
+      }
+      //a()
+
+    script.
+      function b() {
+        const parcelEl2 = document.getElementById('parcel2')
+
+        const words = parcelEl2.innerText.split(' ');
+        function wrap(word) {
+
+          const node = document.createElement('span')
+          node.textContent = word
+
+          return node.outerHTML
+        }
+        parcelEl2.innerHTML = words.map(wrap).join(' ')
+
+        let randMultiplier = 1000
+        $(parcelEl2).find("span").one('mouseenter', function repeat(event, el) {
+          const that = $(el || this)
+            that.addClass('myFadeOut')
+            setTimeout(function () {
+              that.prev().addBack().next().addBack().not('.myFadeOut').off('mouseenter').addClass('myFadeOut').one('animationstart', function (event) {
+                repeat(event, this)
+              })
+              
+              if ($(parcelEl2).find("span").not('.myFadeOut').length == 0) {
+                console.log("all dead, I mean done")
+              }
+            }, Math.random() * randMultiplier)
+            randMultiplier -= 10
+        })
+      }
+      //b()
+
+    script.
+      function c() {
+        let timeout = 500;
+        function styleAndAnimate(el) {
+          el.style.setProperty('--shakes', _.random(1, 4));
+          el.style.setProperty('--positive-rotation', _.random(8, 20) + 'deg');
+          el.style.setProperty('--negative-rotation', '-' + _.random(8, 20) + 'deg');
+          el.style.setProperty('--random-rotation', _.random(-8, 8) + 'deg');
+          el.style.setProperty('--distance', '-' + document.body.offsetWidth + 'px');
+          el.style.setProperty('--wind-speed', _.random(1, 3, true) + 's');
+
+          $(el).addClass('shake').one('animationend', function () {
+            $(this).removeClass('shake').addClass('moveToBox')
+          })
+        }
+        function handleRandomElement(elements) {
+          let sample = _.sample(elements)
+
+          styleAndAnimate(sample)
+
+          if (elements.length > 1) {
+            setTimeout(function () { handleRandomElement(_.without(elements, sample)) }, timeout--)
+          }
+            //- try {
+            //-   let listOfElements = that.siblings().not('.moveToBox').clone();
+            //-   console.log(listOfElements.length)
+            //-   console.log(listOfElements)
+            //-   console.log(sample)
+            //-   $(sample).addClass('moveToBox').one('animationstart', function (event) {
+            //-       console.log("+")
+            //-       debouncedRepeat(event, event.currentTarget)
+            //-     })
+            //- } catch (e) {
+            //-   console.debug("error")
+            //-   debouncedRepeat(event, that)
+            //- }
+          
+        }
+
+        //- const debouncedRepeat = _.debounce(repeat)
+
+        const parcelEl3 = document.getElementById('parcel3')
+
+        const words = parcelEl3.innerText.split(' ');
+
+        function wrap(word) {
+          const node = document.createElement('span')
+          node.textContent = word
+          return node.outerHTML
+        }
+
+        parcelEl3.innerHTML = words.map(wrap).join(' ')
+
+        const originalElements = $(parcelEl3)
+          .css("height", $(parcelEl3).height())
+          .find("span")
+          .each(function (idx, el) {
+            $(el).css("left", $(el).position().left)
+            $(el).css("top", $(el).position().top)
+          })
+          .css("position", "absolute")
+          .one('mouseenter', function(event) {
+            let remaining = _.without(originalElements, this)
+
+            styleAndAnimate(this)
+            
+            handleRandomElement(remaining)
+          })
+          .get()
+      }
+      //c()
+
+    script.
+      function d() {
+        let timeout = 500;
+        function styleAndAnimate(el) {
+          el.style.setProperty('--shakes', _.random(1, 4));
+          el.style.setProperty('--positive-rotation', _.random(8, 20) + 'deg');
+          el.style.setProperty('--negative-rotation', '-' + _.random(8, 20) + 'deg');
+          el.style.setProperty('--random-rotation', _.random(-8, 8) + 'deg');
+          el.style.setProperty('--distance', '-' + document.body.offsetWidth + 'px');
+          el.style.setProperty('--wind-speed', _.random(1, 3, true) + 's');
+
+          $(el).addClass('shake').one('animationend', function () {
+            $(this).removeClass('shake').addClass('moveToBox')
+          })
+        }
+
+        //- const debouncedRepeat = _.debounce(repeat)
+
+        const container = document.getElementById('nearest')
+
+        const words = container.innerText.split(' ');
+
+        function wrap(word) {
+          const node = document.createElement('span')
+          node.textContent = word
+          return node.outerHTML
+        }
+
+        container.innerHTML = words.map(wrap).join(' ')
+
+        window.points = [[],[],[],[],[],[],[],[],[],[]]
+
+        function recordCoordinates(element, coordinates) {
+          //- for(loc in coordinates) {
+          //-   //- console.log(`${loc}=${JSON.stringify(coordinates[loc])}`);
+          //-   let obj = {
+          //-     x: coordinates[loc].pageX,
+          //-     y: coordinates[loc].pageY,
+          //-     element: element,
+          //-     loc: loc
+          //-   }
+          //-   points.push(obj)
+          //- }
+          //- let i = 0
+          //- points.sort((a, b) => {
+            
+          //-   if (a.x - b.x < 0) {
+          //-     return -1
+          //-   }
+          //-   else if (a.x - b.x > 0) {
+          //-     return 1
+          //-   }
+
+          //-   if (a.y - b.y < 0) {
+          //-     return -1
+          //-   }
+          //-   else if (a.y - b.y > 0) {
+          //-     return 1
+          //-   }
+          //-   //- console.log(a, b)
+          //-   return 0
+          //- });
+          for(loc in coordinates) {
+            let xIndex = coordinates[loc].pageX.toString().slice(0, 1)
+            //- console.log(`${loc}=${JSON.stringify(coordinates[loc])}`);
+            let obj = {
+              x: coordinates[loc].pageX,
+              y: coordinates[loc].pageY,
+              element: element,
+              loc: loc
+            }
+            points[xIndex].push(obj)
+          }
+          
+          for (let i = 0; i < 10; i++) {
+            points[i].sort((a, b) => {
+              
+              if (a.x - b.x < 0) {
+                return -1
+              }
+              else if (a.x - b.x > 0) {
+                return 1
+              }
+
+              if (a.y - b.y < 0) {
+                return -1
+              }
+              else if (a.y - b.y > 0) {
+                return 1
+              }
+              //- console.log(a, b)
+              return 0
+            });
+          }
+        }
+
+        const originalElements = $(container)
+          .css("height", $(container).height())
+          .find("span")
+          .each(function (idx, el) {
+            $(el).css("left", $(el).position().left)
+            $(el).css("top", $(el).position().top)
+
+            let left = $(this).offset().left,
+              top = $(this).offset().top,
+              width = $(this).width(),
+              height = $(this).height()
+
+            let coordinates = {
+              'top-left': {
+                pageX: left,
+                pageY: top
+              },
+              'top-right': {
+                pageX: left + width,
+                pageY: top
+              },
+              'bottom-left': {
+                pageX: left,
+                pageY: top + height
+              },
+              'bottom-right': {
+                pageX: left + width,
+                pageY: top + height
+              }
+            }
+
+            jQuery.data(this, 'coordinates', coordinates)
+
+            recordCoordinates(this, coordinates)
+          })
+          //- .css("position", "absolute")
+          .one('mouseenter', function(event) {
+            //- let remaining = _.without(originalElements, this)
+
+            //- styleAndAnimate(this)
+            
+            //- handleRandomElement(remaining)
+
+            //- findClosest(this, originalElements)
+            const coordinates = jQuery.data(this, 'coordinates')
+            //- console.log(JSON.stringify(coordinates))
+            let coordIdx = coordinates['top-left']['pageX'].toString().slice(0, 1)
+            //- console.log(`coordIx = ${coordIdx}`)
+            const arr = _.filter(_.concat(window.points[coordIdx - 1], window.points[coordIdx], window.points[coordIdx + 1]),
+              function(closePoints) {
+                if (closePoints) {
+                  console.log(1, coordinates['top-left']['pageX'])
+                  let dist = 1000
+                  try {
+                    let distTopLeft, distTopRight, distBottomLeft, distBottomRight
+                    console.log(2, closePoints.x)
+                    distTopLeft = Math.abs(coordinates['top-left']['pageX'] -  parseFloat(closePoints.x)) + 
+                      Math.abs(coordinates['top-left']['pageY'] -  parseFloat(closePoints.y))
+                    distTopRight = Math.abs(coordinates['top-right']['pageX'] -  parseFloat(closePoints.x)) + 
+                      Math.abs(coordinates['top-right']['pageY'] -  parseFloat(closePoints.y))
+                    distBottomLeft = Math.abs(coordinates['bottom-left']['pageX'] -  parseFloat(closePoints.x)) + 
+                      Math.abs(coordinates['bottom-left']['pageY'] -  parseFloat(closePoints.y))
+                    distBottomRight = Math.abs(coordinates['bottom-right']['pageX'] -  parseFloat(closePoints.x)) + 
+                      Math.abs(coordinates['bottom-right']['pageY'] -  parseFloat(closePoints.y))
+                    dist = Math.min(distTopLeft, distTopRight, distBottomLeft, distBottomRight)
+                  } catch (e) {
+                    console.error(e.message + ': ' + closePoints);
+                  }
+                  console.log(3, dist)
+                  //- closePoints.dist = dist
+                  return dist < 100
+                }
+                return false
+              }
+            );
+
+            
+              
+            //- const startingPoints = _.filter(window.points, function(points2) {
+            //-     //- console.log(point['top-left'])
+
+            //-     //- for(point in points2) {
+            //-     //-   console.log(point)
+            //-     //- }
+            //-     //- console.log("my god! ", coordinates['top-left']['pageX'])
+            //-     return points2[coordinates['top-left']['pageX']]
+            //- })
+
+            let lineHeight = $('#nearest span').css('line-height')
+            console.log(lineHeight);
+            console.log(`found ${arr.length} points`)
+
+            console.log(`arr=${JSON.stringify(arr)}`)
+            for(var i = 0; i < arr.length; i++) {
+              let point = arr[i]
+              $(point.element).addClass('redBorder')
+
+              //- let p = document.createElement('div')
+              //- p.style.left = point.x
+              //- p.style.top = point.y
+              //- p.style.position = 'absolute'
+              //- p.innerHTML = '&middot;'
+              //- p.style.padding = 0
+              //- p.style.margin = 0
+              //- p.style.color = 'red'
+              //- p.style['font-size'] = '20px'
+              //- //- document.body.appendChild(p)
+              //- var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+              //- var path1 = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+              //- var path2 = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+
+              //- var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+
+
+              //- svg.setAttribute("aria-hidden","true");
+              //- svg.setAttribute('viewbox', point.x + ' ' + point.y + ' 50 50');
+              //- svg.setAttribute('width', '50px');
+              //- svg.setAttribute('height', '50px');
+
+              //- svg.style.left = point.x
+              //- console.log(p.style['line-height'])
+              //- svg.style.top = point.y - (parseInt(lineHeight) / 2)
+              //- svg.style.position = 'absolute'
+
+              //- path1.setAttribute('d', 'M0 0h24v24H0z');
+              //- path1.setAttribute('fill', 'none');
+
+              //- path2.setAttribute('d', 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z');
+              //- path2.setAttribute('fill', '#2962ff');
+
+
+              //- circle.setAttribute('cx', '10');
+              //- circle.setAttribute('cy', '10');
+              //- circle.setAttribute('r', '4');
+              //- circle.setAttribute('fill', 'red');
+
+
+              //- //- svg.appendChild(path1);
+              //- //- svg.appendChild(path2);
+              //- svg.appendChild(circle);
+              //- document.body.appendChild(svg);
+            }
+
+          })
+          .get()
+      }
+      d()
+
+
+    script(type="module").
+      $(() => {
+        $("#bandwagonLink").one("mouseenter", function() {
+          $(this).fadeOut(2000);
+        });
+
+
+        const pugImg = $('#pugImg')
+        const woofs = {
+          0: $('#woof1'),
+          1: $('#woof2')
+        }
+        var canMove = true;
+        let rotateLeft = true;
+
+        const element = pugImg[0]
+        let start, previousTimeStamp, x, y;
+
+        let debouncedMovePug = _.debounce(movePug, 10)
+        let debouncedUpdateCoordinates = _.debounce(updateCoordinates, 30)
+        
+        function updateCoordinates(event) {
+          if (process.env.NODE_ENV === 'development') console.debug("inside updateCoordinates")
+          if (canMove) {
+            x = event.pageX
+            y = event.pageY
+            movePug()
+          }
+        }
+
+        function movePug() {
+          console.log(process)
+          if (process.env.NODE_ENV !== 'production') console.debug("inside movePug")
+          if (canMove) {
+            if (process.env.NODE_ENV === 'development') console.log(parseInt(pugImg.css("left"), 10) + ',' + parseInt(pugImg.css("top"), 10) + ' -> ' + x + ',' + y);
+            let distX = x - parseInt(pugImg.css("left"), 10)
+            let distY = y - parseInt(pugImg.css("top"), 10)
+            let dist = distX + distY
+
+            let fromTransform = 'translate(0px, 0px)'
+            if (process.env.NODE_ENV === 'development') console.log(`fromTransform=${fromTransform}`)
+            let toTransform = 'translate(' + distX + 'px, ' + distY + 'px)'
+            if (process.env.NODE_ENV === 'development') console.log(`toTransform=${toTransform}`)
+            $.keyframe.define({
+                name: 'move',
+                from: {
+                    'transform': fromTransform
+                },
+                to: {
+                    'transform': toTransform
+                }
+            });
+            pugImg.resetKeyframe();
+            if (process.env.NODE_ENV === 'development') console.debug("calling playKeyframe")
+            pugImg.playKeyframe(
+                'move 1s ease-in-out .1s forwards',
+                function() {
+                  if (process.env.NODE_ENV === 'development') console.log("inside end of move")
+                  canMove = true;
+                  pugImg.css("left", x + "px")
+                  pugImg.css("top", y + "px")
+                  pugImg.css("animation", "none")
+
+                  let barkTwice = Math.floor(Math.random() * 3) > 0;
+
+                  pugImg.resetKeyframe();
+                  if (barkTwice) {
+                    pugImg.playKeyframe('bark2 .7s linear 0s forwards')
+                  }
+                  else {
+                    pugImg.playKeyframe('bark .3s linear 0s forwards')
+                  }
+
+                  rotateLeft = !rotateLeft
+
+                  let keyframeIdx = Math.floor(Math.random() * 2)
+                  const currentX = x
+                  const currentY = y
+                  function go(i, keyframeIdx) {
+                    if (process.env.NODE_ENV === 'development') console.debug("inside go")
+                    woofs[i].css("left", (currentX+15) + "px")
+                    woofs[i].css("top", (currentY-15) + "px")
+
+                    woofs[i].playKeyframe('woof' + keyframeIdx + ' .9s ease-out 0s forwards')
+                  }
+
+                  go(0, keyframeIdx)
+                  if (barkTwice) {
+                    setTimeout(function () {
+                      woofs[1].show().css("visibility", "visible") 
+                      go(1, keyframeIdx)
+                    }, 300)
+                  }
+
+                }
+            );
+
+            canMove = false
+            //- console.log(dist)
+
+            //- if (start === undefined)
+            //-   start = timestamp;
+            //- const elapsed = timestamp - start;
+
+            //- //- if (previousTimeStamp !== timestamp) {
+            //-   // Math.min() is used here to make sure the element stops at exactly 200px
+            //-   //- const count = Math.min(0.1 * elapsed, 200);
+            //-   element.style.animation = 'move .5s';
+            //-   //- element.style.transform = 'translate(' + distX + 'px, ' + distY + 'px)';
+            //- //- }
+
+            //- //- if (elapsed < 2000) { // Stop the animation after 2 seconds
+            //- if (canMove) {
+            //-   previousTimeStamp = timestamp
+            //-   //- window.requestAnimationFrame(movePug);
+            //- }
+
+            //- pugImg.animate( {
+            //-   left: event.pageX,
+            //-   top: event.pageY
+            //- }, {
+            //-   duration: 1000 - (dist ^ 2),
+            //-   done: function() {
+            //-     canMove = true;
+            //-   }
+            //- })
+          }
+        }
+
+        $("#pug")
+          .mousemove(function (event) {
+            debouncedUpdateCoordinates(event)
+          })
+          .mouseenter(function (event) {
+              canMove = true;
+              woofs[0].show().css("visibility", "visible") 
+              //- window.requestAnimationFrame(movePug);
+              pugImg.fadeIn(1000, function () {
+            });
+          })
+          .mouseleave(function (event) {
+            canMove = false;
+            pugImg.fadeOut(1000);
+          });
+          
+          pugImg.css("top", "100px")
+          pugImg.css("left", "-110px")
+          
+          woofs[0].css("top", "100px")
+          woofs[0].css("left", "-110px")
+          
+          woofs[1].css("top", "100px")
+          woofs[1].css("left", "-110px")
+        
+      });

@@ -1,0 +1,210 @@
+extends ../templates/blogpost
+
+block morehead
+  script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+  script(src="/node_modules/jquerykeyframes/dist/jquery.keyframes.min.js")
+  script(src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous")
+
+block body
+
+  style.
+    #bandwagonLink img {
+      vertical-align: top;
+    }
+    #pugImg {
+      display: block;
+      position: absolute;
+      width: 100px;
+      transition-timing-function: ease-in-out;
+    }
+    #woof1, #woof2 {
+      display: block;
+      position: absolute;
+      visibility: hidden;
+    }
+    @keyframes woof0 {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(30px, -30px) scale(2.2) rotate(30deg);
+        opacity: 0;
+      }
+    }
+    @keyframes woof1 {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(-30px, -30px) scale(2.2) rotate(-30deg);
+        opacity: 0;
+      }
+    }
+    @keyframes bark {
+      from {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    @keyframes bark2 {
+      from {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.05);
+      }
+      50% {
+        transform: scale(1);
+      }
+      75% {
+        transform: scale(1.05);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+  .container#pug
+    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. In finibus dictum pretium. Nunc vel condimentum est, sed tempus arcu. In commodo egestas eleifend. Phasellus mattis sit amet dolor tincidunt dictum. Aenean at volutpat urna. Fusce dapibus, lacus ut convallis sollicitudin, turpis diam ultrices sem, non vehicula massa leo at nisl. Integer sapien massa, dictum id ultrices eu, scelerisque sed eros. Fusce semper a quam eleifend euismod. Sed aliquam pretium mollis. Maecenas laoreet vulputate enim quis porttitor. Vivamus consequat erat sit amet diam suscipit sollicitudin. Sed vitae quam metus. Ut gravida arcu velit, et ullamcorper elit pretium a. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+    p Cras vitae nunc aliquet, eleifend purus a, lobortis tortor. Aliquam euismod dolor non pretium rhoncus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque et egestas lectus. Maecenas in efficitur tellus, ac elementum ipsum. Donec ac nunc suscipit, commodo sem eget, ultrices ante. Fusce rutrum diam vitae quam aliquet, ut sollicitudin augue viverra. Fusce dapibus, lorem eu sodales dignissim, est nisi condimentum sem, vitae lacinia nibh arcu ut magna.
+
+    p Curabitur erat tortor, semper vel nunc eget, pellentesque finibus turpis. Curabitur at quam nec lacus faucibus ultrices. Curabitur id ligula rutrum, molestie turpis nec, molestie tellus. Nulla facilisi. Sed ut vehicula ipsum, in condimentum justo. Morbi hendrerit orci eget enim tristique sodales. Donec sit amet orci eleifend, ornare metus vitae, ornare quam. Quisque mattis erat in elit fermentum porttitor. Nunc laoreet aliquet pharetra.
+
+    p Morbi nec arcu interdum turpis convallis ullamcorper. Suspendisse porta neque elit, quis viverra quam pulvinar vel. In hac habitasse platea dictumst. Nunc sodales felis in quam facilisis elementum. Donec gravida tellus nisi, a sollicitudin dolor sollicitudin lobortis. Proin posuere enim sed euismod aliquet. In id dictum nibh, in blandit massa. Nunc vitae neque ut nunc fermentum sodales. Nunc sed aliquam tortor. Cras nibh lorem, sodales id malesuada id, rhoncus et lacus.
+
+    p Cras nec nibh malesuada, ultricies metus id, scelerisque dolor. Vivamus quis velit vel lorem blandit ullamcorper nec id nisl. Praesent eu enim dapibus, venenatis dui ac, ullamcorper sapien. Proin hendrerit lorem in quam gravida malesuada nec interdum elit. Vivamus malesuada tortor at elit vehicula, sit amet condimentum urna tempor. Nunc eros neque, iaculis euismod est ut, cursus tristique mauris. Duis non urna vel ante egestas faucibus at quis risus. Sed eu libero id enim ornare mattis vitae pellentesque risus. In vel pellentesque tellus. Vestibulum tristique pharetra nunc, vel rhoncus arcu consectetur id.
+    
+    img#pugImg(src="/src/img/pug.svg")
+    #woof1: h3 Woof!
+    #woof2: h3 Woof!
+
+    script(type="module").
+      $(() => {
+        const pugImg = $('#pugImg')
+        const woofs = {
+          0: $('#woof1'),
+          1: $('#woof2')
+        }
+        var canMove = true;
+        let rotateLeft = true;
+
+        const element = pugImg[0]
+        let start, previousTimeStamp, x, y;
+
+        let debouncedMovePug = _.debounce(movePug, 10)
+        let debouncedUpdateCoordinates = _.debounce(updateCoordinates, 20)
+        
+        function updateCoordinates(event) {
+          if (process.env.NODE_ENV === 'development') console.debug("inside updateCoordinates")
+          if (canMove) {
+            x = event.pageX
+            y = event.pageY
+            movePug()
+          }
+        }
+
+        function movePug() {
+          console.log(process)
+          if (process.env.NODE_ENV !== 'production') console.debug("inside movePug")
+          if (canMove) {
+            if (process.env.NODE_ENV === 'development') console.log(parseInt(pugImg.css("left"), 10) + ',' + parseInt(pugImg.css("top"), 10) + ' -> ' + x + ',' + y);
+            let distX = x - parseInt(pugImg.css("left"), 10)
+            let distY = y - parseInt(pugImg.css("top"), 10)
+            let dist = distX + distY
+
+            let fromTransform = 'translate(0px, 0px)'
+            if (process.env.NODE_ENV === 'development') console.log(`fromTransform=${fromTransform}`)
+            let toTransform = 'translate(' + distX + 'px, ' + distY + 'px)'
+            if (process.env.NODE_ENV === 'development') console.log(`toTransform=${toTransform}`)
+            $.keyframe.define({
+                name: 'move',
+                from: {
+                    'transform': fromTransform
+                },
+                to: {
+                    'transform': toTransform
+                }
+            });
+            pugImg.resetKeyframe();
+            if (process.env.NODE_ENV === 'development') console.debug("calling playKeyframe")
+            pugImg.playKeyframe(
+                'move 1s ease-in-out .1s forwards',
+                function() {
+                  if (process.env.NODE_ENV === 'development') console.log("inside end of move")
+                  canMove = true;
+                  pugImg.css("left", x + "px")
+                  pugImg.css("top", y + "px")
+                  pugImg.css("animation", "none")
+
+                  let barkTwice = Math.floor(Math.random() * 3) > 0;
+
+                  pugImg.resetKeyframe();
+                  if (barkTwice) {
+                    pugImg.playKeyframe('bark2 .7s linear 0s forwards')
+                  }
+                  else {
+                    pugImg.playKeyframe('bark .3s linear 0s forwards')
+                  }
+
+                  rotateLeft = !rotateLeft
+
+                  let keyframeIdx = Math.floor(Math.random() * 2)
+                  const currentX = x
+                  const currentY = y
+                  function go(i, keyframeIdx) {
+                    if (process.env.NODE_ENV === 'development') console.debug("inside go")
+                    woofs[i].css("left", (currentX+15) + "px")
+                    woofs[i].css("top", (currentY-15) + "px")
+
+                    woofs[i].playKeyframe('woof' + keyframeIdx + ' .9s ease-out 0s forwards')
+                  }
+
+                  go(0, keyframeIdx)
+                  if (barkTwice) {
+                    setTimeout(function () {
+                      woofs[1].show().css("visibility", "visible") 
+                      go(1, keyframeIdx)
+                    }, 300)
+                  }
+
+                }
+            );
+
+            canMove = false
+
+          }
+        }
+
+        $("#pug")
+          .mousemove(function (event) {
+            debouncedUpdateCoordinates(event)
+          })
+          .mouseenter(function (event) {
+            canMove = true;
+            woofs[0].show().css("visibility", "visible") 
+            //- window.requestAnimationFrame(movePug);
+            pugImg.fadeIn(1000, function () {
+            });
+          })
+          .mouseleave(function (event) {
+            canMove = false;
+            pugImg.fadeOut(1000);
+          });
+          
+          pugImg.css("top", "100px")
+          pugImg.css("left", "-110px")
+          
+          woofs[0].css("top", "100px")
+          woofs[0].css("left", "-110px")
+          
+          woofs[1].css("top", "100px")
+          woofs[1].css("left", "-110px")
+        
+      });

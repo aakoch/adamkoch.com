@@ -1,14 +1,36 @@
 <template lang="pug">
-.container(v-on:scroll="onScroll")
-  p 
-  p If you're thinking "2017 can't be the last time he posted", well, it was.
-  p These are old posts that I am trying to keep. They require some massaging to get into a readable format. I'm included a link to the original post that might look better.
-  div.row(v-for="post in posts" :key="post['wp:post_id']") 
-    postcard(:key='post["wp:post_id"]' :id='post["wp:post_id"]' :postTitle='post.title' :excerpt='post["excerpt:encoded"]' :date='post["wp:post_date"]' :link='post.link' :name='post["wp:post_name"]')
+div
+    
+  if process.env.NODE_ENV != 'production'
+    .container
+      h1= title
+      h2 My first post on the new site! 🎉
+
+      postpreview(key='20210826' postTitle='Moving off Wordpress and on to Netlify' excerpt='I\'m just so excited, I don\'t know how to start!...' date='2021-08-26' link='../posts/2021/08/26' name='Moving off Wordpress and on to Netlify')
+
+      div Ignore that line about last posting in 2017. 
+        h4.arrow ⤵
+      hr
+
+  .container(v-on:scroll="onScroll")
+    p 
+    p If you're thinking "2017 can't be the last time he posted", well, it was.
+    p These are old posts that I am trying to keep. They require some massaging to get into a readable format. I'm included a link to the original post that might look better.
+    div.row(v-for="post in posts" :key="post['wp:post_id']") 
+      postcard(:key='post["wp:post_id"]' :id='post["wp:post_id"]' :postTitle='post.title' :excerpt='post["excerpt:encoded"]' :date='post["wp:post_date"]' :link='post.link' :name='post["wp:post_name"]')
 </template>
+
+<style lang="scss" scoped>
+h4.arrow {
+  display: inline-block;
+  position: relative;
+  top: 20px;
+}
+</style>
 
 <script>
 import postcard from './postcard'
+import postpreview from './postpreview'
 import MY_JSON from "../data/professional_publish.json";
 
 let idx = 5
@@ -33,7 +55,8 @@ function sort(posts) {
 
 export default {
   components: {
-    postcard
+    postcard,
+    postpreview
   },
   data() {
     return {

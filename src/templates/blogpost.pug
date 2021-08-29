@@ -1,0 +1,17 @@
+block variables
+doctype html
+html.no-js(lang="en")
+
+  head
+    include head
+    block morehead
+  body
+    include pageheader
+
+    .container
+      h1 #{title}
+      block body
+
+    include ../templates/footer
+
+    block body_scripts

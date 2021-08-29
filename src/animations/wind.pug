@@ -1,0 +1,148 @@
+extends ../templates/blogpost
+
+block morehead
+  script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+  script(src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous")
+
+block body
+
+  style.
+    #parcel3 {
+      position: relative;
+    }
+    #parcel3 span {
+      display: inline-block;
+    }
+    #parcel3 span {
+      transform: translateX(0) rotate(0deg);
+      transform-origin: right;
+    }
+    #parcel3 span.shake {
+      animation: shake .3s normal both linear;
+      animation-iteration-count: var(--shakes);
+      animation-delay: 0s;
+    }
+    #parcel3 span.moveToBox {
+      animation: moveOffScreen forwards linear;
+      animation-duration: var(--wind-speed);
+      animation-delay: 0s;
+    }
+    .redBorder {
+      border: 1px solid red;
+    }
+    @keyframes myFadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+    @keyframes shake {
+      from {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(var(--negative-rotation));
+      }
+      50% {
+        transform: rotate(var(--random-rotation));
+      }
+      75% {
+        transform: rotate(var(--positive-rotation));
+      }
+      to {
+        transform: rotate(0deg);
+      }
+    }
+    @keyframes moveOffScreen {
+      from {
+        transform: rotate(0deg) translateX(0);
+      }
+      5% {
+        transform: rotate(var(--negative-rotation)) translateX(calc(var(--distance) * .05));
+      }
+      20% {
+        transform: rotate(var(--positive-rotation)) translateX(calc(var(--distance) * .2));
+      }
+      50% {
+        transform: rotate(var(--negative-rotation)) translateX(calc(var(--distance) * .5));
+      }
+      to {
+        transform: rotate(0deg) translateX(var(--distance));
+      }
+    }
+  .container
+    #parcel3
+      p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent hendrerit ac augue vel tincidunt. Mauris imperdiet nunc in nunc faucibus tempus. Curabitur diam sapien, porttitor sed feugiat quis, sagittis vitae ex. Nam porttitor elit et lectus ultrices porttitor sed eget lacus. Sed sodales sit amet mauris vel lacinia. Suspendisse eget mauris eu enim accumsan imperdiet id ac mauris. Fusce sed magna nec leo aliquam laoreet non ut est. Integer tristique tellus ex, eget luctus mi molestie non. Nam quis fringilla metus, ut sagittis dui. Duis sed enim eget felis ullamcorper semper. Fusce finibus enim in ipsum pellentesque fringilla.
+
+      p Quisque nibh augue, laoreet semper leo congue, sollicitudin interdum enim. Integer lobortis pharetra diam, et maximus lorem tempor eget. Nulla felis tellus, tristique ac ipsum quis, dignissim efficitur est. Suspendisse porta quam sit amet libero vestibulum, sed lacinia dui consequat. Nulla facilisi. Nullam vel pharetra quam. Mauris malesuada libero vel magna porttitor, non imperdiet sapien sodales. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+      p Morbi ac nisl vel felis sollicitudin sagittis. Morbi at orci vitae nulla mattis pretium eu id mauris. Aliquam ornare sem sit amet nunc accumsan interdum. In hac habitasse platea dictumst. Pellentesque malesuada purus sit amet euismod ornare. Donec rutrum cursus dolor, vel eleifend felis pretium nec. Proin eu hendrerit elit. Donec ullamcorper pellentesque viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse pellentesque at ipsum at porta. Vivamus imperdiet dui quis diam pellentesque condimentum.
+
+      p Aliquam sodales ex nec nisl tristique bibendum. Sed tempus laoreet laoreet. Morbi sit amet magna non nibh dapibus consequat nec eget elit. Ut vitae diam ut magna convallis lobortis lobortis vel ligula. Nulla lectus tortor, egestas sit amet dictum sollicitudin, sagittis id lacus. Proin massa tellus, tempor a blandit vitae, gravida quis eros. Quisque vestibulum nisl a neque ultrices, sit amet gravida mi ultrices. Pellentesque lobortis euismod erat eu ultrices. Nam in enim sed quam mattis vestibulum. Etiam at sapien vitae neque accumsan consequat et et dui. Pellentesque maximus quam dui, vel volutpat arcu porttitor nec.
+
+      p Mauris egestas tellus non justo sodales vulputate. Praesent vestibulum id eros vel mollis. Donec aliquam tincidunt imperdiet. Nunc tellus dui, consequat vel efficitur vel, tempus in eros. Cras luctus accumsan felis, ut blandit lectus porta quis. Donec egestas sapien ac dolor vehicula rhoncus. Ut finibus velit ut mauris mollis, quis blandit tortor mollis. Vestibulum quis arcu luctus, eleifend nisl sed, auctor justo. Quisque est elit, viverra in dui in, suscipit dapibus enim. Nam vulputate finibus mi, vel faucibus ex porta nec.
+
+
+    script.
+      function c() {
+        let timeout = 500;
+        function styleAndAnimate(el) {
+          el.style.setProperty('--shakes', _.random(1, 4));
+          el.style.setProperty('--positive-rotation', _.random(8, 20) + 'deg');
+          el.style.setProperty('--negative-rotation', '-' + _.random(8, 20) + 'deg');
+          el.style.setProperty('--random-rotation', _.random(-8, 8) + 'deg');
+          el.style.setProperty('--distance', '-' + document.body.offsetWidth + 'px');
+          el.style.setProperty('--wind-speed', _.random(1, 3, true) + 's');
+
+          $(el).addClass('shake').one('animationend', function () {
+            $(this).removeClass('shake').addClass('moveToBox')
+          })
+        }
+        function handleRandomElementUnbounced(elements) {
+          let sample = _.sample(elements)
+
+          styleAndAnimate(sample)
+
+          if (elements.length > 1) {
+            setTimeout(function () { handleRandomElement(_.without(elements, sample)) }, timeout--)
+          }
+        }
+        const handleRandomElement = _.debounce(handleRandomElementUnbounced)
+        const container = document.getElementById('parcel3')
+        const paragraphs = container.getElementsByTagName('p')
+
+        for (var idx = 0; idx < paragraphs.length; idx++) {
+          const words = paragraphs[idx].innerText.split(' ');
+          function wrap(word) {
+            const node = document.createElement('span')
+            node.textContent = word
+            return node.outerHTML
+          }
+          paragraphs[idx].innerHTML = words.map(wrap).join(' ')
+
+          //- $(paragraphs[idx]).find("span").one('mouseenter', function(event) {
+          //-   $(this).addClass('myFadeOut')
+          //- });
+        }
+
+        const originalElements = $(container)
+          .css("height", $(container).height())
+          .find("span")
+          .each(function (idx, el) {
+            $(el).css("left", $(el).position().left)
+            $(el).css("top", $(el).position().top)
+          })
+          .css("position", "absolute")
+          .one('mouseenter', function(event) {
+            document.body.style.overflow = 'hidden'
+            let remaining = _.without(originalElements, this)
+
+            styleAndAnimate(this)
+            
+            handleRandomElement(remaining)
+          })
+          .get()
+      }
+      c()

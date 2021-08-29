@@ -83,6 +83,15 @@ html.no-js(lang="en")
       +project('Troop 308 Website', 'Completed')
         a(href="https://www.troop308omaha.com/") Website
 
+      h2.mt-5  Animations
+      ul
+        li: a(href="../animations/bark.pug") Bark
+        li: a(href="../animations/wind.pug") Wind
+        li: a(href="../animations/fadeOutOnMouseOver.pug") Fade out on mouseoever
+        li: a(href="../animations/infectSiblings.pug") Fade out siblings
+        if process.env.NODE_ENV != 'production'
+          li: a(href="../animations/infectNeighbors.pug") Fade out neighbors
+
     include ../templates/footer
 
     block body_scripts

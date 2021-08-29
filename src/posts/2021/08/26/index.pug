@@ -1,0 +1,296 @@
+extends ../../../../templates/blogpost
+
+block variables
+  - var post = { title: 'Moving off Wordpress and on to Netlify', posted: '2021-08-28T20:09:27-05:00' }
+
+block morehead
+  script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+  script(src="/node_modules/jquerykeyframes/dist/jquery.keyframes.min.js")
+  script(src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous")
+
+block body
+
+  style.
+    #bandwagonLink img {
+      vertical-align: top;
+    }
+    #pugImg {
+      display: block;
+      position: absolute;
+      width: 100px;
+      transition-timing-function: ease-in-out;
+    }
+    #woof1, #woof2 {
+      display: block;
+      position: absolute;
+      visibility: hidden;
+    }
+    .popupGator {
+      background-image: url('/src/img/hostgator_icon.png');
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-position-x: 35px;
+      background-position-y: 25px;
+      text-decoration: underline dashed;
+      transition-property: background-position-y;
+      transition-duration: 2s;
+    }
+    .popupGator:hover {
+        background-position-y: 0px;
+    }
+
+    @keyframes woof0 {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(30px, -30px) scale(2.2) rotate(30deg);
+        opacity: 0;
+      }
+    }
+    @keyframes woof1 {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(-30px, -30px) scale(2.2) rotate(-30deg);
+        opacity: 0;
+      }
+    }
+    @keyframes bark {
+      from {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    @keyframes bark2 {
+      from {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.05);
+      }
+      50% {
+        transform: scale(1);
+      }
+      75% {
+        transform: scale(1.05);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    @keyframes myFadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+  .container.post#post-20210828
+    h1= post.title
+    .posted= post.posted
+    .content
+      p Even when I told myself I was going to write this post, I got sidetracked adding animations and adding prefetch logic. By the time I finish this, it will be 
+        strike Friday, August 27
+        | 
+        strike Saturday, August 28
+        |  Sunday, August 29.
+      p I started down the path of converting my Wordpress site to a static site because I started getting (or at least started getting notified of) &quot;hackers&quot; scanning my site for Wordpress vulnerabilities. 
+        | I installed a plugin called 
+        a(href="https://www.wordfence.com/") Wordfence
+        | , which I have to say, is an awesome app for being free. It could block IPs that were hitting the site and you could configure it with how many hits before blocking or if they hit a specific URL known for a vulnerability. 
+        | I don't know if there was an upgrade but I started seeing my site getting hit and I wanted to jump on the static site generator bandwagon before it was, you know, gone.
+        a#bandwagonLink(title='Influx, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons' href='https://commons.wikimedia.org/wiki/File:Bandwagon.jpg')
+          img(alt='Bandwagon' src='/src/img/bandwagon.png')
+      #pug
+        p I've used Parcel before and love it because it supports 
+          a(href="https://pugjs.org/api/getting-started.html") Pug
+          |  out of the box. Pug is my favorite HTML template engine. (TODO: insert link to page about Pug.) Well, it's not as if there are hundreds of template engines or something. But I like it a lot better than Markdown. Yes, Pug is a <em>little</em> more verbose, but it makes up for it by allowing you to do more than a handful of things! The limitations of Markdown make me wonder why so many people like it. Anyway... I ❤️ Pug and tools that support Pug.
+        img#pugImg(src="/src/img/pug.svg")
+        #woof1: h3 Woof!
+        #woof2: h3 Woof!
+
+      .aside
+        i.fas.fa-angle-double-right 
+        | Quick link: 
+        a(href="https://html2pug.vercel.app/") Tool for taking some HTML and converting it to Pug
+
+      p So I started looking at alternate hosting solutions. I looked at AWS but I <em>think</em> you have to have a Route 53 route set up if you want to use your own domain name. And 
+        a(href="https://aws.amazon.com/route53/pricing/" title="$50/month") the cost
+        |  of that was more than what I am paying now. I then got to thinking about my email. My email and site are on the same server, so I had to research into how to split the 2 and if I even could. My 
+        span.popupGator hosting company
+        |  might not even allow it.  I did some research into domain zone entries. I was scared that I could mess up and stop getting email. 
+
+      ol DNS resources
+        li: a(href="https://www.cloudflare.com/learning/dns/dns-records/") DNS records definitions
+        li: a(href="https://hostadvice.com/how-to/how-to-configure-email-on-a-different-host-from-the-website/") How to Configure Email on a Different Host from the Website
+        li: a(href="https://www.hostgator.com/help/article/how-to-route-email-to-your-server-independently") This article
+          |  which has been deprecated since I last saw it and took the time to comment and report its inaccuracies. 🤔
+      
+      | It wasn't up-to-date either, but provided clues to get me there
+
+    script(type="module").
+      $(() => {
+        $("#bandwagonLink").one("mouseenter", function() {
+          $(this).fadeOut(2000);
+        });
+
+
+        const pugImg = $('#pugImg')
+        const woofs = {
+          0: $('#woof1'),
+          1: $('#woof2')
+        }
+        var canMove = true;
+        let rotateLeft = true;
+
+        const element = pugImg[0]
+        let start, previousTimeStamp, x, y;
+
+        let debouncedMovePug = _.debounce(movePug, 10)
+        let debouncedUpdateCoordinates = _.debounce(updateCoordinates, 30)
+        
+        function updateCoordinates(event) {
+          if (process.env.NODE_ENV !== 'production') console.debug("inside updateCoordinates")
+          if (canMove) {
+            x = event.pageX
+            y = event.pageY
+            movePug()
+          }
+        }
+
+        function movePug() {
+          console.log(process.env.NODE_ENV)
+          if (process.env.NODE_ENV !== 'production') console.debug("inside movePug")
+          if (canMove) {
+            if (process.env.NODE_ENV !== 'production') console.log(parseInt(pugImg.css("left"), 10) + ',' + parseInt(pugImg.css("top"), 10) + ' -> ' + x + ',' + y);
+            let distX = x - parseInt(pugImg.css("left"), 10)
+            let distY = y - parseInt(pugImg.css("top"), 10)
+            let dist = distX + distY
+
+            let fromTransform = 'translate(0px, 0px)'
+            if (process.env.NODE_ENV !== 'production') console.log(`fromTransform=${fromTransform}`)
+            let toTransform = 'translate(' + distX + 'px, ' + distY + 'px)'
+            if (process.env.NODE_ENV !== 'production') console.log(`toTransform=${toTransform}`)
+            $.keyframe.define({
+                name: 'move',
+                from: {
+                    'transform': fromTransform
+                },
+                to: {
+                    'transform': toTransform
+                }
+            });
+            pugImg.resetKeyframe();
+            if (process.env.NODE_ENV !== 'production') console.debug("calling playKeyframe")
+            pugImg.playKeyframe(
+                'move 1s ease-in-out .1s forwards',
+                function() {
+                  if (process.env.NODE_ENV !== 'production') console.log("inside end of move")
+                  canMove = true;
+                  pugImg.css("left", x + "px")
+                  pugImg.css("top", y + "px")
+                  pugImg.css("animation", "none")
+
+                  let barkTwice = Math.floor(Math.random() * 3) > 0;
+
+                  pugImg.resetKeyframe();
+                  if (barkTwice) {
+                    pugImg.playKeyframe('bark2 .7s linear 0s forwards')
+                  }
+                  else {
+                    pugImg.playKeyframe('bark .3s linear 0s forwards')
+                  }
+
+                  rotateLeft = !rotateLeft
+
+                  let keyframeIdx = Math.floor(Math.random() * 2)
+                  const currentX = x
+                  const currentY = y
+                  function go(i, keyframeIdx) {
+                    if (process.env.NODE_ENV !== 'production') console.debug("inside go")
+                    woofs[i].css("left", (currentX+15) + "px")
+                    woofs[i].css("top", (currentY-15) + "px")
+
+                    woofs[i].playKeyframe('woof' + keyframeIdx + ' .9s ease-out 0s forwards')
+                  }
+
+                  go(0, keyframeIdx)
+                  if (barkTwice) {
+                    setTimeout(function () {
+                      woofs[1].show().css("visibility", "visible") 
+                      go(1, keyframeIdx)
+                    }, 300)
+                  }
+
+                }
+            );
+
+            canMove = false
+            //- console.log(dist)
+
+            //- if (start === undefined)
+            //-   start = timestamp;
+            //- const elapsed = timestamp - start;
+
+            //- //- if (previousTimeStamp !== timestamp) {
+            //-   // Math.min() is used here to make sure the element stops at exactly 200px
+            //-   //- const count = Math.min(0.1 * elapsed, 200);
+            //-   element.style.animation = 'move .5s';
+            //-   //- element.style.transform = 'translate(' + distX + 'px, ' + distY + 'px)';
+            //- //- }
+
+            //- //- if (elapsed < 2000) { // Stop the animation after 2 seconds
+            //- if (canMove) {
+            //-   previousTimeStamp = timestamp
+            //-   //- window.requestAnimationFrame(movePug);
+            //- }
+
+            //- pugImg.animate( {
+            //-   left: event.pageX,
+            //-   top: event.pageY
+            //- }, {
+            //-   duration: 1000 - (dist ^ 2),
+            //-   done: function() {
+            //-     canMove = true;
+            //-   }
+            //- })
+          }
+        }
+
+        $("#pug")
+          .mousemove(function (event) {
+            debouncedUpdateCoordinates(event)
+          })
+          .mouseenter(function (event) {
+              canMove = true;
+              woofs[0].show().css("visibility", "visible") 
+              //- window.requestAnimationFrame(movePug);
+              pugImg.fadeIn(1000, function () {
+            });
+          })
+          .mouseleave(function (event) {
+            canMove = false;
+            pugImg.fadeOut(1000);
+          });
+          
+          pugImg.css("top", "100px")
+          pugImg.css("left", "-110px")
+          
+          woofs[0].css("top", "100px")
+          woofs[0].css("left", "-110px")
+          
+          woofs[1].css("top", "100px")
+          woofs[1].css("left", "-110px")
+        
+      });

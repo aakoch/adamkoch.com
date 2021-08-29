@@ -251,3 +251,38 @@ nav, #landing-header {
   font-size: inherit;
   white-space: pre-wrap;
 }
+
+.post {
+  .postedDate {
+    &::before {
+      content: 'Posted on:';
+      margin-right: .3em;
+    }
+  }
+  .content {
+    margin-top: 20px;
+  }
+}
+
+.aside {
+  i {
+    
+    margin: 0 10px;
+    color: #406275;
+    font-weight: 900;
+  }
+  margin: 20px 0;
+  border: 2px solid #406275;
+  padding: 10px;
+  border-left: 0;
+  width: fit-content;
+}
+
+ol {
+  padding-left: 0;
+}
+#post-20210828 {
+  li {
+    padding-left: 25px;
+  }
+}

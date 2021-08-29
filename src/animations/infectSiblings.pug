@@ -1,0 +1,69 @@
+extends ../templates/blogpost
+
+block morehead
+  script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+  script(src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous")
+
+block body
+
+  style.
+    #infection span {
+      display: inline-block;
+    }
+    #infection span.myFadeOut {
+      animation: myFadeOut 2s forwards;
+    }
+    #infection span.addBorder {
+      border: 1px solid red;
+    }
+    
+    @keyframes myFadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+  .container#infection
+    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel massa non enim rhoncus blandit. Nullam tristique diam orci. Pellentesque hendrerit arcu eros. Curabitur bibendum eros vitae tortor fringilla, nec cursus dolor euismod. Mauris quam elit, dignissim vel iaculis id, maximus feugiat enim. Morbi fermentum congue tortor in rhoncus. Cras vehicula consectetur fringilla. Donec venenatis sit amet tellus in iaculis. Maecenas vitae urna leo. Nulla tempor vulputate purus quis lobortis. Pellentesque mattis, orci cursus viverra mattis, ex mi vehicula risus, quis pretium ante orci sit amet nisl.
+
+    p In hac habitasse platea dictumst. Vestibulum euismod nibh erat, vitae mattis justo vestibulum eu. Fusce eleifend nisi leo, ac gravida est varius vitae. Duis ultricies, neque quis fermentum scelerisque, velit nulla feugiat tortor, eget pharetra dolor tortor in eros. Aenean sagittis sodales accumsan. Donec fermentum eros mauris, id mattis diam vulputate nec. Sed maximus vel turpis nec semper. Praesent pellentesque vitae felis at lobortis. Donec accumsan felis ut dolor lacinia iaculis. Vestibulum aliquam orci hendrerit est pretium feugiat.
+
+    p Aliquam quis massa sed dui aliquam fermentum. Proin massa orci, tristique eget varius vulputate, pretium mollis mauris. Praesent interdum congue nisl, at eleifend ligula volutpat ac. Phasellus scelerisque felis efficitur mattis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus non diam nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc iaculis aliquet felis. Curabitur placerat lorem mauris, tempus tempor magna placerat vitae.
+
+    p Maecenas pulvinar, nulla a dictum pulvinar, sapien justo dapibus metus, et luctus libero dolor elementum dui. Praesent et libero sed odio dapibus accumsan ac sit amet justo. Vivamus eu massa nec nunc fringilla mollis et sed enim. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam iaculis sollicitudin sodales. Sed gravida vel magna nec mollis. Vestibulum eget nibh magna. Nunc congue vitae purus id mattis. Nunc malesuada non eros in facilisis. Nunc blandit lectus hendrerit blandit facilisis. Quisque vitae dolor lectus. Duis tortor erat, pharetra a nulla ac, varius porttitor sapien. Sed tellus lectus, posuere ut tincidunt sit amet, eleifend id neque. Vestibulum sed commodo nunc, ac maximus nunc.
+
+
+    script.
+      function b() {
+        function wrap(word) {
+          const node = document.createElement('span')
+          node.textContent = word
+          return node.outerHTML
+        }
+
+        const container = document.getElementById('infection')
+        const paragraphs = container.getElementsByTagName('p')
+
+        for (var idx = 0; idx < paragraphs.length; idx++) {
+          const words = paragraphs[idx].innerText.split(' ');
+          paragraphs[idx].innerHTML = words.map(wrap).join(' ')
+        }
+
+        $(container).find("span").one('mouseenter', function repeat(event, el) {
+          const that = $(el || this)
+          that.addClass('myFadeOut')
+          let sleeping =  _.random(500, 2000)
+          setTimeout(function () {
+            that.prev().addBack().next().addBack().not('.myFadeOut').off('mouseenter').addClass('myFadeOut').one('animationstart', function (event) {
+              repeat(event, this)
+            })
+            
+            if ($(container).find("span").not('.myFadeOut').length == 0) {
+              console.log("all dead, I mean done")
+            }
+          }, sleeping)
+        })
+      }
+      b()

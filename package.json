@@ -5,8 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel ./src/index.pug './src/**/index.pug' --open",
-    "watch": "parcel ./src/index.pug './src/**/index.pug'",
-    "build": "cp -Rv src/assets/ dist/ && parcel build ./src/index.pug './src/**/index.pug'",
+    "watch": "parcel ./src/index.pug './src/**/*.pug'",
+    "build-with-reporter-build-metrics": "parcel build ./src/index.pug --no-cache --reporter @parcel/reporter-build-metrics",
+    "build-with-reporter-bundle-analyzer": "head $(parcel build ./src/index.pug --no-cache --reporter @parcel/reporter-bundle-analyzer)",
+    "build": "parcel build ./src/index.pug './src/**/index.pug' --no-cache",
+    "build-backup": "cp -Rv src/assets/ dist/ && parcel build ./src/index.pug './src/**/index.pug'",
     "clean": "rm -rf ./dist/",
     "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && git push && git push --tags"
   },
@@ -29,13 +32,16 @@
   "homepage": "https://github.com/aakoch/adamkoch.com#readme",
   "devDependencies": {
     "@parcel/packager-raw-url": "v2.0.0-rc.0",
+    "@parcel/reporter-build-metrics": "^2.0.0-rc.0",
+    "@parcel/reporter-bundle-analyzer": "^2.0.0-rc.0",
     "@parcel/transformer-image": "^2.0.0-rc.0",
     "@parcel/transformer-pug": "v2.0.0-rc.0",
     "@parcel/transformer-sass": "v2.0.0-rc.0",
     "@parcel/transformer-vue": "v2.0.0-rc.0",
     "@parcel/transformer-webmanifest": "v2.0.0-rc.0",
     "fontawesome-subset": "^2.0.0",
-    "parcel": "^2.0.0-rc.0"
+    "parcel": "^2.0.0-rc.0",
+    "parcel-reporter-static-files-copy": "^1.3.0"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.esm-bundler.js"
@@ -46,6 +52,9 @@
     "blueimp-md5": "^2.18.0",
     "bootstrap": "^5.0.2",
     "html2pug": "^4.0.0",
+    "jquery": "^3.6.0",
+    "jquerykeyframes": "^1.0.8",
+    "lodash": "^4.17.21",
     "vue": "^3.2.4",
     "vue-router": "^4.0.11"
   }
