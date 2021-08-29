@@ -4,12 +4,8 @@
   "description": "Adam Koch homepage",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel ./src/index.pug './src/**/index.pug' --open",
     "watch": "parcel ./src/index.pug './src/**/*.pug'",
-    "build-with-reporter-build-metrics": "parcel build ./src/index.pug --no-cache --reporter @parcel/reporter-build-metrics",
-    "build-with-reporter-bundle-analyzer": "head $(parcel build ./src/index.pug --no-cache --reporter @parcel/reporter-bundle-analyzer)",
-    "build": "parcel build ./src/index.pug './src/**/index.pug' --no-cache",
-    "build-backup": "cp -Rv src/assets/ dist/ && parcel build ./src/index.pug './src/**/index.pug'",
+    "build": "cp -Rv src/assets/ dist/ && parcel build ./src/index.pug './src/**/index.pug'",
     "clean": "rm -rf ./dist/",
     "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && git push && git push --tags"
   },
