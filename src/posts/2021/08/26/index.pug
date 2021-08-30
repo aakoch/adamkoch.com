@@ -1,14 +1,12 @@
 extends ../../../../templates/blogpost
 
 block variables
-  - var post = { title: 'Moving off Wordpress and on to Netlify', posted: '2021-08-28T20:09:27-05:00' }
+  - var title = "Moving off Wordpress and on to Netlify"
+  - var posted = '2021-08-29 20:00-05:00'
 
 block morehead
   script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
   script(src="/node_modules/jquerykeyframes/dist/jquery.keyframes.min.js")
-  script(src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous")
-
-block body
 
   style.
     #bandwagonLink img {
@@ -39,6 +37,34 @@ block body
         background-position-y: 0px;
     }
 
+    li {
+      margin-left: 25px;
+    }
+
+    #dns-before td, #dns-after td {
+      border: 1px darkgray solid;
+    }
+    #dns-before tr, #dns-after tr {
+      border: 1px darkgray solid;
+    }
+    #dns-before th, #dns-after th {
+      font-weight: bold;
+      text-rendering: geometricprecision;
+      border: 1px darkgray solid;
+    }
+    #dns-before td, #dns-after td,
+    #dns-before th, #dns-after th {
+      padding: 5px 8px;
+    }
+    #dns-arrows {
+      top: 50%;
+      position: relative;
+      transform: translateY(-50%);
+    }
+    img.icon {
+      margin: 0 5px;
+      height: 1.2em;
+    }
     @keyframes woof0 {
       from {
         transform: translate(0, 0);
@@ -96,27 +122,32 @@ block body
       }
     }
 
+block body
   .container.post#post-20210828
-    h1= post.title
-    .posted= post.posted
+    .posted= posted
     .content
       p Even when I told myself I was going to write this post, I got sidetracked adding animations and adding prefetch logic. By the time I finish this, it will be 
         strike Friday, August 27
         | 
         strike Saturday, August 28
-        |  Sunday, August 29.
+        |  
+        strike Sunday, August 29
+        |  Monday, August 30.
+      h2 Why?
       p I started down the path of converting my Wordpress site to a static site because I started getting (or at least started getting notified of) &quot;hackers&quot; scanning my site for Wordpress vulnerabilities. 
         | I installed a plugin called 
-        a(href="https://www.wordfence.com/") Wordfence
+        a(href="https://www.wordfence.com/" title="Wordfence Homepage") Wordfence
         | , which I have to say, is an awesome app for being free. It could block IPs that were hitting the site and you could configure it with how many hits before blocking or if they hit a specific URL known for a vulnerability. 
         | I don't know if there was an upgrade but I started seeing my site getting hit and I wanted to jump on the static site generator bandwagon before it was, you know, gone.
         a#bandwagonLink(title='Influx, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons' href='https://commons.wikimedia.org/wiki/File:Bandwagon.jpg')
           img(alt='Bandwagon' src='/src/img/bandwagon.png')
       #pug
+        h2 The Stack
+
         p I've used Parcel before and love it because it supports 
-          a(href="https://pugjs.org/api/getting-started.html") Pug
-          |  out of the box. Pug is my favorite HTML template engine. (TODO: insert link to page about Pug.) Well, it's not as if there are hundreds of template engines or something. But I like it a lot better than Markdown. Yes, Pug is a <em>little</em> more verbose, but it makes up for it by allowing you to do more than a handful of things! The limitations of Markdown make me wonder why so many people like it. Anyway... I ❤️ Pug and tools that support Pug.
-        img#pugImg(src="/src/img/pug.svg")
+          a(href="https://pugjs.org/api/getting-started.html" title="Pug Homepage") Pug
+          |  out of the box. Pug is my favorite HTML template engine. Well, it's not as if there are hundreds of template engines or something. But I like it a lot better than Markdown. Yes, Pug is a <em>little</em> more verbose, but it makes up for it by allowing you to do more than a handful of things! The limitations of Markdown make me wonder why so many people like it. Anyway... I ❤️ Pug and tools that support Pug.
+        img#pugImg(src="/src/img/pug.svg" alt="Pug Logo")
         #woof1: h3 Woof!
         #woof2: h3 Woof!
 
@@ -124,7 +155,25 @@ block body
         i.fas.fa-angle-double-right 
         | Quick link: 
         a(href="https://html2pug.vercel.app/") Tool for taking some HTML and converting it to Pug
+      
 
+      h3 Host Searching
+      h4 AWS 
+      h4 Netlify
+
+      a(id="hosting")
+      h3 Hosting
+      p I've been using Hostgator for 10 years now and have been pretty happy with it. I was only planning on switching if I found another way to host that was cheaper 
+        span.underline and
+        |  I still had unlimited email aliases. I use my email aliases a lot. I have almost 500 aliases. By creating email aliases I can further increase my personal security by using a different email <em>and</em> password on websites. I can see when a website a) sold my email or b) was compromised and discard any emails addressed to that address. 
+
+      p I looked at 
+        a(href="https://www.godaddy.com/email/professional-business-email") GoDaddy's email solution
+        |  and 
+        a(href="https://workspace.google.com/") Google's Workspace (formally G Suite)
+        |  but neither had unlimited aliases.
+
+      h2 Hosting?
       p So I started looking at alternate hosting solutions. I looked at AWS but I <em>think</em> you have to have a Route 53 route set up if you want to use your own domain name. And 
         a(href="https://aws.amazon.com/route53/pricing/" title="$50/month") the cost
         |  of that was more than what I am paying now. I then got to thinking about my email. My email and site are on the same server, so I had to research into how to split the 2 and if I even could. My 
@@ -132,33 +181,118 @@ block body
         |  might not even allow it.  I did some research into domain zone entries. I was scared that I could mess up and stop getting email. 
 
       ol DNS resources
-        li: a(href="https://www.cloudflare.com/learning/dns/dns-records/") DNS records definitions
-        li: a(href="https://hostadvice.com/how-to/how-to-configure-email-on-a-different-host-from-the-website/") How to Configure Email on a Different Host from the Website
-        li: a(href="https://www.hostgator.com/help/article/how-to-route-email-to-your-server-independently") This article
-          |  which has been deprecated since I last saw it and took the time to comment and report its inaccuracies. 🤔
+        li: a(href="https://www.cloudflare.com/learning/dns/dns-records/" title="DNS records definitions") DNS records definitions
+        li
+          a(href="https://hostadvice.com/how-to/how-to-configure-email-on-a-different-host-from-the-website/" title="How to Configure Email on a Different Host from the Website") How to Configure Email on a Different Host from the Website
+          |  It wasn't up-to-date either, but provided clues to get me there
+        li
+          a(href="https://www.hostgator.com/help/article/how-to-route-email-to-your-server-independently" title="How to Route Email to Your Server Independently") This article
+          |  which has been deprecated since I last saw it and took the time to comment and report that it was outdated. 🤔 
+        li
+          a(href="https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/" title="Netlify's documentation on configuring an external DNS for a custom domain") Configure external DNS for a custom domain
+
+      h4 DNS Steps
+      h5 Mail Server Settings
+      p I created a new subdomain called "mail2" but decided I was eventually going to use "mail" so I deleted it. It was a bit confusing because I then created the MX entry to point my root domain to the IP address of my new subdomain. And then went to 
+
+      .container
+        .row
+          .col-12.col-xl-5
+            table#dns-before
+              caption.text-center Before
+              tr
+                th Name
+                th TTL
+                th Class
+                th Type
+                th Record
+              tr
+                td mail.adamkoch.com.
+                td 14400
+                td IN
+                td CNAME
+                td adamkoch.com
+              tr
+                td adamkoch.com.
+                td 14400
+                td IN
+                td MX	
+                td
+                  | Priority: 0
+                  br
+                  | Destination: adamkoch.com
+          .col-xl-2.text-center
+            i.fas.fa-angle-double-right#dns-arrows
+          .col-12.col-xl-5
+            table#dns-after
+              caption.text-center After
+              tr
+                th Name
+                th TTL
+                th Class
+                th Type
+                th Record
+              tr
+                td mail.adamkoch.com.
+                td 14400
+                td IN
+                td A
+                td 192.185.57.80
+              tr
+                td adamkoch.com.
+                td 14400
+                td IN
+                td MX	
+                td
+                  | Priority: 0
+                  br
+                  | Destination: mail.adamkoch.com
       
-      | It wasn't up-to-date either, but provided clues to get me there
+      h5 Web Server Settings
+
+      h2.mt-4 Syntax Highlighting
+      p I'm using 
+        a(href="https://code.visualstudio.com/") Visual Studio Code
+        img.icon(src="/src/img/vs_code.svg" alt="Visual Studio Code icon")
+        |  to code front-end apps and found the Pug syntax highlighting failed in the case where a 
+        code script
+        |  tag had the type attribute set to "module". It isn't the end of the world, but annoying enough I went down the path of trying to fix it. I went to 
+        a(href="https://code.visualstudio.com/docs#vscode") the VS Code documentation site
+        |  and searched for syntax highlighting and found 
+        a(href="https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide") this guide
+        | . I tried the to 
+        a(href="https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide#injection-grammars") injection grammar
+        |  but I didn't know what I was doing so I had to give up on that. (How am I was supposed to know what value to "injectTo"?) So I poked around in the application source 
+        | and found pug.tmLanguage.json. From there I was able to find the section that deals with Javascript and add in some regex to allow "module". But it simply said that not to reject the script if it found "module" -- it didn't highlight the attribute nor value. At the top of the file is a disclaimer: 
+      .aside.quote This file has been converted from 
+        a(href="https://github.com/davidrios/pug-tmbundle/blob/master/Syntaxes/Pug.JSON-tmLanguage") https://github.com/davidrios/pug-tmbundle/blob/master/Syntaxes/Pug.JSON-tmLanguage
+        |  If you want to provide a fix or improvement, please create a pull request against the original repository.
+        | Once accepted there, we are happy to receive an update request.
+      p So I perused the repo and found that someone had already created a PR that correctly colored what I hadn't. It was opened in 2019. Ugh. So I think the repo is abandoned.
 
     script(type="module").
-      $(() => {
+      import _ from 'lodash'
+      import _debug from 'debug'
+      const debug = _debug('aakoch:pugAnimation')
+      
+      jQuery(() => {
         $("#bandwagonLink").one("mouseenter", function() {
           $(this).fadeOut(2000);
         });
-
 
         const pugImg = $('#pugImg')
         const woofs = {
           0: $('#woof1'),
           1: $('#woof2')
         }
-        var canMove = true;
+        let canMove = true;
         let rotateLeft = true;
 
         const element = pugImg[0]
         let start, previousTimeStamp, x, y;
 
-        let debouncedMovePug = _.debounce(movePug, 10)
-        let debouncedUpdateCoordinates = _.debounce(updateCoordinates, 30)
+        const debouncedMovePug = _.debounce(movePug, 10)
+        const debouncedUpdateCoordinates = _.debounce(updateCoordinates, 30)
         
         function updateCoordinates(event) {
           if (process.env.NODE_ENV !== 'production') console.debug("inside updateCoordinates")
@@ -170,7 +304,7 @@ block body
         }
 
         function movePug() {
-          console.log(process.env.NODE_ENV)
+          if (process.env.NODE_ENV !== 'production') console.log(process.env.NODE_ENV)
           if (process.env.NODE_ENV !== 'production') console.debug("inside movePug")
           if (canMove) {
             if (process.env.NODE_ENV !== 'production') console.log(parseInt(pugImg.css("left"), 10) + ',' + parseInt(pugImg.css("top"), 10) + ' -> ' + x + ',' + y);
@@ -197,6 +331,7 @@ block body
                 'move 1s ease-in-out .1s forwards',
                 function() {
                   if (process.env.NODE_ENV !== 'production') console.log("inside end of move")
+
                   canMove = true;
                   pugImg.css("left", x + "px")
                   pugImg.css("top", y + "px")
@@ -219,6 +354,7 @@ block body
                   const currentY = y
                   function go(i, keyframeIdx) {
                     if (process.env.NODE_ENV !== 'production') console.debug("inside go")
+
                     woofs[i].css("left", (currentX+15) + "px")
                     woofs[i].css("top", (currentY-15) + "px")
 
@@ -237,34 +373,6 @@ block body
             );
 
             canMove = false
-            //- console.log(dist)
-
-            //- if (start === undefined)
-            //-   start = timestamp;
-            //- const elapsed = timestamp - start;
-
-            //- //- if (previousTimeStamp !== timestamp) {
-            //-   // Math.min() is used here to make sure the element stops at exactly 200px
-            //-   //- const count = Math.min(0.1 * elapsed, 200);
-            //-   element.style.animation = 'move .5s';
-            //-   //- element.style.transform = 'translate(' + distX + 'px, ' + distY + 'px)';
-            //- //- }
-
-            //- //- if (elapsed < 2000) { // Stop the animation after 2 seconds
-            //- if (canMove) {
-            //-   previousTimeStamp = timestamp
-            //-   //- window.requestAnimationFrame(movePug);
-            //- }
-
-            //- pugImg.animate( {
-            //-   left: event.pageX,
-            //-   top: event.pageY
-            //- }, {
-            //-   duration: 1000 - (dist ^ 2),
-            //-   done: function() {
-            //-     canMove = true;
-            //-   }
-            //- })
           }
         }
 
@@ -275,7 +383,6 @@ block body
           .mouseenter(function (event) {
               canMove = true;
               woofs[0].show().css("visibility", "visible") 
-              //- window.requestAnimationFrame(movePug);
               pugImg.fadeIn(1000, function () {
             });
           })
@@ -292,5 +399,4 @@ block body
           
           woofs[1].css("top", "100px")
           woofs[1].css("left", "-110px")
-        
       });
