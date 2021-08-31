@@ -4,29 +4,47 @@ doctype html
 html.no-js(lang="en")
 
   head
-    include head
+    include templates/head
+
   body
-    //- include header
+    include templates/header
     
-    form(name='contact' method='POST' data-netlify='true')
-      p
-        label Your Name: 
-          input(type='text' name='name')
-      p
-        label Your Email: 
-          input(type='email' name='email')
-      p
-        label Your Role: 
-          select(name='role[]' multiple)
-            option(value='leader') Leader
-            option(value='follower') Follower
-      p
-        label Message: 
-          textarea(name='message')
-      p
-        button(type='submit') Send
+    .container
+      #comment-form
+
+    form#commentForm.needs-validation(name='commentForm' netlify netlify-honeypot='validate' hidden novalidate)
+      fieldset
+        .mb-0.mt-3
+          label.form-label.mb-0(for='name') Name: 
+        .mb-3
+          input#name.form-control(type='text' name='name' placeholder='Your name' required='required')
+          .invalid-feedback What shall I call you?
+        .mb-0
+          label.form-label.mb-0(for='email') Email: 
+        .mb-1
+          input#email.form-control(type='email' name='email' placeholder='your-name@example.com')
+        .mb-3
+          .form-text Not displayed but the md5 hash is used for Gravatar image.
+        .mb-0
+          label.form-label.mb-0(for='url') URL: 
+        .mb-3
+          input#url.form-control(type='url' name='url' placeholder='www.my-awesome-site.com')
+        .mb-0
+          label.form-label.mb-0(for='validate') Validate: 
+        .mb-3
+          input#url.form-control(type='text' name='validate' placeholder='Are you human?')
+        .mb-0
+          label.form-label.mb-0(for='comment') Comment/s: 
+        .mb-3
+          textarea#comment.form-control(name='comment' required='required')
+          .invalid-feedback Umm... you wanted to say something, right?
+        .mb-1
+          button#submitButton.btn.btn-primary(type='submit') Submit
+          .alert.alert-primary.mt-3(role='alert') All submissions are reviewed before being posted.
+
 
     include footer
 
     block body_scripts
     
+    script(src="js/commentForm.js" type="module")
