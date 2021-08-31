@@ -200,8 +200,9 @@ nav, #landing-header {
 
 .nav-link {
   margin-right: 1em;
+  &::before {
+  }
 }
-
 
 // h1 {
 //   padding-top: .5em;
@@ -238,7 +239,7 @@ nav, #landing-header {
     padding-left: 20px;
   }
   .status-wrapper {
-    font-size: 1.4em;
+    font-size: 1.2em;
     .status {
       font-family: monospace;
     }
@@ -295,3 +296,20 @@ ol {
 .underline {
   text-decoration: underline;
 }
+
+// a {
+//   &:hover {
+//     animation: backgroundMix 1s 1 forwards;
+//   }
+// }
+
+// @keyframes backgroundMix {
+//   0% {
+//     color: $link-color;
+//     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 100%);
+//   }
+//   50% {
+//     color: $white;
+//     background-image: linear-gradient(45deg, $link-color 0%, shade-color($link-color, 40) 100%);
+//   }
+// }
