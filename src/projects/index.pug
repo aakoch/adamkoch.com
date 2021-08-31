@@ -25,7 +25,8 @@ html.no-js(lang="en")
       
       +project('Swamp Fan', 'Stage One Complete; Stage Two In Progress')
         p It started when my wife bought me a tabletop, USB-powered "air conditioner". 
-        p: a(href="/projects/swampfan/") Read more
+        if process.env.NODE_ENV != 'production'
+          p: a(href="/projects/swampfan/") Read more
       
       +project('This Site', 'In Progress')
 
