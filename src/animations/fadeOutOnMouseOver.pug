@@ -1,32 +1,22 @@
 extends ../templates/blogpost
 
 block morehead
-  script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css")
+  style(type="text/scss").
+    code {
+      white-space: pre;
+    }
+    #fadeOutDemo span {
+      display: inline-block;
+      opacity: 1;
+      &.myFadeOut {
+        opacity: 0;
+        transition: opacity 2s;
+      }
+    }
 
 block body
-
-  style.
-    #parcel span, 
-    #fadeOut span, 
-    #parcel3 span {
-      display: inline-block;
-    }
-    #parcel span.myFadeOut,
-    #fadeOut span.myFadeOut {
-      animation: myFadeOut 2s forwards;
-    }
-    #fadeOut span.addBorder {
-      border: 1px solid red;
-    }
-    @keyframes myFadeOut {
-      from {
-        opacity: 1;
-      }
-      to {
-        opacity: 0;
-      }
-    }
-  .container#fadeOut
+  .container#fadeOutDemo
     p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis accumsan mattis. Aenean eros magna, maximus nec accumsan at, ultrices non velit. Duis tempus tellus a lectus dignissim, consectetur hendrerit urna lacinia. Nam vitae placerat tortor. Phasellus non odio blandit, posuere urna in, pulvinar ligula. Quisque et tincidunt sapien. Proin eget nibh vitae justo pulvinar tincidunt. In hac habitasse platea dictumst. In non accumsan lacus, in consequat nisl. Nunc sodales luctus nunc. Aenean vitae sem consectetur, semper quam a, venenatis sem. Quisque posuere erat at neque bibendum ornare nec a magna. Praesent aliquam commodo luctus. Nulla facilisi.
 
     p Maecenas pulvinar, nulla a dictum pulvinar, sapien justo dapibus metus, et luctus libero dolor elementum dui. Praesent et libero sed odio dapibus accumsan ac sit amet justo. Vivamus eu massa nec nunc fringilla mollis et sed enim. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam iaculis sollicitudin sodales. Sed gravida vel magna nec mollis. Vestibulum eget nibh magna. Nunc congue vitae purus id mattis. Nunc malesuada non eros in facilisis. Nunc blandit lectus hendrerit blandit facilisis. Quisque vitae dolor lectus. Duis tortor erat, pharetra a nulla ac, varius porttitor sapien. Sed tellus lectus, posuere ut tincidunt sit amet, eleifend id neque. Vestibulum sed commodo nunc, ac maximus nunc.
@@ -37,29 +27,47 @@ block body
 
     p Etiam vel mi sollicitudin, luctus velit vitae, accumsan velit. Phasellus non feugiat metus, eu dignissim nulla. Cras ex arcu, faucibus ac hendrerit sit amet, volutpat sit amet justo. Donec ligula lacus, iaculis a lobortis et, facilisis vitae metus. Nulla id massa in turpis efficitur ornare. Quisque euismod fringilla lorem a placerat. Praesent non velit orci. Suspendisse vel mi sed tellus tincidunt venenatis. Phasellus eu tempor nisi. Nullam rutrum consequat euismod. Cras ut blandit erat. Sed iaculis, ex nec finibus vehicula, mauris ligula placerat lacus, dictum viverra neque lectus eget dolor. Nullam finibus ligula vitae lacus eleifend, id sagittis leo molestie.
 
+  .container 
+    h3 The Code (as Pug, of course):
+    pre
+      //- :pug-code
+        style(type="text/scss").
+          #fadeOutDemo span {
+            display: inline-block;
+            opacity: 1;
+            &.myFadeOut {
+              opacity: 0;
+              transition: opacity 2s;
+            }
+          }
 
+        script.
+          Array
+            .from(document
+              .getElementById('fadeOutDemo')
+              .getElementsByTagName('p'))
+            .forEach(function (paragraph) {
+              paragraph.innerHTML = paragraph.innerText.split(' ').map(function(word) {
+                return '<span>' + word + '</span>'
+              }).join(' ');
+              paragraph.addEventListener('mouseover', function(event)  {
+                  if (event.target.className.length == 0)
+                    event.target.className = 'myFadeOut'
+              })
+            })
 
     script.
-      function a() {
-        const fadeOutContainer = document.getElementById('fadeOut')
-
-        const paragraphs = fadeOutContainer.getElementsByTagName('p')
-
-        for (let idx = 0; idx < paragraphs.length; idx++) {
-          const words = paragraphs[idx].innerText.split(' ');
-          function wrap(word) {
-
-            const node = document.createElement('span')
-            node.textContent = word
-
-            return node.outerHTML
-          }
-          paragraphs[idx].innerHTML = words.map(wrap).join(' ')
-
-          $(paragraphs[idx]).find("span").one('mouseenter', function(event) {
-            $(this).addClass('myFadeOut')
-          });
-        }
-      }
-      a()
+      Array
+        .from(document
+          .getElementById('fadeOutDemo')
+          .getElementsByTagName('p'))
+        .forEach(function (paragraph) {
+          paragraph.innerHTML = paragraph.innerText.split(' ').map(function(word) {
+            return '<span>' + word + '</span>'
+          }).join(' ');
+          paragraph.addEventListener('mouseover', function(event)  {
+              if (event.target.className.length == 0)
+                event.target.className = 'myFadeOut'
+          })
+        })
 
