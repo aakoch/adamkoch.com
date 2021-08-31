@@ -2,6 +2,7 @@ extends ../templates/blogpost
 
 block morehead
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js")
   style(type="text/scss").
     code {
       white-space: pre;
@@ -16,6 +17,7 @@ block morehead
     }
 
 block body
+  h1 Fade Out On MouseOver Demo
   .container#fadeOutDemo
     p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis accumsan mattis. Aenean eros magna, maximus nec accumsan at, ultrices non velit. Duis tempus tellus a lectus dignissim, consectetur hendrerit urna lacinia. Nam vitae placerat tortor. Phasellus non odio blandit, posuere urna in, pulvinar ligula. Quisque et tincidunt sapien. Proin eget nibh vitae justo pulvinar tincidunt. In hac habitasse platea dictumst. In non accumsan lacus, in consequat nisl. Nunc sodales luctus nunc. Aenean vitae sem consectetur, semper quam a, venenatis sem. Quisque posuere erat at neque bibendum ornare nec a magna. Praesent aliquam commodo luctus. Nulla facilisi.
 
@@ -28,33 +30,33 @@ block body
     p Etiam vel mi sollicitudin, luctus velit vitae, accumsan velit. Phasellus non feugiat metus, eu dignissim nulla. Cras ex arcu, faucibus ac hendrerit sit amet, volutpat sit amet justo. Donec ligula lacus, iaculis a lobortis et, facilisis vitae metus. Nulla id massa in turpis efficitur ornare. Quisque euismod fringilla lorem a placerat. Praesent non velit orci. Suspendisse vel mi sed tellus tincidunt venenatis. Phasellus eu tempor nisi. Nullam rutrum consequat euismod. Cras ut blandit erat. Sed iaculis, ex nec finibus vehicula, mauris ligula placerat lacus, dictum viverra neque lectus eget dolor. Nullam finibus ligula vitae lacus eleifend, id sagittis leo molestie.
 
   .container 
-    h3 The Code (as Pug, of course):
-    pre
-      //- :pug-code
-        style(type="text/scss").
-          #fadeOutDemo span {
-            display: inline-block;
-            opacity: 1;
-            &.myFadeOut {
-              opacity: 0;
-              transition: opacity 2s;
-            }
-          }
+    h2 The Code:
+    h3.monospace style
+    pre: code(class="language-scss").
+      #fadeOutDemo span {
+        display: inline-block;
+        opacity: 1;
+        &.myFadeOut {
+          opacity: 0;
+          transition: opacity 2s;
+        }
+      }
 
-        script.
-          Array
-            .from(document
-              .getElementById('fadeOutDemo')
-              .getElementsByTagName('p'))
-            .forEach(function (paragraph) {
-              paragraph.innerHTML = paragraph.innerText.split(' ').map(function(word) {
-                return '<span>' + word + '</span>'
-              }).join(' ');
-              paragraph.addEventListener('mouseover', function(event)  {
-                  if (event.target.className.length == 0)
-                    event.target.className = 'myFadeOut'
-              })
-            })
+    h3.monospace script
+    pre: code.
+      Array
+        .from(document
+          .getElementById('fadeOutDemo')
+          .getElementsByTagName('p'))
+        .forEach(function (paragraph) {
+          paragraph.innerHTML = paragraph.innerText.split(' ').map(function(word) {
+            return '&lt;span&gt;' + word + '&lt;/span&gt;'
+          }).join(' ');
+          paragraph.addEventListener('mouseover', function(event)  {
+              if (event.target.className.length == 0)
+                event.target.className = 'myFadeOut'
+          })
+        })
 
     script.
       Array
@@ -71,3 +73,4 @@ block body
           })
         })
 
+      setTimeout(hljs.highlightAll, 1)
