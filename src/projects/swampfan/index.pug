@@ -9,9 +9,20 @@ html.no-js(lang="en")
     include ../../templates/pageheader
 
     .container
+      a.text-end(style='display:block' href="/projects" title="Projects")
+        i.fas.fa-angle-double-left
+        |  Back to current projects
       h1 #{title}
       
-      p Sorry, I haven't gotten around to writing this up yet.
+      p Sorry, I haven't gotten around to writing this up yet. But here are some 
+        strike pretty
+        |  pictures!
+
+      #app
+
+        img(src='/src/img/swamp_fan_1_0.1.jpg' alt="Swamp fan")
+        img(src='/src/img/swamp_fan_1_0.2.jpg' alt="Swamp fan")
+        img(src='/src/img/swamp_fan_1_0.3.jpg' alt="Swamp fan")
 
     include ../../templates/footer
 
