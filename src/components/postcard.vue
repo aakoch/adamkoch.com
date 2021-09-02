@@ -38,10 +38,16 @@ code {
 }
 </style>
 
-<style lang="css">
-.postContent img {
+<style lang="scss">
+/* Not scoped! */
+.postContent {
+  img {
     max-width: 100%;
     height: auto;
+  }
+  ol {
+    padding-left: 20px;
+  }
 }
 </style>
 
