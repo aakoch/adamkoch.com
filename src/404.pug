@@ -1,0 +1,108 @@
+block variables
+  - var title = "404 Page Not Found"
+html.no-js(lang="en")
+
+  head
+    include head
+
+    style(type="text/scss").
+      body  {
+        background-color: black;
+        color: white;
+        overflow: hidden;
+      }
+      .container2 {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      /*
+      h1, h2, h3, h4 {
+        position: absolute;
+      }
+      h1 {
+        left: 30%;
+        top: 30%;
+        animation: spin 6s infinite linear normal;
+        transform: translate(25%, 25%);
+        transform-origin: 300px 300px;
+        &.b {
+          left: 32%;
+          top: 28%;
+          animation: spin 5.5s infinite linear normal;
+          transform: translate(22%, 23%);
+          transform-origin: 310px 290px;
+        }
+      }
+      h2 {
+        left: 60%;
+        top: 30%;
+        animation: spin 7s infinite linear normal;
+        transform: translate(25%, 25%);
+        transform-origin: -100px 100px;
+        &.b {
+          left: 62%;
+          top: 32%;
+          animation: spin 6.5s infinite linear normal;
+          transform: translate(22%, 23%);
+        transform-origin: -90px 90px;
+        }
+      }
+      h3 {
+        left: 30%;
+        top: 70%;
+        animation: spin 8s infinite linear normal;
+        transform: translate(25%, 25%);
+        transform-origin: 300px -100px;
+        &.b {
+          left: 32%;
+          top: 68%;
+          animation: spin 7.5s infinite linear normal;
+          transform: translate(22%, 23%);
+          transform-origin: 350px -50px;
+        }
+      }
+      h4 {
+        left: 89%;
+        top: 56%;
+        animation: spin 9s infinite linear normal;
+        transform: translate(25%, 27%);
+        transform-origin: -270px -300px;
+        &.b {
+        left: 75%;
+        top: 85%;
+          animation: spin 8s infinite linear normal;
+          transform: translate(22%, 23%);
+          transform-origin: -250px -290px;
+        }
+      }
+      */
+      img {
+        /*
+        position: fixed;
+        left: 25%;
+        top: 0;
+        transform: translate(-100%, -100%);
+        */
+        transform-origin: bottom;
+        animation: spin 5s infinite linear;
+        z-index: -100;
+      }
+      @keyframes spin {
+        from {
+          transform: rotateZ(0deg) translateY(50%);
+        }
+        to {
+          transform: rotateZ(360deg) translateY(50%);
+        }
+      }
+  body
+    
+    .container2
+      h1.position-absolute.top-50.start-50.translate-middle 404 Not Found
+
+      img.position-absolute.vh-100(src="img/spiral2.jpg")
+
+    //- include footer
+
+    block body_scripts
