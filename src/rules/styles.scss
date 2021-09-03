@@ -1,0 +1,72 @@
+
+$white: rgba(255, 255, 255, 0);
+$tranparent: rgba(255, 255, 255, 1);
+body {
+  font-family: cursive;
+}
+.container {
+  padding: 11% 23% 0 24%;
+  background-size: 60% auto;
+  background-repeat: no-repeat repeat;
+  background-position: center 10%;
+  background-image: url(../img/scroll_middle.svg);
+  z-index: -20;
+  padding-bottom: 10%;
+}
+#scrollTop {
+  position: absolute;
+  background-size: 100% auto;
+  width: 100%;
+  height: 18%;
+  z-index: 10;
+  background-repeat: no-repeat;
+  background: url(../img/scroll_top.svg),
+              linear-gradient(0deg, $white 70%, $tranparent 70%);
+}
+#background {
+  position: absolute;
+  left: 20%;
+  top: 5%;
+  width: 104%;
+  z-index: -20;
+}
+#scrollBottom {
+  position: relative;
+  background-image: url(../img/scroll_bottom.svg);
+  width: 100%;
+  height: 200px;
+  z-index: -10;
+  background-repeat: no-repeat;
+  overflow-y: hidden;
+  transform: translateY(-13%);
+}
+h1 {
+  margin-top: .2em;
+  margin-bottom: .1em;
+}
+.updated-at {
+  margin-bottom: .5em;
+  font-size: .9em;
+}
+.rule {
+  
+}
+.unratified {
+  // Issue #15 (well, I haven't documented the first 14)
+  // *Have* to use an external stylesheet because Parcel doesn't seem to honor the 
+  // configuration in .cssnanorc for scripts that are in the page. And I have to turn off 
+  // minifyGradients because of a bug in cssnano 
+  // which removes the first stop in gradients. https://github.com/cssnano/cssnano/issues/650
+  // Or use the workaround: use a really small decimal like .0001px 
+  background-image: repeating-linear-gradient(-45deg,
+      #d4d8b6 0px 20px, 
+      #b1b1b1 20px 40px);
+  padding: 5px 5px 1px 5px;
+  margin: .5em 0;
+  &::before {
+    content: 'Not yet ratified: '
+  }
+}
+p::first-letter {
+  font-size: 150%;
+}

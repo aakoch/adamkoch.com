@@ -2,111 +2,110 @@ doctype html
 html.no-js(lang="en")
   head 
     title "Children's rules"
-  style(type="text/scss").
-    body {
-      padding: .5em 1em;
-    }
-    h1 {
-      margin-top: .2em;
-      margin-bottom: .1em;
-    }
-    .updated-at {
-      margin-bottom: .5em;
-      font-size: .9em;
-    }
-    .rule {
-      
-    }
-    .unratified {
-      //- background: repeating-linear-gradient(-45deg, #fff 20px, #ccc 20px);
-      //- background: repeating-linear-gradient(-45deg, #fff 20px #ccc 20px);
-      background-image: repeating-linear-gradient(-45deg,
-          #d4d8b6 0 20px,
-          #b1b1b1 20px 40px);
-      padding: 5px 5px 1px 5px;
-      margin: .5em 0;
-      &::before {
-        content: 'Not yet ratified: '
-      }
-    }
+  //- *Have* to use an external stylesheet because of bug Parcel doesn't seem to honor the 
+  //- configuration in .cssnanorc.  I have to turn off minifyGradients because of a bug in cssnano 
+  //- which removes the first stop in gradients. https://github.com/cssnano/cssnano/issues/650
+  link(rel="stylesheet" href="./styles.scss")
   body
-    h1 Children's rules
-    .updated-at updated 9/2/2021
-    .rule 
-      strike Join family Life 360 and 
-      | leave notifications on at all times 
+    #scrollTop
 
-    .rule: p.
-      Mom or Dad can DENY having people over at ANY time. Do not expect friends to come over on school nights but allowances can be made in certain situations.
+    #background
+    .container
+      h1 Children's rules
+      .updated-at updated 9/2/2021
+      .rule 
+        strike Join family Life 360 and 
+        | leave notifications on at all times 
 
-    .rule: p.
-      Bedtime means in your room trying to sleep. Some leeway is given for devices (TV, Echo Dot) that help you sleep. No watching/listening adrenaline inducing TV shows, movies, metal music (unless that's soothing to you according to your mother), etc.
+      .rule: p.
+        Mom or Dad can DENY having people over at ANY time. Do not expect friends to come over on school nights but allowances can be made in certain situations.
 
-    .rule: p.
-      We don’t have huge or unreasonable expectations for you, please respect us and the expectations we lay out.  If you show us respect, we will respect you, and with earned respect comes privileges. 
+      .rule: p.
+        Bedtime means in your room trying to sleep. Some leeway is given for devices (TV, Echo Dot) that help you sleep. No watching/listening adrenaline inducing TV shows, movies, metal music (unless that's soothing to you according to your mother), etc.
 
-    .rule: p.
-      Any commitments are just that. They are not to be broken.  We expect any commitment made to be a priority and to be completed to the best of your ability. 
-    
-    .rule.unratified: p.
-      We expect texts to be answered within 30 minutes unless safety would be compromised.
+      .rule: p.
+        We don’t have huge or unreasonable expectations for you, please respect us and the expectations we lay out.  If you show us respect, we will respect you, and with earned respect comes privileges. 
 
-    .rule.unratified: p.
-      Phone calls should be answered always.
+      .rule: p.
+        Any commitments are just that. They are not to be broken.  We expect any commitment made to be a priority and to be completed to the best of your ability. 
+      
+      .rule.unratified: p.
+        We expect texts to be answered within 30 minutes unless safety would be compromised.
 
-    h2 Joel's rules:
-    .times
-      .weekdays
-        .title Sunday - Thursday:
-        .rule Off computer at 21:00, bedtime 22:00 (aka 9pm and 10pm)
-      .weekends
-        .title Friday &amp; Saturday:
-        .rule Off computer at 22:00, bedtime 23:00 (aka 10pm and 11pm)
+      .rule.unratified: p.
+        Phone calls should be answered always.
 
-    .rule
-      p Set a robotics schedule and stick to it. A predictable schedule for carpooling, team, and Mr. W - it’s not just the “Joel robotics show”. 
+      h2 Joel's rules:
+      .times
+        .weekdays
+          .title Sunday - Thursday:
+          .rule All devices, iPhone/s 📱, iPad/s, laptop/s 💻 turned in at 21:00, bedtime 22:00 (aka 9pm 🕘 and 10pm 🕙)
+        .weekends
+          .title Friday &amp; Saturday:
+          .rule All devices, iPhone/s 📱, iPad/s, laptop/s 💻 turned in at 22:00, bedtime 23:00 (aka 10pm 🕙 and 11pm 🕚)
 
-    h3 Provisional rules:
-    .rule
-      ul If there are any missing assignments (there are any marked missing in portal):
-        li No phone usage at home (no YouTube in the mornings, baths, etc)
-        li No computer if there are any missing assignments
-        li No TV until you have emailed the teacher and shown proof the assignment has been turned in
+      .rule
+        p Set a robotics 🤖 schedule and stick to it. A predictable schedule for carpooling, team, and Mr. W - it’s not just the “Joel robotics show”. 
 
-    .rule
-      On September 15th at 20:00, if you still have any missing assignments as shown in portal, all the previous rules apply plus phone privileges will be restricted at school to phone and text usage to a set of contacts picked by Mom and Dad.
+      h3 Provisional rules:
+      .rule
+        ul If there are any missing assignments (there are any marked missing in portal):
+          li No phone usage at home (no YouTube in the mornings, baths, etc)
+          li No computer if there are any missing assignments
+          li No TV until you have emailed the teacher and shown proof the assignment has been turned in
 
-  h2 Alyssa's rules:
-  .times
-    .weekdays
-      .title Sunday - Thursday:
-      .rule All devices, iPhone/s, iPad/s, computer/s turned into our room at 22:00, bedtime 23:00 (aka 10pm and 11pm)
+      .rule: p.
+        On September 15th at 20:00, if you still have any missing assignments as shown in portal, all the previous rules apply plus phone privileges will be restricted at school 🏫 to phone and text usage to a set of contacts picked by Mom and Dad.
+      .countdown(data-date='2021-09-15T20:00:00.000-05:00')
 
-    .weekends
-      .title Friday &amp; Saturday:
-      .rule All devices, iPhone/s, iPad/s, computer/s turned into our room at 23:00, bedtime 24:00 (aka 11pm and midnight) 
+      h2 Alyssa's rules:
+      .times
+        .weekdays
+          .title Sunday - Thursday:
+          .rule All devices, iPhone/s 📱, iPad/s, laptop/s 💻 turned into our room at 22:00, bedtime 23:00 (aka 10pm 🕙 and 11pm 🕚)
 
-  .rule: p.
-    You have 2 parents, Dad and Mom are a team.  When asking permission to do something or have someone over, please text both of us. 
+        .weekends
+          .title Friday &amp; Saturday:
+          .rule All devices, iPhone/s 📱, iPad/s, laptop/s 💻 turned into our room at 23:00, bedtime 24:00 (aka 11pm 🕚 and midnight 🕛) 
 
-  h3 Provisional Rules:
-  .rule  No purchases until September 16 at 00:00
+      .rule: p.
+        You have 2 parents, Dad and Mom are a team.  When asking permission to do something or have someone over, please text both of us. 
 
-  .rule
-    | No hanging out with friends except on these occasions:
-    ul
-      li At our house at Mom and Dad's discretion
-      li School activities sanctioned by North High and OPS
-    | This rule will be null and void September 9 at 00:00
+      h3 Provisional Rules:
+      .rule  No purchases until September 16 at 00:00
 
-  h2 Monthly chores for September:
-  div Joel - 
-    ul
-      li feed and water cocoa Monday thru Friday before school. 
-      li water plants 
+      .rule
+        | No hanging out with friends 👯‍♀️ except on these occasions:
+        ul
+          li At our house at Mom and Dad's discretion
+          li School activities sanctioned by North High and OPS
+        | This rule will be null and void September 9 at 00:00
+        .countdown(data-date='2021-09-09T00:00:00.000-05:00')
 
-  div Alyssa -
-    ul
-      li collect trash, replace liner bags, take out recycling and take all cans to the curb Sunday night.  Pull cans to the side of the house on Monday 
-      li empty recycling as needed during the week 
-      li vacuum stairs Saturday or Sunday 
+      h2 Monthly chores for September:
+      div Joel - 
+        ul
+          li feed and water cocoa Monday thru Friday before school. 
+          li water plants 
+
+      div Alyssa -
+        ul
+          li collect trash, replace liner bags, take out recycling and take all cans to the curb Sunday night.  Pull cans to the side of the house on Monday 
+          li empty recycling as needed during the week 
+          li vacuum stairs Saturday or Sunday 
+
+    #scrollBottom
+
+  script(type="module").
+    import moment from 'moment'; 
+    import countdown from 'countdown'; 
+    window.addEventListener('DOMContentLoaded', (event) => {
+      Array.from(document.getElementsByClassName('countdown')).forEach(function (el) {
+        function update(el) {
+          el.innerText = countdown(moment(el.dataset.date)).toString();
+        }
+        setInterval(function() { update(el) }, 1000)
+      });
+    });
+    // repeating-linear-gradient( -45deg ,#d4d8b6 20px,#b1b1b1 0 40px); // not working
+    // repeating-linear-gradient( -45deg , #d4d8b6 0 20px, #b1b1b1 20px 40px); // working
