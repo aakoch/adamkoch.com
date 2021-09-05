@@ -1,8 +1,9 @@
 extends ../../../../templates/blogpost
 
-block variables
+append variables
   - var title = "Moving off Wordpress and on to Netlify"
-  - var posted = '2021-08-29 20:00-05:00'
+  - var posted = '2021-08-31'
+  - var crumbs = ['Posts', 'post-20210828']
 
 block morehead
   script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
@@ -123,17 +124,14 @@ block morehead
     }
 
 block body
+
   .container.post#post-20210828
     .posted= posted
     .content
-      p Even when I told myself I was going to write this post, I got sidetracked adding animations and adding prefetch logic. By the time I finish this, it will be 
-        strike Friday, August 27
-        | 
-        strike Saturday, August 28
-        |  
-        strike Sunday, August 29
-        |  Monday, August 30.
-      h2 Why?
+      h2 Preface
+      p This post has been a long time coming. I started Thursday, August 26. It's now Septhember.
+      h2#intro I've been down this path before 
+        img(src="/src/img/park_with_path.svg" title="Park with path" width="20")
       p I started down the path of converting my Wordpress site to a static site because I started getting (or at least started getting notified of) &quot;hackers&quot; scanning my site for Wordpress vulnerabilities. 
         | I installed a plugin called 
         a(href="https://www.wordfence.com/" title="Wordfence Homepage") Wordfence
@@ -141,59 +139,98 @@ block body
         | I don't know if there was an upgrade but I started seeing my site getting hit and I wanted to jump on the static site generator bandwagon before it was, you know, gone.
         a#bandwagonLink(title='Influx, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons' href='https://commons.wikimedia.org/wiki/File:Bandwagon.jpg')
           img(alt='Bandwagon' src='/src/img/bandwagon.png')
-      #pug
-        h2 The Stack
 
-        p I've used Parcel before and love it because it supports 
-          a(href="https://pugjs.org/api/getting-started.html" title="Pug Homepage") Pug
-          |  out of the box. Pug is my favorite HTML template engine. Well, it's not as if there are hundreds of template engines or something. But I like it a lot better than Markdown. Yes, Pug is a <em>little</em> more verbose, but it makes up for it by allowing you to do more than a handful of things! The limitations of Markdown make me wonder why so many people like it. Anyway... I ❤️ Pug and tools that support Pug.
-        img#pugImg(src="/src/img/pug.svg" alt="Pug Logo")
-        #woof1: h3 Woof!
-        #woof2: h3 Woof!
+      h2 Requirements
 
-      .aside
-        i.fas.fa-angle-double-right 
-        | Quick link: 
-        a(href="https://html2pug.vercel.app/") Tool for taking some HTML and converting it to Pug
-      
+      #stack
+        #pug
+          h3 Pug
+          p I like  
+            a(href="https://pugjs.org/api/getting-started.html" title="Pug Homepage") Pug
+            |  because it takes a lot of the verboseness of HTML away. Think Markdown but you can still actually do things with Pug. Yes, Pug is a <em>little</em> more verbose, but it makes up for it by allowing you to do more than a handful of things! The limitations of Markdown make me wonder why so many people like it. Anyway... I ❤️ Pug.
+          
+          p It has support, although, while creating this site, I just seems as though there is less support than before. 
+          img#pugImg(src="/src/img/pug.svg" alt="Pug Logo")
+          #woof1: h3 Woof!
+          #woof2: h3 Woof!
+          
+          .aside
+            i.fas.fa-angle-double-right 
+            | Quick link: 
+            a(href="https://html2pug.vercel.app/") Tool for taking some HTML and converting it to Pug
 
-      h3 Host Searching
-      h4 AWS 
-      h4 Netlify
+        #parcel
+        h3 Parcel
+        p Parcel is a site packager that supports Pug out of the box. Version 2 doesn't advertise it though. One of the reasons I think Pug is on the way out.
 
-      a(id="hosting")
-      h3 Hosting
-      p I've been using Hostgator for 10 years now and have been pretty happy with it. I was only planning on switching if I found another way to host that was cheaper 
+        #vue
+        h3 Vue
+        p I'm not sure if Vue was a requirement, but when comparing it to React, Vue supports Pug. 
+
+        #bootstrap
+        h3 Bootstrap
+        p Not really a requirement, but I haven't looked into alternatives and sort of know it.
+
+        #npm
+        h3 NPM
+        p I'm not sure why I'm even listing this. Seems projects suggest Yarn more than NPM.
+
+        #email
+        h3 Email aliases
+        p I use my email aliases a lot. I have almost 500 aliases. By creating email aliases I can further increase my personal security by using a different email <em>and</em> password on websites. I can see when a website a) sold my email or b) was compromised and discard any emails addressed to that address. 
+
+      h2 Searching
+
+      #email_hosting
+      h3 Email Hosting
+      p I've been using 
+        span.popupGator Hostgator 
+        |  for 10 years now and have been pretty happy with it. I was only planning on switching if I found another way to host that was cheaper 
         span.underline and
-        |  I still had unlimited email aliases. I use my email aliases a lot. I have almost 500 aliases. By creating email aliases I can further increase my personal security by using a different email <em>and</em> password on websites. I can see when a website a) sold my email or b) was compromised and discard any emails addressed to that address. 
+        |  I still had unlimited email aliases. 
 
       p I looked at 
         a(href="https://www.godaddy.com/email/professional-business-email") GoDaddy's email solution
         |  and 
         a(href="https://workspace.google.com/") Google's Workspace (formally G Suite)
-        |  but neither had unlimited aliases.
+        |  but neither had unlimited aliases. So I decided to stick with HostGator for email. 
 
-      h2 Hosting?
-      p So I started looking at alternate hosting solutions. I looked at AWS but I <em>think</em> you have to have a Route 53 route set up if you want to use your own domain name. And 
+      #website_hosting
+      h3 Website Hosting
+      h4 AWS 
+      p When I started looking at alternate hosting solutions. I looked at AWS first but I <em>think</em> you have to have a Route 53 route set up if you want to use your own domain name. And 
         a(href="https://aws.amazon.com/route53/pricing/" title="$50/month") the cost
-        |  of that was more than what I am paying now. I then got to thinking about my email. My email and site are on the same server, so I had to research into how to split the 2 and if I even could. My 
-        span.popupGator hosting company
-        |  might not even allow it.  I did some research into domain zone entries. I was scared that I could mess up and stop getting email. 
+        |  of that was more than what I am paying now. 
+
+
+      #netlify
+      h4 Netlify 
+      p I've "kicked the tires" before and they wow'd me with 
+        a(href="https://thanosjs.org/") ThanosJS
+        |  . Ok, not really with the the ThanosJS, but with the tool used to deploy it: 
+        a(href="https://app.netlify.com/drop") Netlify Drop
+        |  .
+
+      p When I tested the deploy this time it went smoothly so, that's where I'm at now.
+
+      h2 Steps
+      h3 Separating the email and site servers
+      p I first had to split my current site that served as my email server and my webserver. I did some research into domain name records.
 
       ol DNS resources
         li: a(href="https://www.cloudflare.com/learning/dns/dns-records/" title="DNS records definitions") DNS records definitions
         li
+          a(href="https://www.hostgator.com/help/article/how-to-route-email-to-your-server-independently" title="How to Route Email to Your Server Independently") HostGator article
+          |  which has been deprecated since I last saw it and took the time to comment and report that it was outdated. 🤔 
+        li
           a(href="https://hostadvice.com/how-to/how-to-configure-email-on-a-different-host-from-the-website/" title="How to Configure Email on a Different Host from the Website") How to Configure Email on a Different Host from the Website
           |  It wasn't up-to-date either, but provided clues to get me there
-        li
-          a(href="https://www.hostgator.com/help/article/how-to-route-email-to-your-server-independently" title="How to Route Email to Your Server Independently") This article
-          |  which has been deprecated since I last saw it and took the time to comment and report that it was outdated. 🤔 
         li
           a(href="https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/" title="Netlify's documentation on configuring an external DNS for a custom domain") Configure external DNS for a custom domain
 
       h4 DNS Steps
       h5 Mail Server Settings
-      p I created a new subdomain called "mail2" but decided I was eventually going to use "mail" so I deleted it. It was a bit confusing because I then created the MX entry to point my root domain to the IP address of my new subdomain. And then went to 
+      p I basically had to set up an existing subdomain to instead point to an IP address and not to my root domain. What was not documented was what to do if that subdomain already exists. I have cPanel and it wasn't letting me set the email configuration on the existing domain. I tried creating a new mail subdomain but that didn't seem right with ....
 
       .container
         .row
@@ -250,7 +287,12 @@ block body
       
       h5 Web Server Settings
 
-      h2.mt-4 Syntax Highlighting
+      //- TODO: 
+      p Netlify does most of the work. The only "gotcha" was I originally had "" as the ___ website instead of ____
+
+      h2 Problems
+
+      h3.mt-4 Syntax Highlighting
       p I'm using 
         a(href="https://code.visualstudio.com/") Visual Studio Code
         img.icon(src="/src/img/vs_code.svg" alt="Visual Studio Code icon")
@@ -269,6 +311,12 @@ block body
         |  If you want to provide a fix or improvement, please create a pull request against the original repository.
         | Once accepted there, we are happy to receive an update request.
       p So I perused the repo and found that someone had already created a PR that correctly colored what I hadn't. It was opened in 2019. Ugh. So I think the repo is abandoned.
+
+      h2 Results
+      p Since I really enjoy learning this has been awesome. 
+
+      h2 Conclusion
+      p If you have a chance to learn something new, then do it!
 
     script(type="module").
       import _ from 'lodash'
