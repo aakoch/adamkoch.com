@@ -1,12 +1,18 @@
 <template lang="pug">
-form#commentForm.needs-validation(name='commentForm' data-netlify='true' novalidate @submit='submit()')
+form#commentForm.needs-validation(name='commentForm' data-netlify='true' netlify-honeypot='validate' novalidate @submit='submit()')
   .alert.alert-danger.mt-3(role="alert" v-if="isError") 
     h4.alert-heading Oh, no!
-    p Something didn't work.
-    h5 We sent the request but got this response:
-    p {{ errorMessage }}
+    #expandDetails(v-show="!expanded")
+      span Something didn't work. 
+      a(@click="expanded=true" data-bs-toggle="collapse" data-bs-target="#errorDetails" role="button" style="font-size:.9em") Expand Details +
+    .collapse#errorDetails
+      h5 We sent the request but got this response:
+      p {{ errorMessage }}
     hr
     p.mb-0 Please try reloading the page.
+  .alert.alert-success.mt-3(role="alert" v-if="isSuccess") 
+    h4.alert-heading Thank you!
+    p Your comment was successfully submitted.
   fieldset
     input(type="hidden" name="form-name" value="commentForm")
     .mb-0.mt-3
@@ -29,6 +35,10 @@ form#commentForm.needs-validation(name='commentForm' data-netlify='true' novalid
     .mb-3
       textarea.form-control(name='comment' id='comment' required)
       .invalid-feedback Umm... you wanted to say something, right?
+    .mb-0(hidden)
+      label.form-label.mb-0(for='validate') Validate: 
+    .mb-3(hidden)
+      input#url.form-control(type='text' name='validate' placeholder='Are you human?')
     .mb-1
       button.btn.btn-primary(type='submit' v-if="!beingSubmitted" id='submitButton') Submit
       .spinner-border.text-primary(role="status" v-if="beingSubmitted")
@@ -36,14 +46,26 @@ form#commentForm.needs-validation(name='commentForm' data-netlify='true' novalid
       .alert.alert-primary.mt-3(role="alert") All submissions are reviewed before being posted.
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: height 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  height: 0;
+}
+</style>
 
 <script>
 export default {
   data: function () {
     return {
       beingSubmitted: false,
-      isError: false
+      isSuccess: false,
+      isError: false,
+      expanded: false
     }
   },
   methods: {
@@ -61,15 +83,15 @@ export default {
             body: new URLSearchParams(formData).toString(),
           })
           .then((response) => {
-            this.beingSubmitted = false;
+            this.beingSubmitted = false
             if (response.ok) {
-              alert('Thank you!')
+              this.isSuccess = true
             }
             else {
               console.error(response);
               this.isError = true
               form.classList.remove("was-validated");
-              this.errorMessage = response.statusText || response.status
+              this.errorMessage = response.status + " - " + response.statusText
             }
           })
         } else {
@@ -79,6 +101,7 @@ export default {
         }
       } catch (e) {
         this.isError = true;
+        this.beingSubmitted = false;
         console.error(e);
       }
     },
