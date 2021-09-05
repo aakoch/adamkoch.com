@@ -65,9 +65,10 @@ export default {
               alert('Thank you!')
             }
             else {
+              console.error(response);
               this.isError = true
               form.classList.remove("was-validated");
-              this.errorMessage = response.statusText
+              this.errorMessage = response.statusText || response.status
             }
           })
         } else {
