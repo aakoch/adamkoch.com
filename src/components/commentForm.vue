@@ -8,6 +8,7 @@ form#commentForm.needs-validation(name='commentForm' data-netlify='true' novalid
     hr
     p.mb-0 Please try reloading the page.
   fieldset
+    input(type="hidden" name="form-name" value="commentForm")
     .mb-0.mt-3
       label.form-label.mb-0(for='name') Name: 
     .mb-3
