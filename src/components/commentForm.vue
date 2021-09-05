@@ -1,5 +1,5 @@
 <template lang="pug">
-form#commentForm.needs-validation(name='commentForm' data-netlify='true' netlify-honeypot='validate' novalidate @submit='submit()')
+form#commentForm.needs-validation(name='commentForm' data-netlify='true' netlify-honeypot='validate' novalidate @submit='submit()' )
   .alert.alert-danger.mt-3(role="alert" v-if="isError") 
     h4.alert-heading Oh, no!
     #expandDetails(v-show="!expanded")
@@ -13,8 +13,9 @@ form#commentForm.needs-validation(name='commentForm' data-netlify='true' netlify
   .alert.alert-success.mt-3(role="alert" v-if="isSuccess") 
     h4.alert-heading Thank you!
     p Your comment was successfully submitted.
-  fieldset
+  fieldset(v-bind:disabled="isSuccess")
     input(type="hidden" name="form-name" value="commentForm")
+    input(type="hidden" name="postId" v-bind:value="postId")
     .mb-0.mt-3
       label.form-label.mb-0(for='name') Name: 
     .mb-3
@@ -46,20 +47,11 @@ form#commentForm.needs-validation(name='commentForm' data-netlify='true' netlify
       .alert.alert-primary.mt-3(role="alert") All submissions are reviewed before being posted.
 </template>
 
-<style lang="scss" scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: height 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  height: 0;
-}
-</style>
+<style lang="scss" scoped></style>
 
 <script>
 export default {
+  props: ['postId'],
   data: function () {
     return {
       beingSubmitted: false,
