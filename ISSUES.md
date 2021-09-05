@@ -10,6 +10,7 @@
   Might have to do this for it to work: https://v2.parceljs.org/languages/css/#postcss-import
 ## # 5 CORS
   see .proxyrc.js
+  
 ## # 9 Sharp causes segmentation faults
 ## # 10 strange imports 
 ## # 11 Some reporter is broken
