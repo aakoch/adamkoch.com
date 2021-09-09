@@ -1,3 +1,5 @@
+import { escapeHtml } from "@vue/runtime-core/node_modules/@vue/shared";
+
 export default function (input) {
 
   let loggingEnabled = false;
@@ -13,11 +15,12 @@ export default function (input) {
     },
     java: {
       prefix: function(shortCode) {
-        return `<div class="javaCode"><code><pre>`        
+        return `<div class="javaCode"><pre><code class="language-java">`
       },
       suffix: function(shortCode) {
-        return `</pre></code></div>`
-      }
+        return `</code></pre></div>`
+      },
+      tranform: escapeHtml
     }
           // .replaceAll(/\[java[^]*?\]/g, "<code><pre>")
           // .replaceAll("[/java]", "</pre></code>")
@@ -56,8 +59,6 @@ export default function (input) {
       shortCode[match[1]] = match[2]
     }
 
-    console.dir(shortCode);
-
     // \[(\w*)(?:\s+(\w*)=\"(\w*)\")[^\]]*?\](.*)\[\/\1\]
 
     // \[(\w*)(?:(?=(?:\s+(\w*)=\"(\w*)\")\4)[^\]]*?\])*(.*)\[\/\1\]
@@ -67,7 +68,7 @@ export default function (input) {
     
     if (shortCodeReplacements[tagName]) {
       returnBody += shortCodeReplacements[tagName].prefix(shortCode)
-      returnBody += body;
+      returnBody += (shortCodeReplacements[tagName].hasOwnProperty('transform') ? shortCodeReplacements[tagName].transform.apply(body) : body);
       returnBody += shortCodeReplacements[tagName].suffix(shortCode)
     }
     else {

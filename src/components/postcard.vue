@@ -54,7 +54,12 @@ code {
 <script>
 import shortcode from "../js/shortcode";
 import comment from "./comment";
+import hljs from 'highlight.js/lib/core';
+import java from 'highlight.js/lib/languages/java';
+hljs.registerLanguage('java', java);
+import 'highlight.js/styles/github.css';
 
+global.hljs = hljs
 
 export default {
   // setup: function() {
@@ -116,11 +121,17 @@ export default {
           if (history.pushState) {
             history.pushState(this.postContent, null, '/posts/' + this.link.replace('https://www.adamkoch.com/', ''))
           }
-        },
-        function (error) {
-          console.log(error.statusText);
-        }
-      );
+
+        })
+        .then(() => {
+          document.querySelectorAll('pre code').forEach((el) => {
+            hljs.highlightElement(el);
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+
 
       return false;
     },
