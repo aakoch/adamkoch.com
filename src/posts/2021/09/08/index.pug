@@ -2,8 +2,7 @@ extends ../../../../templates/blogpost
 
 append variables
   - var title = "Moving off Wordpress and on to Netlify"
-  - var posted = '2021-08-31'
-  - var crumbs = ['Posts', 'post-20210828']
+  - var posted = '2021-09-08'
 
 block morehead
   script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
@@ -13,22 +12,11 @@ block morehead
     #bandwagonLink img {
       vertical-align: top;
     }
-    #pugImg {
-      display: block;
-      position: absolute;
-      width: 100px;
-      transition-timing-function: ease-in-out;
-    }
-    #woof1, #woof2 {
-      display: block;
-      position: absolute;
-      visibility: hidden;
-    }
     .popupGator {
       background-image: url('/src/img/hostgator_icon.png');
       display: inline-block;
       background-repeat: no-repeat;
-      background-position-x: 35px;
+      background-position-x: 25px;
       background-position-y: 25px;
       text-decoration: underline dashed;
       transition-property: background-position-y;
@@ -66,54 +54,6 @@ block morehead
       margin: 0 5px;
       height: 1.2em;
     }
-    @keyframes woof0 {
-      from {
-        transform: translate(0, 0);
-        opacity: 1;
-      }
-      to {
-        transform: translate(30px, -30px) scale(2.2) rotate(30deg);
-        opacity: 0;
-      }
-    }
-    @keyframes woof1 {
-      from {
-        transform: translate(0, 0);
-        opacity: 1;
-      }
-      to {
-        transform: translate(-30px, -30px) scale(2.2) rotate(-30deg);
-        opacity: 0;
-      }
-    }
-    @keyframes bark {
-      from {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-      to {
-        transform: scale(1);
-      }
-    }
-    @keyframes bark2 {
-      from {
-        transform: scale(1);
-      }
-      25% {
-        transform: scale(1.05);
-      }
-      50% {
-        transform: scale(1);
-      }
-      75% {
-        transform: scale(1.05);
-      }
-      to {
-        transform: scale(1);
-      }
-    }
     @keyframes myFadeOut {
       from {
         opacity: 1;
@@ -125,55 +65,21 @@ block morehead
 
 block body
 
-  .container.post#post-20210828
+  .container.post#post-20210905
     .posted= posted
     .content
       h2 Preface
-      p This post has been a long time coming. I started Thursday, August 26. It's now Septhember.
-      h2#intro I've been down this path before 
-        img(src="/src/img/park_with_path.svg" title="Park with path" width="20")
+      p This post has been a long time coming. I started writing this Thursday, August 26. It's now Septhember.
+      h2#intro Why?
       p I started down the path of converting my Wordpress site to a static site because I started getting (or at least started getting notified of) &quot;hackers&quot; scanning my site for Wordpress vulnerabilities. 
         | I installed a plugin called 
         a(href="https://www.wordfence.com/" title="Wordfence Homepage") Wordfence
         | , which I have to say, is an awesome app for being free. It could block IPs that were hitting the site and you could configure it with how many hits before blocking or if they hit a specific URL known for a vulnerability. 
         | I don't know if there was an upgrade but I started seeing my site getting hit and I wanted to jump on the static site generator bandwagon before it was, you know, gone.
-        a#bandwagonLink(title='Influx, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons' href='https://commons.wikimedia.org/wiki/File:Bandwagon.jpg')
-          img(alt='Bandwagon' src='/src/img/bandwagon.png')
+      a#bandwagonLink(title='Influx, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons' href='https://commons.wikimedia.org/wiki/File:Bandwagon.jpg')
+        img(alt='Bandwagon' src='/src/img/bandwagon.png')
 
       h2 Requirements
-
-      #stack
-        #pug
-          h3 Pug
-          p I like  
-            a(href="https://pugjs.org/api/getting-started.html" title="Pug Homepage") Pug
-            |  because it takes a lot of the verboseness of HTML away. Think Markdown but you can still actually do things with Pug. Yes, Pug is a <em>little</em> more verbose, but it makes up for it by allowing you to do more than a handful of things! The limitations of Markdown make me wonder why so many people like it. Anyway... I ❤️ Pug.
-          
-          p It has support, although, while creating this site, I just seems as though there is less support than before. 
-          img#pugImg(src="/src/img/pug.svg" alt="Pug Logo")
-          #woof1: h3 Woof!
-          #woof2: h3 Woof!
-          
-          .aside
-            i.fas.fa-angle-double-right 
-            | Quick link: 
-            a(href="https://html2pug.vercel.app/") Tool for taking some HTML and converting it to Pug
-
-        #parcel
-        h3 Parcel
-        p Parcel is a site packager that supports Pug out of the box. Version 2 doesn't advertise it though. One of the reasons I think Pug is on the way out.
-
-        #vue
-        h3 Vue
-        p I'm not sure if Vue was a requirement, but when comparing it to React, Vue supports Pug. 
-
-        #bootstrap
-        h3 Bootstrap
-        p Not really a requirement, but I haven't looked into alternatives and sort of know it.
-
-        #npm
-        h3 NPM
-        p I'm not sure why I'm even listing this. Seems projects suggest Yarn more than NPM.
 
         #email
         h3 Email aliases
@@ -285,38 +191,19 @@ block body
                   br
                   | Destination: mail.adamkoch.com
       
+      .aside Ok, I've been delaying this post for a long time so the next few parts are very thin.
+
       h5 Web Server Settings
 
-      //- TODO: 
-      p Netlify does most of the work. The only "gotcha" was I originally had "" as the ___ website instead of ____
-
-      h2 Problems
-
-      h3.mt-4 Syntax Highlighting
-      p I'm using 
-        a(href="https://code.visualstudio.com/") Visual Studio Code
-        img.icon(src="/src/img/vs_code.svg" alt="Visual Studio Code icon")
-        |  to code front-end apps and found the Pug syntax highlighting failed in the case where a 
-        code script
-        |  tag had the type attribute set to "module". It isn't the end of the world, but annoying enough I went down the path of trying to fix it. I went to 
-        a(href="https://code.visualstudio.com/docs#vscode") the VS Code documentation site
-        |  and searched for syntax highlighting and found 
-        a(href="https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide") this guide
-        | . I tried the to 
-        a(href="https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide#injection-grammars") injection grammar
-        |  but I didn't know what I was doing so I had to give up on that. (How am I was supposed to know what value to "injectTo"?) So I poked around in the application source 
-        | and found pug.tmLanguage.json. From there I was able to find the section that deals with Javascript and add in some regex to allow "module". But it simply said that not to reject the script if it found "module" -- it didn't highlight the attribute nor value. At the top of the file is a disclaimer: 
-      .aside.quote This file has been converted from 
-        a(href="https://github.com/davidrios/pug-tmbundle/blob/master/Syntaxes/Pug.JSON-tmLanguage") https://github.com/davidrios/pug-tmbundle/blob/master/Syntaxes/Pug.JSON-tmLanguage
-        |  If you want to provide a fix or improvement, please create a pull request against the original repository.
-        | Once accepted there, we are happy to receive an update request.
-      p So I perused the repo and found that someone had already created a PR that correctly colored what I hadn't. It was opened in 2019. Ugh. So I think the repo is abandoned.
+      p Netlify does most of the work. Follow the directions 
+        a(href="https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/#configure-an-apex-domain") here
+        |. The only "gotcha" was I originally had "www.adamkoch.com" as the A record instead of "adamkoch.com". Not a big deal and easy to rectify.
 
       h2 Results
       p Since I really enjoy learning this has been awesome. 
 
       h2 Conclusion
-      p If you have a chance to learn something new, then do it!
+      p If you have a chance to learn something new, then do it! 
 
     script(type="module").
       import _ from 'lodash'

@@ -1,0 +1,295 @@
+extends ../../../../templates/blogpost
+
+append variables
+  - var title = "My Stack"
+  - var posted = '2021-09-??'
+
+block morehead
+  script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+  script(src="/node_modules/jquerykeyframes/dist/jquery.keyframes.min.js")
+
+  style.
+    #pugImg {
+      display: block;
+      position: absolute;
+      width: 100px;
+      transition-timing-function: ease-in-out;
+    }
+    #woof1, #woof2 {
+      display: block;
+      position: absolute;
+      visibility: hidden;
+    }
+    .popupGator {
+      background-image: url('/src/img/hostgator_icon.png');
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-position-x: 35px;
+      background-position-y: 25px;
+      text-decoration: underline dashed;
+      transition-property: background-position-y;
+      transition-duration: 2s;
+    }
+    .popupGator:hover {
+        background-position-y: 0px;
+    }
+
+    li {
+      margin-left: 25px;
+    }
+
+    img.icon {
+      margin: 0 5px;
+      height: 1.2em;
+    }
+    @keyframes woof0 {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(30px, -30px) scale(2.2) rotate(30deg);
+        opacity: 0;
+      }
+    }
+    @keyframes woof1 {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(-30px, -30px) scale(2.2) rotate(-30deg);
+        opacity: 0;
+      }
+    }
+    @keyframes bark {
+      from {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    @keyframes bark2 {
+      from {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.05);
+      }
+      50% {
+        transform: scale(1);
+      }
+      75% {
+        transform: scale(1.05);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    @keyframes myFadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+block body
+
+  .container.post#post-20210907
+    .posted= posted
+    .content
+      #stack
+      h2 Stack
+      #pug
+        h3 Pug
+        p I like  
+          a(href="https://pugjs.org/api/getting-started.html" title="Pug Homepage") Pug
+          |  because it takes a lot of the verboseness of HTML away. Think Markdown but you can still actually do things with Pug. Yes, Pug is a <em>little</em> more verbose, but it makes up for it by allowing you to do more than a handful of things! The limitations of Markdown make me wonder why so many people like it. Anyway... I ❤️ Pug.
+        
+        p It has support, although, while creating this site, I just seems as though there is less support than before. 
+        img#pugImg(src="/src/img/pug.svg" alt="Pug Logo")
+        #woof1: h3 Woof!
+        #woof2: h3 Woof!
+        
+        .aside
+          i.fas.fa-angle-double-right 
+          | Quick link: 
+          a(href="https://html2pug.vercel.app/") Tool for taking some HTML and converting it to Pug
+
+        #parcel
+        h3 Parcel
+        p Parcel is a site packager that supports Pug out of the box. Version 2 doesn't advertise it though. One of the reasons I think Pug is on the way out.
+
+        #vue
+        h3 Vue
+        p I'm not sure if Vue was a requirement, but when comparing it to React, Vue supports Pug. 
+
+        #bootstrap
+        h3 Bootstrap
+        p Not really a requirement, but I haven't looked into alternatives and I sort of know it.
+
+        #npm
+        h3 NPM
+        p I'm not sure why I'm even listing this. Seems projects suggest Yarn more than NPM.
+
+
+      h2 Problems
+
+      h3.mt-4 Syntax Highlighting
+      p I'm using 
+        a(href="https://code.visualstudio.com/") Visual Studio Code
+        img.icon(src="/src/img/vs_code.svg" alt="Visual Studio Code icon")
+        |  to code front-end apps and found the Pug syntax highlighting failed in the case where a 
+        code script
+        |  tag had the type attribute set to "module". It isn't the end of the world, but annoying enough I went down the path of trying to fix it. I went to 
+        a(href="https://code.visualstudio.com/docs#vscode") the VS Code documentation site
+        |  and searched for syntax highlighting and found 
+        a(href="https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide") this guide
+        | . I tried the to 
+        a(href="https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide#injection-grammars") injection grammar
+        |  but I didn't know what I was doing so I had to give up on that. (How am I was supposed to know what value to "injectTo"?) So I poked around in the application source 
+        | and found pug.tmLanguage.json. From there I was able to find the section that deals with Javascript and add in some regex to allow "module". But it simply said that not to reject the script if it found "module" -- it didn't highlight the attribute nor value. At the top of the file is a disclaimer: 
+      .aside.quote This file has been converted from 
+        a(href="https://github.com/davidrios/pug-tmbundle/blob/master/Syntaxes/Pug.JSON-tmLanguage") https://github.com/davidrios/pug-tmbundle/blob/master/Syntaxes/Pug.JSON-tmLanguage
+        |  If you want to provide a fix or improvement, please create a pull request against the original repository.
+        | Once accepted there, we are happy to receive an update request.
+      p So I perused the repo and found that someone had already created a PR that correctly colored what I hadn't. It was opened in 2019. Ugh. So I think the repo is abandoned.
+
+      h2 Results
+      p Since I really enjoy learning this has been awesome. 
+
+      h2 Conclusion
+      p If you have a chance to learn something new, then do it!
+
+    script(type="module").
+      import _ from 'lodash'
+      import _debug from 'debug'
+      const debug = _debug('aakoch:pugAnimation')
+      
+      jQuery(() => {
+        const pugImg = $('#pugImg')
+        const woofs = {
+          0: $('#woof1'),
+          1: $('#woof2')
+        }
+        let canMove = true;
+        let rotateLeft = true;
+
+        const element = pugImg[0]
+        let start, previousTimeStamp, x, y;
+
+        const debouncedMovePug = _.debounce(movePug, 10)
+        const debouncedUpdateCoordinates = _.debounce(updateCoordinates, 30)
+        
+        function updateCoordinates(event) {
+          if (process.env.NODE_ENV !== 'production') console.debug("inside updateCoordinates")
+          if (canMove) {
+            x = event.pageX
+            y = event.pageY
+            movePug()
+          }
+        }
+
+        function movePug() {
+          if (process.env.NODE_ENV !== 'production') console.log(process.env.NODE_ENV)
+          if (process.env.NODE_ENV !== 'production') console.debug("inside movePug")
+          if (canMove) {
+            if (process.env.NODE_ENV !== 'production') console.log(parseInt(pugImg.css("left"), 10) + ',' + parseInt(pugImg.css("top"), 10) + ' -> ' + x + ',' + y);
+            let distX = x - parseInt(pugImg.css("left"), 10)
+            let distY = y - parseInt(pugImg.css("top"), 10)
+            let dist = distX + distY
+
+            let fromTransform = 'translate(0px, 0px)'
+            if (process.env.NODE_ENV !== 'production') console.log(`fromTransform=${fromTransform}`)
+            let toTransform = 'translate(' + distX + 'px, ' + distY + 'px)'
+            if (process.env.NODE_ENV !== 'production') console.log(`toTransform=${toTransform}`)
+            $.keyframe.define({
+                name: 'move',
+                from: {
+                    'transform': fromTransform
+                },
+                to: {
+                    'transform': toTransform
+                }
+            });
+            pugImg.resetKeyframe();
+            if (process.env.NODE_ENV !== 'production') console.debug("calling playKeyframe")
+            pugImg.playKeyframe(
+                'move 1s ease-in-out .1s forwards',
+                function() {
+                  if (process.env.NODE_ENV !== 'production') console.log("inside end of move")
+
+                  canMove = true;
+                  pugImg.css("left", x + "px")
+                  pugImg.css("top", y + "px")
+                  pugImg.css("animation", "none")
+
+                  let barkTwice = Math.floor(Math.random() * 3) > 0;
+
+                  pugImg.resetKeyframe();
+                  if (barkTwice) {
+                    pugImg.playKeyframe('bark2 .7s linear 0s forwards')
+                  }
+                  else {
+                    pugImg.playKeyframe('bark .3s linear 0s forwards')
+                  }
+
+                  rotateLeft = !rotateLeft
+
+                  let keyframeIdx = Math.floor(Math.random() * 2)
+                  const currentX = x
+                  const currentY = y
+                  function go(i, keyframeIdx) {
+                    if (process.env.NODE_ENV !== 'production') console.debug("inside go")
+
+                    woofs[i].css("left", (currentX+15) + "px")
+                    woofs[i].css("top", (currentY-15) + "px")
+
+                    woofs[i].playKeyframe('woof' + keyframeIdx + ' .9s ease-out 0s forwards')
+                  }
+
+                  go(0, keyframeIdx)
+                  if (barkTwice) {
+                    setTimeout(function () {
+                      woofs[1].show().css("visibility", "visible") 
+                      go(1, keyframeIdx)
+                    }, 300)
+                  }
+
+                }
+            );
+
+            canMove = false
+          }
+        }
+
+        $("#pug")
+          .mousemove(function (event) {
+            debouncedUpdateCoordinates(event)
+          })
+          .mouseenter(function (event) {
+              canMove = true;
+              woofs[0].show().css("visibility", "visible") 
+              pugImg.fadeIn(1000, function () {
+            });
+          })
+          .mouseleave(function (event) {
+            canMove = false;
+            pugImg.fadeOut(1000);
+          });
+          
+          pugImg.css("top", "100px")
+          pugImg.css("left", "-110px")
+          
+          woofs[0].css("top", "100px")
+          woofs[0].css("left", "-110px")
+          
+          woofs[1].css("top", "100px")
+          woofs[1].css("left", "-110px")
+      });
