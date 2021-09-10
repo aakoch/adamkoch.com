@@ -52,7 +52,6 @@
     "blueimp-md5": "^2.18.0",
     "bootstrap": "^5.0.2",
     "countdown": "git://github.com/mckamey/countdownjs.git#1902fb23d21d84958b302c117fe472634a5bcf52",
-    "github-release-notes": "^0.17.3",
     "html2pug": "^4.0.0",
     "jquery": "^3.6.0",
     "jquerykeyframes": "^1.0.8",
