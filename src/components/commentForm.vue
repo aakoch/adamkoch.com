@@ -44,7 +44,7 @@ form#commentForm.needs-validation(name='commentForm' data-netlify='true' netlify
       button.btn.btn-primary(type='submit' v-if="!beingSubmitted" id='submitButton') Submit
       .spinner-border.text-primary(role="status" v-if="beingSubmitted")
         span.visually-hidden Submitting...
-      .alert.alert-primary.mt-3(role="alert") All submissions are reviewed before being posted.
+      .alert.alert-primary.mt-3(role="alert" v-if="postId") All submissions are reviewed before being posted.
 </template>
 
 <style lang="scss" scoped></style>

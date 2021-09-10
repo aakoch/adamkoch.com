@@ -4,8 +4,8 @@
   "description": "Adam Koch homepage",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "parcel ./src/index.pug './src/**/index.pug' ./src/testform.pug ./src/404.pug --no-cache",
-    "build": "cp -Rv src/assets/ dist/ && parcel build ./src/index.pug ./src/testform.pug './src/**/index.pug' ./src/404.pug",
+    "watch": "parcel ./src/index.pug './src/**/index.pug' ./src/404.pug --no-cache",
+    "build": "cp -Rv src/assets/ dist/ && parcel build ./src/index.pug './src/**/index.pug' ./src/404.pug",
     "clean": "rm -rf ./dist/",
     "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && git push && git push --tags"
   },
