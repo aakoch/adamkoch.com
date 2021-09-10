@@ -7,7 +7,7 @@
     "watch": "mkdir -p dist && cp -v _redirects dist/ && cp -Rv src/assets/ dist/ && parcel ./src/index.pug './src/**/index.pug' ./src/404.pug --no-cache",
     "build": "mkdir -p dist && cp -v _redirects dist/ && cp -Rv src/assets/ dist/ && parcel build ./src/index.pug './src/**/index.pug' ./src/404.pug",
     "clean": "rm -rf ./dist/ && mkdir dist",
-    "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && git push && git push --tags"
+    "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && npx gren release --data-source=commits"
   },
   "repository": {
     "type": "git",
@@ -52,6 +52,7 @@
     "blueimp-md5": "^2.18.0",
     "bootstrap": "^5.0.2",
     "countdown": "git://github.com/mckamey/countdownjs.git#1902fb23d21d84958b302c117fe472634a5bcf52",
+    "github-release-notes": "^0.17.3",
     "html2pug": "^4.0.0",
     "jquery": "^3.6.0",
     "jquerykeyframes": "^1.0.8",
