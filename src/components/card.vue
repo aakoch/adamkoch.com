@@ -7,7 +7,11 @@
     h5.card-title {{ cardTitle }}
     p.card-text {{ excerpt }}
   .card-text
-    a.btn.btn-primary(v-bind:href='url' v-bind:title='cardTitle') {{ buttonText }}
+    a.btn.btn-primary(v-bind:href='url' v-bind:title='cardTitle' v-show='url') {{ buttonText }}
+  
+    .btn-group(role='group' aria-label='Blog Posts' v-show='url1')
+      a.btn.btn-primary(v-bind:href='url1' v-bind:title='cardTitle1') {{ buttonText1 }}
+      a.btn.btn-primary(v-bind:href='url2' v-bind:title='cardTitle2') {{ buttonText2 }}
   .card-footer(v-show="lastUpdated")
     small.text-muted {{ lastUpdated }}
 </template>
@@ -26,10 +30,16 @@ $white: #f5f7f8;
   min-width: 5rem;
   overflow: hidden;
 
-  .card-text > .btn {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
+  .card-text {
+    > .btn, > .btn-group {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+    }
+
+    > .btn-group > .btn:nth-child(1) {
+      border-right: 2px solid #43464A66;
+    }
   }
 
   .new-corner {
@@ -88,7 +98,7 @@ $white: #f5f7f8;
 import debounce from 'lodash/debounce';
 
 export default {
-  props: ['cardTitle', 'excerpt', 'icon', 'buttonText', 'url', 'lastUpdated'],
+  props: ['cardTitle', 'excerpt', 'icon', 'buttonText', 'url', 'lastUpdated', 'url1', 'url2', 'buttonText1', 'buttonText2'],
   created() {
     // Debouncing with Lodash
     this.debouncedPrefetch = debounce(this.prefetch, 10)

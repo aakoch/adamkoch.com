@@ -9,7 +9,7 @@
       .container
         .row.justify-content-center.align-items-center.g-2
           .col-md(v-for="card in cards")
-            card(:key='card.id' :cardTitle='card.title' :excerpt='card.excerpt' :icon='card.icon' :buttonText='card.button' :url='card.url' :lastUpdated='card.lastUpdated')
+            card(:key='card.id' :cardTitle='card.title' :excerpt='card.excerpt' :icon='card.icon' :buttonText='card.button' :url='card.url' :lastUpdated='card.lastUpdated' :buttonText1='card.button1' :url1='card.url1' :buttonText2='card.button2' :url2='card.url2')
 #adamexcerpt2
   p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things" 
     | are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
@@ -158,11 +158,14 @@ export default {
       cards: [
         {
           id: 1,
-          title: "Blog",
+          title1: "Latest Post",
+          title2: "All Posts",
           icon: "fas fa-feather",
           excerpt: "Thoughts on the current state of things",
-          button: "Read on",
-          url: "/posts/",
+          button1: "Latest",
+          url1: "/posts/latest/",
+          button2: "All",
+          url2: "/posts/",
           lastUpdated: "Latest post: 2021-09-09"
         },
         {
