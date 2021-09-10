@@ -1,6 +1,6 @@
 {
   "name": "adamkoch.com",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Adam Koch homepage",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
