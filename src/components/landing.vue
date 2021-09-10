@@ -9,7 +9,7 @@
       .container
         .row.justify-content-center.align-items-center.g-2
           .col-md(v-for="card in cards")
-            card(:key='card.id' :cardTitle='card.title' :excerpt='card.excerpt' :icon='card.icon' :buttonText='card.button' :url='card.url')
+            card(:key='card.id' :cardTitle='card.title' :excerpt='card.excerpt' :icon='card.icon' :buttonText='card.button' :url='card.url' :lastUpdated='card.lastUpdated')
 #adamexcerpt2
   p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things" 
     | are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
@@ -163,6 +163,7 @@ export default {
           excerpt: "Thoughts on the current state of things",
           button: "Read on",
           url: "/posts/",
+          lastUpdated: "Latest post: 2021-09-09"
         },
         {
           id: 2,

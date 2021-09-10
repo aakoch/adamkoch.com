@@ -1,5 +1,6 @@
 <template lang="pug">
 .card(@click='goto(url)' @mouseover='debouncedPrefetch(url)')
+  .new-corner(v-show="lastUpdated") New!
   .icon-container
     i.card-img-top(v-bind:class='icon')
   .card-body
@@ -7,6 +8,8 @@
     p.card-text {{ excerpt }}
   .card-text
     a.btn.btn-primary(v-bind:href='url' v-bind:title='cardTitle') {{ buttonText }}
+  .card-footer(v-show="lastUpdated")
+    small.text-muted {{ lastUpdated }}
 </template>
 
 <style lang="scss" scoped>
@@ -21,11 +24,22 @@ $white: #f5f7f8;
   border-radius: 10px;
   height: 20rem;
   min-width: 5rem;
+  overflow: hidden;
 
   .card-text > .btn {
     position: absolute;
     right: 1rem;
     bottom: 1rem;
+  }
+
+  .new-corner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .4em 3em;
+
+    transform: rotateZ(-45deg) translateX(-2.2em) translateY(-1.5em);
+    background-color: #e7e556d8;
   }
 
   .card-body {
@@ -74,6 +88,7 @@ $white: #f5f7f8;
 import debounce from 'lodash/debounce';
 
 export default {
+  props: ['cardTitle', 'excerpt', 'icon', 'buttonText', 'url', 'lastUpdated'],
   created() {
     // Debouncing with Lodash
     this.debouncedPrefetch = debounce(this.prefetch, 10)
@@ -82,7 +97,6 @@ export default {
     // Cancel the timer when the component is removed
     this.debouncedPrefetch.cancel()
   },
-  props: ['cardTitle', 'excerpt', 'icon', 'buttonText', 'url'],
   data() {
     return {
       prefetchedLocations: []
