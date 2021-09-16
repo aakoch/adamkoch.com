@@ -165,6 +165,7 @@ export default {
           button1: "Latest",
           url1: "/posts/latest/",
           button2: "All",
+          url: "/posts/",
           url2: "/posts/",
           lastUpdated: "Latest post: 2021-09-09"
         },
