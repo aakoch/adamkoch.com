@@ -118,9 +118,9 @@ export default {
             this.comments = postJson["wp:comment"];
           }
 
-          if (history.pushState) {
-            history.pushState(this.postContent, null, '/posts/' + this.link.replace('https://www.adamkoch.com/', ''))
-          }
+          // if (history.pushState) {
+          //   history.pushState(this.postContent, null, '/posts/' + this.link.replace('https://www.adamkoch.com/', ''))
+          // }
 
         })
         .then(() => {
