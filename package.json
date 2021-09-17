@@ -28,6 +28,7 @@
     "vue-router": "^4.0.11"
   },
   "devDependencies": {
+    "@parcel/core": "^2.0.0-rc.0",
     "@parcel/packager-raw-url": "v2.0.0-rc.0",
     "@parcel/reporter-build-metrics": "^2.0.0-rc.0",
     "@parcel/reporter-bundle-analyzer": "^2.0.0-rc.0",
@@ -36,11 +37,11 @@
     "@parcel/transformer-sass": "v2.0.0-rc.0",
     "@parcel/transformer-vue": "v2.0.0-rc.0",
     "@parcel/transformer-webmanifest": "v2.0.0-rc.0",
-    "@vue/cli-plugin-unit-mocha": "~4.5.0",
+    "@vue/cli-plugin-unit-mocha": "^3.12.1",
     "@vue/test-utils": "^2.0.0-rc.14",
     "autoprefixer": "^10.3.4",
     "chai": "^4.3.4",
-    "fontawesome-subset": "^2.0.0",
+    "fontawesome-subset": "^3.0.0",
     "globby": "^12.0.2",
     "highlight.js": "^11.2.0",
     "jsdom": "^17.0.0",
