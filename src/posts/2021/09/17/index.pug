@@ -2,11 +2,9 @@ extends ../../../../templates/blogpost
 
 append variables
   - var title = "My Stack"
-  - var posted = '2021-09-??'
+  - var posted = '2021-09-17'
 
 block morehead
-  script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
-  script(src="/node_modules/jquerykeyframes/dist/jquery.keyframes.min.js")
 
   style.
     #pugImg {
@@ -105,7 +103,7 @@ block body
     .posted= posted
     .content
       #stack
-      h2 Stack
+      p Hey guys! I wanted to tell you about my current stack for this website because I have cute dog that appears when you mouse over the part about Pug.
       #pug
         h3 Pug
         p I like  
@@ -120,11 +118,15 @@ block body
         .aside
           i.fas.fa-angle-double-right 
           | Quick link: 
-          a(href="https://html2pug.vercel.app/") Tool for taking some HTML and converting it to Pug
+          a(href="https://html2pug.vercel.app/" title="Free online HTML to Pug conversion tool") Tool for taking some HTML and converting it to Pug
 
         #parcel
         h3 Parcel
-        p Parcel is a site packager that supports Pug out of the box. Version 2 doesn't advertise it though. One of the reasons I think Pug is on the way out.
+        p 
+          a(href="https://parceljs.org/" title="Parcel web application bundler") Parcel 
+          | is a site packager that supports Pug out of the box. 
+          a(href="https://v2.parceljs.org/" title="Parcel v2 web application bundler") Version 2
+          |  doesn't advertise it though. One of the reasons I think Pug is on the way out.
 
         #vue
         h3 Vue
@@ -136,12 +138,76 @@ block body
 
         #npm
         h3 NPM
-        p I'm not sure why I'm even listing this. Seems projects suggest Yarn more than NPM.
+        p I'm not sure why I'm even listing this. Seems projects suggest Yarn more than NPM. But I'm not having the best experience with either of them. 
 
+      #issues
+      h2 Issues (so far)
+  
+      h3 # 1 style(type=application/scss) errors
+      p I was trying to use the correct type (I thought) when using 
+        a(href="https://sass-lang.com/" title="A superset of CSS") Sass
+        | . It wasn't work and ended up creating 
+        a(href="https://github.com/parcel-bundler/parcel/issues/6689" title="Github issue") a Github issue 
+        |  just to be told to use 
+        span.font-monospace `type=text/scss`
+        | .
+      
+      h3 # 2 SVGs aren't properly minimized
+      p I have to set 
+        span.font-monospace `"minifySvg": false`
+        |  in 
+        span.font-monospace .htmlnanorc
+        | .
 
-      h2 Problems
+      h3 # 3 Pug imports wonky
+      p If you have Pug templates or other external files several layers deep, the resolving of directories stop working. Either have to limit how you can layout your files or use "absolute" paths from the project root.
 
-      h3.mt-4 Syntax Highlighting
+      h3 # 4 Sass variables not passed down
+      p Actually, this might not be an issue. The idea is I want to define some Sass variables in a file and be able to use those in my pages and Vue components. I haven't tried too hard yet to get this to work. I have to read up on 
+        a(href="https://v2.parceljs.org/languages/css/#css-modules" title="Parcel documentaion on CSS modules") CSS modules
+        | .
+    
+      h3 # 5 CORS
+      p On a couple of pages I want to load some external images and CORS gets in the way. I eventually just turned if off locally using 
+        span.font-monospace `.proxyrc.js`
+
+      h3 #6 - #8
+      p TBD
+
+      h3 # 9 segfaults
+      p The Sharp imaging package causes 
+      
+        a(href="https://answers.netlify.com/t/segmentation-fault-on-build/34003/6?u=aakoch" title="Discussion on Netlify about segfaults") segmentation faults
+        | . It can transform images during your build and I was looking forward to using 
+        span.font-monospace imgset
+        | s and webp images. 
+            
+      h3 # 10 strange imports 
+      p I think this is duplicate of #3.
+
+      h3 # 11 No logging
+      p Seriously. I tried turning on verbose logging, changing the log levels, using debug and nothing! 
+        span.font-monospace `--log-level=verbose`
+        |  doesn't seem to do anything
+
+      h3 # 12 Some reporter is broken
+      p When I was trying to increase logging, I set up some "reporters" and one just failed. I asked about logging and really didn't get a satisfying answer.
+      
+      h3 # 13
+      p I was trying to put a countdown timer on my site and had to resort to directly depending on a forked repo.
+      pre: code.language-JSON "countdown": "git://github.com/mckamey/countdownjs.git#1902fb23d21d84958b302c117fe472634a5bcf52",
+
+      h3 # 14 Can't use styling in &lt;head&gt;
+      p I *have* to use an external stylesheet because of 
+        a(href="https://github.com/parcel-bundler/parcel/issues/6883" title="Parcel bug report") a bug  
+        |  where Parcel doesn't seem to honor the configuration in `#[span.font-monospace .cssnanorc]`.  
+        
+      h3 # 15 cssnano 
+      p I have to turn off minifyGradients because of 
+        a(href="https://github.com/cssnano/cssnano/issues/650" title="cssnano bug report") a bug in cssnano 
+        |  which removes the first stop in gradients. Or use the workaround: use a really small decimal like .0001px 
+
+      h3.mt-4 # 6 - 8 Syntax Highlighting
       p I'm using 
         a(href="https://code.visualstudio.com/") Visual Studio Code
         img.icon(src="/src/img/vs_code.svg" alt="Visual Studio Code icon")
@@ -151,7 +217,7 @@ block body
         a(href="https://code.visualstudio.com/docs#vscode") the VS Code documentation site
         |  and searched for syntax highlighting and found 
         a(href="https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide") this guide
-        | . I tried the to 
+        | . I tried to 
         a(href="https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide#injection-grammars") injection grammar
         |  but I didn't know what I was doing so I had to give up on that. (How am I was supposed to know what value to "injectTo"?) So I poked around in the application source 
         | and found pug.tmLanguage.json. From there I was able to find the section that deals with Javascript and add in some regex to allow "module". But it simply said that not to reject the script if it found "module" -- it didn't highlight the attribute nor value. At the top of the file is a disclaimer: 
@@ -161,14 +227,20 @@ block body
         | Once accepted there, we are happy to receive an update request.
       p So I perused the repo and found that someone had already created a PR that correctly colored what I hadn't. It was opened in 2019. Ugh. So I think the repo is abandoned.
 
-      h2 Results
-      p Since I really enjoy learning this has been awesome. 
+      h3 Tests
+      p I wasn't worried about tests until I push out my site with a broken link, navigation broken, and posts not loading. I spent all last night working on it and it has come down to this: if I want to use Mocha I have to use webpack. Or I can switch to Jest. That's a story for another post.
 
       h2 Conclusion
-      p If you have a chance to learn something new, then do it!
+      p When starting out, Parcel with Pug is easy and straightfoward. But man, anything beyound that and it gets yucky. 
+
+    script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+    script(src="/node_modules/jquerykeyframes/dist/jquery.keyframes.min.js")
 
     script(type="module").
+
+      import hljs from 'highlight.js/lib/core';
       import _ from 'lodash'
+      
       import _debug from 'debug'
       const debug = _debug('aakoch:pugAnimation')
       
@@ -246,7 +318,7 @@ block body
                   const currentX = x
                   const currentY = y
                   function go(i, keyframeIdx) {
-                    if (process.env.NODE_ENV !== 'production') console.debug("inside go")
+                    if (process.env.NODE_ENV !== 'production') console.debug("inside go: i = " + i, "keyframeIdx", keyframeIdx)
 
                     woofs[i].css("left", (currentX+15) + "px")
                     woofs[i].css("top", (currentY-15) + "px")
@@ -293,3 +365,9 @@ block body
           woofs[1].css("top", "100px")
           woofs[1].css("left", "-110px")
       });
+
+      window.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre code').forEach((el) => {
+          hljs.highlightElement(el);
+        })
+      })

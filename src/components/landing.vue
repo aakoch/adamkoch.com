@@ -9,7 +9,7 @@
       .container
         .row.justify-content-center.align-items-center.g-2
           .col-md(v-for="card in cards")
-            card(:key='card.id' :cardTitle='card.title' :excerpt='card.excerpt' :icon='card.icon' :buttonText='card.button' :url='card.url' :lastUpdated='card.lastUpdated' :buttonText1='card.button1' :url1='card.url1' :buttonText2='card.button2' :url2='card.url2')
+            card(:key='card.id' :cardTitle='card.title' :excerpt='card.description' :icon='card.icon' :url='card.url' :tagline='card.tagline' :buttons='card.buttons')
 #adamexcerpt2
   p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things" 
     | are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
@@ -158,32 +158,40 @@ export default {
       cards: [
         {
           id: 1,
-          title1: "Latest Post",
-          title2: "All Posts",
+          title: "Blog Posts",
           icon: "fas fa-feather",
-          excerpt: "Thoughts on the current state of things",
-          button1: "Latest",
-          url1: "/posts/latest/",
-          button2: "All",
+          description: "Thoughts on the current state of things",
           url: "/posts/",
-          url2: "/posts/",
-          lastUpdated: "Latest post: 2021-09-09"
+          buttons: [{
+            label: "Latest",
+            url: "/posts/latest/",
+            title: "Latest Post",
+          }, {
+            label: "All",
+            url: "/posts/",
+            title: "All Posts",
+          }],
+          tagline: "Latest post: 2021-09-17"
         },
         {
           id: 2,
           title: "Current Projects",
           icon: "fas fa-pencil-ruler",
-          excerpt: "Things I'm working on now",
-          button: "Dive in",
+          description: "Things I'm working on now",
+          buttons: [{
+            label: "Dive in",
+          }],
           url: "/projects/",
         },
         {
           id: 3,
           title: "Past Projects",
           icon: "fas fa-archive",
-          excerpt: "Old or abandoned projects",
-          button: "Dig Deep",
+          description: "Old or abandoned projects",
           url: "/past_projects/",
+          buttons: [{
+            label: "Dig Deep",
+          }],
         },
       ],
       links: [
@@ -191,21 +199,21 @@ export default {
           id: 5,
           title: "Tech",
           icon: "fas fa-microchip",
-          excerpt: "Some hardware, but mostly software",
+          description: "Some hardware, but mostly software",
           link: "/tech/"
         },
         {
           id: 6,
           title: "Design",
           icon: "fas fa-paint-brush",
-          excerpt: "Drawings, websites, music",
+          description: "Drawings, websites, music",
           link: "/design/"
         },
         {
           id: 1,
           title: "GitHub",
           icon: "fas fa-code-branch",
-          excerpt: "Source code",
+          description: "Source code",
           link: "https://github.com/aakoch/",
           isExternal: true
         },
@@ -213,13 +221,13 @@ export default {
           id: 2,
           title: "Thingiverse",
           icon: "fas fa-cube",
-          excerpt: "3D prints",
+          description: "3D prints",
           link: "https://www.thingiverse.com/aakoch/designs",
           isExternal: true
         },
-        { id: 3, title: "Resume", icon: "fas fa-id-card", excerpt: "CV", link: "https://aakoch.github.io/",
+        { id: 3, title: "Resume", icon: "fas fa-id-card", description: "CV", link: "https://aakoch.github.io/",
           isExternal: true },
-        { id: 4, title: "Twitter", icon: "fab fa-twitter", excerpt: "Tweet", link: "https://twitter.com/aakoch",
+        { id: 4, title: "Twitter", icon: "fab fa-twitter", description: "Tweet", link: "https://twitter.com/aakoch",
           isExternal: true },
       ],
     };

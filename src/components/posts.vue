@@ -3,7 +3,10 @@ div
     
   .container
     h1= title
-    h2 My first post on the new site! (Finally!) 🎉
+
+    postpreview(key='20210917' postTitle='My Technology Stack' excerpt='Getting off Wordpress offered me a lot of "opportunities" to learn some new tech...' date='2021-09-17T00:32-05:00' link='/posts/2021/09/17' name='My Technology Stack')
+    
+    h2.mt-4 My first post on the new site! (Finally!) 🎉
 
     postpreview(key='20210908' postTitle='Moving off Wordpress and on to Netlify' excerpt='I\'m just so excited, I don\'t know how to start!...' date='2021-09-08T20:05-05:00' link='/posts/2021/09/08' name='Moving off Wordpress and on to Netlify')
 
