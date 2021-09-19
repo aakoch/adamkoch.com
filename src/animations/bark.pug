@@ -85,7 +85,7 @@ block body
     #woof1: h3 Woof!
     #woof2: h3 Woof!
 
-    script(type="module").
+    script.
       $(() => {
         const pugImg = $('#pugImg')
         const woofs = {
@@ -102,7 +102,7 @@ block body
         let debouncedUpdateCoordinates = _.debounce(updateCoordinates, 20)
         
         function updateCoordinates(event) {
-          if (process.env.NODE_ENV !== 'production') console.debug("inside updateCoordinates")
+          console.debug("inside updateCoordinates")
           if (canMove) {
             x = event.pageX
             y = event.pageY
@@ -111,18 +111,17 @@ block body
         }
 
         function movePug() {
-          console.log(process)
-          if (process.env.NODE_ENV !== 'production') console.debug("inside movePug")
+          console.debug("inside movePug")
           if (canMove) {
-            if (process.env.NODE_ENV !== 'production') console.log(parseInt(pugImg.css("left"), 10) + ',' + parseInt(pugImg.css("top"), 10) + ' -> ' + x + ',' + y);
+            console.log(parseInt(pugImg.css("left"), 10) + ',' + parseInt(pugImg.css("top"), 10) + ' -> ' + x + ',' + y);
             let distX = x - parseInt(pugImg.css("left"), 10)
             let distY = y - parseInt(pugImg.css("top"), 10)
             let dist = distX + distY
 
             let fromTransform = 'translate(0px, 0px)'
-            if (process.env.NODE_ENV !== 'production') console.log(`fromTransform=${fromTransform}`)
+            console.log(`fromTransform=${fromTransform}`)
             let toTransform = 'translate(' + distX + 'px, ' + distY + 'px)'
-            if (process.env.NODE_ENV !== 'production') console.log(`toTransform=${toTransform}`)
+            console.log(`toTransform=${toTransform}`)
             $.keyframe.define({
                 name: 'move',
                 from: {
@@ -133,11 +132,11 @@ block body
                 }
             });
             pugImg.resetKeyframe();
-            if (process.env.NODE_ENV !== 'production') console.debug("calling playKeyframe")
+            console.debug("calling playKeyframe")
             pugImg.playKeyframe(
                 'move 1s ease-in-out .1s forwards',
                 function() {
-                  if (process.env.NODE_ENV !== 'production') console.log("inside end of move")
+                  console.log("inside end of move")
                   canMove = true;
                   pugImg.css("left", x + "px")
                   pugImg.css("top", y + "px")
@@ -156,29 +155,27 @@ block body
                   rotateLeft = !rotateLeft
 
                   let keyframeIdx = Math.floor(Math.random() * 2)
-                  const currentX = x
-                  const currentY = y
-                  function go(i, keyframeIdx) {
-                    if (process.env.NODE_ENV !== 'production') console.debug("inside go")
-                    woofs[i].css("left", (currentX+15) + "px")
-                    woofs[i].css("top", (currentY-15) + "px")
 
-                    woofs[i].playKeyframe('woof' + keyframeIdx + ' .9s ease-out 0s forwards')
+                  function go(woofsIdx, keyframeIdx, x, y) {
+                    console.debug("inside go: " + Array.from(arguments).join(', '))
+
+                    woofs[woofsIdx].css("left", (x+15) + "px")
+                    woofs[woofsIdx].css("top", (y-15) + "px")
+
+                    woofs[woofsIdx].playKeyframe('woof' + keyframeIdx + ' .9s ease-out 0s forwards')
                   }
 
-                  go(0, keyframeIdx)
+                  go(0, keyframeIdx, x, y)
                   if (barkTwice) {
-                    setTimeout(function () {
+                    setTimeout((function(woofsIdx, keyframeIdx, x, y) { 
                       woofs[1].show().css("visibility", "visible") 
-                      go(1, keyframeIdx)
-                    }, 300)
+                      go(woofsIdx, keyframeIdx, x, y);
+                    }).bind(this, 1, keyframeIdx, x, y), 300)
                   }
-
                 }
             );
 
             canMove = false
-
           }
         }
 
@@ -189,7 +186,6 @@ block body
           .mouseenter(function (event) {
             canMove = true;
             woofs[0].show().css("visibility", "visible") 
-            //- window.requestAnimationFrame(movePug);
             pugImg.fadeIn(1000, function () {
             });
           })
