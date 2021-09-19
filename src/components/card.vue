@@ -1,18 +1,19 @@
 <template lang="pug">
 .card(@click='goto(url)' @mouseover='debouncedPrefetch(url)')
-  .new-corner(v-show="tagline") New!
+  .new-corner(v-if="tagline") New!
   .icon-container
     i.card-img-top(v-bind:class='icon')
   .card-body
     h5.card-title {{ cardTitle }}
     p.card-text {{ excerpt }}
   .card-text
-    a.btn.btn-primary(v-bind:href='url' v-bind:title='cardTitle' v-show='buttons.length == 1') {{ buttons[0].label }}
-    .btn-group(role='group' aria-label='Blog Posts' v-show='buttons.length > 1')
+    a.btn.btn-primary(v-bind:href='url' v-bind:title='cardTitle' v-if='buttons.length == 1') {{ buttons[0].label }}
+    .btn-group(role='group' aria-label='Blog Posts' v-if='buttons.length > 1')
       a.btn.btn-primary(v-bind:href='buttons[0].url' v-bind:title='buttons[0].title') {{ buttons[0].label }}
       a.btn.btn-primary(href='/posts/' title='All Posts') All
-  .card-footer(v-show='tagline')
-    small.text-muted {{ tagline }}
+  //- Hidden only on md by the combination of .d-md-none.d-lg-block
+  .card-footer(v-if='tagline').d-md-none.d-lg-block
+    small {{ tagline }}
 </template>
 
 <style lang="scss" scoped>
@@ -21,6 +22,9 @@ $dark: #43464A;
 $light: #DEE3E6;
 $white: #f5f7f8;
 
+small {
+  color: $dark;
+}
 .card {
   box-shadow: 12px 12px 2px 1px rgba(67, 70, 74, .5);
   border-top: 0;
