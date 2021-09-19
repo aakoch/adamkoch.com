@@ -15,3 +15,8 @@ src/data/professional_private.json
 src/data/professional.json
 src/data/Uncategorized.json
 build
+deploys.json*
+
+# nightwatch:
+reports/
+screens/
