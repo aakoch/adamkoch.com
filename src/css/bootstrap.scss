@@ -316,3 +316,48 @@ ol {
 //     background-image: linear-gradient(45deg, $link-color 0%, shade-color($link-color, 40) 100%);
 //   }
 // }
+
+
+/* 
+Not working:
+
+// @import "/node_modules/@fortawesome/fontawesome-free/scss/_variables.scss";
+// @import "/node_modules/@fortawesome/fontawesome-free/scss/_core.scss";
+
+.fa-code-branch:before {
+  content: url('../../node_modules/@fortawesome/fontawesome-free/svgs/solid/code-branch.svg');
+}
+.fa-feather:before {
+  content: url('../../node_modules/@fortawesome/fontawesome-free/svgs/solid/feather.svg');
+}
+.fa-pencil-ruler:before {
+  content: url('../../node_modules/@fortawesome/fontawesome-free/svgs/solid/pencil-ruler.svg');
+}
+.fa-archive:before {
+  content: url('../../node_modules/@fortawesome/fontawesome-free/svgs/solid/archive.svg');
+}
+.fa-microchip:before {
+  content: url('../../node_modules/@fortawesome/fontawesome-free/svgs/solid/microchip.svg');
+}
+.fa-paint-brush:before {
+  content: url('../../node_modules/@fortawesome/fontawesome-free/svgs/solid/paint-brush.svg');
+}
+.fa-cube:before {
+  content: url('../../node_modules/@fortawesome/fontawesome-free/svgs/solid/cube.svg');
+}
+.fa-id-card:before {
+  content: url('../../node_modules/@fortawesome/fontawesome-free/svgs/solid/id-card.svg');
+}
+.fa-angle-double-right:before {
+  content: url('../../node_modules/@fortawesome/fontawesome-free/svgs/solid/angle-double-right.svg');
+}
+.fa-external-link-alt:before {
+  content: url('../../node_modules/@fortawesome/fontawesome-free/svgs/solid/external-link-alt.svg');
+}
+.fa, .fas, .far, .fal, .fad, .fab {
+  display: inline-block;
+}
+svg {
+  stroke: $primary;
+}
+*/
