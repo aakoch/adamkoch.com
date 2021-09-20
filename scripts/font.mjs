@@ -5,7 +5,7 @@
 // cd dist && node ../scripts/font.mjs && cd ..
 
 import _ from 'lodash'
-import glob from  "glob"
+import glob from "glob"
 import minimist from 'minimist';
 import chalk from 'chalk'
 import GlyphHanger from '../node_modules/glyphhanger/src/GlyphHanger.js'
@@ -39,7 +39,7 @@ subset.setOutputDirectory(argv.output);
 'ttf,woff,woff2'.split(',').forEach(async type => {
   gh.setSubset('**/*.' + type);
   subset.setFormats(type);
-  subset.setFontFiles(glob.sync( '**/*.' + type ))
+  subset.setFontFiles(glob.sync('**/*.' + type))
 
   var fontface = new GlyphHangerFontFace();
 
@@ -74,27 +74,28 @@ subset.setOutputDirectory(argv.output);
 
 const regex = /([\w-]+)\.\w+-subset\.(ttf|woff2|woff)$/;
 
-(async function() {
+(async function () {
 
-    const files = await fs.readdir('.', {
-      withFileTypes: true
+  const files = await fs.readdir('.', {
+    withFileTypes: true
+  })
+  files
+    .filter(f => {
+      return f.isFile()
     })
-    files
-      .filter(f => {
-        return f.isFile()
-      })
-      .filter(f => {
-        debug("f.name=", f.name);
-        debug("regex.test(f.name)=", regex.test(f.name));
-        return regex.test(f.name)
-      })
-      .forEach(f => {
-        const match = f.name.match(regex)
-        debug("f.name", f.name);
-        debug('match', match)
-        const destFilename = '../src/fonts/' + match[1] + '.' + match[2]
-        info(`copying ${f.name} to ${destFilename}`)
-        // fs.copyFile(f.name, destFile);
-      })
+    .filter(f => {
+      debug("f.name=", f.name);
+      debug("regex.test(f.name)=", regex.test(f.name));
+      return regex.test(f.name)
+    })
+    .forEach(f => {
+      const match = f.name.match(regex)
+      debug("f.name", f.name);
+      debug('match', match)
+      const destFilename = '../src/fonts/' + match[1] + '.' + match[2]
+      info(`copying ${f.name} to ${destFilename}`)
+      fs.copyFile(f.name, destFile)
+        .catch(reason => error('Error copying file: ' + reason));
+    })
 
 })()
