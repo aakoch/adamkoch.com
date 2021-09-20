@@ -1,30 +1,45 @@
 <template lang="pug">
 #adamexcerpt1
-  p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things" 
+  p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things"
     | are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
-    
+
 #main
   .row.center-row.gx-0.gy-4
     .col
       .container
         .row.justify-content-center.align-items-center.g-2
           .col-md(v-for="card in cards")
-            card(:key='card.id' :cardTitle='card.title' :excerpt='card.description' :icon='card.icon' :url='card.url' :tagline='card.tagline' :buttons='card.buttons')
+            card(
+              :key="card.id",
+              :cardTitle="card.title",
+              :excerpt="card.description",
+              :icon="card.icon",
+              :url="card.url",
+              :tagline="card.tagline",
+              :buttons="card.buttons"
+            )
 #adamexcerpt2
-  p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things" 
+  p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things"
     | are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
-  
-.col-md-8.offset-md-1#moreresources
+
+#moreresources.col-md-8.offset-md-1
   h3 More Stuff
 .container
   .row.g-2
     .col-lg-3.col-md-4.g-1(v-for="link in links")
-      minicard(:key='link.id' :cardTitle="link.title" :icon="link.icon" :excerpt="link.excerpt" :link="link.link" :isExternal="link.isExternal")
+      minicard(
+        :key="link.id",
+        :cardTitle="link.title",
+        :icon="link.icon",
+        :description="link.description",
+        :link="link.link",
+        :isExternal="link.isExternal"
+      )
     //- .container
     //-   .row.justify-content-center.align-items-center.g-3
     //-     .col-2.g-6(v-for="link in links")
     //-       minicard(:key='link.id' :cardTitle="link.title" :icon="link.icon" :excerpt="link.excerpt")
-.col.g-5#end
+#end.col.g-5
 </template>
 
 <style lang="scss">
@@ -87,7 +102,8 @@ $danger: #b87460;
   }
 }
 
-#landing-header, .page-header {
+#landing-header,
+.page-header {
   svg {
     max-width: 600px;
     left: 50%;
@@ -162,25 +178,30 @@ export default {
           icon: "fas fa-feather",
           description: "Thoughts on the current state of things",
           url: "/posts/",
-          buttons: [{
-            label: "Latest",
-            url: "/posts/latest/",
-            title: "Latest Post",
-          }, {
-            label: "All",
-            url: "/posts/",
-            title: "All Posts",
-          }],
-          tagline: "Latest post: 2021-09-17"
+          buttons: [
+            {
+              label: "Latest",
+              url: "/posts/latest/",
+              title: "Latest Post",
+            },
+            {
+              label: "All",
+              url: "/posts/",
+              title: "All Posts",
+            },
+          ],
+          tagline: "Latest post: 2021-09-17",
         },
         {
           id: 2,
           title: "Current Projects",
           icon: "fas fa-pencil-ruler",
           description: "Things I'm working on now",
-          buttons: [{
-            label: "Dive in",
-          }],
+          buttons: [
+            {
+              label: "Dive in",
+            },
+          ],
           url: "/projects/",
         },
         {
@@ -189,9 +210,11 @@ export default {
           icon: "fas fa-archive",
           description: "Old or abandoned projects",
           url: "/past_projects/",
-          buttons: [{
-            label: "Dig Deep",
-          }],
+          buttons: [
+            {
+              label: "Dig Deep",
+            },
+          ],
         },
       ],
       links: [
@@ -200,14 +223,14 @@ export default {
           title: "Tech",
           icon: "fas fa-microchip",
           description: "Some hardware, but mostly software",
-          link: "/tech/"
+          link: "/tech/",
         },
         {
           id: 6,
           title: "Design",
           icon: "fas fa-paint-brush",
           description: "Drawings, websites, music",
-          link: "/design/"
+          link: "/design/",
         },
         {
           id: 1,
@@ -215,7 +238,7 @@ export default {
           icon: "fas fa-code-branch",
           description: "Source code",
           link: "https://github.com/aakoch/",
-          isExternal: true
+          isExternal: true,
         },
         {
           id: 2,
@@ -223,12 +246,24 @@ export default {
           icon: "fas fa-cube",
           description: "3D prints",
           link: "https://www.thingiverse.com/aakoch/designs",
-          isExternal: true
+          isExternal: true,
         },
-        { id: 3, title: "Resume", icon: "fas fa-id-card", description: "CV", link: "https://aakoch.github.io/",
-          isExternal: true },
-        { id: 4, title: "Twitter", icon: "fab fa-twitter", description: "Tweet", link: "https://twitter.com/aakoch",
-          isExternal: true },
+        {
+          id: 3,
+          title: "Resume",
+          icon: "fas fa-id-card",
+          description: "CV",
+          link: "https://aakoch.github.io/",
+          isExternal: true,
+        },
+        {
+          id: 4,
+          title: "Twitter",
+          icon: "fab fa-twitter",
+          description: "Tweet",
+          link: "https://twitter.com/aakoch",
+          isExternal: true,
+        },
       ],
     };
   },

@@ -8,7 +8,7 @@
     h4.card-title 
       i.card-img-top(v-bind:class='icon')
       | {{ cardTitle }}
-    p.card-text {{ excerpt }}
+    p.card-text {{ description }}
 </template>
 
 <style lang="scss" scoped>
@@ -48,7 +48,7 @@ export default {
     // Cancel the timer when the component is removed
     this.debouncedPrefetch.cancel()
   },
-  props: ['cardTitle', 'excerpt', 'icon', 'buttonText', 'link', 'isExternal'],
+  props: ['cardTitle', 'description', 'icon', 'buttonText', 'link', 'isExternal'],
   data() {
     return {
       prefetchedLocations: []
