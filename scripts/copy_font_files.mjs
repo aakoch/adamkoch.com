@@ -32,6 +32,7 @@ fs.readFile(resolvedCssFilename, 'utf-8')
       const srcFile = `src/fonts/fa-${match[2]}-${match[3]}.${match[4]}`
       const destFile = `dist/${match[1]}`
       console.log(`copying ${srcFile} to ${destFile}`)
-      fs.copyFile(srcFile, destFile);
+      fs.copyFile(srcFile, destFile)
+        .catch(reason => error('Error copying file: ' + reason))
     })
   });
