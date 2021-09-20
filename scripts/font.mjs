@@ -12,11 +12,10 @@ import GlyphHanger from '../node_modules/glyphhanger/src/GlyphHanger.js'
 import GlyphHangerWhitelist from '../node_modules/glyphhanger/src/GlyphHangerWhitelist.js'
 import GlyphHangerSubset from '../node_modules/glyphhanger/src/GlyphHangerSubset.js'
 import GlyphHangerFontFace from '../node_modules/glyphhanger/src/GlyphHangerFontFace.js'
-import debug_ from 'debug'
 import fs from 'fs/promises'
+import { debug, info, error } from '../scripts/logging.mjs'
 
 const argv = minimist(process.argv.slice(2))
-const debug = debug_('glyphhanger:cli')
 
 // npx glyphhanger https://www.adamkoch.com --spider-limit=0
 const websiteChars = "U+20-23,U+27-2A,U+2C-3F,U+41-57,U+59,U+60-7A,U+A9,U+D7,U+2502,U+2764,U+2935,U+F059,U+F099,U+F101,U+F126,U+F14E,U+F187,U+F1B2,U+F1FC,U+F2C2,U+F2DB,U+F35D,U+F52D,U+F5AE,U+F5FC,U+FE0F,U+1F37E,U+1F389"
@@ -54,7 +53,7 @@ subset.setOutputDirectory(argv.output);
       subset.subsetAll(!whitelist.isEmpty() ? whitelist.getWhitelistAsUnicodes() : whitelist.getUniversalRangeAsUnicodes());
     } catch (e) {
       process.exitCode = 1;
-      console.log(chalk.red("GlyphHangerSubset Error: "), e);
+      error(chalk.red("GlyphHangerSubset Error: "), e);
     }
 
     try {
@@ -65,7 +64,7 @@ subset.setOutputDirectory(argv.output);
       fontface.output();
     } catch (e) {
       process.exitCode = 1;
-      console.log(chalk.red("GlyphHangerFontFace Error: "), e);
+      error(chalk.red("GlyphHangerFontFace Error: "), e);
     }
 
   };
@@ -73,7 +72,7 @@ subset.setOutputDirectory(argv.output);
   await a();
 })
 
-const regex = /([\w-]+\.\w+)-subset\.(ttf|woff2|woff)$/;
+const regex = /([\w-]+)\.\w+-subset\.(ttf|woff2|woff)$/;
 
 (async function() {
 
@@ -85,16 +84,17 @@ const regex = /([\w-]+\.\w+)-subset\.(ttf|woff2|woff)$/;
         return f.isFile()
       })
       .filter(f => {
-        console.log("f.name=", f.name);
-        console.log("regex.test(f.name)=", regex.test(f.name));
+        debug("f.name=", f.name);
+        debug("regex.test(f.name)=", regex.test(f.name));
         return regex.test(f.name)
       })
       .forEach(f => {
         const match = f.name.match(regex)
-        console.log("f.name", f.name);
-        console.log('match', match)
-        console.log('renaming ' + f.name + ' to ' + match[1] + '.' + match[2])
-        fs.rename(f.name, match[1] + '.' + match[2])
+        debug("f.name", f.name);
+        debug('match', match)
+        const destFilename = '../src/fonts/' + match[1] + '.' + match[2]
+        info(`copying ${f.name} to ${destFilename}`)
+        // fs.copyFile(f.name, destFile);
       })
 
 })()
