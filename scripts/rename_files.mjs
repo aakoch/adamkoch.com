@@ -2,7 +2,7 @@
 // this has been moved into font.mjs
 import fs from 'fs/promises'
 
-const regex = /([\w-]+\.\w+)-subset\.(ttf|woff2|woff)$/;
+const regex = /([\w-]+)\.\w+\.(svg|eot|ttf|woff2|woff)$/;
 
 (async function() {
 

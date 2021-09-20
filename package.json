@@ -4,7 +4,7 @@
   "description": "Adam Koch homepage",
   "author": "Adam Koch",
   "scripts": {
-    "build": "mkdir -p dist && cp -v _redirects dist/ && cp -Rv src/assets/* dist/ && parcel build ./src/index.pug './src/**/index.pug' ./src/404.pug && cd dist && ../scripts/font.mjs && cd ..",
+    "build": "mkdir -p dist && cp -v _redirects dist/ && cp -Rv src/assets/* dist/ && parcel build ./src/index.pug './src/**/index.pug' ./src/404.pug && node scripts/copy_font_files.mjs",
     "clean": "rm -rf ./dist/ && mkdir dist",
     "font": "cd dist && ../scripts/font.mjs && cd ..",
     "help": "echo \"npm run watch or npm run build\"",
