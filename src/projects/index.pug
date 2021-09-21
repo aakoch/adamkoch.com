@@ -22,7 +22,20 @@ html.no-js(lang="en")
 
     .container
       h1 #{title}
-      
+
+      +project('Animations', 'Ongoing')
+        p Just some fun I've been having with CSS animations. If something doesn't work for you, 
+          a(href="/contact/") I'd love to know
+          | .
+        ul
+          li: a(href="../animations/bark.pug") Bark
+          li: a(href="../animations/wind.pug") Wind
+          li: a(href="../animations/fadeOutOnMouseOver.pug") Fade out on mouseoever
+          li: a(href="../animations/infectSiblings.pug") Fade out siblings
+          if process.env.NODE_ENV != 'production'
+            li: a(href="../animations/infectNeighbors.pug") Fade out neighbors
+          li: a(href="../animations/sensitive.pug") Sensitive
+
       +project('Swamp Fan', 'Stage One Complete; Stage Two In Progress')
         p It started when my wife bought me a tabletop, USB-powered "air conditioner". 
         p: a(href="/projects/swampfan/" title="Project: Swamp Fan") Read more
