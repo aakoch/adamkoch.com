@@ -19,8 +19,7 @@
               :buttons="card.buttons"
             )
 #adamexcerpt2
-  p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things"
-    | are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
+  p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things" are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
 
 #moreresources.col-md-8.offset-md-1
   h3 More Stuff
