@@ -2,7 +2,7 @@ extends ../templates/blogpost
 block variables
   - var title = 'Fade Out On MouseOver Demo'
 
-block morehead
+append head
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js")
   style(type="text/scss").

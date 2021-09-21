@@ -1,0 +1,123 @@
+extends ../templates/blogpost
+
+mixin sensitive()
+  - 
+    var i
+    if (global.hasOwnProperty('i')) {
+      i = global.i
+    } else {
+      global.i = 0;
+      i = 0;
+    }
+    var id = "input" + i;
+    i++
+    global.i = i
+
+  input(id=id type="checkbox")
+  label(for=id class="sensitive")
+    block
+
+append head
+  script(type="module").
+    import hljs from 'highlight.js/lib/core';
+    import css from 'highlight.js/lib/languages/css';
+    hljs.registerLanguage('css', css);
+
+    window.hljs = hljs
+
+  style.
+    :root {
+      --transition: filter .4s ease-in-out;  
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    input[type="checkbox"] + .sensitive {
+      display: block;
+      transition: var(--transition);
+    }
+
+    input[type="checkbox"]:not(:checked) + .sensitive {
+      filter: blur(.3em);
+      opacity: .5;
+    }
+
+    input[type="checkbox"]:checked + .sensitive {
+      filter: blur(0);
+      opacity: 1;
+    }
+
+block body
+  h1 Blur Sensitive Information
+  p This is in no way secure and shouldn't be used for anything but for hiding text from the casual passerby.
+  p Click on the text to reveal and re-hide.
+
+  +sensitive
+    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. In finibus dictum pretium. Nunc vel condimentum est, sed tempus arcu. In commodo egestas eleifend. Phasellus mattis sit amet dolor tincidunt dictum. Aenean at volutpat urna. Fusce dapibus, lacus ut convallis sollicitudin, turpis diam ultrices sem, non vehicula massa leo at nisl. Integer sapien massa, dictum id ultrices eu, scelerisque sed eros. Fusce semper a quam eleifend euismod. Sed aliquam pretium mollis. Maecenas laoreet vulputate enim quis porttitor. Vivamus consequat erat sit amet diam suscipit sollicitudin. Sed vitae quam metus. Ut gravida arcu velit, et ullamcorper elit pretium a. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+  +sensitive
+    p Cras vitae nunc aliquet, eleifend purus a, lobortis tortor. Aliquam euismod dolor non pretium rhoncus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque et egestas lectus. Maecenas in efficitur tellus, ac elementum ipsum. Donec ac nunc suscipit, commodo sem eget, ultrices ante. Fusce rutrum diam vitae quam aliquet, ut sollicitudin augue viverra. Fusce dapibus, lorem eu sodales dignissim, est nisi condimentum sem, vitae lacinia nibh arcu ut magna.
+
+  +sensitive
+    p Curabitur erat tortor, semper vel nunc eget, pellentesque finibus turpis. Curabitur at quam nec lacus faucibus ultrices. Curabitur id ligula rutrum, molestie turpis nec, molestie tellus. Nulla facilisi. Sed ut vehicula ipsum, in condimentum justo. Morbi hendrerit orci eget enim tristique sodales. Donec sit amet orci eleifend, ornare metus vitae, ornare quam. Quisque mattis erat in elit fermentum porttitor. Nunc laoreet aliquet pharetra.
+
+  +sensitive
+    p Morbi nec arcu interdum turpis convallis ullamcorper. Suspendisse porta neque elit, quis viverra quam pulvinar vel. In hac habitasse platea dictumst. Nunc sodales felis in quam facilisis elementum. Donec gravida tellus nisi, a sollicitudin dolor sollicitudin lobortis. Proin posuere enim sed euismod aliquet. In id dictum nibh, in blandit massa. Nunc vitae neque ut nunc fermentum sodales. Nunc sed aliquam tortor. Cras nibh lorem, sodales id malesuada id, rhoncus et lacus.
+
+  +sensitive
+    p Cras nec nibh malesuada, ultricies metus id, scelerisque dolor. Vivamus quis velit vel lorem blandit ullamcorper nec id nisl. Praesent eu enim dapibus, venenatis dui ac, ullamcorper sapien. Proin hendrerit lorem in quam gravida malesuada nec interdum elit. Vivamus malesuada tortor at elit vehicula, sit amet condimentum urna tempor. Nunc eros neque, iaculis euismod est ut, cursus tristique mauris. Duis non urna vel ante egestas faucibus at quis risus. Sed eu libero id enim ornare mattis vitae pellentesque risus. In vel pellentesque tellus. Vestibulum tristique pharetra nunc, vel rhoncus arcu consectetur id.
+
+  h2 Source Code
+  h3 CSS
+  pre: code.language-css.
+    :root {
+      --transition:  filter .4s ease-in-out;  
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    input[type="checkbox"] + .sensitive {
+      display: block;
+      transition: var(--transition);
+    }
+
+    input[type="checkbox"]:not(:checked) + .sensitive {
+      filter: blur(.3em);
+      opacity: .5;
+    }
+
+    input[type="checkbox"]:checked + .sensitive {
+      filter: blur(0);
+      opacity: 1;
+    }
+
+
+  h3 This is Pug code!
+  p And sadly highlightjs doesn't have any love for Pug, yet.
+  pre: code.
+    mixin sensitive()
+      - 
+        var i
+        if (global.hasOwnProperty('i')) {
+          i = global.i
+        } else {
+          global.i = 0;
+          i = 0;
+        }
+        var id = "input" + i;
+        i++
+        global.i = i
+
+      input(id=id type="checkbox")
+      label(for=id class="sensitive")
+        block
+
+
+  script.
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
