@@ -169,7 +169,6 @@ export default {
 
   data() {
     return {
-      one: "fsdfasdfasdfasdfa",
       cards: [
         {
           id: 1,
