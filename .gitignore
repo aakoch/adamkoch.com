@@ -16,3 +16,7 @@ src/data/professional.json
 src/data/Uncategorized.json
 build
 keyboard_shortcuts.md
+all_top.pug
+all.pug
+body.pug
+nodes.pug
