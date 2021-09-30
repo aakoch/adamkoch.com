@@ -19,4 +19,4 @@ deploys.json*
 
 # nightwatch:
 reports/
-screens/
+screens/chromedriver.log
