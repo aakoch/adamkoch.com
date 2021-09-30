@@ -5,7 +5,7 @@ const Services = {}; loadServices();
 module.exports = {
   // An array of folders (excluding subfolders) where your tests are located;
   // if this is not specified, the test source must be passed as the second argument to the test runner.
-  src_folders: ['tests/system'],
+  src_folders: ['tests'],
 
   // See https://nightwatchjs.org/guide/working-with-page-objects/
   page_objects_path: '',
@@ -24,28 +24,7 @@ module.exports = {
   test_settings: {
     default: {
       disable_error_log: false,
-      launch_url: 'http://localhost:5000',
-
-      screenshots: {
-        enabled: true,
-        path: 'screens',
-        on_failure: true
-      },
-
-      desiredCapabilities: {
-        browserName : 'chrome'
-      },
-
-      webdriver: {
-        start_process: true,
-        // server_path: (Services.geckodriver ? Services.geckodriver.path : '')
-        server_path: __dirname + '/node_modules/chromedriver/lib/chromedriver/chromedriver',
-      }
-    },
-    
-    integration: {
-      disable_error_log: false,
-      launch_url: 'http://localhost',
+      launch_url: 'https://nightwatchjs.org',
 
       screenshots: {
         enabled: true,
@@ -120,8 +99,7 @@ module.exports = {
 
       webdriver: {
         start_process: true,
-        // server_path: (Services.chromedriver ? Services.chromedriver.path : ''),
-        server_path: './node_modules/chromedriver/lib/chromedriver/chromedriver',
+        server_path: '/Users/aakoch/projects/adamkoch.com/node_modules/chromedriver/lib/chromedriver/chromedriver',
         cli_args: [
           // --verbose
         ]

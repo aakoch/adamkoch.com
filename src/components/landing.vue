@@ -42,6 +42,9 @@
 </template>
 
 <style lang="scss">
+:active {
+  filter: invert(white, 50)
+}
 $primary: #406275;
 $secondary: #b89160;
 $light: #dee3e6;

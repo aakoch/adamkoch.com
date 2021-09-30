@@ -20,3 +20,8 @@ all_top.pug
 all.pug
 body.pug
 nodes.pug
+deploys.json*
+
+# nightwatch:
+reports/
+screens/
