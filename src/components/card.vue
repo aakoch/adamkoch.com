@@ -1,6 +1,6 @@
 <template lang="pug">
 .card(@click='goto(url)' @mouseover='debouncedPrefetch(url)')
-  .new-corner(v-if="tagline") New!
+  .new-corner(v-if="tagline && showNew") New!
   .icon-container
     i.card-img-top(v-bind:class='icon')
   .card-body
@@ -99,6 +99,7 @@ small {
 
 <script>
 import debounce from 'lodash/debounce';
+import moment from 'moment'; 
 
 export default {
   props: ['cardTitle', 'excerpt', 'icon', 'buttons', 'url', 'tagline'],
@@ -113,6 +114,22 @@ export default {
   data() {
     return {
       prefetchedLocations: []
+    }
+  },
+  computed: {
+    showNew() { 
+      try {
+        let match = this.tagline.match(/\d{4}-\d{1,2}-\d{1,2}/)
+        if (match) {
+          let lastModified = moment(match[0])
+          return moment.duration(moment().diff(lastModified)).weeks() < 2
+        }
+      }
+      catch (e) {
+        console.error('Error parsing date: ' + this.tagline);
+      }
+
+      return false
     }
   },
   methods: {
