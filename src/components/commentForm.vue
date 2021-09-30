@@ -16,6 +16,8 @@ form#commentForm.needs-validation(name='commentForm' data-netlify='true' netlify
   fieldset(v-bind:disabled="isSuccess")
     input(type="hidden" name="form-name" value="commentForm")
     input(type="hidden" name="postId" v-bind:value="postId")
+    .postTitle(v-if="computedPostId")
+      h1 Comment on &quot;{{ computedPostTitle }}&quot;
     .mb-0.mt-3
       label.form-label.mb-0(for='name') Name: 
     .mb-3
@@ -47,17 +49,40 @@ form#commentForm.needs-validation(name='commentForm' data-netlify='true' netlify
       .alert.alert-primary.mt-3(role="alert" v-if="postId") All submissions are reviewed before being posted.
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h1 {
+  z-index: 9;
+}
+</style>
 
 <script>
 export default {
-  props: ['postId'],
+  props: ['postId', 'postTitle'],
   data: function () {
     return {
       beingSubmitted: false,
       isSuccess: false,
       isError: false,
       expanded: false
+    }
+  },
+  computed: {
+    computedPostId() {
+      try {
+        return this.postId || (window.location.search.match(/postI[dD]=(\d+)/) || [,false])[1];
+      }
+      catch(e) {
+        console.error('Error reading post ID: ' + e);
+        return 'unknown'
+      }
+    },
+    computedPostTitle() {
+      try {
+        return this.postTitle || decodeURIComponent((window.location.search.match(/post[tT][iI][tT][lL][eE]=(.+)/) || [undefined, undefined])[1] || '') || ('post #' + this.computedPostId);
+      }
+      catch(e) {
+        console.error('Error reading post title: ' + e);
+      }
     }
   },
   methods: {
