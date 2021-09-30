@@ -7,7 +7,7 @@
     "build": "mkdir -p dist && cp -v _redirects dist/ && cp -Rv src/assets/* dist/ && parcel build ./src/index.pug './src/**/index.pug' ./src/404.pug",
     "test:vue": "vue-cli-service test",
     "test:unit": "mocha",
-    "test:system": "nightwatch tests/system/nightwatch.js",
+    "test:system": "nightwatch tests/system/basic.js",
     "clean": "rm -rf ./dist/ && mkdir dist",
     "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && git push && git push --tags",
     "test": "echo 'use test:unit' or 'test:system'",
