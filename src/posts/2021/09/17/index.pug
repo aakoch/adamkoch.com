@@ -97,6 +97,23 @@ append head
       }
     }
 
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "My Stack",
+      "image": [
+        "/src/img/pug.svg",
+        "/src/img/parcel_full.png",
+       ],
+      "datePublished": "2021-09-17T00:00:00+008:00",
+      "dateModified": "2021-09-17T00:00:00+008:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
 block body
 
   .container.post#post-20210907
@@ -246,9 +263,20 @@ block body
       
       import _debug from 'debug'
       const debug = _debug('aakoch:pugAnimation')
+
+      const lastKnownLocation = {x: -100, y: -100}
+      let pointerMoved = true
+
+      function sendToShadows(el) {
+        //- el.parentNode.removeChild(el)
+      }
+      function retrieveFromShadows(el, target) {
+        //- target.appendChild(el)
+      }
       
       jQuery(() => {
         const pugImg = $('#pugImg')
+
         const woofs = {
           0: $('#woof1'),
           1: $('#woof2')
@@ -261,24 +289,28 @@ block body
 
         const debouncedMovePug = _.debounce(movePug, 10)
         const debouncedUpdateCoordinates = _.debounce(updateCoordinates, 30)
+
+        const pugOffsetX = pugImg.width() / 2
+        const pugOffsetY = pugImg.height() / 2
         
         function updateCoordinates(event) {
           if (process.env.NODE_ENV !== 'production') console.debug("inside updateCoordinates")
           if (canMove) {
             x = event.pageX
             y = event.pageY
-            movePug()
+            movePug(x, y)
+            lastKnownLocation.x = event.pageX
+            lastKnownLocation.y = event.pageY
           }
         }
 
-        function movePug() {
+        function movePug(x, y) {
           if (process.env.NODE_ENV !== 'production') console.log(process.env.NODE_ENV)
           if (process.env.NODE_ENV !== 'production') console.debug("inside movePug")
           if (canMove) {
             if (process.env.NODE_ENV !== 'production') console.log(parseInt(pugImg.css("left"), 10) + ',' + parseInt(pugImg.css("top"), 10) + ' -> ' + x + ',' + y);
-            let distX = x - parseInt(pugImg.css("left"), 10)
-            let distY = y - parseInt(pugImg.css("top"), 10)
-            let dist = distX + distY
+            let distX = (x - pugOffsetX) - parseInt(pugImg.css("left"), 10)
+            let distY = (y - pugOffsetY) - parseInt(pugImg.css("top"), 10)
 
             let fromTransform = 'translate(0px, 0px)'
             if (process.env.NODE_ENV !== 'production') console.log(`fromTransform=${fromTransform}`)
@@ -300,9 +332,8 @@ block body
                 function() {
                   if (process.env.NODE_ENV !== 'production') console.log("inside end of move")
 
-                  canMove = true;
-                  pugImg.css("left", x + "px")
-                  pugImg.css("top", y + "px")
+                  pugImg.css("left", (x - pugOffsetX) + "px")
+                  pugImg.css("top", (y - pugOffsetY) + "px")
                   pugImg.css("animation", "none")
 
                   let barkTwice = Math.floor(Math.random() * 3) > 0;
@@ -323,8 +354,8 @@ block body
                   function go(i, keyframeIdx) {
                     if (process.env.NODE_ENV !== 'production') console.debug("inside go: i = " + i, "keyframeIdx", keyframeIdx)
 
-                    woofs[i].css("left", (currentX+15) + "px")
-                    woofs[i].css("top", (currentY-15) + "px")
+                    woofs[i].css("left", (currentX + 15 - pugOffsetX) + "px")
+                    woofs[i].css("top", (currentY - 15 - pugOffsetY) + "px")
 
                     woofs[i].playKeyframe('woof' + keyframeIdx + ' .9s ease-out 0s forwards')
                   }
@@ -337,6 +368,8 @@ block body
                     }, 300)
                   }
 
+                  canMove = true;
+
                 }
             );
 
@@ -344,19 +377,75 @@ block body
           }
         }
 
+        function outside10pxRadius(event) {
+          return lastKnownLocation.x - event.x > 10
+            || lastKnownLocation.y - event.y > 10
+            || true
+        }
+
         $("#pug")
-          .mousemove(function (event) {
-            debouncedUpdateCoordinates(event)
-          })
           .mouseenter(function (event) {
-              canMove = true;
+
+
+            //- retrieveFromShadows(pugImg[0], $('#pug')[0])
+            //- pugImg.show()
+            console.log('target', event.target.tagName)
+            canMove = event.target.tagName != 'A';
+
+            //- const pointerMoved = event.pageX - lastKnownLocation.x > 5 ||
+            //-     event.pageY - lastKnownLocation.y > 5
+
+            //- console.log('pointerMoved', pointerMoved)
+            //- if (pointerMoved) {
               woofs[0].show().css("visibility", "visible") 
               pugImg.fadeIn(1000, function () {
-            });
+                    $(this).css('z-index', 99999)
+              });
+            //- }
+
+          })
+        $(document.body)
+          .mousemove(function (event) {
+
+            //- if (outside10pxRadius(event)) {
+              console.log('target', event.target.tagName)
+              if (event.target.tagName == 'A') {
+                canMove = false;
+                pugImg.fadeOut(500, function(evt) {
+                  //- sendToShadows(pugImg[0])
+                  canMove = false;
+                  $(this).css('z-index', -99999)
+                });
+
+                $(event.target).one('mouseleave', function() {
+                  pugImg.fadeIn(500, function(evt) {
+                    $(this).css('z-index', 99999)
+                    //- sendToShadows(pugImg[0])
+                    canMove = true;
+                  });
+                })
+
+              }
+              else if (canMove) {
+                console.log('updating coordinates')
+                debouncedUpdateCoordinates(event)
+              }
+            //- }
+
           })
           .mouseleave(function (event) {
-            canMove = false;
-            pugImg.fadeOut(1000);
+            console.log('mouseleave', $.contains($('#pug'), event.target))
+            if (Array.from($('#pug')[0].childNodes).includes(event.target)) {
+            //- if ($.contains($('#pug'), event.target)) {
+            //- if ($('#pug').contains($(event.target))) {
+            }
+            else {
+              canMove = false;
+              pugImg.fadeOut(1000, function() {
+                //sendToShadows(pugImg[0])
+                    $(this).css('z-index', -99999)
+              });
+            }
           });
           
           pugImg.css("top", "100px")
