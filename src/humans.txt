@@ -1,15 +1,13 @@
-# humanstxt.org/
-# The humans responsible & technology colophon
+/* TEAM */
 
-# TEAM
+    Author: Adam Koch
+    Site: https://www.adamkoch.com/contact/
+    Twitter: aakoch
+    Location: Omaha, NE, USA
 
-    Adam Koch -- author -- aakoch
+/* SITE */
 
-# THANKS
-
-    <name>
-
-# TECHNOLOGY COLOPHON
-
-    CSS3, HTML5
-    Apache Server Configs, jQuery, Modernizr, Normalize.css
+    Last update: 2021/10/09 
+    Standards: HTML5, CSS3
+    Components: Pug, Parcel
+    Software: Netlify, Github, Node, NPM
