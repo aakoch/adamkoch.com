@@ -5,6 +5,23 @@ append variables
   - var posted = '2021-09-08'
 
 append head
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Moving off Wordpress and on to Netlify",
+      "image": [
+        "/src/img/bandwagon.png"
+       ],
+      "datePublished": "2021-09-08T00:00:00+008:00",
+      "dateModified": "2021-09-08T00:00:00+008:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
+
   script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
   script(src="/node_modules/jquerykeyframes/dist/jquery.keyframes.min.js")
 

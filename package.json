@@ -38,6 +38,7 @@
     "@parcel/reporter-build-metrics": "^2.0.0-rc.0",
     "@parcel/reporter-bundle-analyzer": "^2.0.0-rc.0",
     "@parcel/transformer-image": "^2.0.0-rc.0",
+    "@parcel/transformer-jsonld": "^2.0.0-rc.0",
     "@parcel/transformer-pug": "v2.0.0-rc.0",
     "@parcel/transformer-sass": "v2.0.0-rc.0",
     "@parcel/transformer-vue": "v2.0.0-rc.0",
