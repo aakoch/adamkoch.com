@@ -25,3 +25,5 @@ deploys.json*
 # nightwatch:
 reports/
 screens/
+chromedriver.log
+tests_output/
