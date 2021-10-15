@@ -59,6 +59,37 @@ module.exports = {
       // updateValue didn't work with Chrome
       .setValue('#gsc-i-id1', ['whitespace', browser.Keys.ENTER])
       .waitForElementVisible('#___gcse_0 > div > div > div.gsc-results-wrapper-overlay.gsc-results-wrapper-visible')
+      .click('#___gcse_0 > div > div > div.gsc-results-wrapper-overlay.gsc-results-wrapper-visible > div.gsc-results-close-btn.gsc-results-close-btn-visible')
+      .execute(function () {
+        window.scrollBy(0, -1000);
+        return true;
+      })
+      .pause(500)
+  },
+  'Verify comment form is rendered on post page': function (browser) {
+    browser
+    .waitForElementVisible('body > div.page-header > nav > div.navbar-brand > a')
+      .click('body > div.page-header > nav > div.navbar-brand > a')
+      .waitForElementVisible('#main > div > div > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)', 50000)
+      .click('#main > div > div > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)')
+      .url('http://localhost:5000/posts/2021/10/14')
+      .waitForElementVisible('#commentForm > fieldset > div.postTitle > h1')
+      .assert.containsText('body', 'Recruiter Tips')
+    //     .saveScreenshot('./reports/search-result.png')
+  },
+  'Verify comment form is rendered on contact page': function (browser) {
+    browser
+    .click('body > div.page-header > nav > div.navbar-brand > a')
+    .waitForElementVisible('#footer > span:nth-child(1) > a')
+    .execute(function () {
+      window.scrollBy(0, 1000);
+      return true;
+    })
+    .pause(500)
+      .click('#footer > span:nth-child(1) > a')
+      .waitForElementVisible('#commentForm > fieldset > div:nth-child(7) > div')
+      .assert.containsText('body', 'Not displayed but the md5 hash is used for Gravatar image')
+    //     .saveScreenshot('./reports/search-result.png')
   },
   'Close browser': function (browser) {
     browser

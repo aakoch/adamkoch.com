@@ -57,15 +57,13 @@ h1 {
 
 <script>
 export default {
-  inject: ['postId', 'postTitle'],
+  props: ['postId', 'postTitle'],
   data: function () {
     return {
       beingSubmitted: false,
       isSuccess: false,
       isError: false,
       expanded: false,
-      postId: this.postId,
-      postTitle: this.postTitle
     }
   },
   computed: {
