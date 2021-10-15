@@ -1,18 +1,19 @@
 <template lang="pug">
-.col.g-2
-  .card
-    .card-body
-      h5.card-title {{ postTitle }}
-      .card-text 
-        .date Posted {{ formated_date }}
-        div(v-bind:id="id")
-        p {{ excerpt }}
-        .linkies
-          a.href(:href="link") Read
-          a.href(v-if="excerpt" :href="link")  more
-          |  
-          a.href(:href="link")
-            i(class='fas fa-angle-double-right')
+.row
+  .col.g-2
+    .card
+      .card-body
+        h5.card-title {{ postTitle }}
+        .card-text 
+          .date Posted {{ formated_date }}
+          div(v-bind:id="id")
+          p {{ excerpt }}
+          .linkies
+            a.href(:href="link") Read
+            a.href(v-if="excerpt" :href="link")  more
+            |  
+            a.href(:href="link")
+              i(class='fas fa-angle-double-right')
 </template>
 
 <style lang="scss" scoped>
