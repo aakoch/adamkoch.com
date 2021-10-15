@@ -17,8 +17,8 @@
     "watch": "mkdir -p dist && cp -v _redirects dist/ && cp -Rv src/assets/* dist/ && parcel ./src/index.pug './src/**/index.pug' ./src/404.pug --no-cache"
   },
   "dependencies": {
-    "@popperjs/core": "^2.9.2",
-    "blueimp-md5": "^2.18.0",
+    "@popperjs/core": "^2.10.2",
+    "blueimp-md5": "^2.19.0",
     "bootstrap": "^5.0.2",
     "countdown": "git://github.com/mckamey/countdownjs.git#1902fb23d21d84958b302c117fe472634a5bcf52",
     "jquery": "^3.6.0",
