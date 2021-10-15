@@ -191,7 +191,7 @@ export default {
               title: "All Posts",
             },
           ],
-          tagline: "Latest post: 2021-09-17",
+          tagline: "Latest post: 2021-10-14",
         },
         {
           id: 2,
