@@ -46,6 +46,7 @@ html.no-js(lang="en")
       h2 Examples
       +code('Pretty-print any JSON file') jq '.' package.json
       +code('Output your project\'s version number') jq '.version' package.json
+      a(href="https://jqplay.org/s/hUffh1v2r1") View on jq&rarr;play
       +code('.. and save a backup') jq '.version' package.json | xargs -I{} tar -azf {}.xz dist/*
 
       p.mb-1 Combined with 
