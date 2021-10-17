@@ -15,7 +15,7 @@ module.exports = function (app) {
     createProxyMiddleware("/posts/latest", {
       target: "http://localhost:1234",
       pathRewrite: {
-        "^/posts/latest": "/posts/2021/09/17",
+        "^/posts/latest": "/posts/2021/10/14",
       },
     })
   );
