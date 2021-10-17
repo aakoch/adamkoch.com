@@ -1,7 +1,7 @@
 module.exports = {
   'homepage test': function (browser) {
     browser
-      .url('http://localhost:5000')
+      .url('http://localhost:5000/')
       .waitForElementVisible('body')
   },
   'Verify blog posts feather can be clicked': function (browser) {
@@ -68,28 +68,47 @@ module.exports = {
   },
   'Verify comment form is rendered on post page': function (browser) {
     browser
-    .waitForElementVisible('body > div.page-header > nav > div.navbar-brand > a')
+      .waitForElementVisible('body > div.page-header > nav > div.navbar-brand > a')
       .click('body > div.page-header > nav > div.navbar-brand > a')
-      .waitForElementVisible('#main > div > div > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)', 50000)
+      .waitForElementVisible('#main > div > div > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)')
       .click('#main > div > div > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)')
-      .url('http://localhost:5000/posts/2021/10/14')
       .waitForElementVisible('#commentForm > fieldset > div.postTitle > h1')
       .assert.containsText('body', 'Recruiter Tips')
     //     .saveScreenshot('./reports/search-result.png')
   },
   'Verify comment form is rendered on contact page': function (browser) {
     browser
-    .click('body > div.page-header > nav > div.navbar-brand > a')
-    .waitForElementVisible('#footer > span:nth-child(1) > a')
-    .execute(function () {
-      window.scrollBy(0, 1000);
-      return true;
-    })
-    .pause(500)
+      .click('body > div.page-header > nav > div.navbar-brand > a')
+      .waitForElementVisible('#footer > span:nth-child(1) > a')
+      .execute(function () {
+        window.scrollBy(0, 1000);
+        return true;
+      })
+      .pause(500)
       .click('#footer > span:nth-child(1) > a')
       .waitForElementVisible('#commentForm > fieldset > div:nth-child(7) > div')
       .assert.containsText('body', 'Not displayed but the md5 hash is used for Gravatar image')
     //     .saveScreenshot('./reports/search-result.png')
+  },
+  'Verify some pages and navigation': function (browser) {
+    browser
+      .back()
+      .click('#landing-app > div.container > div > div:nth-child(1) > div > div > h4')
+      .assert.containsText('body > div.container > h1', 'Tech I Dig')
+
+      .click('body > div.container > ul:nth-child(2) > li > a')
+      .assert.containsText('body', 'Code Samples')
+
+      .click('body > div.container > ul > li:nth-child(1) > a')
+      .assert.containsText('body', 'zsh/shell commands')
+
+      .click('body > div.container > p:nth-child(4) > a')
+      .assert.containsText('body', 'Code Samples')
+
+      .click('body > div.container > ul > li:nth-child(2) > a')
+      .assert.containsText('body', 'jq is a command line tool for processing JSON')
+      .assert.containsText('body > div.container > p:nth-child(19) > a', 'Back to Code Samples')
+      .assert.containsText('body > div.container > p:nth-child(20) > a', 'Back to Tech')
   },
   'Close browser': function (browser) {
     browser

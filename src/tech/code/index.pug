@@ -1,0 +1,48 @@
+- var title = 'Code Samples'
+
+block variables
+doctype html
+html.no-js(lang="en")
+
+  head
+    include ../../templates/head
+    style(type="text/scss").
+      li {
+        list-style-image: url(../../img/dot.8.svg);
+      }
+      a[href^="http"]::after {
+        content: "\f35d";
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+        margin-left: 5px 
+      }
+  
+  body
+    include ../../templates/pageheader
+
+    .container
+      h1 #{title}
+      
+      ul
+        li 
+          a(href="shell/") zsh/shell
+        li 
+          a(href="/tech/jq/") jq
+
+      p Some more samples are on 
+        a(href="/projects/") the Current Projects page
+        |  under the animations section. 
+
+      p: a(href="../") &larr; Back to Tech
+
+    include ../../templates/footer
+
+    block body_scripts
+    

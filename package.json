@@ -4,7 +4,7 @@
   "description": "Adam Koch homepage",
   "author": "Adam Koch",
   "scripts": {
-    "build": "mkdir -p dist && cp -v _redirects dist/ && cp -Rv src/assets/* dist/ && cp -Rv src/meta/* dist/ && parcel build ./src/index.pug './src/**/index.pug' ./src/404.pug --log-level verbose && node scripts/copy_font_files.mjs",
+    "build": "mkdir -p dist && cp -v _redirects dist/ && cp -Rv src/assets/* dist/ && cp -Rv src/meta/* dist/ && parcel build ./src/index.pug './src/**/index.pug' ./src/404.pug --log-level verbose && node scripts/copy_font_files.mjs && ln -s 2021/10/14 dist/posts/latest",
     "test:vue": "vue-cli-service test",
     "test:unit": "mocha",
     "test:system": "nightwatch tests/system/basic.js",
@@ -12,6 +12,7 @@
     "font": "rm -rf ./dist/ && mkdir dist && cp -v _redirects dist/ && cp -Rv src/assets/* dist/ && parcel build ./src/index.pug './src/**/index.pug' ./src/404.pug && cd dist && ../scripts/font.mjs && cd ..",
     "help": "echo \"npm run watch or npm run build\"",
     "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && git push && git push --tags",
+    "serve": "ln -s 2021/10/14 dist/posts/latest && serve dist/",
     "test": "echo 'use test:unit' or 'test:system'",
     "updateTest": "SNAPSHOT_UPDATE=1 npm test",
     "watch": "mkdir -p dist && cp -v _redirects dist/ && cp -Rv src/assets/* dist/ && parcel ./src/index.pug './src/**/index.pug' ./src/404.pug --no-cache"
@@ -28,6 +29,7 @@
     "moment-countdown": "^0.0.3",
     "netlify": "^8.0.0",
     "server": "^1.0.36",
+    "tippy.js": "^6.3.2",
     "vue": "^3.2.4",
     "vue-router": "^4.0.11"
   },

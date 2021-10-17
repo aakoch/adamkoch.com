@@ -22,9 +22,9 @@ doctype html
 html.no-js(lang="en")
 
   head
-    include ../templates/head
+    include ../../templates/head
   body
-    include ../templates/pageheader
+    include ../../templates/pageheader
 
     .container
       h1 #{title}
@@ -67,6 +67,9 @@ html.no-js(lang="en")
             grep -v "^- var.*" $f.html | html2pug > $f.pug
           done      
 
-    include ../templates/footer
+      p: a(href="../code/") &larr; Back to Code Samples
+      p: a(href="../") &larr; Back to Tech
+
+    include ../../templates/footer
 
     block body_scripts
