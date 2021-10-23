@@ -10,7 +10,8 @@
   Might have to do this for it to work: https://v2.parceljs.org/languages/css/#postcss-import
 ## # 5 CORS
   see .proxyrc.js
-  
+## # 6 link
+  Adding <link>s to my site is making files not make it into the dist/ folder
 ## # 9 Sharp causes segmentation faults
 ## # 10 strange imports 
 ## # 11 Some reporter is broken
