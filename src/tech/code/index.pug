@@ -6,6 +6,23 @@ html.no-js(lang="en")
 
   head
     include ../../templates/head
+
+    script(type="application/ld+json").
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tech",
+          "item": "../"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Code Samples"
+        }]
+      }
+
     style(type="text/scss").
       li {
         list-style-image: url(../../img/dot.8.svg);
@@ -32,7 +49,7 @@ html.no-js(lang="en")
       
       ul
         li 
-          a(href="shell/") zsh/shell
+          a(href="/tech/code/shell/") zsh/shell
         li 
           a(href="/tech/jq/") jq
 
@@ -40,7 +57,7 @@ html.no-js(lang="en")
         a(href="/projects/") the Current Projects page
         |  under the animations section. 
 
-      p: a(href="../index.pug") &larr; Back to Tech
+      p: a(href="/tech") &larr; Back to Tech
 
     include ../../templates/footer
 

@@ -35,6 +35,16 @@ html.no-js(lang="en")
       .project-wrapper {
         display: inline-grid;
       }
+    script(type="application/ld+json").
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Design"
+        }]
+      }
   body
     include ../templates/pageheader
 

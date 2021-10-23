@@ -17,6 +17,16 @@ html.no-js(lang="en")
 
   head
     include ../templates/head
+    script(type="application/ld+json").
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Projects"
+        }]
+      }
   body
     include ../templates/pageheader
 

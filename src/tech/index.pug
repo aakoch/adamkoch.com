@@ -17,6 +17,18 @@ html.no-js(lang="en")
 
   head
     include ../templates/head
+    
+    script(type="application/ld+json").
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tech"
+        }]
+      }
+
     style(type="text/scss").
       li {
         list-style-image: url(../img/dot.8.svg);
@@ -43,7 +55,7 @@ html.no-js(lang="en")
       
       ul
         li 
-          a#code-samples-link(href="code/") Code samples
+          a#code-samples-link(href="/tech/code") Code samples
 
       p As I'm thinking of what I want to put on this page, the list is growing...
 

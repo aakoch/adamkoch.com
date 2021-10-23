@@ -7,6 +7,27 @@ html.no-js(lang="en")
     link(rel="stylesheet" href="/node_modules/tippy.js/dist/tippy.css")
     link(rel="stylesheet" href="/node_modules/highlight.js/styles/github.css")
 
+    script(type="application/ld+json").
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tech",
+          "item": "../../"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Code Samples",
+          "item": "../"
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": "zsh/shell commands"
+        }]
+      }
+
     style.
       [data-tippy-content] {
         text-decoration: underline dashed #406275;
@@ -76,7 +97,7 @@ html.no-js(lang="en")
         | 
         span.terminator done
 
-      p: a(href="../index.pug") &larr; Back to Code Samples
+      p: a(href="/tech/code") &larr; Back to Code Samples
 
     include ../../../templates/footer
 
