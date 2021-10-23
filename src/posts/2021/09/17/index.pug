@@ -9,6 +9,24 @@ append variables
   - var nextTitle = 'Recruiter Tips'
 
 append head
+  link(rel="prev" href= '/src' + prevUrl)
+  link(rel="next" href= '/src' + nextUrl)
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "My Stack",
+      "image": [
+        "/src/img/pug.svg"
+       ],
+      "datePublished": "2021-09-17T00:00:00+000:00",
+      "dateModified": "2021-09-17T00:00:00+000:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
 
   style.
     #pugImg {

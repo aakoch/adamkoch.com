@@ -7,6 +7,22 @@ append variables
   - var prevTitle = 'Recruiter Tips'
 
 append head
+  link(rel="prev" href= '/src' + prevUrl)
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Spring Cloud Contracts",
+      "image": [
+       ],
+      "datePublished": "2021-10-22T00:00:00+008:00",
+      "dateModified": "2021-10-22T00:00:00+008:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
   style(type="text/scss").
     .quote {
       &::before, &::after {

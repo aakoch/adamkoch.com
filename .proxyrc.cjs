@@ -11,12 +11,4 @@ module.exports = function (app) {
 
       next();
   });
-  app.use(
-    createProxyMiddleware("/posts/latest", {
-      target: "http://localhost:1234",
-      pathRewrite: {
-        "^/posts/latest": "/posts/2021/10/14",
-      },
-    })
-  );
 };

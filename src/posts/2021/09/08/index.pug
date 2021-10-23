@@ -9,6 +9,8 @@ append variables
   - var prevTitle = 'Back to Posts'
 
 append head
+  link(rel="prev" href= '/src' + prevUrl)
+  link(rel="next" href= '/src' + nextUrl)
   script(type="application/ld+json").
     {
       "@context": "https://schema.org",
