@@ -86,7 +86,7 @@ module.exports = {
       })
       .pause(500)
       .click('#footer > span:nth-child(1) > a')
-      .waitForElementVisible('#commentForm > fieldset > div:nth-child(7) > div')
+      .waitForElementVisible('#commentForm > fieldset > div:nth-child(9)')
       .assert.containsText('body', 'Not displayed but the md5 hash is used for Gravatar image')
     //     .saveScreenshot('./reports/search-result.png')
   },
