@@ -15,8 +15,8 @@ form#commentForm.needs-validation(name='commentForm' data-netlify='true' netlify
     p Your comment was successfully submitted.
   fieldset(v-bind:disabled="isSuccess")
     input(type="hidden" name="form-name" value="commentForm")
-    input(type="hidden" name="post-id" v-bind:value="postId")
-    input(type="hidden" name="post-title" v-bind:value="computedPostTitle")
+    input(type="text" name="post-id" v-bind:value="postId" hidden)
+    input(type="text" name="post-title" v-bind:value="computedPostTitle" hidden)
     .postTitle(v-if="computedPostId")
       h2 Comment on &quot;{{ computedPostTitle }}&quot;
     .mb-0.mt-3
