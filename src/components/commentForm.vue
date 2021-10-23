@@ -1,5 +1,5 @@
 <template lang="pug">
-form#commentForm.needs-validation(name='commentForm' data-netlify='true' netlify-honeypot='validate' novalidate @submit='submit()' )
+form#commentForm.needs-validation(name='post-comment-form' data-netlify='true' netlify-honeypot='validate' novalidate @submit='submit()' )
   .alert.alert-danger.mt-3(role="alert" v-if="isError") 
     h4.alert-heading Oh, no!
     #expandDetails(v-show="!expanded")
@@ -14,10 +14,8 @@ form#commentForm.needs-validation(name='commentForm' data-netlify='true' netlify
     h4.alert-heading Thank you!
     p Your comment was successfully submitted.
   fieldset(v-bind:disabled="isSuccess")
-    input(type="hidden" name="form-name" value="commentForm")
-    label(for='post-id' hidden) Post ID: 
+    input(type="hidden" name="form-name" value="post-comment-form")
     input(type="hidden" name="post-id" v-bind:value="postId")
-    label(for='post-title' hidden) Post Title: 
     input(type="hidden" name="post-title" v-bind:value="computedPostTitle")
     .postTitle(v-if="computedPostId")
       h2 Comment on &quot;{{ computedPostTitle }}&quot;
