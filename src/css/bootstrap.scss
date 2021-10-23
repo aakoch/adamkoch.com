@@ -295,9 +295,25 @@ nav, #landing-header {
 ol {
   padding-left: 0;
 }
+li {
+  margin-left: 2em;
+}
 
 .underline {
   text-decoration: underline;
+}
+
+hr {
+  margin: 1em auto;
+}
+
+#more-posts {
+  text-align: center;
+  font-size: large;
+  transform: rotateZ(-15deg);
+}
+#more-posts:hover {
+  transform: rotateZ(15deg);
 }
 
 // a {

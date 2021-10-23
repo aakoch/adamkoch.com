@@ -163,6 +163,7 @@ $danger: #b87460;
 <script>
 import card from "./card";
 import minicard from "./minicard";
+import { latestPost } from "../posts/blog.json";
 
 export default {
   components: {
@@ -182,7 +183,7 @@ export default {
           buttons: [
             {
               label: "Latest",
-              url: "/posts/latest/",
+              url: "/posts/" + latestPost.replaceAll('-', '/') + '/',
               title: "Latest Post",
             },
             {
@@ -191,7 +192,7 @@ export default {
               title: "All Posts",
             },
           ],
-          tagline: "Latest post: 2021-10-14",
+          tagline: "Latest post: " + latestPost,
         },
         {
           id: 2,

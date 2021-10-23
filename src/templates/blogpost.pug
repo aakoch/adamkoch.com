@@ -4,7 +4,52 @@ html.no-js(lang="en")
 
   head
     include head
+
     block head
+
+    style(type="text/scss").
+      $primary: #406275;
+      div.date {
+        margin-bottom: 10px;
+      }
+      a {
+        cursor: pointer;
+      }
+      code {
+        white-space: pre;
+      }
+
+      .linkies {
+        &:hover {
+          .fa-angle-double-right {
+            animation: moveright .5s infinite;
+          }
+          .fa-angle-double-left {
+            animation: moveleft .5s infinite;
+          }
+        }
+      }
+
+      @keyframes moveright {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(10px);
+        }
+      }
+
+      @keyframes moveleft {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-10px);
+        }
+      }
+
   body
     include pageheader
 
@@ -12,6 +57,30 @@ html.no-js(lang="en")
       h1 #{title}
       block body
 
-    include ../templates/footer
+      hr(width="80%" align="center")
+
+      .container-fluid
+        .row
+          .col-3.position-relative.offset-md-2
+            if prevTitle
+              a.linkies(href= prevUrl)
+                i.fas.fa-angle-double-left
+                |  
+                span= prevTitle 
+          .col-2.text-end.position-relative
+            #more-posts More posts!
+          .col-3.text-end.position-relative
+            if nextTitle
+              a.linkies(href= nextUrl)= nextTitle 
+                |  
+                i.fas.fa-angle-double-right
+            else
+              | Coming soon!
+              
+      hr(width="80%" align="center")
+
+      block commentForm
+          
+    include footer
 
     block body_scripts

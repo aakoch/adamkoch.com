@@ -17,7 +17,7 @@ form#commentForm.needs-validation(name='commentForm' data-netlify='true' netlify
     input(type="hidden" name="form-name" value="commentForm")
     input(type="hidden" name="postId" v-bind:value="postId")
     .postTitle(v-if="computedPostId")
-      h1 Comment on &quot;{{ computedPostTitle }}&quot;
+      h2 Comment on &quot;{{ computedPostTitle }}&quot;
     .mb-0.mt-3
       label.form-label.mb-0(for='name') Name: 
     .mb-3

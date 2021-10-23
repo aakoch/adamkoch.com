@@ -3,6 +3,10 @@ extends ../../../../templates/blogpost
 append variables
   - var title = "My Stack"
   - var posted = '2021-09-17'
+  - var prevUrl = '/posts/2021/09/08'
+  - var prevTitle = 'Moving off Wordpress and on to Netlify'
+  - var nextUrl = '/posts/2021/10/14'
+  - var nextTitle = 'Recruiter Tips'
 
 append head
 
@@ -115,8 +119,7 @@ append head
       }]
     }
 block body
-
-  .container.post#post-20210907
+  .container.post(id="post-" + posted)
     .posted= posted
     .content
       #stack
@@ -252,6 +255,13 @@ block body
     img#pugImg(src="/src/img/pug.svg" alt="Pug Logo")
     #woof1: h3 Woof!
     #woof2: h3 Woof!
+
+block commentForm
+  .container
+    #comment-form
+    
+    script#commentScript(src="commentForm.js" type="module")
+
 
     script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
     script(src="/node_modules/jquerykeyframes/dist/jquery.keyframes.min.js")
@@ -463,3 +473,5 @@ block body
           hljs.highlightElement(el);
         })
       })
+
+      

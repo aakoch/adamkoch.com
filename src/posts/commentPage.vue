@@ -1,11 +1,12 @@
 <template lang="pug">
-commentForm(postId='2021/10/14' postTitle='Recruiter Tips')
+commentForm(v-bind:postId='postId' v-bind:postTitle='postTitle')
 </template>
 
 <script>
 import commentForm from "/src/components/commentForm";
 
 export default {
+  inject: ['postId', 'postTitle'],
   components: {
     commentForm
   }

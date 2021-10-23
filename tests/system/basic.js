@@ -72,8 +72,8 @@ module.exports = {
       .click('body > div.page-header > nav > div.navbar-brand > a')
       .waitForElementVisible('#main > div > div > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)')
       .click('#main > div > div > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)')
-      .waitForElementVisible('#commentForm > fieldset > div.postTitle > h1')
-      .assert.containsText('body', 'Recruiter Tips')
+      .waitForElementVisible('#commentForm > fieldset > div.postTitle > h2')
+      .assert.containsText('body', 'Coming soon!')
     //     .saveScreenshot('./reports/search-result.png')
   },
   'Verify comment form is rendered on contact page': function (browser) {

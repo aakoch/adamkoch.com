@@ -4,6 +4,8 @@ div
   .container
     h1= title
 
+    postpreview(key='20211022' postTitle='Spring Cloud Contracts' date='2021-10-22T21:40-05:00' link='/posts/2021/10/22' name='Spring Cloud Contracts' excerpt='My current employment uses Spring Cloud Contracts to write contracts between microservices. And while they are a good step to guarentee things work between apps, the way it is used today makes it very easy to pass bad data....')
+
     postpreview(key='20211014' postTitle='Recruiter Tips' date='2021-10-14T21:20-05:00' link='/posts/2021/10/14' name='Recruiter Tips' excerpt='When a recruiter messaged me on...')
 
     postpreview(key='20210917' postTitle='My Technology Stack' excerpt='Getting off Wordpress offered me a lot of "opportunities" to learn some new tech...' date='2021-09-17T00:32-05:00' link='/posts/2021/09/17' name='My Technology Stack')

@@ -1,0 +1,19 @@
+{
+  "name": "parcel-transformer-vue-query-passer",
+  "version": "0.0.0",
+  "description": "test transformer",
+  "source": "index.js",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "scripts": {
+    "build": "parcel build index.js"
+  },
+  "author": "Adam A. Koch (aakoch)",
+  "license": "MIT",
+  "dependencies": {
+    "@parcel/plugin": "^2.0.0-rc.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0-rc.0"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "latestPost": "2021-10-22",
+  "posts": [
+    {
+      "id": 0,
+      "title": "Back to Posts",
+      "url": "/posts/"
+    },
+    {
+      "id": 20210908,
+      "title": "Moving off Wordpress and on to Netlify",
+      "url": "/posts/2021/09/08"
+    },
+    {
+      "id": 20210917,
+      "title": "My Technology Stack",
+      "url": "/posts/2021/09/17"
+    }
+  ]
+}
