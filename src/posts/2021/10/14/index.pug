@@ -9,6 +9,22 @@ append variables
   - var nextTitle = 'Spring Cloud Contracts'
 
 append head
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Recruiter Tips",
+      "image": [
+        "/src/img/recruiter_ohio.png"
+       ],
+      "datePublished": "2021-10-14T00:00:00+008:00",
+      "dateModified": "2021-10-14T00:00:00+008:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
   style(type="text/scss").
     .quote {
       &::before, &::after {
