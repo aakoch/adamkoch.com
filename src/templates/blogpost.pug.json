@@ -1,0 +1,90 @@
+[ 
+{"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"pug_keyword","name":"block","val":"variables","lineNumber": 1},  
+{"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"pug_keyword","name":"doctype","val":"html","lineNumber": 2},  
+{"source":"../../../adamkoch.com/src/templates/blogpost.pug","name":"html","type":"tag","classes":["no-js"],"attrs":["lang=\"en\""],"lineNumber": 3, "children":[ 
+  {"source":"../../../adamkoch.com/src/templates/blogpost.pug","name":"head","type":"tag","lineNumber": 5, "children":[ 
+    {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"pug_keyword","name":"include","val":"head","lineNumber": 6},  
+    {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"pug_keyword","name":"block","val":"head","lineNumber": 8},  
+    {"source":"../../../adamkoch.com/src/templates/blogpost.pug","name":"style","type":"tag","attrs":["type=\"text/scss\""],"lineNumber": 10, "children":[ 
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"$primary: #406275;","lineNumber": 11},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"div.date {","lineNumber": 12, "children":[ 
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"margin-bottom: 10px;","lineNumber": 13}] 
+},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 14},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"a {","lineNumber": 15, "children":[ 
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"cursor: pointer;","lineNumber": 16}] 
+},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 17},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"code {","lineNumber": 18, "children":[ 
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"white-space: pre;","lineNumber": 19}] 
+},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 20},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":".linkies {","lineNumber": 22, "children":[ 
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"&:hover {","lineNumber": 23, "children":[ 
+          {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":".fa-angle-double-right {","lineNumber": 24, "children":[ 
+            {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"animation: moveright .5s infinite;","lineNumber": 25}] 
+},  
+          {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 26},  
+          {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":".fa-angle-double-left {","lineNumber": 27, "children":[ 
+            {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"animation: moveleft .5s infinite;","lineNumber": 28}] 
+},  
+          {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 29}] 
+},  
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 30}] 
+},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 31},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"@keyframes moveright {","lineNumber": 33, "children":[ 
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"from {","lineNumber": 34, "children":[ 
+          {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"transform: translateX(0);","lineNumber": 35}] 
+},  
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 36},  
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"to {","lineNumber": 38, "children":[ 
+          {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"transform: translateX(10px);","lineNumber": 39}] 
+},  
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 40}] 
+},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 41},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"@keyframes moveleft {","lineNumber": 43, "children":[ 
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"from {","lineNumber": 44, "children":[ 
+          {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"transform: translateX(0);","lineNumber": 45}] 
+},  
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 46},  
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"to {","lineNumber": 48, "children":[ 
+          {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"transform: translateX(-10px);","lineNumber": 49}] 
+},  
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 50}] 
+},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"}","lineNumber": 51}]}] 
+},  
+  {"source":"../../../adamkoch.com/src/templates/blogpost.pug","name":"body","type":"tag","lineNumber": 53, "children":[ 
+    {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"pug_keyword","name":"include","val":"pageheader","lineNumber": 54},  
+    {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"tag","classes":["container"],"lineNumber": 56, "children":[ 
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","name":"h1","type":"tag","val":"#{title}","lineNumber": 57},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"pug_keyword","name":"block","val":"body","lineNumber": 58},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","name":"hr","type":"tag","attrs":["width=\"80%\" align=\"center\""],"lineNumber": 60},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"tag","classes":["container-fluid"],"lineNumber": 62, "children":[ 
+        {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"tag","classes":["row"],"lineNumber": 63, "children":[ 
+          {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"tag","classes":["col-3","position-relative","offset-md-2"],"lineNumber": 64, "children":[ 
+            {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"pug_keyword","name":"if","val":"prevTitle","lineNumber": 65, "children":[ 
+              {"source":"../../../adamkoch.com/src/templates/blogpost.pug","name":"a","type":"tag","classes":["linkies"],"attrs":["href= prevUrl"],"lineNumber": 66, "children":[ 
+                {"source":"../../../adamkoch.com/src/templates/blogpost.pug","name":"i","type":"tag","classes":["fas","fa-angle-double-left"],"lineNumber": 67},  
+                {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":" ","lineNumber": 68},  
+                {"source":"../../../adamkoch.com/src/templates/blogpost.pug","name":"span","type":"tag","assignment":true,"assignment_val":"prevTitle ","lineNumber": 69}]}]}] 
+},  
+          {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"tag","classes":["col-2","text-end","position-relative"],"lineNumber": 70, "children":[ 
+            {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"tag","id":"more-posts","val":"More posts!","lineNumber": 71}] 
+},  
+          {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"tag","classes":["col-3","text-end","position-relative"],"lineNumber": 72, "children":[ 
+            {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"pug_keyword","name":"if","val":"nextTitle","lineNumber": 73, "children":[ 
+              {"source":"../../../adamkoch.com/src/templates/blogpost.pug","name":"a","type":"tag","classes":["linkies"],"attrs":["href= nextUrl"],"assignment":true,"assignment_val":"nextTitle ","lineNumber": 74, "children":[ 
+                {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":" ","lineNumber": 75},  
+                {"source":"../../../adamkoch.com/src/templates/blogpost.pug","name":"i","type":"tag","classes":["fas","fa-angle-double-right"],"lineNumber": 76}]}] 
+},  
+            {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"pug_keyword","name":"else","lineNumber": 77, "children":[ 
+              {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"text","val":"Coming soon!","lineNumber": 78}]}]}]}] 
+},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","name":"hr","type":"tag","attrs":["width=\"80%\" align=\"center\""],"lineNumber": 80},  
+      {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"pug_keyword","name":"block","val":"commentForm","lineNumber": 82}] 
+},  
+    {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"pug_keyword","name":"include","val":"footer","lineNumber": 84},  
+    {"source":"../../../adamkoch.com/src/templates/blogpost.pug","type":"pug_keyword","name":"block","val":"body_scripts","lineNumber": 86}]}]}]
