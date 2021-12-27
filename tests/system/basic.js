@@ -1,7 +1,7 @@
 module.exports = {
   'homepage test': function (browser) {
     browser
-      .url('http://localhost:5000/')
+      .url('https://www.adamkoch.com/')
       .waitForElementVisible('body')
   },
   'Verify blog posts feather can be clicked': function (browser) {
@@ -102,10 +102,11 @@ module.exports = {
       .click('body > div.container > ul > li:nth-child(1) > a')
       .assert.containsText('body', 'zsh/shell commands')
 
-      .click('body > div.container > p:nth-child(4) > a')
+      .click('body > div.container > p:last-child > a')
       .assert.containsText('body', 'Code Samples')
-
+      
       .click('body > div.container > ul > li:nth-child(2) > a')
+      .waitForElementVisible('body > div.container > p:nth-child(20) > a')
       .assert.containsText('body', 'jq is a command line tool for processing JSON')
       .assert.containsText('body > div.container > p:nth-child(19) > a', 'Back to Code Samples')
       .assert.containsText('body > div.container > p:nth-child(20) > a', 'Back to Tech')
