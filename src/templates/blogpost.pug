@@ -63,7 +63,7 @@ html.no-js(lang="en")
         .row
           .col-4.col-md-3.offset-md-1
             if prevTitle
-              a.linkies(href= prevUrl)
+              a.linkies(href= prevUrl, rel="prev")
                 i.fas.fa-angle-double-left
                 |  
                 span= prevTitle 
@@ -71,7 +71,7 @@ html.no-js(lang="en")
             #more-posts More posts!
           .col-4.col-md-3.offset-md-1.text-end
             if nextTitle
-              a.linkies(href= nextUrl)= nextTitle 
+              a.linkies(href= nextUrl, rel="next")= nextTitle 
                 |  
                 i.fas.fa-angle-double-right
             else
