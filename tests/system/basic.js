@@ -1,7 +1,7 @@
 module.exports = {
   'homepage test': function (browser) {
     browser
-      .url('https://www.adamkoch.com/')
+      .url('http://localhost:1234')
       .waitForElementVisible('body')
   },
   'Verify blog posts feather can be clicked': function (browser) {
@@ -55,19 +55,30 @@ module.exports = {
       .saveScreenshot('./reports/search-result.png')
   },
   'Test search': function (browser) {
+    console.log('browser.url().launchUrl=', browser.url().launchUrl)
+    if (!browser.url().launchUrl.includes('localhost')) {
+      browser
+        // updateValue didn't work with Chrome
+        .setValue('#gsc-i-id1', ['whitespace', browser.Keys.ENTER])
+        .waitForElementVisible('#___gcse_0 > div > div > div.gsc-results-wrapper-overlay.gsc-results-wrapper-visible')
+        .click('#___gcse_0 > div > div > div.gsc-results-wrapper-overlay.gsc-results-wrapper-visible > div.gsc-results-close-btn.gsc-results-close-btn-visible')
+      }
+      else {
+        browser
+          .execute(function () {
+            window.scrollBy(0, -1000);
+            return true;
+          })
+          .pause(500)
+    }
+  },
+  'Verify comment form is rendered on post page': function (browser) {
     browser
-      // updateValue didn't work with Chrome
-      .setValue('#gsc-i-id1', ['whitespace', browser.Keys.ENTER])
-      .waitForElementVisible('#___gcse_0 > div > div > div.gsc-results-wrapper-overlay.gsc-results-wrapper-visible')
-      .click('#___gcse_0 > div > div > div.gsc-results-wrapper-overlay.gsc-results-wrapper-visible > div.gsc-results-close-btn.gsc-results-close-btn-visible')
       .execute(function () {
         window.scrollBy(0, -1000);
         return true;
       })
       .pause(500)
-  },
-  'Verify comment form is rendered on post page': function (browser) {
-    browser
       .waitForElementVisible('body > div.page-header > nav > div.navbar-brand > a')
       .click('body > div.page-header > nav > div.navbar-brand > a')
       .waitForElementVisible('#main > div > div > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)')
