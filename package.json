@@ -25,7 +25,7 @@
     "jquery": "^3.6.0",
     "jquerykeyframes": "^1.0.8",
     "lodash": "^4.17.21",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "moment-countdown": "^0.0.3",
     "netlify": "^8.0.0",
     "server": "^1.0.36",
