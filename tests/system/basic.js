@@ -1,7 +1,7 @@
 module.exports = {
   'homepage test': function (browser) {
     browser
-      .url('http://localhost:1234')
+      .url('https://61d666c8a8687600079ab83f--adamkoch.netlify.app/')
       .waitForElementVisible('body')
   },
   'Verify blog posts feather can be clicked': function (browser) {
