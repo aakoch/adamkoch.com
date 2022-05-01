@@ -4,6 +4,8 @@ div
   .container
     h1 Blog Posts
 
+    postpreview(key='20220430' postTitle='Lucid Gloves' date='2022-04-30T21:00-05:00' link='/posts/2022/04/30' name='Lucid Gloves' excerpt='It happens all the time. I get distracted by some new project and never finish the project I was working on...')
+
     postpreview(key='20211222' postTitle='GitHub Username' date='2021-12-22T21:00-05:00' link='/posts/2021/12/22' name='GitHub Username' excerpt='I was looking to publish a small NPM package but...')
 
     postpreview(key='20211022' postTitle='Spring Cloud Contracts' date='2021-10-22T21:40-05:00' link='/posts/2021/10/22' name='Spring Cloud Contracts' excerpt='My current employment uses Spring Cloud Contracts to write contracts between microservices. And while they are a good step to guarentee things work between apps, the way it is used today makes it very easy to pass bad data....')
