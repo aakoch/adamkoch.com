@@ -4,6 +4,8 @@ div
   .container
     h1 Blog Posts
 
+    postpreview(key='20220619' postTitle='Engineering Process' date='2022-06-19T21:44-05:00' link='/posts/2022/06/19' name='Engineering Process' excerpt='Who knew there were so many steps in the engineering process...')
+
     postpreview(key='20220430' postTitle='Lucid Gloves' date='2022-04-30T21:00-05:00' link='/posts/2022/04/30' name='Lucid Gloves' excerpt='It happens all the time. I get distracted by some new project and never finish the project I was working on...')
 
     postpreview(key='20211222' postTitle='GitHub Username' date='2021-12-22T21:00-05:00' link='/posts/2021/12/22' name='GitHub Username' excerpt='I was looking to publish a small NPM package but...')

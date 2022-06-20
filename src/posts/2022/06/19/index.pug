@@ -1,0 +1,51 @@
+extends ../../../../templates/blogpost
+
+append variables
+  - var title = "Engineering Process"
+  - var posted = '2022-06-19'
+  - var prevUrl = '/posts/2022/04/30'
+  - var prevTitle = 'Lucid Gloves'
+
+append head
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Engineering Process",
+      "image": [
+       ],
+      "datePublished": "2022-06-190T00:00:00+008:00",
+      "dateModified": "2022-06-19T00:00:00+008:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
+  style(type="text/scss").
+    $dark: #43464a;
+    blockquote {
+      padding-left: 1vw;
+      border-left: 2px solid $dark;
+      margin-left: 1vw;
+    }
+
+block body
+
+  .container.post(id="post-" + posted)
+    .posted= posted
+    .content
+
+      p I've been entertaining the idea of trying to better document the projects I'm working on. I'm thinking of the type used in VEX robotics. To help (or hinder, if you're like me and get side-tracked easily) I wanted to create a template that I could use. I was surprised to find that there are so many different engineering design processes. I found lists that contained 3, 4, 5, 6, 7, 8, 9, 10 and 12 steps.
+
+      img(src="img/steps/design_steps.png")
+      
+      p My favorite is this one that says it has 4 steps but the thumbnail has 5:
+
+      img(src="img/steps/4.png", style="box-shadow: 5px 5px 5px rgba(50,50,50,.5);")
+
+block commentForm
+  .container
+    #comment-form
+    
+  script#commentScript(src="commentForm.js" type="module")
