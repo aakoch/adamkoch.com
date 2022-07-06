@@ -18,3 +18,11 @@ npm version [major|minor|patch]
 ## Serve
 serve dist
 
+
+
+## Automation
+
+I'm not sure what I'm doing here yet:
+```
+for f in $(find src/posts/. -name "index.pug" | sort); do filename=$(echo $f | sed -E "s/.\/([0-9]{4})\/([0-9]{2})\/([0-9]{2})\/index.pug/\1_\2_\3_index.js/"); grep -A 6 "append variables" $f | tail -n +2 | sed "s/- var/let/" > $filename ; done
+```

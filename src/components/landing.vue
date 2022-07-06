@@ -246,7 +246,7 @@ export default {
           id: 2,
           title: "Thingiverse",
           icon: "fas fa-cube",
-          description: "3D prints",
+          description: "3D designs",
           link: "https://www.thingiverse.com/aakoch/designs",
           isExternal: true,
         },
