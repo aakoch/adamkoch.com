@@ -4,7 +4,7 @@
   "description": "Adam Koch homepage",
   "author": "Adam Koch",
   "scripts": {
-    "build": "ls -al && ./build.sh",
+    "build": "./build.sh",
     "test:vue": "vue-cli-service test",
     "test:unit": "mocha",
     "test:system": "nightwatch tests/system/basic.js",
