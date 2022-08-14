@@ -1,0 +1,3 @@
+/projects/light-bulbs/*
+  Access-Control-Allow-Origin: https://www.tiktok.com/
+  Vary: Origin
