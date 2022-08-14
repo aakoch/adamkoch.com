@@ -183,7 +183,7 @@ nav, #landing-header {
   nav {
     padding-left: 40px;
   }
-  
+
   .navbar-nav {
     margin-left: 40px;
   }
@@ -245,7 +245,15 @@ nav, #landing-header {
     font-size: 1.2em;
     .status {
       font-family: monospace;
+      padding-left: .5em;
     }
+  }
+  .project-description {
+    font-size: 1.2em;
+  }
+  ul {
+    padding-left: 0;
+    margin-left: 0;
   }
 }
 
@@ -269,7 +277,7 @@ nav, #landing-header {
 
 .aside {
   i {
-    
+
     margin: 0 10px;
     color: #406275;
     font-weight: 900;
@@ -334,7 +342,7 @@ hr {
 // }
 
 
-/* 
+/*
 Not working:
 
 // @import "/node_modules/@fortawesome/fontawesome-free/scss/_variables.scss";

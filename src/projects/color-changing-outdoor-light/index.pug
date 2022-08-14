@@ -1,0 +1,55 @@
+- var title = 'Color Changing Outdoor Light'
+block variables
+mixin lastUpdatedDate(date)
+  .last-updated-date-container Last updated: #{date}  
+doctype html
+html.no-js(lang="en")
+
+  head
+    include ../../templates/head
+    script(type="application/ld+json").
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Projects",
+          "item": "../"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Color Changing Outdoor Light"
+        }]
+      }
+  body
+    include ../../templates/pageheader
+
+    .container.project
+      a.text-end(style='display:block' href="/projects" title="Projects")
+        i.fas.fa-angle-double-left
+        |  Back to current projects
+      h1 #{title}
+
+      .project-description Fixing a broken garden globe light
+      +lastUpdatedDate('2022-08-13')
+
+      div(style="margin-top: .5em")
+        p My wife has this globe garden decoration that hasn't worked for years and I've started fiddling around with it. 
+          | I took it apart but wasn't super confident of the circuit board so I ordered a new module. I also surmised the 
+          | rechargeable battery was no longer good so I ordered a replacement. I didn't realize 
+          | the voltage requirements of the new board until I received it. Much higher than the old one used with its single 
+          | AA-sized NiCd battery at 1.2 volts.
+  
+        ul Parts list
+          li NiCd battery - 
+            a(href="https://www.aliexpress.com/item/3256803492767390.html?spm=a2g0o.order_list.0.0.28761802b7tO8C") on AliExpress
+          li solar power board - 
+            a(href="https://www.aliexpress.com/item/2255799979278143.html?spm=a2g0o.order_list.0.0.28761802b7tO8C") on AliExpress
+          li color changing LED - 
+            a(href="https://www.aliexpress.com/item/2251832763874657.html?spm=a2g0o.order_list.0.0.28761802b7tO8C") on AliExpress
+
+
+    include ../../templates/footer
+
+    block body_scripts
