@@ -5,19 +5,20 @@
 
 #main
   .row.center-row.gx-0.gy-4
-    .col
-      .container
-        .row.justify-content-center.align-items-center.g-2
-          .col-md(v-for="card in cards")
-            card(
-              :key="card.id",
-              :cardTitle="card.title",
-              :excerpt="card.description",
-              :icon="card.icon",
-              :url="card.url",
-              :tagline="card.tagline",
-              :buttons="card.buttons"
-            )
+    //- .col
+    //-   .container
+    //-     .row.justify-content-center.align-items-center.g-2
+    .cards-container
+      .card-container(v-for="card in cards")
+        card(
+          :key="card.id",
+          :cardTitle="card.title",
+          :excerpt="card.description",
+          :icon="card.icon",
+          :url="card.url",
+          :tagline="card.tagline",
+          :buttons="card.buttons"
+        )
 #adamexcerpt2
   p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things" are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
 
@@ -148,6 +149,24 @@ $danger: #b87460;
   width: 80%;
   margin: 40px auto 30px;
 }
+
+.cards-container {
+  width: 80%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  
+  gap: 2vh;
+/*   justify-content: center; */
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    grid-auto-flow: row;
+  }
+}
+
 #moreresources {
   width: 50%;
   margin: 1em 0 3em 25%;
