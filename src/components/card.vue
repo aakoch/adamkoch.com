@@ -12,7 +12,7 @@
       a.btn.btn-primary(v-bind:href='buttons[0].url' v-bind:title='buttons[0].title') {{ buttons[0].label }}
       a.btn.btn-primary(href='/posts/' title='All Posts') All
   //- Hidden only on md by the combination of .d-md-none.d-lg-block
-  .card-footer(v-if='tagline').d-md-none.d-lg-block
+  .card-footer(v-if='tagline')
     small {{ tagline }}
 </template>
 
@@ -57,6 +57,19 @@ small {
 
   .card-body {
     padding: 20px 30px 30px;
+  }
+
+
+  @media screen and (max-width: 1170px) {
+    .card-footer {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .card-footer {
+      display: block;
+    }
   }
 
   .icon-container {
