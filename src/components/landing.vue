@@ -1,32 +1,33 @@
 <template lang="pug">
-#adamexcerpt1
-  p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things"
-    | are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
 
-#main
-  .row.center-row.gx-0.gy-4
-    //- .col
-    //-   .container
-    //-     .row.justify-content-center.align-items-center.g-2
-    .cards-container
-      .card-container(v-for="card in cards")
-        card(
-          :key="card.id",
-          :cardTitle="card.title",
-          :excerpt="card.description",
-          :icon="card.icon",
-          :url="card.url",
-          :tagline="card.tagline",
-          :buttons="card.buttons"
-        )
-#adamexcerpt2
-  p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things" are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
+.page-flex 
+  #adamexcerpt
+    p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things"
+      | are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
 
-#moreresources.col-md-8.offset-md-1
-  h3 More Stuff
-.container
-  .row.g-2
-    .col-lg-3.col-md-4.g-1(v-for="link in links")
+  #main
+    .row.center-row.gx-0.gy-4
+      //- .col
+      //-   .container
+      //-     .row.justify-content-center.align-items-center.g-2
+      .cards-container
+        .card-container(v-for="card in cards")
+          card(
+            :key="card.id",
+            :cardTitle="card.title",
+            :excerpt="card.description",
+            :icon="card.icon",
+            :url="card.url",
+            :tagline="card.tagline",
+            :buttons="card.buttons"
+          )
+  //- #adamexcerpt2
+  //-   p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things" are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
+
+  #moreresources
+    h3 More Stuff
+  .mini-cards-container
+    .mini-card-container(v-for="link in links")
       minicard(
         :key="link.id",
         :cardTitle="link.title",
@@ -107,75 +108,184 @@ $danger: #b87460;
 
 #landing-header,
 .page-header {
+  
+  display: flex;
+  justify-content: center;
+
   svg {
     max-width: 600px;
-    left: 50%;
-    position: relative;
-    transform: translateX(-50%) translateY(20%);
+    flex: 1;
+
+    // left: 50%;
+    // position: relative;
+    translate: 0 19%;
   }
 
-  @media screen and (max-width: 767px) {
-    svg {
-      width: 90%;
-      transform: translateX(-50%) translateY(5%);
-    }
-  }
 }
 
-@media screen and (min-width: 768px) {
-  #adamexcerpt1 {
-    display: none;
-  }
+// @media screen and (max-width: 767px) {
+//   #adamexcerpt2 {
+//     display: none;
+//   }
+// }
+
+.page-flex {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-@media screen and (max-width: 767px) {
-  #adamexcerpt2 {
-    display: none;
-  }
+.page-flex > * {
+  flex: 1;
 }
 
 .adamis {
   width: 50%;
   margin-right: 50em;
 }
-#adamexcerpt1 {
+
+#adamexcerpt {
+  max-width: 90vw;
+  // min-width: 70vh;
+  margin: 0 auto;
+
+  padding: 2rem;
+  order: 2;
+}
+
+#main {
+  padding-top: 24px;
   width: 100%;
-  padding: 25px;
+  order: 1;
+}
+
+
+@media screen and (max-width: 767px) {
+  // #adamexcerpt {
+  //   order: 1;
+  //   color: $white;
+  //   background-color: $primary;
+  // }
+  // #main {
+  //   order: 2;
+  // }
+#landing-header,
+.page-header {
+    svg {
+      width: 90cqw;
+      translate: 0 5%;
+    }
+  }
+
+#adamexcerpt {
+  min-width: 100%;
+  padding: 0 5%;
+  order: 1;
   color: $white;
   background-color: $primary;
 }
 
-#adamexcerpt2 {
-  width: 80%;
-  margin: 40px auto 30px;
+  #main {
+    order: 2;
+  }
+  .cards-container {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
 }
 
-.cards-container {
-  width: 80%;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  
-  gap: 2vh;
-/*   justify-content: center; */
+// #adamexcerpt2 {
+//   width: 80%;
+//   margin: 40px auto 30px;
+//   order: 2;
+// }
+
+.mini-cards-container {
+  max-width: 80%;
+  // columns: 33vh;
+  display: flex;
+  gap: 1vh;
+  flex-flow: row wrap;
   margin: 0 auto;
+  // justify-content: center;
+  order: 5;
+// //   grid-auto-flow: row;
+// //   grid-auto-columns: 1fr;
+  
+// // /*   justify-content: center; */
+// //   margin: 0 auto;
+
+// //   grid-template-columns: repeat(3, 1fr);
+// //   grid-auto-columns: minmax(400px, 1000px);
+// border: 1px solid blue;
+}
+
+.mini-card-container {
+  // grid-column: 1 / 3;
+  // grid-row: 1;
+  // border: 1px solid red;
+  // flex-grow: 1;
+  // flex-shrink: max-content;
+  // // flex-shrink: 1;
+  // flex-basis: 0%; 
+  // // min-width: 35vh;
+  flex: 1;
+  min-width: 18rem;
 }
 
 @media (max-width: 768px) {
-  .cards-container {
-    grid-auto-flow: row;
+  .mini-cards-container {
+    // grid-auto-flow: row;
   }
 }
 
-#moreresources {
-  width: 50%;
-  margin: 1em 0 3em 25%;
-  text-align: center;
-  margin-bottom: 1em;
+.cards-container {
+  width: 93vw;
+  display: flex;
+  gap: 1vh;
+  flex-flow: row wrap;
+  margin: 0 auto;
+  justify-content: center;
+
+//   grid-auto-flow: row;
+//   grid-auto-columns: 1fr;
+  
+// /*   justify-content: center; */
+//   margin: 0 auto;
+
+//   grid-template-columns: repeat(3, 1fr);
+//   grid-auto-columns: minmax(400px, 1000px);
+// border: 1px solid blue;
+  // width: 80%;
+  // display: grid;
+  // grid-auto-flow: column;
+  // grid-auto-columns: 1fr;
+  // gap: 1vh;
+  // margin: 0 auto;
 }
-#main {
-  padding: 0;
-  width: 100%;
+
+.card-container {
+
+  // grid-column: 1 / 3;
+  // grid-row: 1;
+  // border: 1px solid red;
+  flex-grow: 1;
+  flex-shrink: 1;
+  // flex-shrink: 1;
+  flex-basis: 0%; 
+  min-width: 16rem;
+  max-width: 35rem;
+}
+
+#moreresources {
+  // width: 50%;
+  margin: 1em 3em;
+  text-align: center;
+  // margin-bottom: 1em;
+  min-width: 90%;
+
+  order: 3;
 }
 </style>
 

@@ -32,6 +32,7 @@ small {
   height: 20rem;
   min-width: 5rem;
   overflow: hidden;
+  container-type: inline-size;
 
   .card-text {
     > .btn, > .btn-group {
@@ -60,17 +61,17 @@ small {
   }
 
 
-  @media screen and (max-width: 1170px) {
+  @container (max-width: 19em) {
     .card-footer {
       display: none;
     }
   }
 
-  @media screen and (max-width: 768px) {
-    .card-footer {
-      display: block;
-    }
-  }
+  // @container (max-width: 768px) {
+  //   .card-footer {
+  //     display: block;
+  //   }
+  // }
 
   .icon-container {
     border: $primary solid 2px;
