@@ -7,9 +7,6 @@
 
   #main
     .row.center-row.gx-0.gy-4
-      //- .col
-      //-   .container
-      //-     .row.justify-content-center.align-items-center.g-2
       .cards-container
         .card-container(v-for="card in cards")
           card(
@@ -21,8 +18,6 @@
             :tagline="card.tagline",
             :buttons="card.buttons"
           )
-  //- #adamexcerpt2
-  //-   p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things" are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
 
   #moreresources
     h3 More Stuff
@@ -36,10 +31,6 @@
         :link="link.link",
         :isExternal="link.isExternal"
       )
-    //- .container
-    //-   .row.justify-content-center.align-items-center.g-3
-    //-     .col-2.g-6(v-for="link in links")
-    //-       minicard(:key='link.id' :cardTitle="link.title" :icon="link.icon" :excerpt="link.excerpt")
 #end.col.g-5
 </template>
 
@@ -47,6 +38,7 @@
 :active {
   filter: invert(white, 50)
 }
+
 $primary: #406275;
 $secondary: #b89160;
 $light: #dee3e6;
@@ -57,32 +49,21 @@ $info: #406275;
 $warning: #b89060;
 $danger: #b87460;
 
+body {
+  container-type: inline-size;
+}
+
 #landing-header {
   background-color: $primary;
-  // height: 270px;
-  // position: relative;
-
-  // padding-top: 20px;
-
   $backgound-dark: $primary;
-  // background: $backgound-dark; /* Old browsers */
-  // background: -moz-linear-gradient(top, $backgound-dark 1%, $backgound-dark 50%, $white 51%, $white 100%); /* FF3.6-15 */
-  // background: -webkit-linear-gradient(top, $backgound-dark 1%,$backgound-dark 50%,$white 51%,$white 100%); /* Chrome10-25,Safari5.1-6 */
-  // background: linear-gradient(to bottom, $backgound-dark 1%,$backgound-dark 50%,$white 51%,$white 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$backgound-dark', endColorstr='$white',GradientType=0 ); /* IE6-9 */
-
-  // height: 200px;
 
   .icon {
     position: relative;
     float: left;
     background-image: url(../img/cropped-brainscan-copy-2.jpg);
-    // background-color: $backgound-dark;
     background-size: 200px;
     width: 200px;
-    // height: 200px;
     border-radius: 10px;
-    // clip-path: inset(0 0 60% 0);
     transform: skewX(0deg);
     transition: transform 1s;
     margin: 20px;
@@ -106,36 +87,29 @@ $danger: #b87460;
   }
 }
 
-#landing-header,
-.page-header {
-  
+#landing-header {
+
   display: flex;
   justify-content: center;
 
+}
+
+#landing-header, .page-header {
   svg {
     max-width: 600px;
     flex: 1;
-
-    // left: 50%;
-    // position: relative;
     translate: 0 19%;
   }
 
 }
 
-// @media screen and (max-width: 767px) {
-//   #adamexcerpt2 {
-//     display: none;
-//   }
-// }
-
 .page-flex {
   display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.page-flex > * {
+.page-flex>* {
   flex: 1;
 }
 
@@ -146,11 +120,15 @@ $danger: #b87460;
 
 #adamexcerpt {
   max-width: 90vw;
-  // min-width: 70vh;
+  min-width: 70vw;
   margin: 0 auto;
 
-  padding: 2rem;
+  padding: 2rem 2rem 0;
   order: 2;
+
+  p {
+    text-align: center;
+  }
 }
 
 #main {
@@ -161,33 +139,27 @@ $danger: #b87460;
 
 
 @media screen and (max-width: 767px) {
-  // #adamexcerpt {
-  //   order: 1;
-  //   color: $white;
-  //   background-color: $primary;
-  // }
-  // #main {
-  //   order: 2;
-  // }
-#landing-header,
-.page-header {
+
+  #landing-header,
+  .page-header {
     svg {
-      width: 90cqw;
+      max-width: 90cqw;
       translate: 0 5%;
     }
   }
 
-#adamexcerpt {
-  min-width: 100%;
-  padding: 0 5%;
-  order: 1;
-  color: $white;
-  background-color: $primary;
-}
+  #adamexcerpt {
+    min-width: 100%;
+    padding: 1.5rem 5% 0;
+    order: 1;
+    color: $white;
+    background-color: $primary;
+  }
 
   #main {
     order: 2;
   }
+
   .cards-container {
     flex-direction: column;
     flex-wrap: wrap;
@@ -195,87 +167,37 @@ $danger: #b87460;
 
 }
 
-// #adamexcerpt2 {
-//   width: 80%;
-//   margin: 40px auto 30px;
-//   order: 2;
-// }
-
 .mini-cards-container {
   max-width: 80%;
-  // columns: 33vh;
   display: flex;
   gap: 1vh;
   flex-flow: row wrap;
   margin: 0 auto;
   // justify-content: center;
   order: 5;
-// //   grid-auto-flow: row;
-// //   grid-auto-columns: 1fr;
-  
-// // /*   justify-content: center; */
-// //   margin: 0 auto;
-
-// //   grid-template-columns: repeat(3, 1fr);
-// //   grid-auto-columns: minmax(400px, 1000px);
-// border: 1px solid blue;
 }
 
 .mini-card-container {
-  // grid-column: 1 / 3;
-  // grid-row: 1;
-  // border: 1px solid red;
-  // flex-grow: 1;
-  // flex-shrink: max-content;
-  // // flex-shrink: 1;
-  // flex-basis: 0%; 
-  // // min-width: 35vh;
   flex: 1;
   min-width: 18rem;
-}
-
-@media (max-width: 768px) {
-  .mini-cards-container {
-    // grid-auto-flow: row;
-  }
 }
 
 .cards-container {
   width: 93vw;
   display: flex;
-  gap: 1vh;
+  gap: 1vw;
   flex-flow: row wrap;
   margin: 0 auto;
   justify-content: center;
-
-//   grid-auto-flow: row;
-//   grid-auto-columns: 1fr;
-  
-// /*   justify-content: center; */
-//   margin: 0 auto;
-
-//   grid-template-columns: repeat(3, 1fr);
-//   grid-auto-columns: minmax(400px, 1000px);
-// border: 1px solid blue;
-  // width: 80%;
-  // display: grid;
-  // grid-auto-flow: column;
-  // grid-auto-columns: 1fr;
-  // gap: 1vh;
-  // margin: 0 auto;
 }
 
 .card-container {
-
-  // grid-column: 1 / 3;
-  // grid-row: 1;
-  // border: 1px solid red;
+  // flex: 1;
   flex-grow: 1;
   flex-shrink: 1;
-  // flex-shrink: 1;
-  flex-basis: 0%; 
+  flex-basis: auto;
   min-width: 16rem;
-  max-width: 35rem;
+  max-width: 25rem;
 }
 
 #moreresources {
@@ -284,7 +206,6 @@ $danger: #b87460;
   text-align: center;
   // margin-bottom: 1em;
   min-width: 90%;
-
   order: 3;
 }
 </style>
