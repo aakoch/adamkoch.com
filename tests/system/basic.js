@@ -1,10 +1,10 @@
 module.exports = {
   'homepage test': function (browser) {
     browser
-      .url('https://61d666c8a8687600079ab83f--adamkoch.netlify.app/')
+    .url('http://localhost:3000')
       .waitForElementVisible('body')
   },
-  'Verify blog posts feather can be clicked': function (browser) {
+  'Verify cookie consent can be clicked': function (browser) {
     browser
       .waitForElementVisible('body')
       .assert.titleContains('Koch')
@@ -12,16 +12,16 @@ module.exports = {
   },
   'Verify some card text was rendered': function (browser) {
     browser
-      .assert.visible('#main > div > div > div > div > div:nth-child(1) > div > div.card-footer > small')
-      .assert.visible('#main > div > div > div > div > div:nth-child(1) > div > div.icon-container')
-      .assert.visible('#main > div > div > div > div > div:nth-child(1) > div > div.icon-container')
-      .assert.containsText('#landing-app > div.container > div > div:nth-child(1) > div > div > p', 'Some hardware, but mostly software')
-      .assert.containsText('#landing-app > div.container > div > div:nth-child(3) > div > div > p', 'Source code')
-      .assert.containsText('#main > div > div > div > div > div:nth-child(2) > div > div.card-body > p', 'Things I\'m working on now')
+      .assert.visible('#main > div > div > div:nth-child(1) > div > div.card-footer > small')
+      .assert.visible('#main > div > div > div:nth-child(1) > div > div.icon-container')
+      .assert.visible('#main > div > div > div:nth-child(1) > div > div.icon-container')
+      .assert.containsText('#landing-app > div.page-flex > div.mini-cards-container > div:nth-child(1) > div > div > p', 'Some hardware, but mostly software')
+      .assert.containsText('#landing-app > div.page-flex > div.mini-cards-container > div:nth-child(3) > div > div > p', 'Source code')
+      .assert.containsText('#main > div > div > div:nth-child(2) > div > div.card-body > p', 'Things I\'m working on now')
   },
   'Go to posts page': function (browser) {
     browser
-      .click('#main > div > div > div > div > div:nth-child(1) > div > div.icon-container')
+      .click('#landing-app > div.page-flex > div.mini-cards-container > div:nth-child(1) > div > div.icon-container')
       .waitForElementVisible('body')
       .assert.containsText('body', 'My Technology Stack')
       .assert.not.containsText('body', 'Using getters in equals() method')
@@ -81,8 +81,8 @@ module.exports = {
       .pause(500)
       .waitForElementVisible('body > div.page-header > nav > div.navbar-brand > a')
       .click('body > div.page-header > nav > div.navbar-brand > a')
-      .waitForElementVisible('#main > div > div > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)')
-      .click('#main > div > div > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)')
+      .waitForElementVisible('#main > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)')
+      .click('#main > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)')
       .waitForElementVisible('#commentForm > fieldset > div.postTitle > h2')
       .assert.containsText('body', 'Coming soon!')
     //     .saveScreenshot('./reports/search-result.png')
@@ -104,7 +104,7 @@ module.exports = {
   'Verify some pages and navigation': function (browser) {
     browser
       .back()
-      .click('#landing-app > div.container > div > div:nth-child(1) > div > div > h4')
+      .click('#landing-app > div.page-flex > div.mini-cards-container > div:nth-child(1) > div > div > h4')
       .assert.containsText('body > div.container > h1', 'Tech I Dig')
 
       .click('body > div.container > ul:nth-child(2) > li > a')
