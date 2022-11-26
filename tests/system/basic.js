@@ -1,13 +1,21 @@
 module.exports = {
   'homepage test': function (browser) {
     browser
-    .url('http://localhost:3000')
+      .url('http://localhost:3000')
       .waitForElementVisible('body')
+      .deleteCookies()
+      .refresh()
   },
   'Verify cookie consent can be clicked': function (browser) {
     browser
       .waitForElementVisible('body')
       .assert.titleContains('Koch')
+      .pause(100)
+      .execute(function () {
+        window.scrollBy(0, 1000);
+        return true;
+      })
+      .waitForElementVisible('body > div.cc-window.cc-banner > div > a')
       .click('body > div.cc-window.cc-banner > div > a')
   },
   'Verify some card text was rendered': function (browser) {
@@ -21,13 +29,19 @@ module.exports = {
   },
   'Go to posts page': function (browser) {
     browser
-      .click('#landing-app > div.page-flex > div.mini-cards-container > div:nth-child(1) > div > div.icon-container')
+      // .click('#landing-app > div.page-flex > div.mini-cards-container > div:nth-child(1) > div > div.icon-container')
+      .click('#main > div > div > div:nth-child(1) > div > *')
       .waitForElementVisible('body')
-      .assert.containsText('body', 'My Technology Stack')
+      .assert.containsText('body', 'My Stack')
       .assert.not.containsText('body', 'Using getters in equals() method')
   },
   'Scroll down': function (browser) {
     browser
+      .execute(function () {
+        window.scrollBy(0, 1000);
+        return true;
+      })
+      .pause(500)
       .execute(function () {
         window.scrollBy(0, 1000);
         return true;
@@ -78,14 +92,26 @@ module.exports = {
         window.scrollBy(0, -1000);
         return true;
       })
-      .pause(500)
-      .waitForElementVisible('body > div.page-header > nav > div.navbar-brand > a')
-      .click('body > div.page-header > nav > div.navbar-brand > a')
-      .waitForElementVisible('#main > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)')
-      .click('#main > div > div > div:nth-child(1) > div > div.card-text > div > a:nth-child(1)')
+      .pause(1000)
+      .waitForElementVisible('body > div.page-header > nav > div.navbar-brand ')
+      // .back()
+      .pause(200)
+      
+      .getLocationInView('#posts-app > div > div:nth-child(1) > div:nth-child(2) > div > div > div > div > div.linkies > a:nth-child(1)')
+      .pause(200)
+      .waitForElementVisible('#posts-app > div > div:nth-child(1) > div:nth-child(2) > div > div > div > div > div.linkies > a:nth-child(1)')
+      .pause(200)
+      .click('#posts-app > div > div:nth-child(1) > div:nth-child(2) > div > div > div > div > div.linkies > a:nth-child(1)')
+      .pause(200)
+      .execute(function () {
+        window.scrollBy(0, 1000);
+        return true;
+      })
+      .pause(200)
       .waitForElementVisible('#commentForm > fieldset > div.postTitle > h2')
+      .pause(200)
+      // will fail because I am not displaying a contact form on my last post
       .assert.containsText('body', 'Coming soon!')
-    //     .saveScreenshot('./reports/search-result.png')
   },
   'Verify comment form is rendered on contact page': function (browser) {
     browser
