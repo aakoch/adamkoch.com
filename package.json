@@ -76,5 +76,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aakoch/adamkoch.com.git"
+  },
+  "engines": {
+    "node": "~16.18.1"
   }
 }
