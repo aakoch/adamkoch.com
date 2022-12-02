@@ -2,7 +2,7 @@
 div
     
   .container
-    h1 Blog Posts
+    h1 Articles
 
     postpreview(key='20220627' postTitle='Roe v Wade' date='2022-06-27' link='/posts/2022/06/27' name='Roe v Wade' excerpt='So sad...')
     postpreview(key='20220619' postTitle='Engineering Process' date='2022-06-19' link='/posts/2022/06/19' name='Engineering Process' excerpt='Who knew there were so many steps in the engineering process...')

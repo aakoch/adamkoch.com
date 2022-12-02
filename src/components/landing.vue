@@ -226,23 +226,23 @@ export default {
       cards: [
         {
           id: 1,
-          title: "Blog Posts",
+          title: "Articles",
           icon: "fas fa-feather",
-          description: "Thoughts on the current state of things",
+          description: "My attempt at making informative content",
           url: "/posts/",
           buttons: [
             {
               label: "Latest",
               url: "/posts/" + latestPost.replaceAll('-', '/') + '/',
-              title: "Latest Post",
+              title: "Latest article",
             },
             {
               label: "All",
               url: "/posts/",
-              title: "All Posts",
+              title: "All Articles",
             },
           ],
-          tagline: "Latest post: " + latestPost,
+          tagline: "Latest article: " + latestPost,
         },
         {
           id: 2,
