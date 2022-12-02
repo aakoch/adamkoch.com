@@ -40,6 +40,7 @@
 }
 
 $primary: #406275;
+$darkPrimary:  tint-color($primary, 0);
 $secondary: #b89160;
 $light: #dee3e6;
 $white: #f5f7f8;
@@ -51,6 +52,17 @@ $danger: #b87460;
 
 body {
   container-type: inline-size;
+}
+
+.dark #landing-header {
+  background-color: $darkPrimary;
+  $backgound-dark: $darkPrimary;
+    div {
+      color: $darkPrimary;
+    }
+  nav {
+    color: $darkPrimary;
+  }
 }
 
 #landing-header {
@@ -153,7 +165,7 @@ body {
     padding: 1.5rem 5% 0;
     order: 1;
     color: $white;
-    background-color: $primary;
+    background-color: val(--primary);
   }
 
   #main {
