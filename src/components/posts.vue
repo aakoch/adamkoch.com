@@ -4,6 +4,7 @@ div
   .container
     h1 Articles
 
+    postpreview(key='20221218' postTitle='Box animations' date='2022-12-18' link='/posts/2022/12/18' name='Box animations' excerpt='3D box animations')
     postpreview(key='20220627' postTitle='Roe v Wade' date='2022-06-27' link='/posts/2022/06/27' name='Roe v Wade' excerpt='So sad...')
     postpreview(key='20220619' postTitle='Engineering Process' date='2022-06-19' link='/posts/2022/06/19' name='Engineering Process' excerpt='Who knew there were so many steps in the engineering process...')
     postpreview(key='20220430' postTitle='Lucid Gloves' date='2022-04-30' link='/posts/2022/04/30' name='Lucid Gloves' excerpt='It happens all the time. I get distracted by some new project and never finish the project I was working on...')

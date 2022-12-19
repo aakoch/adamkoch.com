@@ -3,11 +3,20 @@
 # adamkoch.com
 Personal Website
 
+## Install
+npm i
+
+Or, if you're on an ARM Mac machine:
+arch -x86_64 npm i
+
 ## Run Locally
 npm run watch
 
 ## Build
 npm run build
+
+Or, if you're on an ARM Mac machine:
+arch -x86_64 npm run build
 
 ## Clean
 npm run clean
@@ -16,8 +25,8 @@ npm run clean
 npm version [major|minor|patch]
 
 ## Serve
-serve dist
-
+--serve dist--
+arch -x86_64 npx serve dist
 
 
 ## Automation
