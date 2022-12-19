@@ -85,6 +85,16 @@ body {
   nav {
     color: $dark;
   }
+
+  path { 
+    clip-path: circle(0%);
+    transition-timing-function: ease-in-out;
+    transition-property: clip-path;
+    transition-duration: 2s;
+  }
+  path.clipVisible {
+    clip-path: circle(100%);
+  }
 }
 
 #landing-header {
@@ -208,6 +218,7 @@ body {
   min-width: 90%;
   order: 3;
 }
+
 </style>
 
 <script>
@@ -219,6 +230,10 @@ export default {
   components: {
     card,
     minicard,
+  },
+
+  mounted() {
+    Array.from(document.querySelectorAll('path')).forEach(el => el.classList.add('clipVisible'))
   },
 
   data() {
