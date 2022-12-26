@@ -55,7 +55,7 @@ all.pug
 body.pug
 nodes.pug
 deploys.json*
-
+posts.tmp
 
 # System files
 .DS_Store
