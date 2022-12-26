@@ -1,4 +1,4 @@
-import { escapeHtml } from "@vue/runtime-core/node_modules/@vue/shared";
+import { escapeHtml } from "@vue/shared/";
 
 export default function (input) {
 

@@ -80,7 +80,7 @@ function readPostStats(filename) {
 let postPreviewArr = []
 let postsData = []
 
-find.file(/2.*index\.pug$/, __dirname + '/src/posts', function(files) {
+find.file(/20.*index\.pug$/, __dirname + '/src/posts', function(files) {
   console.log(files.length);
   files.forEach(element => {
 
@@ -89,6 +89,11 @@ find.file(/2.*index\.pug$/, __dirname + '/src/posts', function(files) {
     let postStats = readPostStats(element);
     
     console.log('postStats=', postStats);
+    console.log('postStats.postedDate=', postStats.postedDate);
+
+    if (!postStats.postedDate) {
+      throw new Error("Latest post is missing the posted date. Please fix and re-run")
+    }
     
     let dateSmushed = postStats.postedDate.replaceAll('-', '')
     

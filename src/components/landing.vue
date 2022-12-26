@@ -36,7 +36,7 @@
 
 <style lang="scss">
 :active {
-  filter: invert(white, 50)
+  filter: invert(white, 50%)
 }
 
 $primary: #406275;
