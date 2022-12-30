@@ -52,7 +52,7 @@
     "glyphhanger": "^4.0.1",
     "highlight.js": "^11.2.0",
     "mocha": "^9.1.1",
-    "nightwatch": "^1.7.13",
+    "nightwatch": "^2.6.3",
     "parcel": "^2.0.0-rc.0",
     "parcel-reporter-static-files-copy": "^1.3.0",
     "snap-shot-it": "^7.9.6"
