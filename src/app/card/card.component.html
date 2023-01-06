@@ -1,0 +1,23 @@
+<div class="card" (click)="goto(card.url)" (mouseenter)="debouncedPrefetch(card.url);onHover()" (mouseleave)="doMouseLeave()">
+
+  <div class="new-corner" *ngIf="first && showNew()">New!</div>
+
+  <div class="icon-container">
+    <i class="card-img-top" ngClass={{card.icon}} [@iconFlipState]="iconFlipState"></i>
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">{{ card.title }}</h5>
+    <p class="card-text">{{ card.description }}</p>
+  </div>
+
+  <div class="card-text">
+    <div class="btn-group" *ngIf="first">
+      <a [href]="card.buttons[0].url" [title]="card.buttons[0].title" class="btn btn-primary">{{ card.buttons[0].label }}</a>
+      <a href="/posts/" class="btn btn-primary" title="All Posts">All</a>
+    </div>
+    <a [href]="card.url" [title]="card.title" class="btn btn-primary" *ngIf="!first">{{ card.buttons[0].label }}</a>
+  </div>
+
+  <div class="card-footer" *ngIf="card.tagline"><small>{{card.tagline}}</small></div>
+</div>

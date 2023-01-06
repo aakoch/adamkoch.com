@@ -1,0 +1,76 @@
+@import url('../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
+@import '../shared/colors.scss';
+
+small {
+  color: $dark;
+}
+.card {
+  box-shadow: 12px 12px 2px 1px rgba(67, 70, 74, .5);
+  border-top: 0;
+  border-radius: 10px;
+  height: 20rem;
+  min-width: max(20vw, 400px);
+  overflow: hidden;
+  container-type: inline-size;
+
+  .card-text {
+    > .btn, > .btn-group {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+    }
+
+    > .btn-group > .btn:nth-child(1) {
+      border-right: 2px solid #43464A66;
+    }
+  }
+
+  .new-corner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .4em 3em;
+
+    transform: rotateZ(-45deg) translateX(-2.2em) translateY(-1.5em);
+    background-color: #e7e556d8;
+  }
+
+  .card-body {
+    padding: 20px 30px 30px;
+  }
+
+
+  @container (max-width: 19em) {
+    .card-footer {
+      display: none;
+    }
+  }
+
+  // @container (max-width: 768px) {
+  //   .card-footer {
+  //     display: block;
+  //   }
+  // }
+
+  .icon-container {
+    border: $primary solid 2px;
+    border-radius: 100px;
+    margin: 20px auto;
+    padding: 30px;
+    width: 200px;
+  }
+
+  .fas {
+    color: $primary;
+    background-color: $white;
+    font-size: 3em;
+    text-align: center;
+  }
+
+  &:hover {
+    cursor: pointer;
+    // .fas {
+    //   animation: rotation .5s;
+    // }
+  }
+}
