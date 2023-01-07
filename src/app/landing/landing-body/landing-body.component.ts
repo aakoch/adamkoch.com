@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MinicardComponent } from '../minicard/minicard.component';
-import { CardComponent } from '../card/card.component';
-import latestPost from "../../posts/blog.json";
-import { Card } from '../card/card.model';
+import { MinicardComponent } from '../../minicard/minicard.component';
+import { CardComponent } from '../../card/card.component';
+import latestPost from "../../../posts/blog.json";
+import { Card } from '../../card/card.model';
 
 console.dir(latestPost);
 
