@@ -1,0 +1,103 @@
+script(type="application/ld+json").
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Tech",
+      "item": "../../"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Code Samples",
+      "item": "../"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "zsh/shell commands"
+    }]
+  }
+
+style.
+  [data-tippy-content] {
+    text-decoration: underline dashed #406275;
+  }
+
+script(type="module").
+  import hljs from 'highlight.js/lib/core';
+  import shell from 'highlight.js/lib/languages/shell';
+  hljs.registerLanguage('shell', shell);
+
+  window.hljs = hljs
+
+app-pageheader 
+
+.container
+  h1 zsh/shell commands
+
+  p Hover over any underlined part for a description.
+
+  pre: code.hljs
+    span.hljs-keyword#for(data-tippy-content="'for' command creates a loop over the 'in' argument") for
+    | 
+    span.hljs-variable(data-tippy-content="Each element is placed into a variable, here named 'f'") f
+    | 
+    span.hljs-keyword in
+    | 
+    span.hljs-section(data-tippy-content="Anything between the parenthesis is evaluated first") $(
+    | 
+    span.hljs-keyword(data-tippy-content="List the files") ls
+    | 
+    span.argument(data-tippy-content="In the 'files' subdirectory that end with '.expected'") files/*.expected
+    |  
+    span.hljs-section )
+    span.terminator(data-tippy-content="Needed to split the command if on one line") ;
+    | 
+    span.hljs-keyword(data-tippy-content="Keyword used after ; to start the body of the loop") do
+    | 
+    span.hljs-keyword(data-tippy-content="Print the following") echo
+    | 
+    span.hljs-variable(data-tippy-content="The variable 'f' defined earlier is accessed by prepending it with '$'") $f
+    | 
+    span.hljs-operator |
+    | 
+    span.hljs-keyword(data-tippy-content="'rev' command reverses the text, here so we put the file extension first") rev
+    | 
+    span.hljs-operator(data-tippy-content="'Pipe' the result of the previous command to the next") |
+    | 
+    span.hljs-keyword(data-tippy-content="'cut' splits up the given input based on delimiters") cut
+    | 
+    span.hljs-attr(data-tippy-content="Tells 'cut' that the delimiter to use is '.'") -d'.'
+    | 
+    span.hljs-attr(data-tippy-content="Print field number 2 and the rest") -f 2- 
+    span.hljs-operator(data-tippy-content="'Pipe' the result of the previous command to the next") |
+    | 
+    span.hljs-keyword(data-tippy-content="'rev' command reverses the text, here flipping the filename back") rev
+    | 
+    span.hljs-operator(data-tippy-content="'Pipe' the result of the previous command to the next") |
+    | 
+    span.hljs-keyword(data-tippy-content="'cut' splits up the given input based on delimiters") cut
+    | 
+    span.hljs-attr(data-tippy-content="Tells 'cut' that the delimiter to use is '/'") -d"/"
+    | 
+    span.hljs-attr(data-tippy-content="Print field number 2 and the rest") -f 2-
+    | 
+    span.terminator(data-tippy-content="Needed to split the command if on one line") ;
+    | 
+    span.terminator done
+
+  p Sorry, but the mouseover tooltips aren't displaying correctly after my recent move to Angular. I hope to fix this soon.
+
+  h2 To do: after I figure out the newline because this takes out "n"s also
+  pre: code.hljs.
+    IFS=$'\n'; grep "\\$\\$" ast.json | tr -d ' ' | tr -d '\\n' | tr -d '"' | sort
+
+  p: a(href="/tech/code") &larr; Back to Code Samples
+
+//- include ../../../templates/footer
+
+
+//- script(type="module").
+//-   import tippy from 'tippy.js'
+//-   tippy('[data-tippy-content]', {placement:'bottom'});

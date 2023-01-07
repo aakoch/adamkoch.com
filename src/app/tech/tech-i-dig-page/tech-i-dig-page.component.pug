@@ -1,0 +1,56 @@
+- var title = 'Tech I Dig'
+
+//- include ../../../templates/head
+
+script(type="application/ld+json").
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Tech"
+    }]
+  }
+
+//- include ../../../templates/pageheader
+app-pageheader
+
+.container
+  h1 #{title}
+  
+  ul
+    li 
+      a#code-samples-link(href="/tech/code") Code samples
+
+  p As I'm thinking of what I want to put on this page, the list is growing...
+
+  ul
+    li 
+      a(href="https://pugjs.org/") Pug
+    li 
+      a(href="https://v2.parceljs.org/") Parcel
+    li 
+      a(href="https://www.moddable.com/moddable-two.php") Moddable
+    li 
+      a(href="https://openmv.io/") OpenMV
+    li  Node/NPM
+    li  Vue
+    li  vi
+    li 
+      a(href="tech/code/jq") jq 
+    li  zsh
+    li 
+      a(href="https://github.com/kfix/ddcctl" title="ddcctl project on GitHub") ddcctl
+    li  scripts
+    li  AWS
+    li  neo4j
+    li  Kotlin
+    li  Homebrew
+    li  oh-my-zsh
+    li  Flashforge Finder 3D printer
+    li
+      a(href="https://www.lipsum.com/" title="Lorem Ipsum generator") Lorem Ipsum generator
+    li  ...
+
+  block body_scripts

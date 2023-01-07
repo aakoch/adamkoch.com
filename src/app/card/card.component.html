@@ -13,8 +13,8 @@
 
   <div class="card-text">
     <div class="btn-group" *ngIf="first">
-      <a [href]="card.buttons[0].url" [title]="card.buttons[0].title" class="btn btn-primary">{{ card.buttons[0].label }}</a>
-      <a href="/posts/" class="btn btn-primary" title="All Posts">All</a>
+      <a routerLlink="card.buttons[0].url" [title]="card.buttons[0].title" class="btn btn-primary">{{ card.buttons[0].label }}</a>
+      <a routerLink="posts" class="btn btn-primary" title="All Posts">All</a>
     </div>
     <a [href]="card.url" [title]="card.title" class="btn btn-primary" *ngIf="!first">{{ card.buttons[0].label }}</a>
   </div>

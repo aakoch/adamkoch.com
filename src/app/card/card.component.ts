@@ -3,6 +3,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import debounce from 'lodash/debounce';
 import moment from 'moment';
 import { Card } from './card.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -30,8 +31,12 @@ export class CardComponent {
   @Input() card: Card | any;
   @Input() first: boolean = false;
 
+  constructor(private router: Router) {
+    this.debouncedPrefetch = debounce(this.prefetch, 10)
+  }
+
   goto(gotoLocation: string) {
-      document.location.pathname = gotoLocation
+      this.router.navigateByUrl(gotoLocation);
   }
 
   prefetch(gotoLocation: string) {
@@ -43,9 +48,6 @@ export class CardComponent {
     link.setAttribute("href", gotoLocation)
     document.body.appendChild(link)
     this.prefetchedLocations.push(gotoLocation)
-  }
-  constructor() {
-    this.debouncedPrefetch = debounce(this.prefetch, 10)
   }
   debouncedPrefetch(url: string) {
   }

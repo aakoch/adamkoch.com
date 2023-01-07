@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Card } from '../card/card.model';
 
 @Component({
@@ -8,9 +9,12 @@ import { Card } from '../card/card.model';
 })
 export class MinicardListComponent {
   @Input() links: any[] = [];
+  
+  constructor(private router: Router) {
+  }
 
   goto(gotoLocation: string) {
     console.log('goto ' + gotoLocation);
-    document.location.pathname = gotoLocation
+    this.router.navigateByUrl(gotoLocation);
 }
 }

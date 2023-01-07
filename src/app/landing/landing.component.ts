@@ -37,7 +37,7 @@ export class LandingComponent implements OnInit {
       title: "Articles",
       icon: "fas fa-feather",
       description: "My attempt at making informative content",
-      url: "/posts/",
+      url: "/posts",
       buttons: [
         {
           label: "Latest",
@@ -46,7 +46,7 @@ export class LandingComponent implements OnInit {
         },
         {
           label: "All",
-          url: "/posts/",
+          url: "/po",
           title: "All Articles",
         },
       ],
@@ -62,7 +62,7 @@ export class LandingComponent implements OnInit {
           label: "Dive in",
         },
       ],
-      url: "/projects/",
+      url: "/projects",
     },
     {
       id: 3,

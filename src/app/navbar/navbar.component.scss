@@ -1,0 +1,77 @@
+@import '../../app/shared/colors.scss';
+
+.page-header nav .navbar-nav {
+  .gsc-control-cse {
+    border: 0;
+    padding: 0;
+  }
+
+  form.gsc-search-box {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page-header nav .navbar-nav {
+    .gsc-control-cse {
+      display: none;
+    }
+  }
+}
+
+nav {
+  background-color: $primary;
+}
+
+nav, #landing-header {
+  svg {
+    fill: $white;
+    stroke: $dark;
+  }
+}
+
+.navbar-nav {
+  margin-top: auto;
+}
+
+@media screen and (min-width: 1048px) {
+
+  nav {
+    padding-left: 40px;
+  }
+
+  .navbar-nav {
+    margin-left: 40px;
+  }
+  .navbar-nav {
+  }
+}
+
+@media screen and (min-width: 942px) and (max-width: 1048px) {
+  .navbar-nav {
+  }
+}
+
+.nav-link {
+  margin-right: 1em;
+  &::before {
+  }
+}
+
+.center-row, .divider {
+  background: linear-gradient(0deg, $white 50%, $primary 50%);
+}
+
+.divider {
+  height: 20px;
+  margin-bottom: 20px;
+}
+
+#footer {
+  color: $dark;
+  text-align: center;
+  margin: 3rem 0 2em;
+  span {
+    margin: 0 10px;
+  }
+}
