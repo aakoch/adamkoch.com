@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingComponent } from './landing/landing.component';
 import { Router } from 'express';
 import { TechComponent } from './tech/tech.component';
 import { CodeComponent } from './tech/code/code.component';
@@ -10,7 +10,7 @@ import { ShellComponent } from './tech/code/shell/shell.component';
 
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
+  { path: '', component: LandingComponent },
   { path: 'posts', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
   { path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) },
   { path: 'tech', component: TechComponent },

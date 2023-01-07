@@ -11,7 +11,7 @@ import { MinicardListComponent } from './minicard-list/minicard-list.component';
 import { PrefetchDirective } from './prefetch.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingComponent } from './landing/landing.component';
 import { TechComponent } from './tech/tech.component';
 import { TechIDigPageComponent } from './tech/tech-i-dig-page/tech-i-dig-page.component';
 import { CodeComponent } from './tech/code/code.component';
@@ -31,7 +31,7 @@ import { ShellComponent } from './tech/code/shell/shell.component'
     LandingHeaderComponent,
     MinicardListComponent,
     PrefetchDirective,
-    LandingPageComponent,
+    LandingComponent,
     TechComponent,
     TechIDigPageComponent,
     CodeComponent,
