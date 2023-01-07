@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { LandingComponent } from './landing/landing.component';
+import { LandingBodyComponent } from './landing-body/landing-body.component';
 import { CardComponent } from './card/card.component';
 import { MinicardComponent } from './minicard/minicard.component';
 import { LandingCardListComponent } from './landing-card-list/landing-card-list.component';
@@ -24,7 +24,7 @@ import { ShellComponent } from './tech/code/shell/shell.component'
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent,
+    LandingBodyComponent,
     CardComponent,
     MinicardComponent,
     LandingCardListComponent,

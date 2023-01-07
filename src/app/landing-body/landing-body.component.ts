@@ -7,9 +7,9 @@ import { Card } from '../card/card.model';
 console.dir(latestPost);
 
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.component.pug',
-  styleUrls: ['./landing.component.scss']
+  selector: 'app-landing-body',
+  templateUrl: './landing-body.component.pug',
+  styleUrls: ['./landing-body.component.scss']
 })
 
 
@@ -30,7 +30,7 @@ console.dir(latestPost);
 // };
 
 
-export class LandingComponent implements OnInit {
+export class LandingBodyComponent implements OnInit {
   public cards: Card[] = [
     {
       id: 1,
