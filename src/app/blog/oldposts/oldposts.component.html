@@ -1,0 +1,13 @@
+<div class="container">
+
+  <p>If you're thinking "2017 can't be the last time he posted", well, for a certain type it was.</p>
+  <p>These are old posts that I am trying to keep. They require some massaging to get into a readable format. I'm included a link to the original post that might look better.</p>
+  <div class="row" *ngFor="let post of posts">
+    <app-oldpost [post]="this.post"></app-oldpost>
+
+  </div>
+
+  <!-- //-   div.row(*ngFor="let post of posts") 
+    //-     div {{ post }} 
+    //-     app-postcard(key="post['wp:post_id']" id="post['wp:post_id']" postTitle="post.title" excerpt="post['excerpt']" date="post['wp:post_date']" link="link" name="post['wp:post_name']") -->
+</div>

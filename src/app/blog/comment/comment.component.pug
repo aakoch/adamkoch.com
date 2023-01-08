@@ -1,0 +1,11 @@
+.comment
+  .commentPic
+    img([src]="'https://secure.gravatar.com/avatar/' + hash" crossorigin)
+  .commentMain
+    .commentMeta(*ngIf="url")
+      a([href]="url") {{ author }}  
+      |  said on {{ date }}...
+    .commentMeta(*ngIf="!url")
+      span {{ author }} said on {{ date }}...
+  
+    .commentContent {{ content }}

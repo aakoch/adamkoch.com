@@ -1,0 +1,31 @@
+@import url('../../../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
+
+$primary: #406275;
+div.date {
+  margin-bottom: 10px;
+}
+a {
+  cursor: pointer;
+}
+code {
+  white-space: pre;
+}
+
+.linkies {
+  display: contents;
+    &:hover {
+    .fas {
+      animation: moveright .5s infinite;
+    }
+  }
+}
+
+@keyframes moveright {
+  from {
+      transform: translateX(0);
+  }
+
+  to {
+      transform: translateX(10px);
+  }
+}

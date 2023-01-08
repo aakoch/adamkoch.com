@@ -1,0 +1,15 @@
+.row
+  .col.g-2
+    .card
+      .card-body
+        h5.card-title {{ postTitle }}
+        .card-text 
+          .date Posted {{ date | date:"YYYY-MM-dd" }}
+          div(v-bind:id="id")
+          p {{ excerpt }}
+          .linkies
+            a.href([href]="link") Read
+            a.href([href]="link")  more
+            | &nbsp; 
+            a.href([href]="link")
+              i(class='fas fa-angle-double-right')

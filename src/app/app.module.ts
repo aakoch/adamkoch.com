@@ -5,7 +5,7 @@ import { LandingBodyComponent } from './landing/landing-body/landing-body.compon
 import { CardComponent } from './card/card.component';
 import { MinicardComponent } from './minicard/minicard.component';
 import { LandingCardListComponent } from './landing/landing-card-list/landing-card-list.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LandingHeaderComponent } from './landing/landing-header/landing-header.component';
 import { MinicardListComponent } from './minicard-list/minicard-list.component';
 import { PrefetchDirective } from './prefetch.directive';
@@ -15,11 +15,11 @@ import { LandingComponent } from './landing/landing.component';
 import { TechComponent } from './tech/tech.component';
 import { TechIDigPageComponent } from './tech/tech-i-dig-page/tech-i-dig-page.component';
 import { CodeComponent } from './tech/code/code.component';
-import { HeaderComponent } from './header/header.component';
-import { NavbarComponent } from './navbar/navbar.component';
+// import { HeaderComponent } from './header/header.component';
 import { JqComponent } from './tech/code/jq/jq.component';
-import { PageheaderComponent } from './pageheader/pageheader.component';
 import { ShellComponent } from './tech/code/shell/shell.component'
+import { SharedModule } from './shared/shared.module';
+import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -35,18 +35,21 @@ import { ShellComponent } from './tech/code/shell/shell.component'
     TechComponent,
     TechIDigPageComponent,
     CodeComponent,
-    HeaderComponent,
-    NavbarComponent,
+    // HeaderComponent,
     JqComponent,
-    PageheaderComponent,
     ShellComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    SharedModule,
+    // Router
+  ]
 })
 export class AppModule { }

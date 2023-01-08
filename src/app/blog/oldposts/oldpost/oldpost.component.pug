@@ -1,0 +1,25 @@
+.row 
+  .col.g-2
+    .card
+      .card-body
+        h5.card-title {{ post?.title }}
+        .card-text 
+          div.date Posted {{ post?.pubDate | date:"YYYY-MM-dd" }}
+          div([id]="post?.guid")
+          p(*ngIf="!clicked && !loaded") {{ post?.excerpt }}
+          div(*ngIf="clicked && !loaded") Loading...
+          div(*ngIf="!clicked" "(click)"="getData()").linkies
+
+            a.href Read
+            a.href(*ngIf="post?.excerpt")  more
+            |  &nbsp;
+            a.href([href]="post?.link")
+              i(class='fas fa-angle-double-right')
+
+          div(v-if="loaded")
+            .postContent([innerHtml]="content")
+            div.mt-2
+              a([href]="post?.link?.replace('https://www.adamkoch.com/', 'https://wordpress.adamkoch.com/')") Original post
+
+            //- div(*ngFor="let comment of post?.comments")
+            //-   app-comment([comment]=comment)

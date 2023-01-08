@@ -4,18 +4,25 @@ import { CommonModule } from '@angular/common';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogComponent } from './blog.component';
 import { PostListComponent } from './post-list/post-list.component';
-import { PostComponent } from './post/post.component';
-
+import { SharedModule } from '../shared/shared.module';
+import { PostpreviewComponent } from './post-list/postpreview/postpreview.component';
+import { PostcardComponent } from './oldposts/oldpost/oldpost.component';
+import { CommentComponent } from './comment/comment.component';
+import { OldpostsComponent } from './oldposts/oldposts.component';
 
 @NgModule({
   declarations: [
     BlogComponent,
     PostListComponent,
-    PostComponent
+    PostpreviewComponent,
+    PostcardComponent,
+    CommentComponent,
+    OldpostsComponent
   ],
   imports: [
     CommonModule,
-    BlogRoutingModule
+    BlogRoutingModule,
+    SharedModule,
   ]
 })
 export class BlogModule { }

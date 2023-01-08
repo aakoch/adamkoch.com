@@ -7,6 +7,7 @@ import { TechComponent } from './tech/tech.component';
 import { CodeComponent } from './tech/code/code.component';
 import { JqComponent } from './tech/code/jq/jq.component';
 import { ShellComponent } from './tech/code/shell/shell.component';
+import { PreloadAllModules } from '@angular/router';
 
 
 const routes: Routes = [
@@ -16,11 +17,11 @@ const routes: Routes = [
   { path: 'tech', component: TechComponent },
   { path: 'tech/code', component: CodeComponent },
   { path: 'tech/code/jq', component: JqComponent },
-  { path: 'tech/code/shell', component: ShellComponent }
+  { path: 'tech/code/shell', component: ShellComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
 

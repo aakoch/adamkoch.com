@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  justify-content: center;
+
+  $primary: #406275;
+  background-color: $primary;
+}
+
+svg {
+  max-width: 600px;
+  flex: 1;
+  translate: 0 19%;
+}

@@ -1,0 +1,17 @@
+.comment {
+  min-height: 80px;
+  margin: 10px 0;
+  .commentPic {
+    float: left;
+    margin-right: 10px;
+    img {
+      border-radius: 5px;
+    }
+  }
+  .commentMain {
+    padding: 0 10px;
+  }
+  .commentMeta:first-child {
+    margin-bottom: auto;
+  }
+}
