@@ -31,8 +31,6 @@ script(type="module").
 
   window.hljs = hljs
 
-app-pageheader 
-
 .container
   h1 zsh/shell commands
 
@@ -93,7 +91,7 @@ app-pageheader
   pre: code.hljs.
     IFS=$'\n'; grep "\\$\\$" ast.json | tr -d ' ' | tr -d '\\n' | tr -d '"' | sort
 
-  p: a(href="/tech/code") &larr; Back to Code Samples
+  p: a(routerLink="..") &larr; Back to Code Samples
 
 //- include ../../../templates/footer
 

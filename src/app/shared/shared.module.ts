@@ -6,15 +6,18 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderSvgComponent } from './header-svg/header-svg.component';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { ScrollListenerDirective } from './scroll-listener.directive';
+import { PageComponent } from './page/page.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [PageheaderComponent, NavbarComponent, HeaderSvgComponent, ScrollListenerDirective],
+  declarations: [PageheaderComponent, NavbarComponent, HeaderSvgComponent, ScrollListenerDirective, PageComponent],
   imports: [
     CommonModule,
+    RouterModule,
     HttpClientModule,
     HttpClientJsonpModule
   ],
-  exports: [PageheaderComponent, CommonModule, FormsModule, NavbarComponent, HttpClientModule, HttpClientJsonpModule, ScrollListenerDirective]
+  exports: [PageheaderComponent, CommonModule, FormsModule, NavbarComponent, HttpClientModule, HttpClientJsonpModule, ScrollListenerDirective, PageComponent]
 })
 export class SharedModule { }

@@ -1,7 +1,5 @@
 - var title = 'jq'
 
-app-pageheader
-
 .container
   h1 #{title}
   
@@ -39,8 +37,8 @@ app-pageheader
         grep -v "^- var.*" $f.html | html2pug > $f.pug
       done      
 
-  p: a(href="/tech/code/") &larr; Back to Code Samples
-  p: a(href="tech") &larr; Back to Tech
+  p: a(routerLink="..") &larr; Back to Code Samples
+  p: a(routerLink="../..") &larr; Back to Tech
 
 //- //- include ../../../../templates/footer
 

@@ -15,24 +15,24 @@ script(type="application/ld+json").
     }]
   }
 
-style(type="text/scss").
+//- style(type="text/scss").
 
-app-pageheader
+//- app-pageheader
 
 .container
   h1 #{title}
   
   ul
     li 
-      a(href="/tech/code/shell/") zsh/shell
+      a(routerLink="shell") zsh/shell
     li 
-      a(href="/tech/code/jq/") jq
+      a(routerLink="jq") jq
 
   p Some more samples are on 
-    a(href="/projects/") the Current Projects page
+    a(routerLink="../projects") the Current Projects page
     |  under the animations section. 
 
-  p: a(href="/tech") &larr; Back to Tech
+  p: a(routerLink="..") &larr; Back to Tech
 
 //- include ../../templates/footer
 

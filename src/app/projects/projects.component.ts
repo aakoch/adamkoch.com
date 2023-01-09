@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, isDevMode } from '@angular/core';
 
 @Component({
   selector: 'app-projects',
-  templateUrl: './projects.component.html',
+  templateUrl: './projects.component.pug',
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent {
-
+  isDevMode() {
+    return isDevMode();
+  }
 }

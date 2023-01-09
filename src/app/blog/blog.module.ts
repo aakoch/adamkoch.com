@@ -9,6 +9,7 @@ import { PostpreviewComponent } from './post-list/postpreview/postpreview.compon
 import { PostcardComponent } from './oldposts/oldpost/oldpost.component';
 import { CommentComponent } from './comment/comment.component';
 import { OldpostsComponent } from './oldposts/oldposts.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +18,15 @@ import { OldpostsComponent } from './oldposts/oldposts.component';
     PostpreviewComponent,
     PostcardComponent,
     CommentComponent,
-    OldpostsComponent
+    OldpostsComponent,
+    PostComponent
   ],
   imports: [
     CommonModule,
     BlogRoutingModule,
     SharedModule,
-  ]
+  ],
+  exports: [ PostComponent ]
 })
+
 export class BlogModule { }

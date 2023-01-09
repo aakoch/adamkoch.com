@@ -12,7 +12,7 @@ div
     postpreview(key='20211022' postTitle='Spring Cloud Contracts' date='2021-10-22' link='/posts/2021/10/22' name='Spring Cloud Contracts' excerpt='My current employment uses Spring Cloud Contracts to write contracts between microservices. And while they are a good step to guarantee things work between apps, the way it is used today makes it very easy to pass bad data....')
     postpreview(key='20211014' postTitle='Recruiter Tips' date='2021-10-14' link='/posts/2021/10/14' name='Recruiter Tips' excerpt='When a recruiter messaged me on...')
     postpreview(key='20210917' postTitle='My Stack' date='2021-09-17' link='/posts/2021/09/17' name='My Stack' excerpt='Getting off Wordpress offered me a lot of "opportunities" to learn some new tech...')
-    postpreview(key='20210908' postTitle='Moving off Wordpress and on to Netlify' date='2021-09-08' link='/posts/2021/09/08' name='Moving off Wordpress and on to Netlify' excerpt='undefined')
+    postpreview(key='//  20210908' postTitle='//- Moving off Wordpress and on to Netlify' date='//-  2021-09-08' link='/posts/2021/09/08' name='//- Moving off Wordpress and on to Netlify' excerpt='undefined')
     
     h2.mt-4 My first post on the new site! (Finally!) 🎉
 

@@ -14,14 +14,13 @@ script(type="application/ld+json").
   }
 
 //- include ../../../templates/pageheader
-app-pageheader
 
 .container
   h1 #{title}
   
   ul
     li 
-      a#code-samples-link(href="/tech/code") Code samples
+      a#code-samples-link(routerLink="code") Code samples
 
   p As I'm thinking of what I want to put on this page, the list is growing...
 
@@ -38,7 +37,7 @@ app-pageheader
     li  Vue
     li  vi
     li 
-      a(href="tech/code/jq") jq 
+      a(routerLink="code/jq") jq 
     li  zsh
     li 
       a(href="https://github.com/kfix/ddcctl" title="ddcctl project on GitHub") ddcctl

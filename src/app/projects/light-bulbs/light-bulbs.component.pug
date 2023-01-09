@@ -1,0 +1,38 @@
+- var title = 'Light Bulbs'
+block variables
+mixin lastUpdatedDate(date)
+  .last-updated-date-container Last updated: #{date}  
+
+script(type="application/ld+json").
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Projects",
+      "item": "../"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Light Bulbs"
+    }]
+  }
+
+.container.project
+  h1 #{title}
+
+  .project-description Incandescent Light Bulb Project
+  +lastUpdatedDate('2022-08-13')
+
+  div(style="margin-top: .5em")
+    blockquote.tiktok-embed(cite="https://www.tiktok.com/@aakoch/video/7118575661035310378" data-video-id="7118575661035310378" style="max-width: 605px;min-width: 325px;")
+      section
+        a(target="_blank" title="@aakoch" href="https://www.tiktok.com/@aakoch") @aakoch
+        p Lightbulb prototype
+        a(target="_blank" title="♬ original sound - Slace" href="https://www.tiktok.com/music/original-sound-7118575634539989803") ♬ original sound - Slace
+    script(async src="https://www.tiktok.com/embed.js")
+
+  a(routerLink="../" title="Projects")
+    i.fas.fa-angle-double-left
+    |  Back to current projects

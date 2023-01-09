@@ -20,6 +20,7 @@ import { JqComponent } from './tech/code/jq/jq.component';
 import { ShellComponent } from './tech/code/shell/shell.component'
 import { SharedModule } from './shared/shared.module';
 import { Router } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { Router } from '@angular/router';
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
+    NgOptimizedImage,
   ],
   providers: [],
   bootstrap: [AppComponent],
