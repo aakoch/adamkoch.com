@@ -1,0 +1,79 @@
+block variables
+doctype html
+html.no-js(lang="en")
+
+  head
+    include head
+
+    block head
+
+    style(type="text/scss").
+      $primary: #406275;
+      div.date {
+        margin-bottom: 10px;
+      }
+      a {
+        cursor: pointer;
+      }
+      code {
+        white-space: pre;
+      }
+
+      .linkies {
+        &:hover {
+          .fa-angle-double-right {
+            animation: moveright .5s infinite;
+          }
+          .fa-angle-double-left {
+            animation: moveleft .5s infinite;
+          }
+        }
+      }
+
+      @keyframes moveright {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(10px);
+        }
+      }
+
+      @keyframes moveleft {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-10px);
+        }
+      }
+
+  body
+    //- include pageheader
+
+    .container
+      h1 #{title}
+      block body
+
+      hr(width="80%" align="center")
+
+      .container-fluid
+        .row
+          .col-4.col-md-3.offset-md-1
+            if prevTitle
+              a.linkies(href= prevUrl, rel="prev")
+                i.fas.fa-angle-double-left
+                |  
+                span= prevTitle 
+          .col-3.col-md-2.offset-md-1
+            #more-posts More articles!
+          .col-4.col-md-3.offset-md-1.text-end
+            if nextTitle
+              a.linkies(href= nextUrl, rel="next")= nextTitle 
+                |  
+                i.fas.fa-angle-double-right
+            else
+              | Coming soon!
+              

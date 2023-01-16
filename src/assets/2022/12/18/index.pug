@@ -1,0 +1,94 @@
+extends ../../../../templates/blogpost_new
+
+append variables
+  - var title = "Box animations"
+  - var posted = '2022-12-18'
+  - var excerpt = '3D box animations'
+  - var prevUrl = '/posts/2022/06/27'
+  - var prevTitle = 'Roe v Wade'
+
+append head
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Box animations",
+      "image": [
+        ],
+      "datePublished": "2022-12-180T00:00:00+008:00",
+      "dateModified": "2022-12-1800:00:00+008:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
+  style(type="text/scss").
+    $dark: #43464a;
+    blockquote {
+      padding-left: 1vw;
+      border-left: 2px solid $dark;
+      margin-left: 1vw;
+    }
+
+  link(href="index.scss" rel="stylesheet" type="text/scss")
+  script(src="index.js" defer)
+
+block body
+  .box-container
+    #box0.box(data-rotx="0" data-roty="0" data-rotz="0" data-translatez="0")
+      .box__face.box__face--front.box__face--color-0 front
+      .box__face.box__face--back.box__face--color-1 back
+      .box__face.box__face--right.box__face--color-2 right
+      .box__face.box__face--left.box__face--color-3 left
+      .box__face.box__face--top.box__face--color-4 top
+      .box__face.box__face--bottom.box__face--color-5 bottom
+
+    #box1.box(data-rotx="0" data-roty="0" data-rotz="0" data-translatez="0")
+      .box__face.box__face--front.box__face--color-0 front
+      .box__face.box__face--back.box__face--color-1 back
+      .box__face.box__face--right.box__face--color-2 right
+      .box__face.box__face--left.box__face--color-3 left
+      .box__face.box__face--top.box__face--color-4 top
+      .box__face.box__face--bottom.box__face--color-5 bottom
+
+    #box2.box(data-rotx="0" data-roty="0" data-rotz="0" data-translatez="0")
+      .box__face.box__face--front.box__face--color-0 front
+      .box__face.box__face--back.box__face--color-1 back
+      .box__face.box__face--right.box__face--color-2 right
+      .box__face.box__face--left.box__face--color-3 left
+      .box__face.box__face--top.box__face--color-4 top
+      .box__face.box__face--bottom.box__face--color-5 bottom
+
+
+    section Rotate: 
+      a#rotateLeftLink(href="#") Left
+      |  
+      a#rotateRightLink(href="#") Right
+      |  
+      a#rotateUpLink(href="#") Up
+      |  
+      a#rotateDownLink(href="#") Down
+
+    section
+      label(for="moveWith") Move with mouse:
+      |  
+      input#moveWith(type="checkbox")
+    section
+      label(for="mouseMoveRangeInput") Mouse acceleration:
+      |  
+      input(type="range" min="10" max="100" id="mouseMoveRangeInput" default="50")
+
+    .gap
+
+    section 
+      p Edit this over at 
+        a(href="https://codepen.io/aakoch/pen/dyKxLme") codepen.io
+        | .
+
+
+  block commentForm
+  .container
+    #comment-form
+    
+  //- script#commentScript(src="commentForm.js" type="module")

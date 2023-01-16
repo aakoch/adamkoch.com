@@ -3,16 +3,19 @@
 mixin project(title, status, type)
   .project
     .project-wrapper
-      h2= title
+      .project-title
+        h2= title
       .project-body
-        if block
-          block
-        else
-          p No description yet
-        .status-wrapper Type:
-          span.status #{type}
-        .status-wrapper Status:
-          span.status #{status}
+        .project-description
+          if block
+            block
+          else
+            p No description yet
+        .statuses
+          .status-wrapper Type:
+            span.status #{type}
+          .status-wrapper Status:
+            span.status #{status}
 
 //- block variables
 //- doctype html
@@ -40,76 +43,79 @@ script(type="application/ld+json").
     p I've tried to categorize my projects as either "Physical" or "Digital". There is usually some overlap, so think 
       | of it as a Venn diagram where some projects will most likely be both.
 
-  +project('Color Changing Outdoor Light', 'In Progress', 'Physical')
-    p My wife has this globe garden decoration that hasn't worked for years and I've started fiddling around with it. 
-      s I'm currently waiting for parts now.
-      |  Parts are in, but I've hit a snag.
-    p: a(routerLink="color-changing-outdoor-light" title="Project: Color Changing Outdoor Light") Read more
+  .projects
+    +project('Color Changing Outdoor Light', 'In Progress', 'Physical')
+      p My wife has this globe garden decoration that hasn't worked for years and I've started fiddling around with it. 
+        s I'm currently waiting for parts now.
+        |  Parts are in, but I've hit a snag.
+      p: a(routerLink="color-changing-outdoor-light" title="Project: Color Changing Outdoor Light") Read more
 
-  +project('ESP32', 'In Progress', 'Digital')
-    p When I started working on the Lucid Gloves, I didn't expect to be sucked into playing with microcontrollers. 
-      | I've been having fun playing with the ESP32 microtroller and some cheap sensors. I even created 
-      a(href="https://github.com/aakoch/ESP32_projects") a Github repo
-      |  .
+    +project('ESP32', 'In Progress', 'Digital')
+      p When I started working on the Lucid Gloves, I didn't expect to be sucked into playing with microcontrollers. 
+        | I've been having fun playing with the ESP32 microtroller and some cheap sensors. I even created 
+        a(href="https://github.com/aakoch/ESP32_projects") a Github repo
+        |  .
 
-  +project('Lucid Gloves', '"Best by" Date Approaching', 'Physical')
-    p Only 
-      a(href="../posts/2022/04/30") a blog post about supplies 
-      |  so far.
+    +project('Lucid Gloves', '"Best by" Date Approaching', 'Physical')
+      p Only 
+        a(href="../posts/2022/04/30") a blog post about supplies 
+        |  so far.
 
-  +project('Attention Grabber', "In Production", 'Physical')
-    p As a parent of a video game-playing teenage boy, it is sometime hard to get his attention. This is an ESP32 running a web server with a light attached. 
+    +project('Attention Grabber', "In Production", 'Physical')
+      p As a parent of a video game-playing teenage boy, it is sometime hard to get his attention. This is an ESP32 running a web server with a light attached. 
 
-  +project('Light bulbs', "In Progress", 'Physical')
-    p What do you do with hundreds of burnt-out incandescent light bulbs? Save 'em for years until you can think of what to do with 'em. I'm right on schedule. 
-    p Currently I'm creating my own slip ring. 
-    p: a(routerLink="light-bulbs" title="Project: Light Bulbs") Read more
+    +project('Light bulbs', "In Progress", 'Physical')
+      p What do you do with hundreds of burnt-out incandescent light bulbs? Save 'em for years until you can think of what to do with 'em. I'm right on schedule. 
+      p Currently I'm creating my own slip ring. 
+      p: a(routerLink="light-bulbs" title="Project: Light Bulbs") Read more
 
-  +project('Ring Swing Game', 'In Progress', 'Physical')
-    p A game that I saw at a graduation party that I wanted to enhance. It's pretty low priority.
+    +project('Ring Swing Game', 'In Progress', 'Physical')
+      p A game that I saw at a graduation party that I wanted to enhance. It's pretty low priority.
 
-  +project('Foo-Dog', 'In Progress', 'Digital') 
-    p A Pug replacement with similar constructs. Not yet visible to the public.
+    +project('Foo-Dog', 'In Progress', 'Digital') 
+      p A Pug replacement with similar constructs. Not yet visible to the public.
 
-  +project('Timesheet', 'Slowing', 'Digital')
-    p A project to help be track my time at work. I've published a early version (0.1.2) on NPM.  
-    p: a(href="https://github.com/aakoch/timesheet")
-      i(class='fab fa-github fa-brands')
-      |  Github repo
+    +project('Timesheet', 'Slowing', 'Digital')
+      p A project to help be track my time at work. I've published a early version (0.1.2) on NPM.  
+      p: a(href="https://github.com/aakoch/timesheet")
+        i(class='fab fa-github fa-brands')
+        |  Github repo
 
-    p: a(href="https://www.npmjs.com/package/@aakochnpm/timesheet")
-      i(class='fab fa-npm fa-brands')
-      |  NPM page
+      p: a(href="https://www.npmjs.com/package/@aakochnpm/timesheet")
+        i(class='fab fa-npm fa-brands')
+        |  NPM page
 
-  +project('Rain Train Fix', 'In Progress', 'Physical') 
-    p I have a rain train that has stopped working. Water pours out of the bottom. I bought a replacement o-ring but it's too big and doesn't allow the "arms" to spin. I have to go back and try again.
+    +project('Rain Train Fix', 'In Progress', 'Physical') 
+      p I have a rain train that has stopped working. Water pours out of the bottom. I bought a replacement o-ring but it's too big and doesn't allow the "arms" to spin. I have to go back and try again.
 
-  +project('Animations', 'Stale', 'Digital')
-    p Just some fun I've been having with CSS animations. If something doesn't work for you, 
-      a(href="/contact/") I'd love to know
-      | .
-    ul
-      li: a(href="../animations/bark.pug") Bark
-      li: a(href="../animations/wind.pug") Wind
-      li: a(href="../animations/fadeOutOnMouseOver.pug") Fade out on mouseoever
-      li: a(href="../animations/infectSiblings.pug") Fade out siblings
-      ng-template(*ngIf="isDevMode()")
-        li: a(href="../animations/infectNeighbors.pug") Fade out neighbors
-      li: a(href="../animations/sensitive.pug") Sensitive
+    +project('Animations', 'Stale', 'Digital')
+      p Just some fun I've been having with CSS animations. If something doesn't work for you, 
+        a(href="/contact/") I'd love to know
+        | .
+      ul
+        li: a(href="../animations/bark.pug") Bark
+        li: a(href="../animations/wind.pug") Wind
+        li: a(href="../animations/fadeOutOnMouseOver.pug") Fade out on mouseoever
+        li: a(href="../animations/infectSiblings.pug") Fade out siblings
+        ng-template(*ngIf="isDevMode()")
+          li: a(href="../animations/infectNeighbors.pug") Fade out neighbors
+        li: a(href="../animations/sensitive.pug") Sensitive
 
-  +project('Swamp Fan', 'On Hold', 'Physical')
-    p It started when my wife bought me a tabletop, USB-powered "air conditioner". 
-    p: a(routerLink="swamp-fan" title="Project: Swamp Fan") Read more
+    +project('Swamp Fan', 'On Hold', 'Physical')
+      p It started when my wife bought me a tabletop, USB-powered "air conditioner". 
+      p: a(routerLink="swamp-fan" title="Project: Swamp Fan") Read more
 
-  +project('This Site', 'Stale', 'Digital')
-    h3 1.0.0 Released
-    .releaseDate.mb-3 2021-08-31
-    p I felt obligated to release 1.0.0 of the site when I read on 
-      a(href='https://semver.org/spec/v1.0.0.html' title='Semantic Versioning') semver.org 
-      |  that if you are in production, you should be at least 1.0. So, I pushed 1.0.0 today. And of course, writing this probably makes me have to bump this up a version. I won't if it's just a new post, but I really don't have posts up yet. So here's to 1.0.1! 🍾
+    +project('This Site', 'Stale', 'Digital')
+      h3 1.0.0 Released
+      .releaseDate.mb-3 2021-08-31
+      p I felt obligated to release 1.0.0 of the site when I read on 
+        a(href='https://semver.org/spec/v1.0.0.html' title='Semantic Versioning') semver.org 
+        |  that if you are in production, you should be at least 1.0. So, I pushed 1.0.0 today. And of course, writing this probably makes me have to bump this up a version. I won't if it's just a new post, but I really don't have posts up yet. So here's to 1.0.1! 🍾
 
-  +project('SLAB', 'Let\'s not talk about it', 'Digital')
+    +project('SLAB', 'Let\'s not talk about it', 'Digital')
 
-//-     include ../templates/footer
+  //-     include ../templates/footer
 
-//-     block body_scripts
+  //-     block body_scripts
+
+app-footer

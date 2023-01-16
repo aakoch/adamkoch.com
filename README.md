@@ -10,13 +10,14 @@ Or, if you're on an ARM Mac machine:
 arch -x86_64 npm i
 
 ## Run Locally
-npm run watch
+npm start
+
+## Build prod version and watch
+ng build --watch
+npx lite-server --baseDir="dist"
 
 ## Build
 npm run build
-
-Or, if you're on an ARM Mac machine:
-arch -x86_64 npm run build
 
 ## Clean
 npm run clean

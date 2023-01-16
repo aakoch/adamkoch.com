@@ -1,0 +1,103 @@
+extends ../../../../templates/blogpost_new
+
+append variables
+  - var title = "Recruiter Tips"
+  - var posted = '2021-10-14'
+  - var excerpt = 'When a recruiter messaged me on...'
+  - var prevUrl = '/posts/2021/09/17'
+  - var prevTitle = 'My Technology Stack'
+  - var nextUrl = '/posts/2021/10/22'
+  - var nextTitle = 'Spring Cloud Contracts'
+
+append head
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Recruiter Tips",
+      "image": [
+        "/src/img/recruiter_ohio.png"
+       ],
+      "datePublished": "2021-10-14T00:00:00+000:00",
+      "dateModified": "2022-01-03T00:00:00+000:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
+  style(type="text/scss").
+    .quote {
+      &::before, &::after {
+        color: black;
+        font-size: 2em;
+      }
+      &::before {
+        content: '“';
+        padding-right: .2em;
+        margin-left: -.5em;
+      }
+      &::after {
+        content: '”';
+        right: 1em;
+        position: absolute;
+      }
+      position: relative;
+      padding-left: 9em;
+      padding-right: 2em;
+      margin-bottom: 1em;
+    }
+    hr {
+      margin: 1rem auto;
+    }
+    #commentForm h1 {
+      font-size: 1.5em;
+    }
+block body
+
+  .container.post(id="post-" + posted)
+    .posted= posted
+    .content
+      p I got a message from a recruiter today on LinkedIn and I wanted to give him some pointers. As someone on the receiving end of 
+        strike  a lot of  
+        |  some messages from recruiters, I can tell you want makes me want to hear more. So here are my 
+      h2 Top 3 Tips for Recruiters...
+
+      h3 Location, Location, Location
+      p I can think of 2 types of messages could get away with doing this: the short ones or 100% remote ones.  Some recruiters send messages with very little details. They either are respecting your time or they don't have a lot of time. It's fine either way. I also like to think there are other recruiters that don't send a lot of information are trying to allure me by being mysterious. The other messages that can get a way with no location are those for a 100% remote position. 
+      p If you're not one of those 2, then tell me the location! You've gotta know that is very important. If I'm in a position where I don't want to move, they I can tell you right off the bat that I'm not interested in the job. If you don't provide a location and you're the one reaching out to me then I will most likely ignore your message. 
+      p But the worst is when they tease you!
+      img(src='/assets/recruiter_ohio.png')
+      p As I'm reading this, I'm thinking, "... oh, Des Moines, that's not far ... oh now just somewhere in the Midwest ... Ohio! At least we have in narrowed to a state... and now we don.t."
+
+      h3 The Tech
+      p When new technology is even mentioned in a message I've received, my ears perk up a bit. New tech really interests us! If you can at least pretend you're doing cool things I'll be interested. I don't know if all developers are this way.  And when you mention technologies, can you sound like you know what you're talking about? 
+      blockquote 
+        .quote Right now they are wanting individuals with a great background in Java, Spring, and Boot (to name a few), but in the future, would definitely be working on other projects with different technologies.
+        .tagline Not terrible, but it's not just "Boot"
+      
+
+      h3 Grammar
+      p I have a thing about grammar and I scrutinize recruiters' messages. Bad grammar comes off as either unprofessional, lazy or dumb. And those are turn offs for me. 
+
+      h3 Bonus!
+      p If I don't know you I am not going to give you the names of my friends so you can bother them too. I know it's rough finding people right now, but it comes off ... wrong.
+
+      h3 Bonus bonus!
+      p Your company doesn't come off any better if you say there's a strong work/life balance. Everyone is saying that these days.
+
+      h3 Addendum (added 2022-01-04)
+      p I just got done reading the article 
+        a(href="https://www.monster.com/career-advice/article/six-ways-to-make-a-recruiter-hate-you") The quickest ways to make a recruiter hate you
+        | . (It used to be called "Six ways to make a recruiter hate you" as evident by the URL.) 
+        | I thought I would add something here. 
+      p I usually skip over recruiters who don't take the time to read my resume/LinkedIn profile. I hate getting questions that could've been gleamed from just skimming either of them. I want to point out that this doesn't make me hate someone. Hate is a strong word.
+      p Another example: I was presented with a job description that sounded exactly like what I quit 9 months ago. 
+      p If I don't feel like you spent time reading my resume or LinkedIn profile I don't think you'll have my best interests in mind when trying to fill positions.
+
+
+//- block commentForm
+//-   .container
+//-     #comment-form
+    
+  //- script#commentScript(src="commentForm.js" type="module")

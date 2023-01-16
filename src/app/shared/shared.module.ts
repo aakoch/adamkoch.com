@@ -1,23 +1,44 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageheaderComponent } from './pageheader/pageheader.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderSvgComponent } from './header-svg/header-svg.component';
-import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ScrollListenerDirective } from './scroll-listener.directive';
 import { PageComponent } from './page/page.component';
 import { RouterModule } from '@angular/router';
+import { CommentFormComponent } from './comment-form/comment-form.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
-  declarations: [PageheaderComponent, NavbarComponent, HeaderSvgComponent, ScrollListenerDirective, PageComponent],
+  declarations: [
+    CommentFormComponent,
+    HeaderSvgComponent,
+    NavbarComponent,
+    PageComponent,
+    PageheaderComponent,
+    ScrollListenerDirective,
+    FooterComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
     HttpClientModule,
-    HttpClientJsonpModule
+    ReactiveFormsModule
   ],
-  exports: [PageheaderComponent, CommonModule, FormsModule, NavbarComponent, HttpClientModule, HttpClientJsonpModule, ScrollListenerDirective, PageComponent]
+  exports: [
+    CommentFormComponent,
+    CommonModule,
+    FooterComponent,
+    FormsModule,
+    HttpClientModule,
+    NavbarComponent,
+    PageComponent,
+    PageheaderComponent,
+    ReactiveFormsModule,
+    ScrollListenerDirective,
+  ]
 })
 export class SharedModule { }

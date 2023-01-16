@@ -209,29 +209,7 @@ nav, #landing-header {
   text-align: center;
   margin: 3rem 0 2em;
   span {
-    margin: 0 10px;
-  }
-}
-
-.project {
-  margin-top: 40px;
-  .project-body {
-    border-left: solid $primary 5px;
-    padding-left: 20px;
-  }
-  .status-wrapper {
-    font-size: 1.2em;
-    .status {
-      font-family: monospace;
-      padding-left: .5em;
-    }
-  }
-  .project-description {
-    font-size: 1.2em;
-  }
-  ul {
-    padding-left: 0;
-    margin-left: 0;
+    margin: 0 4px;
   }
 }
 

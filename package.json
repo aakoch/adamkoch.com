@@ -20,6 +20,7 @@
     "updateTest": "SNAPSHOT_UPDATE=1 npm test",
     "watch": "mkdir -p dist && cp -v _redirects dist/ && cp -v _headers dist/ && cp -Rv src/assets/* dist/ && parcel ./src/index.pug './src/**/index.pug' ./src/404.pug --no-cache || ng build --watch --configuration development"
   },
+  "source": [],
   "dependencies": {
     "@angular/animations": "^15.0.4",
     "@angular/common": "^15.0.0",

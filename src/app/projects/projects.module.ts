@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { ProjectsComponent } from './projects.component';
@@ -9,7 +9,6 @@ import { ProjectsPageComponent } from './projects-page/projects-page.component';
 import { ColorChangingOutdoorLightComponent } from './color-changing-outdoor-light/color-changing-outdoor-light.component';
 import { LightBulbsComponent } from './light-bulbs/light-bulbs.component';
 import { SwampFanComponent } from './swamp-fan/swamp-fan.component';
-import { NgOptimizedImage } from '@angular/common'
 
 
 @NgModule({

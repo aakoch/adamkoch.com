@@ -1,0 +1,20 @@
+
+h1 {
+  z-index: 9;
+}
+:host {
+  display: block;
+  margin-top: 3vh;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form).ng-pristine  {
+  border-left: 5px solid #406275; /* red */
+}
+
+.ng-invalid.ng-touched:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}

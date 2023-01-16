@@ -1,4 +1,4 @@
-import { Component, isDevMode, OnInit } from '@angular/core';
+import { AfterViewInit, Component, isDevMode, OnInit } from '@angular/core';
 import { WordPressPost } from './oldposts/wordpress-post.model';
 import OLD_POSTS from "../../data/professional_publish.json";
 
@@ -7,7 +7,7 @@ const fullPosts: WordPressPost[] = sort(OLD_POSTS);
 const posts: WordPressPost[] = fullPosts.slice(0, idx)
 
 function sort(posts: WordPressPost[]) {
-  return posts.sort((post1: any, post2: any) => { 
+  return posts.sort((post1: any, post2: any) => {
     // console.log(post1.title.slice(0, 1));
 
     // by title:
@@ -27,23 +27,17 @@ function sort(posts: WordPressPost[]) {
   templateUrl: './blog.component.pug',
   styleUrls: ['./blog.component.scss']
 })
-export class BlogComponent implements OnInit {
+export class BlogComponent implements OnInit, AfterViewInit {
   posts: WordPressPost[] = posts;
   allPosts: WordPressPost[] = fullPosts;
 
-  constructor() {
-    if (isDevMode()) {
-      console.log("this.allPosts.length=", this.allPosts.length);
-      console.log("this.posts.length=", this.posts.length);
-    }
+  constructor(private window: Window) {
   }
 
   ngOnInit(): void {
-    
-    if (isDevMode()) {
-      console.log("this.allPosts.length=", this.allPosts.length);
-      console.log("this.posts.length=", this.posts.length);
-    }
+  }
+  ngAfterViewInit() {
+    (<any>this.window).google?.search.cse.element.go()
   }
 
 

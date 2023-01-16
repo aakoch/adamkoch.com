@@ -80,7 +80,7 @@ function readPostStats(filename) {
 let postPreviewArr = []
 let postsData = []
 
-find.file(/20.*index\.pug$/, __dirname + '/src/posts', function(files) {
+find.file(/20.*index\.pug$/, __dirname + '/src/assets', function(files) {
   console.log(files.length);
   files.forEach(element => {
 

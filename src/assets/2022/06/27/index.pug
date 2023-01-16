@@ -1,0 +1,56 @@
+extends ../../../../templates/blogpost_new
+
+append variables
+  - var title = "Roe v Wade"
+  - var posted = '2022-06-27'
+  - var excerpt = 'So sad...'
+  - var prevUrl = '/posts/2022/06/19'
+  - var prevTitle = 'Engineering Process'
+  - var nextUrl = '/posts/2022/12/18'
+  - var nextTitle = 'Box animations'
+  - var commentsDisabled = true
+
+append head
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Roe v Wade",
+      "image": [
+       ],
+      "datePublished": "2022-06-27T23:16-05:00",
+      "dateModified": "2022-07-05T23:16-05:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
+  style(type="text/css").
+    blockquote {
+      padding-left: 1vw;
+      border-left: 2px solid #43464a;
+      margin-left: 1vw;
+    }
+
+block body
+
+  .container.post(id="post-" + posted)
+    .posted= posted
+    .content
+
+      h2 Warning: Personal, Polarizing Post
+
+      p Last Friday's supreme court decision to overturn Roe v Wade has me swimming. I'm not comprehending it. I'm so deeply saddened. I suspect Friday to be one of <em>the</em> defining moments of my life. "Where were you when Roe v Wade was overturned?" Or perhaps it will be, "Where were you when the United States plummeted back to the dark ages." But seriously, that started when Trump was elected. 
+
+      p I feel a little responsible. I vote, but that's about it. I'm no activist, but shouldn't I be doing something? I never imagined my daughter having to grow up in such a <s>world</s> country. What can I do? I'm not going to convince anyone to change their mind. I can't empathize with Trump supporters. And it seems to me, that if you're conservative or a member of the GOP, then you support Trump. Which probably isn't fair or accurate. It hurts to think people reject science more today than 20 years ago. And that the rest of the world is moving forward, while the US is falling back. Growing up, I thought the United States was the best country in the world. Now I'm ashamed. Ashamed that I live here. We were "dumb Americans" 10, 20 years ago. Now what are we? An embarrassment. 
+
+      p I feel hopeless and helpless. I used to be able to count on society's "smarts" to combat inequality. Yes, there were rich people, but as long as the general public had smarts, we wouldn't let them rule. But now, when people are questioning shape of the Earth, I sit motionless in a state of disbelief. 
+
+      p Why does it seem to me that the conservative, right winged individuals can only speak about the overturn of Roe v Wade in terms of God? I used to think religious was not a part of government. I was wrong. I know I'm correct in thinking it <span class="underline">shouldn't</span> be. 
+
+      h3 Update
+      p The reason I posted this is because of this quote:
+      p: img(src="/src/img/quote.png")
+
+      p Not that I want it to cost me anything, but I'm willing to stand up for my beliefs.

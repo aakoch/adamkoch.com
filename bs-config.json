@@ -1,0 +1,12 @@
+{
+  "server": {
+    "baseDir": "./dist",
+    "rewriteRules": [
+      {
+          "match": "/src\/img\/(.*)/g",
+          "replace": "/$1"
+      }
+  ],
+  "logLevel": "debug"
+  }
+}

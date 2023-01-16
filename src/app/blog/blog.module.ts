@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogComponent } from './blog.component';
 import { PostListComponent } from './post-list/post-list.component';
@@ -10,6 +9,8 @@ import { PostcardComponent } from './oldposts/oldpost/oldpost.component';
 import { CommentComponent } from './comment/comment.component';
 import { OldpostsComponent } from './oldposts/oldposts.component';
 import { PostComponent } from './post/post.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PostComponent as PostComponent20221218 } from './posts/2022/12/18/post/post.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +20,17 @@ import { PostComponent } from './post/post.component';
     PostcardComponent,
     CommentComponent,
     OldpostsComponent,
-    PostComponent
+    PostComponent,
+    PostComponent20221218
   ],
   imports: [
     CommonModule,
     BlogRoutingModule,
     SharedModule,
+    HttpClientModule
   ],
-  exports: [ PostComponent ]
+  exports: [ PostComponent ],
+  providers: [NgOptimizedImage]
 })
 
 export class BlogModule { }

@@ -1,0 +1,273 @@
+extends ../../../../templates/blogpost_new
+
+append variables
+  - var title = ' My Stack'
+  - var posted = '2021-09-17'
+  - var excerpt = 'Getting off Wordpress offered me a lot of "opportunities" to learn some new tech...'
+  - var prevUrl = '/posts/2021/09/08'
+  - var prevTitle = 'Moving off Wordpress and on to Netlify'
+  - var nextUrl = '/posts/2021/10/14'
+  - var nextTitle = 'Recruiter Tips'
+
+append head
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "My Stack",
+      "image": [
+        "/src/img/pug.svg"
+       ],
+      "datePublished": "2021-09-17T00:00:00+000:00",
+      "dateModified": "2021-09-17T00:00:00+000:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
+
+  style.
+    #pugImg {
+      display: block;
+      position: absolute;
+      width: 100px;
+      transition-timing-function: ease-in-out;
+    }
+    #woof1, #woof2 {
+      display: block;
+      position: absolute;
+      visibility: hidden;
+    }
+    .popupGator {
+      background-image: url('/src/img/hostgator_icon.png');
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-position-x: 35px;
+      background-position-y: 25px;
+      text-decoration: underline dashed;
+      transition-property: background-position-y;
+      transition-duration: 2s;
+    }
+    .popupGator:hover {
+        background-position-y: 0px;
+    }
+
+    li {
+      margin-left: 25px;
+    }
+
+    img.icon {
+      margin: 0 5px;
+      height: 1.2em;
+    }
+    @keyframes woof0 {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(30px, -30px) scale(2.2) rotate(30deg);
+        opacity: 0;
+      }
+    }
+    @keyframes woof1 {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(-30px, -30px) scale(2.2) rotate(-30deg);
+        opacity: 0;
+      }
+    }
+    @keyframes bark {
+      from {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    @keyframes bark2 {
+      from {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.05);
+      }
+      50% {
+        transform: scale(1);
+      }
+      75% {
+        transform: scale(1.05);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    @keyframes myFadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "My Stack",
+      "image": [
+        "/src/img/pug.svg",
+        "/src/img/parcel_full.png",
+       ],
+      "datePublished": "2021-09-17T00:00:00+008:00",
+      "dateModified": "2021-09-17T00:00:00+008:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
+
+block body
+  .container.post(id="post-" + posted)
+    .posted= posted
+    .content
+      #stack
+      p Hey guys! I wanted to tell you about my current stack for this website <s title="I used to, but it's broken">because I have cute dog that appears when you mouse over the part about Pug</s>.
+      #pug
+        h3 Pug
+        p I like  
+          a(href="https://pugjs.org/api/getting-started.html" title="Pug Homepage") Pug
+          |  because it takes a lot of the verboseness of HTML away. Think Markdown but you can still actually do things with Pug. Yes, Pug is a <em>little</em> more verbose, but it makes up for it by allowing you to do more than a handful of things! The limitations of Markdown make me wonder why so many people like it. Anyway... I ❤️ Pug.
+        
+        p It has support, although, while creating this site, I just seems as though there is less support than before. 
+        
+        .aside
+          i.fas.fa-angle-double-right 
+          | Quick link: 
+          a(href="https://html2pug.vercel.app/" title="Free online HTML to Pug conversion tool") Tool for taking some HTML and converting it to Pug
+
+        #parcel
+        h3 Parcel
+        p 
+          a(href="https://parceljs.org/" title="Parcel web application bundler") Parcel 
+          | is a site packager that supports Pug out of the box. 
+          a(href="https://v2.parceljs.org/" title="Parcel v2 web application bundler") Version 2
+          |  doesn't advertise it though. One of the reasons I think Pug is on the way out.
+
+        #vue
+        h3 Vue
+        p I'm not sure if Vue was a requirement, but when comparing it to React, Vue supports Pug. 
+
+        #bootstrap
+        h3 Bootstrap
+        p Not really a requirement, but I haven't looked into alternatives and I sort of know it.
+
+        #npm
+        h3 NPM
+        p I'm not sure why I'm even listing this. Seems projects suggest Yarn more than NPM. But I'm not having the best experience with either of them. 
+
+      #issues
+      h2 Issues (so far)
+  
+      h3 # 1 style(type=application/scss) errors
+      p I was trying to use the correct type (I thought) when using 
+        a(href="https://sass-lang.com/" title="A superset of CSS") Sass
+        | . It wasn't work and ended up creating 
+        a(href="https://github.com/parcel-bundler/parcel/issues/6689" title="Github issue") a Github issue 
+        |  just to be told to use 
+        span.font-monospace `type=text/scss`
+        | .
+      
+      h3 # 2 SVGs aren't properly minimized
+      p I have to set 
+        span.font-monospace `"minifySvg": false`
+        |  in 
+        span.font-monospace .htmlnanorc
+        | .
+
+      h3 # 3 Pug imports wonky
+      p If you have Pug templates or other external files several layers deep, the resolving of directories stop working. Either have to limit how you can layout your files or use "absolute" paths from the project root.
+
+      h3 # 4 Sass variables not passed down
+      p Actually, this might not be an issue. The idea is I want to define some Sass variables in a file and be able to use those in my pages and Vue components. I haven't tried too hard yet to get this to work. I have to read up on 
+        a(href="https://v2.parceljs.org/languages/css/#css-modules" title="Parcel documentaion on CSS modules") CSS modules
+        | .
+    
+      h3 # 5 CORS
+      p On a couple of pages I want to load some external images and CORS gets in the way. I eventually just turned if off locally using 
+        span.font-monospace `.proxyrc.js`
+
+      h3 #6 - #8
+      p TBD
+
+      h3 # 9 segfaults
+      p The Sharp imaging package causes 
+      
+        a(href="https://answers.netlify.com/t/segmentation-fault-on-build/34003/6?u=aakoch" title="Discussion on Netlify about segfaults") segmentation faults
+        | . It can transform images during your build and I was looking forward to using 
+        span.font-monospace imgset
+        | s and webp images. 
+            
+      h3 # 10 strange imports 
+      p I think this is duplicate of #3.
+
+      h3 # 11 No logging
+      p Seriously. I tried turning on verbose logging, changing the log levels, using debug and nothing! 
+        span.font-monospace `--log-level=verbose`
+        |  doesn't seem to do anything
+
+      h3 # 12 Some reporter is broken
+      p When I was trying to increase logging, I set up some "reporters" and one just failed. I asked about logging and really didn't get a satisfying answer.
+      
+      h3 # 13
+      p I was trying to put a countdown timer on my site and had to resort to directly depending on a forked repo.
+      pre: code.language-JSON "countdown": "git://github.com/mckamey/countdownjs.git#1902fb23d21d84958b302c117fe472634a5bcf52",
+
+      h3 # 14 Can't use styling in &lt;head&gt;
+      p I *have* to use an external stylesheet because of 
+        a(href="https://github.com/parcel-bundler/parcel/issues/6883" title="Parcel bug report") a bug  
+        |  where Parcel doesn't seem to honor the configuration in `#[span.font-monospace .cssnanorc]`.  
+        
+      h3 # 15 cssnano 
+      p I have to turn off minifyGradients because of 
+        a(href="https://github.com/cssnano/cssnano/issues/650" title="cssnano bug report") a bug in cssnano 
+        |  which removes the first stop in gradients. Or use the workaround: use a really small decimal like .0001px 
+
+      h3.mt-4 # 6 - 8 Syntax Highlighting
+      p I'm using 
+        a(href="https://code.visualstudio.com/") Visual Studio Code
+        img.icon(src="/src/img/vs_code.svg" alt="Visual Studio Code icon")
+        |  to code front-end apps and found the Pug syntax highlighting failed in the case where a 
+        code script
+        |  tag had the type attribute set to "module". It isn't the end of the world, but annoying enough I went down the path of trying to fix it. I went to 
+        a(href="https://code.visualstudio.com/docs#vscode") the VS Code documentation site
+        |  and searched for syntax highlighting and found 
+        a(href="https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide") this guide
+        | . I tried to 
+        a(href="https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide#injection-grammars") injection grammar
+        |  but I didn't know what I was doing so I had to give up on that. (How am I was supposed to know what value to "injectTo"?) So I poked around in the application source 
+        | and found pug.tmLanguage.json. From there I was able to find the section that deals with Javascript and add in some regex to allow "module". But it simply said that not to reject the script if it found "module" -- it didn't highlight the attribute nor value. At the top of the file is a disclaimer: 
+      .aside.quote This file has been converted from 
+        a(href="https://github.com/davidrios/pug-tmbundle/blob/master/Syntaxes/Pug.JSON-tmLanguage") https://github.com/davidrios/pug-tmbundle/blob/master/Syntaxes/Pug.JSON-tmLanguage
+        |  If you want to provide a fix or improvement, please create a pull request against the original repository.
+        | Once accepted there, we are happy to receive an update request.
+      p So I perused the repo and found that someone had already created a PR that correctly colored what I hadn't. It was opened in 2019. Ugh. So I think the repo is abandoned.
+
+      h3 Tests
+      p I wasn't worried about tests until I push out my site with a broken link, navigation broken, and posts not loading. I spent all last night working on it and it has come down to this: if I want to use Mocha I have to use webpack. Or I can switch to Jest. That's a story for another post.
+
+      h2 Conclusion
+      p When starting out, Parcel with Pug is easy and straightfoward. But man, anything beyound that and it gets yucky. 
+      
+    img#pugImg(src="/src/img/pug.svg" alt="Pug Logo")
+    #woof1: h3 Woof!
+    #woof2: h3 Woof!

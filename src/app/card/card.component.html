@@ -3,7 +3,7 @@
   <div class="new-corner" *ngIf="first && showNew()">New!</div>
 
   <div class="icon-container">
-    <i class="card-img-top" ngClass={{card.icon}} [@iconFlipState]="iconFlipState"></i>
+    <i class="card-img-top" [ngClass]="card.icon" [@iconFlipState]="iconFlipState"></i>
   </div>
 
   <div class="card-body">
@@ -13,10 +13,10 @@
 
   <div class="card-text">
     <div class="btn-group" *ngIf="first">
-      <a routerLink="card.buttons[0].url" [title]="card.buttons[0].title" class="btn btn-primary">{{ card.buttons[0].label }}</a>
-      <a routerLink="posts" class="btn btn-primary" title="All Posts">All</a>
+      <a [routerLink]="card.buttons[0].url" [title]="card.buttons[0].title" class="btn btn-primary">{{ card.buttons[0].label }}</a>
+      <a [routerLink]="card.buttons[1].url" class="btn btn-primary" title="All Posts">All</a>
     </div>
-    <a [href]="card.url" [title]="card.title" class="btn btn-primary" *ngIf="!first">{{ card.buttons[0].label }}</a>
+    <a [routerLink]="card.url" [title]="card.title" class="btn btn-primary" *ngIf="!first">{{ card.buttons[0].label }}</a>
   </div>
 
   <div class="card-footer" *ngIf="card.tagline"><small>{{card.tagline}}</small></div>

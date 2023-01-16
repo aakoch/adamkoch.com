@@ -1,0 +1,50 @@
+.container
+  form#commentForm.needs-validation("[formGroup]"="commentForm" name="commentForm" "(ngSubmit)"="submit()" data-netlify='true' netlify-honeypot='validate' novalidate)
+    .alert.alert-danger.mt-3(role="alert" "*ngIf"="isError") 
+      h4.alert-heading Oh, no!
+      #expandDetails(*ngIf="!expanded")
+        span Something didn't work. 
+        a((click)="expanded=true" role="button" style="font-size:.9em") Expand Details +
+      #errorDetails(*ngIf="expanded")
+        h5 We sent the request but got this response:
+        p {{ errorMessage }}
+      hr
+      p.mb-0 Please try reloading the page.
+    .alert.alert-success.mt-3(role="alert" "*ngIf"="isSuccess") 
+      h4.alert-heading Thank you!
+      p Your comment was successfully submitted.
+    fieldset("[disabled]"="isSuccess" "*ngIf"="!isSuccess && !isError")
+      input(type="hidden" name="form-name" value="post-comment-form")
+      input(type="hidden" name="post-id" value="{{postId}}")
+      input(type="hidden" name="post-title" value="postTitle")
+      .postTitle(*ngIf="postTitle")
+        h2 Comment on &quot;{{ postTitle }}&quot;
+      .mb-0.mt-3
+        label.form-label.mb-0(for='name') Name: 
+      .mb-3
+        input.form-control(formControlName="name" type='text' id='name' placeholder='Your name' required )
+        div(*ngIf="name?.invalid && (name?.dirty || name?.touched)" style="color:#b87460") What shall I call you?
+      .mb-0
+        label.form-label.mb-0(for='email') Email: 
+      .mb-1
+        input.form-control(formControlName="email" type='email' name='email' id='email' placeholder='your-name@example.com')
+      .mb-3
+        .form-text Not displayed but the md5 hash is used for Gravatar image.
+      .mb-0
+        label.form-label.mb-0(for='url') URL: 
+      .mb-3
+        input.form-control(formControlName="url" type='url' name='url' id='url' placeholder='www.my-awesome-site.com')
+      .mb-0
+        label.form-label.mb-0(for='comment') Comment/s: 
+      .mb-3
+        textarea.form-control(formControlName="comment" name='comment' id='comment' required)
+        div(*ngIf="comment?.invalid && (comment?.dirty || comment?.touched)" style="color:#b87460") Umm... you wanted to say something, right?
+      .mb-0(hidden)
+        label.form-label.mb-0(for='validate') Validate: 
+      .mb-3(hidden)
+        input#url.form-control(type='text' name='validate' placeholder='Are you human?')
+      .mb-1
+        button.btn.btn-primary(type='submit' "*ngIf"="!beingSubmitted" id='submitButton' "[disabled]"="commentForm.invalid") Submit
+        .spinner-border.text-primary(role="status" "*ngIf"="beingSubmitted")
+          span.visually-hidden Submitting...
+        .alert.alert-primary.mt-3(role="alert" "*ngIf"="postId") All submissions are reviewed before being posted.

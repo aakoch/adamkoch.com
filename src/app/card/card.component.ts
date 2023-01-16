@@ -40,14 +40,14 @@ export class CardComponent {
   }
 
   prefetch(gotoLocation: string) {
-    console.log('calling prefetch');
-    if (this.prefetchedLocations.includes(gotoLocation))
-      return;
-    let link = document.createElement("link")
-    link.setAttribute("rel", "prefetch")
-    link.setAttribute("href", gotoLocation)
-    document.body.appendChild(link)
-    this.prefetchedLocations.push(gotoLocation)
+    // console.log('calling prefetch');
+    // if (this.prefetchedLocations.includes(gotoLocation))
+    //   return;
+    // let link = document.createElement("link")
+    // link.setAttribute("rel", "prefetch")
+    // link.setAttribute("href", gotoLocation)
+    // document.body.appendChild(link)
+    // this.prefetchedLocations.push(gotoLocation)
   }
   debouncedPrefetch(url: string) {
   }

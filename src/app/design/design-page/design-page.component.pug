@@ -1,0 +1,87 @@
+- var title = 'Design'
+mixin project(title, status, type)
+  .project
+    .project-wrapper
+      .project-title
+        h2= title
+      .project-body
+        .project-description
+          if block
+            block
+          else
+            p No description yet
+        .statuses
+          .status-wrapper Type:
+            span.status #{type}
+          .status-wrapper Status:
+            span.status #{status}
+
+script(type="application/ld+json").
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Projects"
+    }]
+  }
+  
+
+.container
+  h1 Designs of Mine
+
+  .projects
+
+    +project('Images', 'On going')
+      h4 
+        | As featured on 
+        a(href="https://pixabay.com/users/aakoch-4434016/") Pixabay
+      a(href="https://pixabay.com/users/aakoch-4434016/")
+        img(src="/assets/Canadian_Maple_Leaf.png")
+        img(src="/assets/oak_leaf.png")
+        img(src="/assets/oak_leaf2.png")
+        img(src="/assets/ornament.png")
+        img(src="/assets/snowman.png")
+
+    +project('Team Elijah', 'Completed')
+      img.lg(src="/assets/design3_80.png" srcset="/assets/design3_80.png 1x, /assets/design3_80.2x.png 2x" width="100%")
+
+    +project('A-words', 'Completed')
+      p Currently hosted on 
+        a(href="https://www.troop308omaha.com/news/a-words/") Troop 308's Website
+      
+      div.1-words
+        a.a-words.float-md-start(href="https://www.troop308omaha.com/wp-content/uploads/2018/10/a-words-2018-08-08.pdf")
+          figure
+            img.lg(src="/assets/A_words_20181008.png" srcset="/assets/A_words_20181008.png 1x, /assets/A_words_20181008.2x.png 2x")
+            figcaption(style="padding-right:1px") October 8, 2018 -
+        a.b-words.float-md-start(href="https://www.troop308omaha.com/wp-content/uploads/2020/02/a-words-2020-02-17.pdf")
+          figure
+            img.lg(src="/assets/A_words_20200217.png" srcset="/assets/A_words_20200217.png 1x, /assets/A_words_20200217.2x.png 2x")
+            figcaption(style="padding-left:1px") February 17, 2020
+
+    +project('Moral Quote', 'Completed')
+      img.lg(src="/assets/quote.png")
+
+    +project('Sonshine Preschool', 'Completed')
+      p Just a proof of concept turned sticker for my wife's prior place of employment
+      img.md(src="/assets/sonshine.png" width="100%")
+
+    +project('Troop 308 Website', 'Completed')
+      a(href="https://www.troop308omaha.com/") Website
+
+    +project('Troop 308 T-Shirt Design', 'Completed')
+      img.md(src="/assets/survival-tshirt.svg")
+
+    +project('Observable Parallel Sets Chart on Troop 308 Popcorn Sales for 2019', 'Completed')
+      figure
+        img.md(src="/assets/observable_scouts.png" srcset="/assets/observable_scouts.png 2x" width="100%")
+        figcaption
+          a(href="https://observablehq.com/@aakoch/popcorn-sales-troop308-2019") Visit on ObservableHQ.com
+
+//- include ../templates/footer
+
+//- block body_scripts
+
+//- script(src="../js/designs.js" type="module")

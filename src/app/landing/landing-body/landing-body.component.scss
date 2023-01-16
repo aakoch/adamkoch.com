@@ -88,9 +88,10 @@ body {
 .cards-container {
   width: 93vw;
   display: flex;
-  gap: 1vw;
+  gap: max(1vw, 1rem);
+
   flex-flow: row wrap;
-  margin: 0 auto;
+  // margin: 0 auto;
   justify-content: center;
 }
 

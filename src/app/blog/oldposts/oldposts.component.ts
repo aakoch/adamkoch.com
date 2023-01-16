@@ -8,7 +8,7 @@ import { WordPressPost } from './wordpress-post.model';
   styleUrls: ['./oldposts.component.scss']
 })
 @Injectable()
-export class OldpostsComponent implements OnInit, OnDestroy {
+export class OldpostsComponent implements OnDestroy {
   
   @Input() allPosts: WordPressPost[] = [];
 
@@ -16,18 +16,7 @@ export class OldpostsComponent implements OnInit, OnDestroy {
 
   idx: number = 5;
   
-  constructor() { 
-    if (isDevMode()) {
-      console.log("Oldpossts: constructor() this.posts.length=", this.posts.length);
-      console.log("Oldpossts: constructor() this.allPosts.length=", this.allPosts.length);
-    }
-  }
-
-  ngOnInit(): void {
-    if (isDevMode()) {
-      console.log("Oldpossts: ngOnInit() this.posts.length=", this.posts.length);
-      console.log("Oldpossts: ngOnInit() this.allPosts.length=", this.allPosts.length);
-    }
+  constructor() {
   }
 
   @HostListener('window:scroll', ['$event'])

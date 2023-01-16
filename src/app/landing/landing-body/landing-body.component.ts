@@ -1,34 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MinicardComponent } from '../../minicard/minicard.component';
 import { CardComponent } from '../../card/card.component';
-import latestPost from "../../../posts/blog.json";
+import latestPost from "../../../../blog.json";
 import { Card } from '../../card/card.model';
-
-console.dir(latestPost);
 
 @Component({
   selector: 'app-landing-body',
   templateUrl: './landing-body.component.pug',
   styleUrls: ['./landing-body.component.scss']
 })
-
-
-
-// import card from "./card";
-// import minicard from "./minicard";
-// import { latestPost } from "../posts/blog.json";
-
-// export default {
-//   components: {
-//     card,
-//     minicard,
-//   },
-
-//   mounted() {
-//     Array.from(document.querySelectorAll('path')).forEach(el => el.classList.add('clipVisible'))
-//   }
-// };
-
 
 export class LandingBodyComponent implements OnInit {
   public cards: Card[] = [
@@ -46,7 +26,7 @@ export class LandingBodyComponent implements OnInit {
         },
         {
           label: "All",
-          url: "/po",
+          url: "/posts",
           title: "All Articles",
         },
       ],
@@ -69,7 +49,7 @@ export class LandingBodyComponent implements OnInit {
       title: "Past Projects",
       icon: "fas fa-archive",
       description: "Old or abandoned projects",
-      url: "/past_projects/",
+      url: "/past_projects",
       buttons: [
         {
           label: "Dig Deep",
@@ -83,14 +63,14 @@ export class LandingBodyComponent implements OnInit {
       title: "Tech",
       icon: "fas fa-microchip",
       description: "Some hardware, but mostly software",
-      link: "/tech/",
+      link: "/tech",
     },
     {
       id: 6,
       title: "Design",
       icon: "fas fa-paint-brush",
       description: "Drawings, websites, music",
-      link: "/design/",
+      link: "/design",
     },
     {
       id: 1,

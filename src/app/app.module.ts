@@ -15,43 +15,45 @@ import { LandingComponent } from './landing/landing.component';
 import { TechComponent } from './tech/tech.component';
 import { TechIDigPageComponent } from './tech/tech-i-dig-page/tech-i-dig-page.component';
 import { CodeComponent } from './tech/code/code.component';
-// import { HeaderComponent } from './header/header.component';
 import { JqComponent } from './tech/code/jq/jq.component';
 import { ShellComponent } from './tech/code/shell/shell.component'
 import { SharedModule } from './shared/shared.module';
 import { Router } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
+import { ContactComponent } from './contact/contact.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingBodyComponent,
     CardComponent,
-    MinicardComponent,
+    CodeComponent,
+    ContactComponent,
+    JqComponent,
+    LandingBodyComponent,
     LandingCardListComponent,
+    LandingComponent,
     LandingHeaderComponent,
+    MinicardComponent,
     MinicardListComponent,
     PrefetchDirective,
-    LandingComponent,
+    ShellComponent,
     TechComponent,
     TechIDigPageComponent,
-    CodeComponent,
-    // HeaderComponent,
-    JqComponent,
-    ShellComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
     NgOptimizedImage,
+    ReactiveFormsModule,
+    SharedModule,
   ],
-  providers: [],
+  providers: [{ provide: Window, useValue: window }],
   bootstrap: [AppComponent],
   exports: [
     SharedModule,
-    // Router
   ]
 })
 export class AppModule { }

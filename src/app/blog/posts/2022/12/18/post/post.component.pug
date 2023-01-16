@@ -1,0 +1,87 @@
+//- extends ../../../../../../../templates/blogpost_new
+append variables
+  - var title = "Box animations"
+  - var posted = '2022-12-18'
+  - var excerpt = '3D box animations'
+  - var prevUrl = '/posts/2022/06/27'
+  - var prevTitle = 'Roe v Wade'
+
+append head
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Box animations",
+      "image": [
+        ],
+      "datePublished": "2022-12-180T00:00:00+008:00",
+      "dateModified": "2022-12-1800:00:00+008:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
+  
+block body
+  app-pageheader
+
+  .container
+    h1=title
+    
+    .box-container
+      #box0.box(data-rotx="0" data-roty="0" data-rotz="0" data-translatez="0")
+        .box__face.box__face--front.box__face--color-0 front
+        .box__face.box__face--back.box__face--color-1 back
+        .box__face.box__face--right.box__face--color-2 right
+        .box__face.box__face--left.box__face--color-3 left
+        .box__face.box__face--top.box__face--color-4 top
+        .box__face.box__face--bottom.box__face--color-5 bottom
+
+      #box1.box(data-rotx="0" data-roty="0" data-rotz="0" data-translatez="0")
+        .box__face.box__face--front.box__face--color-0 front
+        .box__face.box__face--back.box__face--color-1 back
+        .box__face.box__face--right.box__face--color-2 right
+        .box__face.box__face--left.box__face--color-3 left
+        .box__face.box__face--top.box__face--color-4 top
+        .box__face.box__face--bottom.box__face--color-5 bottom
+
+      #box2.box(data-rotx="0" data-roty="0" data-rotz="0" data-translatez="0")
+        .box__face.box__face--front.box__face--color-0 front
+        .box__face.box__face--back.box__face--color-1 back
+        .box__face.box__face--right.box__face--color-2 right
+        .box__face.box__face--left.box__face--color-3 left
+        .box__face.box__face--top.box__face--color-4 top
+        .box__face.box__face--bottom.box__face--color-5 bottom
+
+
+    .controls
+
+      .rotate-controls Rotate: 
+        .left-rotate-control
+          a#rotateLeftLink(href="#") Left
+        .right-rotate-control
+          a#rotateRightLink(href="#") Right
+        .up-rotate-control
+          a#rotateUpLink(href="#") Up
+        .down-rotate-control
+          a#rotateDownLink(href="#") Down
+
+      div
+        label(for="moveWith") Move with mouse:
+        |  
+        input#moveWith(type="checkbox")
+      div
+        label(for="mouseMoveRangeInput") Mouse acceleration:
+        |  
+        input(type="range" min="10" max="100" id="mouseMoveRangeInput" default="50")
+
+      .gap
+
+      div 
+        p Edit this over at 
+          a(href="https://codepen.io/aakoch/pen/dyKxLme") codepen.io
+          | .
+
+    app-comment-form(postTitle="Box animations" postId="20221218")
+app-footer
