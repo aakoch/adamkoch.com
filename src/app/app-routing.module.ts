@@ -10,6 +10,7 @@ import { ShellComponent } from './tech/code/shell/shell.component';
 import { PreloadAllModules } from '@angular/router';
 import { TechIDigPageComponent } from './tech/tech-i-dig-page/tech-i-dig-page.component';
 import { ContactComponent } from './contact/contact.component';
+import { FilenotfoundComponent } from './filenotfound/filenotfound.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   ] },
   { path: 'design', loadChildren: () => import('./design/design.module').then(m => m.DesignModule) },
   { path: 'contact', component: ContactComponent },
+  { path: '**', component: FilenotfoundComponent },
 ];
 
 @NgModule({

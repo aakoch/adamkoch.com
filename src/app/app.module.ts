@@ -22,6 +22,7 @@ import { Router } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilenotfoundComponent } from './filenotfound/filenotfound.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ShellComponent,
     TechComponent,
     TechIDigPageComponent,
+    FilenotfoundComponent,
   ],
   imports: [
     AppRoutingModule,
