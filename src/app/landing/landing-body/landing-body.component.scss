@@ -22,9 +22,12 @@ body {
 
 
 .page-flex {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr .2fr .1fr .5fr;
 }
 
 .page-flex {
@@ -65,9 +68,19 @@ body {
     }
   }
 
+  .page-flex {
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .1fr 1fr .1fr .3fr;
+  }
+  
+
   #adamexcerpt {
     min-width: 100%;
-    padding: 1.5rem 5% 0;
+    padding: 4em 5% 0;
     order: 1;
     color: $white;
     background-color: $primary;
@@ -86,7 +99,6 @@ body {
 
 
 .cards-container {
-  width: 93vw;
   display: flex;
   gap: max(1vw, 1rem);
 
@@ -101,7 +113,13 @@ body {
   margin: 1em 3em;
   text-align: center;
   // margin-bottom: 1em;
-  min-width: 90%;
+  min-width: 96%;
   order: 3;
 }
+@media screen and (max-width: 767px) {
 
+
+  #moreresources {
+    min-width: unset;
+  }
+}

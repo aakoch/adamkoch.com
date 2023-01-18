@@ -11,7 +11,7 @@ body {
 
 .page-flex {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
@@ -53,13 +53,13 @@ body {
     }
   }
 
-  #adamexcerpt {
-    min-width: 100%;
-    padding: 1.5rem 5% 0;
-    order: 1;
-    color: $white;
-    background-color: $primary;
-  }
+  // #adamexcerpt {
+  //   min-width: 100%;
+  //   padding: 2rem 5% 0;
+  //   order: 1;
+  //   color: $white;
+  //   background-color: $primary;
+  // }
 
   #main {
     order: 2;
@@ -91,6 +91,12 @@ body {
   margin: 1em 3em;
   text-align: center;
   // margin-bottom: 1em;
-  min-width: 90%;
+  min-width: 96%;
   order: 3;
+}
+
+@media screen and (max-width: 767px) {
+  #moreresources {
+    min-width: unset;
+  }
 }

@@ -25,29 +25,6 @@
 @import '../../shared/colors.scss';
 
 
-.project {
-  margin-top: 40px;
-  .project-body {
-    border-left: solid $primary 5px;
-    padding-left: 20px;
-  }
-  .status-wrapper {
-    font-size: 1.2em;
-    .status {
-      font-family: monospace;
-      padding-left: .5em;
-    }
-  }
-  .project-description {
-    font-size: 1.2em;
-  }
-  ul {
-    padding-left: 0;
-    margin-left: 0;
-  }
-}
-
-
 .projects {
   display: flex;
   flex-flow: row wrap;
@@ -56,20 +33,51 @@
 }
 
 .project {
+  margin-top: 20px;
+
+  .project-body {
+    border-left: solid $primary 5px;
+    padding-left: 20px;
+  }
+
+  .status-wrapper {
+    font-size: 1.2em;
+
+    .status {
+      font-family: monospace;
+      padding-left: .5em;
+    }
+  }
+
+  .project-description {
+    font-size: 1.2em;
+  }
+
+  ul {
+    padding-left: 0;
+    margin-left: 0;
+  }
 
   &:hover {
     .project-title {
-    transition: .2s ease-in-out all;
-    border-radius: 1em 3em 0 1em;
-    transform: translateX(-5px);
+      transition: .2s ease-in-out all;
+      border-radius: 1em 3em 0 1em;
+      transform: translateX(-5px);
     }
+
     .project-body {
       transition: .2s ease-in-out all;
       border-radius: 0 1em 1em 1em;
     }
   }
 
+
   flex-basis: 49%;
+
+  @media screen and (max-width: 767px) {
+    flex-basis: unset;
+    margin-top: 0;
+  }
 
   .project-title {
     background-color: $primary;
@@ -89,6 +97,8 @@
     border-top: 0;
     border-radius: 0 0 1em 1em;
     transition: .2s ease-in-out all;
+
+
   }
 
   .status-wrapper {
