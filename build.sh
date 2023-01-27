@@ -7,5 +7,5 @@ node postpreviews.mjs
 parcel build ./src/assets/**/index.pug ./src/animations/*.pug --log-level verbose
 ng build
 node scripts/copy_font_files.mjs
-mv dist/angular2/assets/* dist/assets/.
-mv dist/angular2/* dist/angular2/.* dist/.
+mv dist/angular2/assets/* dist/assets/. || true
+mv dist/angular2/* dist/angular2/.* dist/. || true
