@@ -13,13 +13,13 @@
             a.href Read
             a.href(*ngIf="post?.excerpt")  more
             |  &nbsp;
-            a.href([href]="post?.link")
+            a.href(routerLink="{{post?.link}}")
               i(class='fas fa-angle-double-right')
 
           div(v-if="loaded")
             .postContent([innerHtml]="content")
             div.mt-2
-              a([href]="post?.link?.replace('https://www.adamkoch.com/', 'https://wordpress.adamkoch.com/')") Original post
+              a(routerLink="{{post?.link?.replace('https://www.adamkoch.com/', 'https://wordpress.adamkoch.com/')}}") Original post
 
             //- div(*ngFor="let comment of post?.comments")
             //-   app-comment([comment]=comment)

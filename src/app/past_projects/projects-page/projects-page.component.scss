@@ -10,6 +10,8 @@
 
 .project {
 
+  max-width: 700px;
+
   &:hover {
     .project-title {
     transition: .2s ease-in-out all;
@@ -42,6 +44,7 @@
     border-top: 0;
     border-radius: 0 0 1em 1em;
     transition: .2s ease-in-out all;
+
   }
 
   .status-wrapper {
@@ -52,7 +55,7 @@
   }
 
   .project-description {
-    flex: 3;
+    flex: 3 1 100%;
   }
 
   .statuses {
@@ -63,5 +66,28 @@
   ul {
     padding-left: 0;
     margin-left: 0;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+
+.not-a-container {
+  padding: 0 1em 1em 1em;
+}
+
+@media screen and (max-width: 773px) {
+
+  .project {
+    flex-basis: 90vw;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+
+  .project {
+    flex-basis: 100%;
   }
 }

@@ -10,11 +10,6 @@ mixin project(title, status, type)
             block
           else
             p No description yet
-        .statuses
-          .status-wrapper Type:
-            span.status #{type}
-          .status-wrapper Status:
-            span.status #{status}
 
 script(type="application/ld+json").
   {
@@ -35,7 +30,7 @@ script(type="application/ld+json").
 
     +project('Images', 'On going')
       h4 
-        | As featured on 
+      div As featured on 
         a(href="https://pixabay.com/users/aakoch-4434016/") Pixabay
       a(href="https://pixabay.com/users/aakoch-4434016/")
         img(src="/assets/Canadian_Maple_Leaf.png")

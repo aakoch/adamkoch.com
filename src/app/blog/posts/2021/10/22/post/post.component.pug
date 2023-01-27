@@ -1,0 +1,105 @@
+//- extends ../../../../../../../templates/blogpost_new
+
+append variables
+  - var title = "Spring Cloud Contracts"
+  - var posted = '2021-10-22'
+  - var excerpt = 'My current employment uses Spring Cloud Contracts to write contracts between microservices. And while they are a good step to guarantee things work between apps, the way it is used today makes it very easy to pass bad data....'
+  - var prevUrl = '../../../2021/10/14'
+  - var prevTitle = 'Recruiter Tips'
+  - var nextUrl = '../../../2021/12/22'
+  - var nextTitle = 'GitHub Username'
+
+append head
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Spring Cloud Contracts",
+      "image": [
+       ],
+      "datePublished": "2021-10-22T00:00:00+008:00",
+      "dateModified": "2021-10-23T00:00:00+008:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
+  style(type="text/scss").
+    .quote {
+      &::before, &::after {
+        color: black;
+        font-size: 2em;
+      }
+      &::before {
+        content: '“';
+        padding-right: .2em;
+        margin-left: -.5em;
+      }
+      &::after {
+        content: '”';
+        right: 1em;
+        position: absolute;
+      }
+      position: relative;
+      padding-left: 9em;
+      padding-right: 2em;
+      margin-bottom: 1em;
+    }
+    hr {
+      margin: 1rem auto;
+    }
+    #commentForm h1 {
+      font-size: 1.5em;
+    }
+block body
+  app-pageheader
+
+  .container.post(id="post-" + posted)
+    h1= title
+    .posted= posted
+    .content
+
+      p My current employment uses 
+        a(href="https://spring.io/projects/spring-cloud-contract") Spring Cloud Contracts 
+        |  to write contracts between microservices. And while they are a good step to guarantee things work between apps, the way it is used today makes it very easy to pass bad data. As an IT person, I hate those &quot;fancy&quot; because when pasted into code or as a character to define text, they don't work. And with some fonts it can be really hard to see any difference. 
+
+      p Spring Cloud Contracts comes with a 
+        abbr(title='Domain Specific Language') DSL
+        |  for creating these contracts but sadly created a helper method called `anyNonEmptyString`. The regex is something like `[\S\s]+`. And while that gives you the flexibility to send anything you want, it also allows you to send anything you want! At any length! Can you imagine what a 2 billion character string would do to your program? I also don't like the open-ended length a string can be using `anyNonEmptyString`. Some sane defaults should be required in your contracts. 
+
+      p This allows for characters that look like ASCII characters but aren't to get into your data stream. If you're expecting a comma-delimited list but the comma is &quot;،&quot; your program wouldn't work correctly. I've personally come across a case where loading data into a system didn't work because a &quot;fancy&quot; quote was in the stream of characters. I turn off this feature whereever I can. Most Office apps do this and MacOS. 
+
+      ol Reasons to NOT use `anyNonEmptyString()`
+        li unexpected errors or degrade in performance for your app 
+        li passing it along to another service potentially masking the true source
+
+      p Like most problems, the sooner you can identify and fix issues the better. And what better place than your service contracts?
+
+      table
+        tr 
+          th Character class
+          th Abbreviation
+          th Description
+        tr
+          td \p&lbrace;Letter&rbrace;
+          td \p&lbrace;L&rbrace;
+          td Includes a letter from any language
+        tr
+          td \p&lbrace;Number&rbrace;
+          td \p&lbrace;N&rbrace;
+          td Includes any numeric character in any language
+
+      div More Resources
+        ul
+          li
+            a(href="https://unicode-table.com/en/blocks/basic-latin/") https://unicode-table.com/en/blocks/basic-latin/
+            a(href="https://decodeunicode.org/en") https://decodeunicode.org/en
+
+
+
+    app-nav(prevUrl= prevUrl, prevTitle= prevTitle, nextUrl= nextUrl, nextTitle= nextTitle)
+
+
+    app-comment-form(postTitle="Spring Cloud Contracts" postId="20211022")
+app-footer

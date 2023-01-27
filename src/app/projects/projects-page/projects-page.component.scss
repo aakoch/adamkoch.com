@@ -51,9 +51,9 @@
     }
   }
 
-  .project-description {
-    flex: 3;
-  }
+  // .project-description {
+  //   flex: 3;
+  // }
 
   .statuses {
     flex: 1 0 min-content;
@@ -63,5 +63,16 @@
   ul {
     padding-left: 0;
     margin-left: 0;
+  }
+}
+
+.not-a-container {
+  padding: 0 1em 1em 1em;
+}
+
+@media screen and (max-width: 773px) {
+
+  .project {
+    flex-basis: 90vw;
   }
 }

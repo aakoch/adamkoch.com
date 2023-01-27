@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, isDevMode, OnInit } from '@angular/core';
 import { WordPressPost } from './oldposts/wordpress-post.model';
 import OLD_POSTS from "../../data/professional_publish.json";
+import { Title } from '@angular/platform-browser';
 
 let idx = 5
 const fullPosts: WordPressPost[] = sort(OLD_POSTS);
@@ -31,7 +32,8 @@ export class BlogComponent implements OnInit, AfterViewInit {
   posts: WordPressPost[] = posts;
   allPosts: WordPressPost[] = fullPosts;
 
-  constructor(private window: Window) {
+  constructor(private window: Window, title: Title) {
+    title.setTitle("Adam Koch - Articles")
   }
 
   ngOnInit(): void {

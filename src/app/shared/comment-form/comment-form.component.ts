@@ -12,11 +12,13 @@ import { NetlifyFormsService } from '../../blog/netlify-forms.service';
 export class CommentFormComponent {
   @Input() postId?: string;
   @Input() postTitle?: string;
+  @Input() useClass = true;
   beingSubmitted: boolean = false;
   isSuccess = false;
   isError = false;
   expanded = false;
   errorMessage?: string;
+  containerClass ?: string;
   
   commentForm!: FormGroup;
   commentData: CommentFormData = { name: '', comment: '', 'form-name': 'post-comment-form', 'post-id': 'unknown' };
@@ -41,7 +43,8 @@ export class CommentFormComponent {
       url: new FormControl(this.commentData.url),
       comment: new FormControl(this.commentData.comment, Validators.required)
     });
-  
+    console.log("this.useClass=" + this.useClass);
+    this.containerClass = (this.useClass ? "comment-form-container" : "")
   }
 
   submit() {

@@ -1,38 +1,27 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/43f18666-4027-4030-92e3-e2b99449b68e/deploy-status)](https://app.netlify.com/sites/adamkoch/deploys)
+# Angular2
 
-# adamkoch.com
-Personal Website
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
-## Install
-npm i
+## Development server
 
-Or, if you're on an ARM Mac machine:
-arch -x86_64 npm i
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Run Locally
-npm start
+## Code scaffolding
 
-## Build prod version and watch
-ng build --watch
-npx lite-server --baseDir="dist"
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
-npm run build
 
-## Clean
-npm run clean
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Package
-npm version [major|minor|patch]
+## Running unit tests
 
-## Serve
---serve dist--
-arch -x86_64 npx serve dist
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+## Running end-to-end tests
 
-## Automation
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-I'm not sure what I'm doing here yet:
-```
-for f in $(find src/posts/. -name "index.pug" | sort); do filename=$(echo $f | sed -E "s/.\/([0-9]{4})\/([0-9]{2})\/([0-9]{2})\/index.pug/\1_\2_\3_index.js/"); grep -A 6 "append variables" $f | tail -n +2 | sed "s/- var/let/" > $filename ; done
-```
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

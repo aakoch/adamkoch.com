@@ -9,7 +9,7 @@ export class DesignComponent implements AfterViewInit {
   constructor(private window: Window) {
   }
   ngAfterViewInit() {
-    (<any>this.window).google.search.cse.element.go()
+    (<any>this.window).google?.search.cse.element.go()
   }
   isDevMode() {
     return isDevMode();

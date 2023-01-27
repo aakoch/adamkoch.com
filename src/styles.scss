@@ -1,4 +1,6 @@
 @import "../node_modules/bootstrap/scss/functions";
+// @import url('../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
+// @import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 
 /* You can add global styles to this file, and also import other style files */
 $primary: #406275;
@@ -110,10 +112,11 @@ $body-bg: $white;
 
 html {
   background: $white;
+
   &:has(.filenotfound) {
     background-color: black;
     overflow: hidden;
-   
+
     .filenotfound {
       .container2 {
         .h1.position-absolute.top-50.start-50.translate-middle {
@@ -173,10 +176,12 @@ nav {
   background-color: $primary;
 }
 
-nav, #landing-header {
+nav,
+#landing-header {
   svg {
     fill: $white;
     stroke: $dark;
+    // max-width: 98vw;
   }
 }
 
@@ -193,22 +198,21 @@ nav, #landing-header {
   .navbar-nav {
     margin-left: 40px;
   }
-  .navbar-nav {
-  }
+
+  .navbar-nav {}
 }
 
 @media screen and (min-width: 942px) and (max-width: 1048px) {
-  .navbar-nav {
-  }
+  .navbar-nav {}
 }
 
 .nav-link {
   margin-right: 1em;
-  &::before {
-  }
+
+  &::before {}
 }
 
-.center-row, .divider {
+.center-row {
   background: linear-gradient(0deg, $white 50%, $primary 50%);
 }
 
@@ -221,6 +225,7 @@ nav, #landing-header {
   color: $dark;
   text-align: center;
   margin: 3rem 0 2em;
+
   span {
     margin: 0 4px;
   }
@@ -239,6 +244,7 @@ nav, #landing-header {
       margin-right: .3em;
     }
   }
+
   .content {
     margin-top: 20px;
   }
@@ -251,6 +257,7 @@ nav, #landing-header {
     color: #406275;
     font-weight: 900;
   }
+
   margin: 20px 0;
   border: 2px solid #406275;
   padding: 10px;
@@ -262,6 +269,7 @@ nav, #landing-header {
 ol {
   padding-left: 0;
 }
+
 li {
   margin-left: 2em;
 }
@@ -278,9 +286,15 @@ hr {
   text-align: center;
   font-size: large;
   transform: rotateZ(-15deg);
+  transition: transform .5s ease;
+  // transition: opacity 1s ease;
 }
+
 #more-posts:hover {
-  transform: rotateZ(15deg);
+  transform: rotateZ(15deg) scale(1.5);
+  // transition: .5 infinite;
+  // opacity: 0;
+  // transition: rotation 1s ease;
 }
 
 .gap {
@@ -294,58 +308,69 @@ hr {
 
 /// TEST
 :has(.filenotfound) {
-.container2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.h1 span, .h1 span span {
-display: inline-block;
-position: relative;
-}
-.word  {
-margin: auto 10px;
-animation: shake 2s  20 linear 1.9s;
-}
-.letter {
-margin: auto 0px;
-animation: glitch 4s 20 linear 2s;
-opacity: 1;
-&:hover {
-  opacity: 0;
-}
-}
-.h1 div {
-position: relative
-}
-img {
-transform-origin: bottom;
-animation: spin 5s infinite linear;
-z-index: -100;
-}
-@keyframes spin {
-from {
-  transform: rotateZ(0deg) translateY(50%);
-}
-to {
-  transform: rotateZ(360deg) translateY(50%);
-}
-}
-@keyframes glitch {
-0% {
-  opacity: 1;
-  transform: scale(1, 1) translateY(0) translateX(0);
-  filter: blur(0) invert(0);
-}
-100% {
-  opacity: 0;
-  transform: scale(.5, 30) translateY(-15px) translateX(20%);
-  filter: blur(1em) invert(100%);
-}
+  .container2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-}
+  .h1 span,
+  .h1 span span {
+    display: inline-block;
+    position: relative;
+  }
 
-/*
+  .word {
+    margin: auto 10px;
+    animation: shake 2s 20 linear 1.9s;
+  }
+
+  .letter {
+    margin: auto 0px;
+    animation: glitch 4s 20 linear 2s;
+    opacity: 1;
+
+    &:hover {
+      opacity: 0;
+    }
+  }
+
+  .h1 div {
+    position: relative
+  }
+
+  img {
+    transform-origin: bottom;
+    animation: spin 5s infinite linear;
+    z-index: -100;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotateZ(0deg) translateY(50%);
+    }
+
+    to {
+      transform: rotateZ(360deg) translateY(50%);
+    }
+  }
+
+  @keyframes glitch {
+    0% {
+      opacity: 1;
+      transform: scale(1, 1) translateY(0) translateX(0);
+      filter: blur(0) invert(0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(.5, 30) translateY(-15px) translateX(20%);
+      filter: blur(1em) invert(100%);
+    }
+
+  }
+
+  /*
 @keyframes move2 {
 from {
   transform: translateX(0px)
@@ -356,304 +381,410 @@ to {
 }
 */
 
-@keyframes shake {
+  @keyframes shake {
 
-1% {
-transform: translateX(-1px);
-}
-2% {
-transform: translateX(1px);
-}
-3% {
-transform: translateX(-1px);
-}
-4% {
-transform: translateX(1px);
-}
-5% {
-transform: translateX(-1px);
-}
-6% {
-transform: translateX(1px);
-}
-7% {
-transform: translateX(-1px);
-}
-8% {
-transform: translateX(1px);
-}
-9% {
-transform: translateX(-1px);
-}
-10% {
-transform: translateX(1px);
-}
-11% {
-transform: translateX(-1px);
-}
-12% {
-transform: translateX(1px);
-}
-13% {
-transform: translateX(-1px);
-}
-14% {
-transform: translateX(1px);
-}
-15% {
-transform: translateX(-1px);
-}
-16% {
-transform: translateX(1px);
-}
-17% {
-transform: translateX(-1px);
-}
-18% {
-transform: translateX(1px);
-}
-19% {
-transform: translateX(-1px);
-}
-20% {
-transform: translateX(1px);
-}
-21% {
-transform: translateX(-1px);
-}
-22% {
-transform: translateX(1px);
-}
-23% {
-transform: translateX(-1px);
-}
-24% {
-transform: translateX(1px);
-}
-25% {
-transform: translateX(-1px);
-}
-26% {
-transform: translateX(1px);
-}
-27% {
-transform: translateX(-1px);
-}
-28% {
-transform: translateX(1px);
-}
-29% {
-transform: translateX(-1px);
-}
-30% {
-transform: translateX(1px);
-}
-31% {
-transform: translateX(-1px);
-}
-32% {
-transform: translateX(1px);
-}
-33% {
-transform: translateX(-1px);
-}
-34% {
-transform: translateX(1px);
-}
-35% {
-transform: translateX(-1px);
-}
-36% {
-transform: translateX(1px);
-}
-37% {
-transform: translateX(-1px);
-}
-38% {
-transform: translateX(1px);
-}
-39% {
-transform: translateX(-1px);
-}
-40% {
-transform: translateX(1px);
-}
-41% {
-transform: translateX(-1px);
-}
-42% {
-transform: translateX(1px);
-}
-43% {
-transform: translateX(-1px);
-}
-44% {
-transform: translateX(1px);
-}
-45% {
-transform: translateX(-1px);
-}
-46% {
-transform: translateX(1px);
-}
-47% {
-transform: translateX(-1px);
-}
-48% {
-transform: translateX(1px);
-}
-49% {
-transform: translateX(-1px);
-}
-50% {
-transform: translateX(1px);
-}
-51% {
-transform: translateX(-1px);
-}
-52% {
-transform: translateX(1px);
-}
-53% {
-transform: translateX(-1px);
-}
-54% {
-transform: translateX(1px);
-}
-55% {
-transform: translateX(-1px);
-}
-56% {
-transform: translateX(1px);
-}
-57% {
-transform: translateX(-1px);
-}
-58% {
-transform: translateX(1px);
-}
-59% {
-transform: translateX(-1px);
-}
-60% {
-transform: translateX(1px);
-}
-61% {
-transform: translateX(-1px);
-}
-62% {
-transform: translateX(1px);
-}
-63% {
-transform: translateX(-1px);
-}
-64% {
-transform: translateX(1px);
-}
-65% {
-transform: translateX(-1px);
-}
-66% {
-transform: translateX(1px);
-}
-67% {
-transform: translateX(-1px);
-}
-68% {
-transform: translateX(1px);
-}
-69% {
-transform: translateX(-1px);
-}
-70% {
-transform: translateX(1px);
-}
-71% {
-transform: translateX(-1px);
-}
-72% {
-transform: translateX(1px);
-}
-73% {
-transform: translateX(-1px);
-}
-74% {
-transform: translateX(1px);
-}
-75% {
-transform: translateX(-1px);
-}
-76% {
-transform: translateX(1px);
-}
-77% {
-transform: translateX(-1px);
-}
-78% {
-transform: translateX(1px);
-}
-79% {
-transform: translateX(-1px);
-}
-80% {
-transform: translateX(1px);
-}
-81% {
-transform: translateX(-1px);
-}
-82% {
-transform: translateX(1px);
-}
-83% {
-transform: translateX(-1px);
-}
-84% {
-transform: translateX(1px);
-}
-85% {
-transform: translateX(-1px);
-}
-86% {
-transform: translateX(1px);
-}
-87% {
-transform: translateX(-1px);
-}
-88% {
-transform: translateX(1px);
-}
-89% {
-transform: translateX(-1px);
-}
-90% {
-transform: translateX(1px);
-}
-91% {
-transform: translateX(-1px);
-}
-92% {
-transform: translateX(1px);
-}
-93% {
-transform: translateX(-1px);
-}
-94% {
-transform: translateX(1px);
-}
-95% {
-transform: translateX(-1px);
-}
-96% {
-transform: translateX(1px);
-}
-97% {
-transform: translateX(-1px);
-}
-98% {
-transform: translateX(1px);
-}
-99% {
-transform: translateX(-1px);
-}
-}
+    1% {
+      transform: translateX(-1px);
+    }
+
+    2% {
+      transform: translateX(1px);
+    }
+
+    3% {
+      transform: translateX(-1px);
+    }
+
+    4% {
+      transform: translateX(1px);
+    }
+
+    5% {
+      transform: translateX(-1px);
+    }
+
+    6% {
+      transform: translateX(1px);
+    }
+
+    7% {
+      transform: translateX(-1px);
+    }
+
+    8% {
+      transform: translateX(1px);
+    }
+
+    9% {
+      transform: translateX(-1px);
+    }
+
+    10% {
+      transform: translateX(1px);
+    }
+
+    11% {
+      transform: translateX(-1px);
+    }
+
+    12% {
+      transform: translateX(1px);
+    }
+
+    13% {
+      transform: translateX(-1px);
+    }
+
+    14% {
+      transform: translateX(1px);
+    }
+
+    15% {
+      transform: translateX(-1px);
+    }
+
+    16% {
+      transform: translateX(1px);
+    }
+
+    17% {
+      transform: translateX(-1px);
+    }
+
+    18% {
+      transform: translateX(1px);
+    }
+
+    19% {
+      transform: translateX(-1px);
+    }
+
+    20% {
+      transform: translateX(1px);
+    }
+
+    21% {
+      transform: translateX(-1px);
+    }
+
+    22% {
+      transform: translateX(1px);
+    }
+
+    23% {
+      transform: translateX(-1px);
+    }
+
+    24% {
+      transform: translateX(1px);
+    }
+
+    25% {
+      transform: translateX(-1px);
+    }
+
+    26% {
+      transform: translateX(1px);
+    }
+
+    27% {
+      transform: translateX(-1px);
+    }
+
+    28% {
+      transform: translateX(1px);
+    }
+
+    29% {
+      transform: translateX(-1px);
+    }
+
+    30% {
+      transform: translateX(1px);
+    }
+
+    31% {
+      transform: translateX(-1px);
+    }
+
+    32% {
+      transform: translateX(1px);
+    }
+
+    33% {
+      transform: translateX(-1px);
+    }
+
+    34% {
+      transform: translateX(1px);
+    }
+
+    35% {
+      transform: translateX(-1px);
+    }
+
+    36% {
+      transform: translateX(1px);
+    }
+
+    37% {
+      transform: translateX(-1px);
+    }
+
+    38% {
+      transform: translateX(1px);
+    }
+
+    39% {
+      transform: translateX(-1px);
+    }
+
+    40% {
+      transform: translateX(1px);
+    }
+
+    41% {
+      transform: translateX(-1px);
+    }
+
+    42% {
+      transform: translateX(1px);
+    }
+
+    43% {
+      transform: translateX(-1px);
+    }
+
+    44% {
+      transform: translateX(1px);
+    }
+
+    45% {
+      transform: translateX(-1px);
+    }
+
+    46% {
+      transform: translateX(1px);
+    }
+
+    47% {
+      transform: translateX(-1px);
+    }
+
+    48% {
+      transform: translateX(1px);
+    }
+
+    49% {
+      transform: translateX(-1px);
+    }
+
+    50% {
+      transform: translateX(1px);
+    }
+
+    51% {
+      transform: translateX(-1px);
+    }
+
+    52% {
+      transform: translateX(1px);
+    }
+
+    53% {
+      transform: translateX(-1px);
+    }
+
+    54% {
+      transform: translateX(1px);
+    }
+
+    55% {
+      transform: translateX(-1px);
+    }
+
+    56% {
+      transform: translateX(1px);
+    }
+
+    57% {
+      transform: translateX(-1px);
+    }
+
+    58% {
+      transform: translateX(1px);
+    }
+
+    59% {
+      transform: translateX(-1px);
+    }
+
+    60% {
+      transform: translateX(1px);
+    }
+
+    61% {
+      transform: translateX(-1px);
+    }
+
+    62% {
+      transform: translateX(1px);
+    }
+
+    63% {
+      transform: translateX(-1px);
+    }
+
+    64% {
+      transform: translateX(1px);
+    }
+
+    65% {
+      transform: translateX(-1px);
+    }
+
+    66% {
+      transform: translateX(1px);
+    }
+
+    67% {
+      transform: translateX(-1px);
+    }
+
+    68% {
+      transform: translateX(1px);
+    }
+
+    69% {
+      transform: translateX(-1px);
+    }
+
+    70% {
+      transform: translateX(1px);
+    }
+
+    71% {
+      transform: translateX(-1px);
+    }
+
+    72% {
+      transform: translateX(1px);
+    }
+
+    73% {
+      transform: translateX(-1px);
+    }
+
+    74% {
+      transform: translateX(1px);
+    }
+
+    75% {
+      transform: translateX(-1px);
+    }
+
+    76% {
+      transform: translateX(1px);
+    }
+
+    77% {
+      transform: translateX(-1px);
+    }
+
+    78% {
+      transform: translateX(1px);
+    }
+
+    79% {
+      transform: translateX(-1px);
+    }
+
+    80% {
+      transform: translateX(1px);
+    }
+
+    81% {
+      transform: translateX(-1px);
+    }
+
+    82% {
+      transform: translateX(1px);
+    }
+
+    83% {
+      transform: translateX(-1px);
+    }
+
+    84% {
+      transform: translateX(1px);
+    }
+
+    85% {
+      transform: translateX(-1px);
+    }
+
+    86% {
+      transform: translateX(1px);
+    }
+
+    87% {
+      transform: translateX(-1px);
+    }
+
+    88% {
+      transform: translateX(1px);
+    }
+
+    89% {
+      transform: translateX(-1px);
+    }
+
+    90% {
+      transform: translateX(1px);
+    }
+
+    91% {
+      transform: translateX(-1px);
+    }
+
+    92% {
+      transform: translateX(1px);
+    }
+
+    93% {
+      transform: translateX(-1px);
+    }
+
+    94% {
+      transform: translateX(1px);
+    }
+
+    95% {
+      transform: translateX(-1px);
+    }
+
+    96% {
+      transform: translateX(1px);
+    }
+
+    97% {
+      transform: translateX(-1px);
+    }
+
+    98% {
+      transform: translateX(1px);
+    }
+
+    99% {
+      transform: translateX(-1px);
+    }
+  }
+}
+
+.post, .post img {
+  max-width: min(1500px, 100vw);
+}
+
+img {
+  height: auto;
 }

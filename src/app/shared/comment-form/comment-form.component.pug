@@ -1,4 +1,4 @@
-.container
+.container([ngClass]="containerClass")
   form#commentForm.needs-validation("[formGroup]"="commentForm" name="commentForm" "(ngSubmit)"="submit()" data-netlify='true' netlify-honeypot='validate' novalidate)
     .alert.alert-danger.mt-3(role="alert" "*ngIf"="isError") 
       h4.alert-heading Oh, no!

@@ -1,32 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import debounce from 'lodash/debounce';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faAngleDoubleRight, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-minicard',
-  templateUrl: './minicard.component.html', 
+  templateUrl: './minicard.component.html',
   styleUrls: ['./minicard.component.scss']
 })
 export class MinicardComponent {
-  prefetchedLocations: string[] = [];
   @Input() card: any;
   @Input() first: boolean = false;
-  prefetch(gotoLocation: string) {
-    // console.log('calling prefetch');
-    // if (this.prefetchedLocations.includes(gotoLocation))
-    //   return;
-    // let link = document.createElement("link")
-    // link.setAttribute("rel", "prefetch")
-    // link.setAttribute("href", gotoLocation)
-    // document.body.appendChild(link)
-    // this.prefetchedLocations.push(gotoLocation)
+  prefetchedLocations: string[] = [];
+  externalLinkAlt: IconProp = faExternalLinkAlt;
+  angleDoubleRight: IconProp = faAngleDoubleRight;
+  constructor(private router: Router, private window: Window) {
   }
-  constructor(private router: Router) {
-    this.debouncedPrefetch = debounce(this.prefetch, 10)
-  }
-  debouncedPrefetch(url: string) {
-  }
-  goto(gotoLocation: string) {
-    this.router.navigate([gotoLocation]);
+  goto(gotoLocation: string, external: boolean) {
+    if (external) {
+      window.location.href = gotoLocation;
+    }
+    else {
+      this.router.navigate([gotoLocation]);
+    }
   }
 }

@@ -1,0 +1,35 @@
+// .linkies {
+//   &:hover {
+//     .fa-angle-double-right {
+//       animation: moveright .5s infinite;
+//     }
+//     .fa-angle-double-left {
+//       animation: moveleft .5s infinite;
+//     }
+//   }
+// }
+
+.botton-nav {
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.linkies {
+  // perspective-origin: right;
+  // perspective: 420px;
+  // display: inline-block;
+
+  fa-icon {
+    display: inline-block;
+  }
+}
+.botton-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  :last-child {
+    text-align: right;
+  }
+}
+hr {
+  margin: 2em auto;
+}

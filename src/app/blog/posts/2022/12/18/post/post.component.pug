@@ -3,7 +3,7 @@ append variables
   - var title = "Box animations"
   - var posted = '2022-12-18'
   - var excerpt = '3D box animations'
-  - var prevUrl = '/posts/2022/06/27'
+  - var prevUrl = '../../../posts/2022/06/27'
   - var prevTitle = 'Roe v Wade'
 
 append head
@@ -83,5 +83,8 @@ block body
           a(href="https://codepen.io/aakoch/pen/dyKxLme") codepen.io
           | .
 
-    app-comment-form(postTitle="Box animations" postId="20221218")
+
+    app-nav(prevUrl= prevUrl, prevTitle= prevTitle, nextUrl= nextUrl, nextTitle= nextTitle)
+  
+  app-comment-form(postTitle="Box animations" postId="20221218")
 app-footer

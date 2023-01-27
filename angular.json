@@ -1,12 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "cli": {
-    "packageManager": "npm"
-  },
   "newProjectRoot": "projects",
   "projects": {
-    "adamkoch-angular": {
+    "angular2": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +17,7 @@
         "build": {
           "builder": "ngx-pug-builders:browser",
           "options": {
-            "outputPath": "dist-angular",
+            "outputPath": "dist/angular2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -30,14 +27,14 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/fonts"
             ],
             "styles": [
               "src/styles.scss",
               "node_modules/highlight.js/styles/github.css"
             ],
-            "scripts": [
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -73,10 +70,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "adamkoch-angular:build:production"
+              "browserTarget": "angular2:build:production"
             },
             "development": {
-              "browserTarget": "adamkoch-angular:build:development"
+              "browserTarget": "angular2:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +81,7 @@
         "extract-i18n": {
           "builder": "ngx-pug-builders:extract-i18n",
           "options": {
-            "browserTarget": "adamkoch-angular:build"
+            "browserTarget": "angular2:build"
           }
         },
         "test": {

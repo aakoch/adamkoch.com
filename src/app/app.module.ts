@@ -5,43 +5,45 @@ import { LandingBodyComponent } from './landing/landing-body/landing-body.compon
 import { CardComponent } from './card/card.component';
 import { MinicardComponent } from './minicard/minicard.component';
 import { LandingCardListComponent } from './landing/landing-card-list/landing-card-list.component';
-// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LandingHeaderComponent } from './landing/landing-header/landing-header.component';
 import { MinicardListComponent } from './minicard-list/minicard-list.component';
-import { PrefetchDirective } from './prefetch.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingComponent } from './landing/landing.component';
-import { TechComponent } from './tech/tech.component';
-import { TechIDigPageComponent } from './tech/tech-i-dig-page/tech-i-dig-page.component';
-import { CodeComponent } from './tech/code/code.component';
-import { JqComponent } from './tech/code/jq/jq.component';
-import { ShellComponent } from './tech/code/shell/shell.component'
 import { SharedModule } from './shared/shared.module';
 import { Router } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilenotfoundComponent } from './filenotfound/filenotfound.component';
+import { MinicardtestComponent } from './landing/minicardtest/minicardtest.component';
+import { HrefDirective } from './tech/href.directive';
+
+// import {fas} from '@fortawesome/free-solid-svg-icons';
+// import {
+//   faSquare as farSquare,
+//   faCheckSquare as farCheckSquare,
+// } from '@fortawesome/free-regular-svg-icons';
+// import {
+//   faStackOverflow,
+//   faGithub,
+//   faMedium,
+// } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    CodeComponent,
     ContactComponent,
-    JqComponent,
     LandingBodyComponent,
     LandingCardListComponent,
     LandingComponent,
     LandingHeaderComponent,
     MinicardComponent,
     MinicardListComponent,
-    PrefetchDirective,
-    ShellComponent,
-    TechComponent,
-    TechIDigPageComponent,
     FilenotfoundComponent,
+    MinicardtestComponent,
+    HrefDirective
   ],
   imports: [
     AppRoutingModule,
@@ -58,4 +60,5 @@ import { FilenotfoundComponent } from './filenotfound/filenotfound.component';
     SharedModule,
   ]
 })
-export class AppModule { }
+export class AppModule { 
+}

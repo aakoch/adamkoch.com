@@ -1,8 +1,13 @@
 #!/usr/bin/env node
-/**
- * Calling this like so works:
- */
+
+// setup:
+// npm i glyphhanger --save-dev
+// brew install fonttools
+// Run and then copy the results into this file (x3 different locations):
+// npx glyphhanger https://www.adamkoch.com --spider-limit=0
+// copy font files from src/fonts to dist
 // cd dist && node ../scripts/font.mjs && cd ..
+// copy the *-subset files to src/fonts
 
 import _ from 'lodash'
 import glob from "glob"
@@ -18,12 +23,16 @@ import { debug, info, error } from './logging.mjs'
 const argv = minimist(process.argv.slice(2))
 
 // npx glyphhanger https://www.adamkoch.com --spider-limit=0
-const websiteChars = "U+20-23,U+27-2A,U+2C-3F,U+41-57,U+59,U+60-7A,U+A9,U+D7,U+2502,U+2764,U+2935,U+F059,U+F099,U+F101,U+F126,U+F14E,U+F187,U+F1B2,U+F1FC,U+F2C2,U+F2DB,U+F35D,U+F52D,U+F5AE,U+F5FC,U+FE0F,U+1F37E,U+1F389,U+F100"
+// const websiteChars = "U+20-23,U+27-2A,U+2C-3F,U+41-57,U+59,U+60-7A,U+A9,U+D7,U+2502,U+2764,U+2935,U+F059,U+F099,U+F101,U+F126,U+F14E,U+F187,U+F1B2,U+F1FC,U+F2C2,U+F2DB,U+F35D,U+F52D,U+F5AE,U+F5FC,U+FE0F,U+1F37E,U+1F389,U+F100"
+const websiteChars = "U+20-22,U+27-29,U+2C-3A,U+3F,U+41-57,U+61-7A,U+A9,U+D7,U+2502,U+2935,U+F059,U+F099,U+F09B,U+F100,U+F101,U+F126,U+F14E,U+F187,U+F1B2,U+F1FC,U+F2C2,U+F2DB,U+F35D,U+F3D4,U+F52D,U+F5AE,U+F5FC,U+1F37E,U+1F389"
 
 // npx glyphhanger dist/**/*.html
-const distChars = "U+9,U+A,U+20-7E,U+A0,U+A9,U+D7,U+E9,U+60C,U+200D,U+2013,U+2019,U+201C,U+201D,U+2026,U+2190,U+2192,U+2502,U+2640,U+2764,U+F059,U+F14E,U+F100,U+F1B2,U+F202,U+F35D,U+F5FC,U+FE0F,U+1F37E,U+1F3EB,U+1F46F,U+1F4BB,U+1F4F1,U+1F558-1F55B,U+1F642,U+1F914,U+1F916"
+// const distChars = "U+9,U+A,U+20-7E,U+A0,U+A9,U+D7,U+E9,U+60C,U+200D,U+2013,U+2019,U+201C,U+201D,U+2026,U+2190,U+2192,U+2502,U+2640,U+2764,U+F059,U+F14E,U+F100,U+F1B2,U+F202,U+F35D,U+F5FC,U+FE0F,U+1F37E,U+1F3EB,U+1F46F,U+1F4BB,U+1F4F1,U+1F558-1F55B,U+1F642,U+1F914,U+1F916"
+const distChars = "U+A,U+20-25,U+27-3A,U+3C-59,U+5B-5D,U+60-7B,U+7D,U+60C,U+201C,U+201D,U+2764,U+FE0F,U+1F914"
+// npx glyphhanger dist/**/*.js
+const distJsChars = "U+A,U+20-7E"
 
-const whitelistChars = _.union(websiteChars.split(','), distChars.split(',')).join(',')
+const whitelistChars = _.union(websiteChars.split(','), distChars.split(','), distJsChars.split(',')).join(',')
 
 var whitelist = new GlyphHangerWhitelist(whitelistChars, {
   US_ASCII: argv.US_ASCII,

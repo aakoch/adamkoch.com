@@ -7,9 +7,10 @@ import { PostComponent as PostComponent20221218 } from './posts/2022/12/18/post/
 const routes: Routes = [
   { path: '2022/12/18', component: PostComponent20221218 },
   { path: ':year/:month/:day', component: PostComponent },
+  { path: 'posts', loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule) },
   // { path: ':year/:month/:day', loadChildren: () => import(`../../../posts/'${route.activated.params['year']}/${month}/${day}/index.pug`).then(m => m.PostComponent) },
-  { path: '', component: BlogComponent }];
-
+  { path: '', component: BlogComponent },
+]
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

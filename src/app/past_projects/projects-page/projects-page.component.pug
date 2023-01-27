@@ -27,7 +27,7 @@ script(type="application/ld+json").
     }]
   }
 
-.container
+.not-a-container
   h1 #{title}
 
   p Currently a hodgepodge of 3D printed and software projects. 
@@ -36,7 +36,7 @@ script(type="application/ld+json").
     +project('Headphones Holder', 'Completed ', ['print'])
       p I designed and printed a thing that would clip to my desk at work and have a hook to hold my headphones. I wanted to keep the cord 
         | from getting tangled up, so I created a groove that would allow for swapping of different other pieces so I could prototype different ideas.
-      img(ngSrc="assets/headphone_table_holder.png"  width="300" height="220")
+      img(ngSrc="assets/headphone_table_holder.png"  width="300" height="220" priority)
       p I used my "wood" filament which allowed me to lightly sand it in the end and I think it turned out well.
 
     +project('MacBook Pro Laptop Stand', 'Completed ', ['print'])
@@ -56,8 +56,7 @@ script(type="application/ld+json").
       p: a(href="https://www.thingiverse.com/thing:4578862") Thingiverse
         i.fas.fa-external-link-alt
       a(href="https://www.thingiverse.com/thing:4578862")
-        img(ngSrc="assets/AA_battery_holder.jpeg" crossOrigin="anonymous" width="300" height="173")
-
+        img(ngSrc="assets/AA_battery_holder.jpeg" crossOrigin="anonymous" width="300" height="173" ngSrcset="1x, 2x")
     +project('Fan Dampener', 'Needing Documentation ', ['print'])
       p Dampen the vibrations of my desk fan with this printed device.
 
@@ -100,7 +99,7 @@ script(type="application/ld+json").
 
     +project('Pop can bag holder', 'Needing Documentation ', ['print'])
       a(href="https://www.thingiverse.com/thing:3578675") 
-        img(ngSrc="assets/pop_can_holder.jpg"  width="300" height="400")
+        img(ngSrc="assets/pop_can_holder.jpg"  width="300" height="400" ngSrcset="1x, 2x")
 
     +project('Qwirkle Tile Holder', 'Needing Documentation ', ['print'])
       a(href="https://www.thingiverse.com/thing:3539352")
@@ -108,7 +107,7 @@ script(type="application/ld+json").
 
     +project('Monitor clasp and pencil/pen cup', 'Needing Documentation ', ['print'])
       a(href="https://www.thingiverse.com/thing:3530821")
-        img(ngSrc="assets/monitor_arm_5_v22.jpg"  width="300" height="173")
+        img(ngSrc="assets/monitor_arm_5_v22.jpg"  width="600" height="277" ngSrcset="1x, 2x")
 
     +project('Clutch Bearing', 'Needing Documentation ', ['print'])
       a(href="https://www.thingiverse.com/thing:3530801") Thingiverse 

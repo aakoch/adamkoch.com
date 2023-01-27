@@ -1,0 +1,195 @@
+//- extends ../../../../../../../templates/blogpost_new
+
+append variables
+  - var title = "Lucid Gloves"
+  - var posted = '2022-04-30'
+  - var excerpt = 'It happens all the time. I get distracted by some new project and never finish the project I was working on...'
+  - var prevUrl = '../../../2021/12/22'
+  - var prevTitle = 'GitHub Username'
+  - var nextUrl = '../../../2022/06/19'
+  - var nextTitle = 'Engineering Process'
+
+append head
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Lucid Gloves",
+      "image": [
+       ],
+      "datePublished": "2022-04-30T00:00:00+008:00",
+      "dateModified": "2022-04-30T00:00:00+008:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
+  style(type="text/scss").
+    $dark: #43464a;
+    blockquote {
+      padding-left: 1vw;
+      border-left: 2px solid $dark;
+      margin-left: 1vw;
+    }
+
+block body
+  app-pageheader
+
+  .container.post(id="post-" + posted)
+    h1= title
+    .posted= posted
+    .content
+
+      p It happens all the time. I get distracted by some new project and never finish the project I was working on. I hope Foo-Dog isn't dead. 
+      p For the past few months my son and I have been building "
+        a(href="https://github.com/LucidVR/lucidgloves") Lucid Gloves
+        | ", an implementation of VR gloves. My son showed me the video for the 4th prototype and got me excited about building it. We decided to build 2 gloves, one being his and one being mine.
+      p The video claims "$60 VR Haptic Gloves". And 
+        i maybe
+        |  that is possible, but I doubt it. 
+
+      h2 Parts List for 2 Gloves
+      
+      table 
+        tr 
+          th Part 
+          th Mandatory
+          th Price
+        tr
+          td VR System (for testing)
+          td Y
+          td $0 (Already owned)
+        tr
+          td 3D Printer
+          td Y
+          td $0 (Already owned)
+        tr
+          td 3D Printer Filament
+          td Y
+          td $0 (Already owned)
+        tr
+          td 10k ohm Potentiometer x 5
+          td Y
+          td $3.01 for 10
+        tr
+          td SG90 Servo x 5
+          td Y
+          td $20.70 for 10
+        tr
+          td ESP32 Dev Board
+          td Y
+          td $11.12 for 2
+        tr
+          td Joystick
+          td N
+          td $7.34 for 10
+        tr
+          td Badge Reel x 5
+          td Y
+          td $16.95 for 50 pack
+        tr
+          td Glove
+          td Y
+          td $12.61 for 1 pair
+        tr
+          td Velcro Strap
+          td Y
+          td $8.43
+        tr
+          td JST/Dupont connectors
+          td Y
+          td $0 (Already owned)
+        tr
+          td Lubricant
+          td N
+          td $0 (Already owned)
+        tr
+          td Power pack
+          td Y
+          td $28.75 for 2-pack
+        tr
+          td USB 2.0 A Male to A Male
+          td N
+          td $1.49
+        tr 
+          td 50ft of 26AWG wire
+          td N
+          td $13.50
+        tr
+          td Dupont Connector Kit
+          td N 
+          td $14.76
+        tr 
+          td Micro Connector Pin Crimping Tool
+          td N 
+          td $27.42
+        tr
+          td Storage Organizer
+          td N 
+          td $15.28
+        tr
+          td Helping Hands
+          td N 
+          td $52.74
+        tr
+          td Printed Circuit Board (PCB)
+          td N 
+          td $5.90
+        tr
+          td Soldering Iron
+          td N
+          td $0 (Already owned)
+        tr
+          td Solder
+          td N
+          td $0 (Already owned)
+        tr
+          td Rosin Paste Flux
+          td N
+          td $8.75
+        tr
+          td Wire cutter/stripper
+          td Y
+          td $0 (Already owned)
+        tr
+          td Shrink wrap
+          td N
+          td $0 (Already owned)
+        tr
+          td Heat gun
+          td N
+          td $0 (Already owned)
+        tr
+          td Multimeter
+          td N
+          td $0 (Already owned)
+        tr
+          td USB cable for uploading software to ESP32
+          td N
+          td $0 (Already owned)
+        tr
+          td Screwdriver
+          td N
+          td $0 (Already owned)
+        tr
+          td Glue Gun
+          td Y
+          td $0 (Already owned)
+        tr
+          td Glue
+          td Y
+          td $0 (Already owned)
+        tr
+          th Total
+          td
+          th $248.75
+
+      p Plus, I've fried 1 dev board when the servo connections came loose and created a short. 
+      p Some of the items definitely were needed for the project and some were definitely not. Some of it depended on your specific implementation. For example, the creator said he likes daisy chaining the wires and you need a crimper for that. Were the $50 helping hands needed? No. But it made things a lot easier for soldering.
+
+
+    app-nav(prevUrl= prevUrl, prevTitle= prevTitle, nextUrl= nextUrl, nextTitle= nextTitle)
+
+    app-comment-form(postTitle="Lucid Gloves" postId="20220430")
+app-footer

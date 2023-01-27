@@ -1,3 +1,7 @@
 [data-tippy-content] {
   text-decoration: underline dashed #406275;
 }
+pre code {
+  width: 95vw;
+  overflow-x: auto;
+}

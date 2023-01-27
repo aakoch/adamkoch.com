@@ -1,6 +1,5 @@
 {
   "server": {
-    "baseDir": "./dist",
     "rewriteRules": [
       {
           "match": "/src\/img\/(.*)/g",

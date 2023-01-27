@@ -27,11 +27,17 @@ body {
   // flex-wrap: wrap;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr .2fr .1fr .5fr;
+  grid-template-rows: 1fr .2fr .1fr .3fr;
 }
 
 .page-flex {
   flex: 1;
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr .2fr .1fr .3fr;
 }
 
 .adamis {
@@ -68,7 +74,7 @@ body {
     }
   }
 
-  .page-flex {
+  .page-flex, .page-grid {
     // display: flex;
     // flex-direction: row;
     // flex-wrap: wrap;
@@ -117,9 +123,8 @@ body {
   order: 3;
 }
 @media screen and (max-width: 767px) {
-
-
   #moreresources {
     min-width: unset;
+    // margin: 0;
   }
 }

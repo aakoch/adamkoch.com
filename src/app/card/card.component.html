@@ -1,9 +1,9 @@
-<div class="card" (click)="goto(card.url)" (mouseenter)="debouncedPrefetch(card.url);onHover()" (mouseleave)="doMouseLeave()">
+<div class="card" (click)="goto(card.url)" (mouseenter)="onHover()" (mouseleave)="doMouseLeave()">
 
   <div class="new-corner" *ngIf="first && showNew()">New!</div>
 
   <div class="icon-container">
-    <i class="card-img-top" [ngClass]="card.icon" [@iconFlipState]="iconFlipState"></i>
+    <fa-icon class="card-img-top" [icon]="['fas', card.icon]" [@iconFlipState]="iconFlipState"></fa-icon>
   </div>
 
   <div class="card-body">

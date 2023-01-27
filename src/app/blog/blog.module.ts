@@ -21,13 +21,14 @@ import { PostComponent as PostComponent20221218 } from './posts/2022/12/18/post/
     CommentComponent,
     OldpostsComponent,
     PostComponent,
-    PostComponent20221218
+    PostComponent20221218,
   ],
   imports: [
     CommonModule,
     BlogRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    NgOptimizedImage,
   ],
   exports: [ PostComponent ],
   providers: [NgOptimizedImage]

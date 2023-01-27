@@ -15,7 +15,7 @@ export class LandingBodyComponent implements OnInit {
     {
       id: 1,
       title: "Articles",
-      icon: "fas fa-feather",
+      icon: "feather",
       description: "My attempt at making informative content",
       url: "/posts",
       buttons: [
@@ -35,7 +35,7 @@ export class LandingBodyComponent implements OnInit {
     {
       id: 2,
       title: "Current Projects",
-      icon: "fas fa-pencil-ruler",
+      icon: "pencil-ruler",
       description: "Things I'm working on now",
       buttons: [
         {
@@ -47,7 +47,7 @@ export class LandingBodyComponent implements OnInit {
     {
       id: 3,
       title: "Past Projects",
-      icon: "fas fa-archive",
+      icon: "archive",
       description: "Old or abandoned projects",
       url: "/past_projects",
       buttons: [
@@ -61,21 +61,21 @@ export class LandingBodyComponent implements OnInit {
     {
       id: 5,
       title: "Tech",
-      icon: "fas fa-microchip",
+      icon: "microchip",
       description: "Some hardware, but mostly software",
       link: "/tech",
     },
     {
       id: 6,
       title: "Design",
-      icon: "fas fa-paint-brush",
+      icon: "paint-brush",
       description: "Drawings, websites, music",
       link: "/design",
     },
     {
       id: 1,
       title: "GitHub",
-      icon: "fas fa-code-branch",
+      icon: "code-branch",
       description: "Source code",
       link: "https://github.com/aakoch/",
       isExternal: true,
@@ -83,7 +83,7 @@ export class LandingBodyComponent implements OnInit {
     {
       id: 2,
       title: "Thingiverse",
-      icon: "fas fa-cube",
+      icon: "cube",
       description: "3D designs",
       link: "https://www.thingiverse.com/aakoch/designs",
       isExternal: true,
@@ -91,7 +91,7 @@ export class LandingBodyComponent implements OnInit {
     {
       id: 3,
       title: "Resume",
-      icon: "fas fa-id-card",
+      icon: "id-card",
       description: "CV",
       link: "https://aakoch.github.io/",
       isExternal: true,
@@ -99,7 +99,7 @@ export class LandingBodyComponent implements OnInit {
     {
       id: 4,
       title: "Twitter",
-      icon: "fab fa-twitter",
+      icon: ["fab", "twitter"],
       description: "Tweet",
       link: "https://twitter.com/aakoch",
       isExternal: true,

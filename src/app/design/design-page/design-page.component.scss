@@ -122,3 +122,14 @@
     margin-left: 0;
   }
 }
+
+@media screen and (max-width: 773px) {
+
+  .project {
+    flex-basis: 90vw;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}

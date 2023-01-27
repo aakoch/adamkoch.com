@@ -8,8 +8,8 @@
           div(v-bind:id="id")
           p {{ excerpt }}
           .linkies
-            a.href([href]="link") Read
-            a.href([href]="link")  more
+            a.href(routerLink="{{link}}") Read
+            a.href(routerLink="{{link}}")  more
             | &nbsp; 
-            a.href([href]="link")
+            a.href(routerLink="{{link}}")
               i(class='fas fa-angle-double-right')

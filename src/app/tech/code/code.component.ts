@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-code',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./code.component.scss']
 })
 export class CodeComponent {
+  constructor(pageTitle: Title) {
+    pageTitle.setTitle("Adam Koch - Tech - Code Samples");
+  }
 
 }

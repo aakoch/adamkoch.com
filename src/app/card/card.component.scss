@@ -1,4 +1,4 @@
-@import url('../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
+// @import url('../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
 @import '../shared/colors.scss';
 
 small {
@@ -9,7 +9,7 @@ small {
   border-top: 0;
   border-radius: 10px;
   height: 20rem;
-  min-width: max(20vw, 400px);
+  min-width: max(20vw, 375px);
   overflow: hidden;
   container-type: inline-size;
 
@@ -60,11 +60,14 @@ small {
     width: 200px;
   }
 
-  .fas {
+  fa-icon {
     color: $primary;
     background-color: $white;
     font-size: 3em;
-    text-align: center;
+    // text-align: center;
+    display: inherit;
+    margin: 0 auto;
+    width: fit-content;
   }
 
   &:hover {

@@ -1,50 +1,67 @@
-@import '../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+// @import '../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 @import '../shared/colors.scss';
 
 :host {
-  background-clip: border-box;
-  background-color: #f5f7f8;
-  border-radius: .25rem;
-  border: 1px solid rgba(0,0,0,.125);
-  // flex: 1;
-  
-  // flex-direction: column;
-  min-width: 20rem;
-  position: relative;
-  word-wrap: break-word;
+  // background-clip: border-box;
+  // background-color: #f5f7f8;
+  // border-radius: .25rem;
+  // min-width: 20rem;
+  // position: relative;
+  // word-wrap: break-word;
 
   .card-body {
 
     &:hover {
-      a i.fas {
-        transform: translateX(4px);
+
+      a i.fas,
+      a fa-icon:not([data-external]) {
+        transform: translateX(4px) scaleY(.9);
         transition: .2s ease-in-out all;
       }
-  .cardTitle {
-    // transform: rotateX(-180deg)  rotateY(-180deg)  rotateZ(-180deg);
-    // transition: .2s ease-in-out all;
-  }
+
+      a fa-icon[data-external] {
+        transform: translateX(4px) translateY(-4px);
+        transition: .2s ease-in-out all;
+      }
+
+      .cardTitle {
+        // transform: rotateX(-180deg)  rotateY(-180deg)  rotateZ(-180deg);
+        // transition: .2s ease-in-out all;
+      }
     }
 
     .cardTitle {
       // perspective: 100px;
-    // transition: .2s ease-in-out all;
+      // transition: .2s ease-in-out all;
     }
 
     .link {
-      float:right;
+      float: right;
+      max-height: 20px;
+      position: relative;
+      top: -10px;
     }
   }
+
   &:hover {
     cursor: pointer;
     border-color: $primary;
     transition: .2s ease-in-out all;
   }
-  .fas, .fab {
+
+  .fas,
+  .fab,
+  fa-icon {
     width: 1.5em;
   }
 
-  a i.fas, a i.fab {
+  fa-icon {
+    display: inline-block;
+  }
+
+  a i.fas,
+  a i.fab,
+  a fa-icon {
     font-size: 2em;
     transition: .2s ease-in-out all;
   }

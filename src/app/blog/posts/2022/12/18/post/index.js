@@ -24,11 +24,11 @@ document.addEventListener("keypress", (event) => {
 
 let isMouseButtonDown = false;
 document.addEventListener("mousedown", (event) => {
-  console.log("mouse down")
+  // console.log("mouse down")
   isMouseButtonDown = true;
 })
 document.addEventListener("mouseup", (event) => {
-  console.log("mouse up")
+  // console.log("mouse up")
   isMouseButtonDown = false;
 })
 

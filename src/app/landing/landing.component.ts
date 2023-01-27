@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./landing.component.scss', '../../css/main.css']
 })
 export class LandingComponent {
-  title = 'adamkoch-angular';
+  title = 'Adam Koch - Software Developer and Clean Code Advocate';
 }

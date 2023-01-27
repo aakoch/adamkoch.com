@@ -36,7 +36,7 @@ script(type="application/ld+json").
 //-   body
 //-     include ../templates/pageheader
 
-.container
+.not-a-container
   h1 #{title}
 
   section A note on categories
@@ -58,7 +58,7 @@ script(type="application/ld+json").
 
     +project('Lucid Gloves', '"Best by" Date Approaching', 'Physical')
       p Only 
-        a(href="../posts/2022/04/30") a blog post about supplies 
+        a(routerLink="../posts/posts/2022/04/30") a blog post about supplies 
         |  so far.
 
     +project('Attention Grabber', "In Production", 'Physical')
@@ -90,16 +90,16 @@ script(type="application/ld+json").
 
     +project('Animations', 'Stale', 'Digital')
       p Just some fun I've been having with CSS animations. If something doesn't work for you, 
-        a(href="/contact/") I'd love to know
+        a(routerLink="../contact") I'd love to know
         | .
       ul
-        li: a(href="../animations/bark.pug") Bark
-        li: a(href="../animations/wind.pug") Wind
-        li: a(href="../animations/fadeOutOnMouseOver.pug") Fade out on mouseoever
-        li: a(href="../animations/infectSiblings.pug") Fade out siblings
+        li: a(href="../animations/bark.html") Bark
+        li: a(href="../animations/wind.html") Wind
+        li: a(href="../animations/fadeOutOnMouseOver.html") Fade out on mouseoever
+        li: a(href="../animations/infectSiblings.html") Fade out siblings
         ng-template(*ngIf="isDevMode()")
-          li: a(href="../animations/infectNeighbors.pug") Fade out neighbors
-        li: a(href="../animations/sensitive.pug") Sensitive
+          li: a(href="../animations/infectNeighbors.html") Fade out neighbors
+        li: a(href="../animations/sensitive.html") Sensitive
 
     +project('Swamp Fan', 'On Hold', 'Physical')
       p It started when my wife bought me a tabletop, USB-powered "air conditioner". 
