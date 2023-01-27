@@ -43,11 +43,11 @@ export class PostcardComponent implements OnInit {
     this.clicked = true;
 
     var newLink = "/assets/blogposts/" + this?.post?.link?.replace("https://www.adamkoch.com/", "") + "index.json";
-    console.log("newLink=", newLink);
+    // console.log("newLink=", newLink);
 
     return this.http.get<any>(newLink).pipe(
       map((postJson: any, idx: number) => {
-        console.log("postJson=", postJson);
+        // console.log("postJson=", postJson);
         this.content = this.sanitizer.bypassSecurityTrustHtml(new ShortCode().filter(postJson["content:encoded"]).replaceAll("\r\n\r\n", "<br>"));
         this.loaded = true;
 
@@ -69,12 +69,12 @@ export class PostcardComponent implements OnInit {
     ).subscribe({
       next: (data: any) => {
         setTimeout(() => {
-        console.log("document.querySelectorAll('pre code')=", document.querySelectorAll('pre code'));
+        // console.log("document.querySelectorAll('pre code')=", document.querySelectorAll('pre code'));
         // this.content = data['content:encoded']
         // this.comments = { ...data }
 
         document.querySelectorAll('pre code').forEach((el : any) => {
-          console.log("el=", el);
+          // console.log("el=", el);
           hljs.highlightBlock(el);
         });
       }, 10);

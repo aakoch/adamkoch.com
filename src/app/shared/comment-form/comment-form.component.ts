@@ -38,18 +38,20 @@ export class CommentFormComponent {
 
   ngOnInit(): void {
     this.commentForm = new FormGroup({
+      formName: new FormControl(this.commentData['form-name']),
       name: new FormControl(this.commentData.name, Validators.required),
       email: new FormControl(this.commentData.email, Validators.email),
       url: new FormControl(this.commentData.url),
-      comment: new FormControl(this.commentData.comment, Validators.required)
+      comment: new FormControl(this.commentData.comment, Validators.required),
+      postId: new FormControl(this.commentData['post-id']),
     });
-    console.log("this.useClass=" + this.useClass);
+    // console.log("this.useClass=" + this.useClass);
     this.containerClass = (this.useClass ? "comment-form-container" : "")
   }
 
   submit() {
     try {
-      console.log("submit");
+      // console.log("submit");
       this.beingSubmitted = true;
 
       this.netlifyForms.submitFeedback(this.commentForm.value as CommentFormData).subscribe({

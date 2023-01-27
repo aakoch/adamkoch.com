@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class JqComponent {
 
   constructor(pageTitle: Title, route: ActivatedRoute) {
-    console.log(route.snapshot.data);
+    // console.log(route.snapshot.data);
     pageTitle.setTitle("Adam Koch - Tech - Code Samples - JQ");
   }
 

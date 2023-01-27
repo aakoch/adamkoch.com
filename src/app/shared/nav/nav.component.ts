@@ -37,7 +37,7 @@ export class NavComponent implements OnInit {
   angleDoubleRight: IconProp = faAngleDoubleRight;
   
   ngOnInit(): void {
-    console.log('this=', this);
+    // console.log('this=', this);
   }
 
   moveRight = 'start';
@@ -55,7 +55,7 @@ export class NavComponent implements OnInit {
   }
 
   onEnd(event: AnimationEvent) {
-    console.log("event=", event);
+    // console.log("event=", event);
     if ((event.fromState === "start" && event.toState === "end")){
       
       // requestAnimationFrame(() => { if (this.isMouseOver) (<any>this)[event.triggerName] = "end2" })

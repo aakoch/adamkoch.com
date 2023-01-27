@@ -37,11 +37,11 @@ export class PostComponent implements OnInit {
     this.clicked = true;
     
     var newLink = "/" + this.route.snapshot.params['year'] + '/' + this.route.snapshot.params['month'] + '/' + this.route.snapshot.params['day'] + '/index.html';
-    console.log("newLink=", newLink);
+    // console.log("newLink=", newLink);
 
     this.http.get<any>(newLink).pipe(
       map((postJson: any, idx: number) => {
-        console.log("postJson=", postJson);
+        // console.log("postJson=", postJson);
         this.content = this.sanitizer.bypassSecurityTrustHtml(postJson);
         this.loaded = true;
       })
