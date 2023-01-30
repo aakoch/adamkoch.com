@@ -1,7 +1,5 @@
 - var title = 'Tech I Dig'
 
-//- include ../../../templates/head
-
 script(type="application/ld+json").
   {
     "@context": "https://schema.org",
@@ -12,8 +10,6 @@ script(type="application/ld+json").
       "name": "Tech"
     }]
   }
-
-//- include ../../../templates/pageheader
 
 .container
   h1 #{title}
@@ -27,12 +23,20 @@ script(type="application/ld+json").
   ul
     li 
       a(href="https://pugjs.org/") Pug
+      a(href="https://pugjs.org/") 
+        fa-icon("[icon]"="externalLinkAlt" data-external title="external link")
     li 
       a(href="https://v2.parceljs.org/") Parcel
+      a(href="https://v2.parceljs.org/") 
+        fa-icon("[icon]"="externalLinkAlt" data-external title="external link")
     li 
       a(href="https://www.moddable.com/moddable-two.php") Moddable
+      a(href="https://www.moddable.com/moddable-two.php") 
+        fa-icon("[icon]"="externalLinkAlt" data-external title="external link")
     li 
       a(href="https://openmv.io/") OpenMV
+      a(href="https://openmv.io/")
+        fa-icon("[icon]"="externalLinkAlt" data-external title="external link")
     li  Node/NPM
     li  Vue
     li  vi
@@ -41,6 +45,8 @@ script(type="application/ld+json").
     li  zsh
     li 
       a(href="https://github.com/kfix/ddcctl" title="ddcctl project on GitHub") ddcctl
+      a(href="https://github.com/kfix/ddcctl" title="ddcctl project on GitHub")
+        fa-icon("[icon]"="externalLinkAlt" data-external title="external link")
     li  scripts
     li  AWS
     li  neo4j
@@ -50,6 +56,8 @@ script(type="application/ld+json").
     li  Flashforge Finder 3D printer
     li
       a(href="https://www.lipsum.com/" title="Lorem Ipsum generator") Lorem Ipsum generator
+      a(href="https://www.lipsum.com/" title="Lorem Ipsum generator")
+        fa-icon("[icon]"="externalLinkAlt" data-external title="external link")
     li  ...
 
   block body_scripts

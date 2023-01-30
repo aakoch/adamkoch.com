@@ -4,7 +4,7 @@
         <a (click)="goto(card.link, card.isExternal)" [title]="card.isExternal ? 'Be careful out there' : ''">
           <i class="fas fa-angle-double-right" *ngIf="!card.isExternal"></i>
           <fa-icon [icon]="angleDoubleRight" *ngIf="!card.isExternal"></fa-icon>
-            <fa-icon [icon]="externalLinkAlt" *ngIf="card.isExternal" data-external></fa-icon>
+          <fa-icon [icon]="externalLinkAlt" *ngIf="card.isExternal" data-external></fa-icon>
         </a>
       </div>
     <h4 class="cardTitle"><fa-icon class="card-img-top" [icon]="card.icon"></fa-icon>{{ card.title }}</h4>
