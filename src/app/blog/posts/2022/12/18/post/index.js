@@ -10,10 +10,15 @@ function transform(prop, amt, event) {
   });
 }
 
-document.getElementById("rotateRightLink").addEventListener("click", transform.bind(this, "roty", 90))
-document.getElementById("rotateLeftLink").addEventListener("click", transform.bind(this, "roty", -90))
-document.getElementById("rotateUpLink").addEventListener("click", transform.bind(this, "rotx", 90))
-document.getElementById("rotateDownLink").addEventListener("click", transform.bind(this, "rotx", -90))
+function handleMouseClick(prop, amt, event) {
+  transform(...arguments);
+  event.preventDefault();
+}
+
+document.getElementById("rotateRightLink").addEventListener("click", handleMouseClick.bind(this, "roty", 90))
+document.getElementById("rotateLeftLink").addEventListener("click", handleMouseClick.bind(this, "roty", -90))
+document.getElementById("rotateUpLink").addEventListener("click", handleMouseClick.bind(this, "rotx", 90))
+document.getElementById("rotateDownLink").addEventListener("click", handleMouseClick.bind(this, "rotx", -90))
 
 document.addEventListener("keypress", (event) => {
   // console.log(event)
