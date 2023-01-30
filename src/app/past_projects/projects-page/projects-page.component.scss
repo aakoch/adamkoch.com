@@ -1,16 +1,15 @@
 @import '../../shared/colors.scss';
 
+$project-width: 500px;
 
 .projects {
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($project-width, 1fr));
+  justify-content: center;
   gap: 1em;
-  align-content: stretch;
 }
 
 .project {
-
-  max-width: 700px;
 
   &:hover {
     .project-title {
@@ -23,8 +22,6 @@
       border-radius: 0 1em 1em 1em;
     }
   }
-
-  flex-basis: 49%;
 
   .project-title {
     background-color: $primary;
@@ -44,7 +41,6 @@
     border-top: 0;
     border-radius: 0 0 1em 1em;
     transition: .2s ease-in-out all;
-
   }
 
   .status-wrapper {
@@ -73,21 +69,12 @@
   }
 }
 
-
 .not-a-container {
-  padding: 0 1em 1em 1em;
+  padding: 0 3em 3em 3em;
 }
 
-@media screen and (max-width: 773px) {
-
-  .project {
-    flex-basis: 90vw;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-
-  .project {
-    flex-basis: 100%;
+@media screen and (max-width: $project-width) {
+  .projects {
+    grid-template-columns: 1fr;
   }
 }
