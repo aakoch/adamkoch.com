@@ -8,7 +8,6 @@ function transform(prop, amt, event) {
     box.style.transform = 'translateZ(-100px) rotateX(' + box.dataset.rotx + 'deg) rotateY(' + box.dataset.roty + 'deg) rotateZ(' + box.dataset.rotz + 'deg)'
     box.style.transitionTimingFunction = 'ease-out';
   });
-  event.preventDefault()
 }
 
 document.getElementById("rotateRightLink").addEventListener("click", transform.bind(this, "roty", 90))
@@ -18,8 +17,8 @@ document.getElementById("rotateDownLink").addEventListener("click", transform.bi
 
 document.addEventListener("keypress", (event) => {
   // console.log(event)
-  transform("roty", Math.round(Math.random() * 200));
-  transform("rotx", Math.round(Math.random() * 200));
+  transform("roty", Math.round(Math.random() * 200), event);
+  transform("rotx", Math.round(Math.random() * 200), event);
 })
 
 let isMouseButtonDown = false;
