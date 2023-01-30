@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-minicardtest',
-  templateUrl: './minicardtest.component.html',
-  styleUrls: ['./minicardtest.component.scss']
+  template: `<app-minicard-list [links]="links"></app-minicard-list>`
 })
 export class MinicardtestComponent {
 
