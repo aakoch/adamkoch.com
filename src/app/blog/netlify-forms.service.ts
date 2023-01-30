@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CommentFormData } from '../shared/comment-form/comment-form-data';
@@ -18,7 +18,7 @@ export class NetlifyFormsService {
     }});
 
     return this.http.post(
-      '/',
+      isDevMode() ? 'http://localhost:8000/' : '/',
       entry.toString(),
       {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

@@ -14,7 +14,8 @@
       <h4 class="alert-heading">Thank you!</h4>
       <p>Your comment was successfully submitted.</p>
     </div>
-    <fieldset [disabled]="isSuccess" *ngIf="!isSuccess &amp;&amp; !isError"><input name="postid" type="hidden" id="postid" placeholder="model.postid" /><input type="hidden" name="model.posttitle" />
+    <fieldset [disabled]="isSuccess" *ngIf="!isSuccess &amp;&amp; !isError">
+      <input name="post-id" type="hidden" id="postid" value="{{postId}}" />
       <div class="postTitle" *ngIf="postTitle">
         <h2>Comment on &quot;{{ postTitle }}&quot;</h2>
       </div>
@@ -23,7 +24,7 @@
         <div *ngIf="name?.invalid &amp;&amp; (name?.dirty || name?.touched)" style="color:#b87460">What shall I call you?</div>
       </div>
       <div class="mb-0"><label class="form-label mb-0" for="email">Email: </label></div>
-      <div class="mb-1"><input class="form-control" name="email" type="email" [(ngModel)]="model.email" #email="ngModel" email="model.email" /></div>
+      <div class="mb-1"><input class="form-control" name="email" type="email" id="email" [(ngModel)]="model.email" #email="ngModel" email="model.email" /></div>
       <div class="mb-3">
         <div class="form-text">Not displayed but the md5 hash is used for Gravatar image.</div>
       </div>

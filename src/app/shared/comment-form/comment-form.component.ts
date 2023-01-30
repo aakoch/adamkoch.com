@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { combineLatestWith, debounceTime, filter, switchMap, tap } from 'rxjs';
+import { combineLatestWith, debounceTime, filter, first, switchMap, tap } from 'rxjs';
 import { NetlifyFormsService } from '../../blog/netlify-forms.service';
 import { CommentFormData } from './comment-form-data';
 
@@ -41,11 +41,13 @@ export class CommentFormComponent {
       debounceTime(200),
       filter(() => this.form.valid! && !this.form.pristine!),
       combineLatestWith(this.form.ngSubmit), 
+      filter(() => !this.beingSubmitted),
       tap(() => this.beingSubmitted = true),
-      switchMap(() => this.netlifyForms.submitFeedback(this.model as CommentFormData))
+      first(),
+      switchMap(() => this.netlifyForms.submitFeedback(this.model as CommentFormData)),
     )
       .subscribe({
-        next: (v) => {
+        next: () => {
           this.model = { name: '', comment: '', 'form-name': 'post-comment-form', 'post-id': this.postId, email: '' };
           this.isSuccess = true;
           this.beingSubmitted = false;
