@@ -48,7 +48,7 @@ script(type="application/ld+json").
       p My wife has this globe garden decoration that hasn't worked for years and I've started fiddling around with it. 
         s I'm currently waiting for parts now.
         |  Parts are in, but I've hit a snag.
-      p: a(routerLink="color-changing-outdoor-light" title="Project: Color Changing Outdoor Light") Read more
+      p: a(routerLink="color-changing-outdoor-light" title="Project: Color Changing Outdoor Light") Read article
 
     +project('ESP32', 'In Progress', 'Digital')
       p When I started working on the Lucid Gloves, I didn't expect to be sucked into playing with microcontrollers. 
@@ -58,7 +58,7 @@ script(type="application/ld+json").
 
     +project('Lucid Gloves', '"Best by" Date Approaching', 'Physical')
       p Only 
-        a(routerLink="../posts/posts/2022/04/30") a blog post about supplies 
+        a(routerLink="../posts/posts/2022/04/30" title="Supplies for Lucid Gloves") a blog post about supplies 
         |  so far.
 
     +project('Attention Grabber', "In Production", 'Physical')
@@ -67,7 +67,7 @@ script(type="application/ld+json").
     +project('Light bulbs', "In Progress", 'Physical')
       p What do you do with hundreds of burnt-out incandescent light bulbs? Save 'em for years until you can think of what to do with 'em. I'm right on schedule. 
       p Currently I'm creating my own slip ring. 
-      p: a(routerLink="light-bulbs" title="Project: Light Bulbs") Read more
+      p: a(routerLink="light-bulbs" title="Project: Light Bulbs") View short video
 
     +project('Ring Swing Game', 'In Progress', 'Physical')
       p A game that I saw at a graduation party that I wanted to enhance. It's pretty low priority.
@@ -77,11 +77,11 @@ script(type="application/ld+json").
 
     +project('Timesheet', 'Slowing', 'Digital')
       p A project to help be track my time at work. I've published a early version (0.1.2) on NPM.  
-      p: a(href="https://github.com/aakoch/timesheet")
+      p: a(href="https://github.com/aakoch/timesheet" title="Timesheet Project on GitHub")
         i(class='fab fa-github fa-brands')
         |  Github repo
 
-      p: a(href="https://www.npmjs.com/package/@aakochnpm/timesheet")
+      p: a(href="https://www.npmjs.com/package/@aakochnpm/timesheet" title="Timesheet Project on NPM")
         i(class='fab fa-npm fa-brands')
         |  NPM page
 
@@ -90,20 +90,20 @@ script(type="application/ld+json").
 
     +project('Animations', 'Stale', 'Digital')
       p Just some fun I've been having with CSS animations. If something doesn't work for you, 
-        a(routerLink="../contact") I'd love to know
+        a(routerLink="../contact" title="Contact Me page") I'd love to know
         | .
       ul
-        li: a(href="../animations/bark.html") Bark
-        li: a(href="../animations/wind.html") Wind
-        li: a(href="../animations/fadeOutOnMouseOver.html") Fade out on mouseoever
-        li: a(href="../animations/infectSiblings.html") Fade out siblings
+        li: a(href="../animations/bark.html" title="Bark Animation") Bark
+        li: a(href="../animations/wind.html" title="Wind Animation") Wind
+        li: a(href="../animations/fadeOutOnMouseOver.html" title="Fade Out Animation") Fade out on mouseoever
+        li: a(href="../animations/infectSiblings.html" title="Another Fade Out Animation") Fade out siblings
         ng-template(*ngIf="isDevMode()")
-          li: a(href="../animations/infectNeighbors.html") Fade out neighbors
-        li: a(href="../animations/sensitive.html") Sensitive
+          li: a(href="../animations/infectNeighbors.html" title="Yet Another Fade Out Animation") Fade out neighbors
+        li: a(href="../animations/sensitive.html" title="Sensitive Information Animation") Sensitive
 
     +project('Swamp Fan', 'On Hold', 'Physical')
       p It started when my wife bought me a tabletop, USB-powered "air conditioner". 
-      p: a(routerLink="swamp-fan" title="Project: Swamp Fan") Read more
+      p: a(routerLink="swamp-fan" title="Project: Swamp Fan") View pictures
 
     +project('This Site', 'Stale', 'Digital')
       h3 1.0.0 Released

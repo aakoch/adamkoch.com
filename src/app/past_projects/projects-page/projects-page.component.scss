@@ -77,4 +77,8 @@ $project-width: 500px;
   .projects {
     grid-template-columns: 1fr;
   }
+
+  .not-a-container {
+    padding: 0 1em 1em 1em;
+  }
 }

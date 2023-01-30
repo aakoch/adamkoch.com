@@ -21,20 +21,20 @@
 
 nav
   .one
-    a(routerLink="/")
+    a(routerLink="/" title="Homepage")
       app-header-svg
     
     .menu("(click)"="onclick()")
-      svg(viewBox="0 0 100 80" width="40" height="40")
-        rect(width="100" height="18")
-        rect(y="30" width="100" height="18")
-        rect(y="60" width="100" height="18")
+      svg(viewBox="0 0 120 70" width="40" height="40")
+        line(class="tobehidden" x1="10" x2="110" stroke="#f5f7f8" stroke-width="20" stroke-linecap="round")
+        line(y1="30" y2="30" x1="10" x2="110" stroke="#f5f7f8" stroke-width="20" stroke-linecap="round")
+        line(class="tobehidden" y1="60" y2="60" x1="10" x2="110" stroke="#f5f7f8" stroke-width="20" stroke-linecap="round")
 
   .menu-items(ngClass="{{active ? 'active' : ''}}")
-    a(routerLink="/posts" routerLinkActive="active" ariaCurrentWhenActive="page") Articles
-    a(routerLink="/projects" routerLinkActive="active" ariaCurrentWhenActive="page") Current Projects
-    a(routerLink="/past_projects" routerLinkActive="active" ariaCurrentWhenActive="page") Past Projects
-    a(routerLink="/tech" routerLinkActive="active" ariaCurrentWhenActive="page") Tech
-    a(routerLink="/design" routerLinkActive="active" ariaCurrentWhenActive="page") Design
+    a(routerLink="/posts" routerLinkActive="active" ariaCurrentWhenActive="page" title="Articles") Articles
+    a(routerLink="/projects" routerLinkActive="active" ariaCurrentWhenActive="page" title="Current Projects") Current Projects
+    a(routerLink="/past_projects" routerLinkActive="active" ariaCurrentWhenActive="page" title="Past Project") Past Projects
+    a(routerLink="/tech" routerLinkActive="active" ariaCurrentWhenActive="page" title="Tech") Tech
+    a(routerLink="/design" routerLinkActive="active" ariaCurrentWhenActive="page" title="Design") Design
 
   .gcse-search

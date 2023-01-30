@@ -788,3 +788,31 @@ to {
 img {
   height: auto;
 }
+
+.page-header nav .navbar-nav {
+  .gsc-control-cse {
+    border: 0;
+    padding: 0;
+  }
+
+  form.gsc-search-box {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page-header nav {
+    &:has(div.active) {
+      .gsc-control-cse {
+        display: block;
+      }
+    }
+    .gsc-control-cse {
+      display: none;
+    }
+    #gsc-iw-id1 {
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+  }
+}
