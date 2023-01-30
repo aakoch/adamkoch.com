@@ -1,16 +1,18 @@
-import { Component, Input } from '@angular/core';
-import { CommentFormData } from './comment-form-data';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, Input, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { combineLatestWith, debounceTime, filter, switchMap, tap } from 'rxjs';
 import { NetlifyFormsService } from '../../blog/netlify-forms.service';
+import { CommentFormData } from './comment-form-data';
 
 @Component({
   selector: 'app-comment-form',
-  templateUrl: './comment-form.component.pug',
+  templateUrl: './comment-form.component.html',
   styleUrls: ['./comment-form.component.scss']
 })
 export class CommentFormComponent {
-  @Input() postId?: string;
+  @ViewChild('formRef')
+  form!: NgForm;
+  @Input() postId = "unknown";
   @Input() postTitle?: string;
   @Input() useClass = true;
   beingSubmitted: boolean = false;
@@ -18,45 +20,33 @@ export class CommentFormComponent {
   isError = false;
   expanded = false;
   errorMessage?: string;
-  containerClass ?: string;
-  
-  commentForm!: FormGroup;
-  commentData: CommentFormData = { name: '', comment: '', 'form-name': 'post-comment-form', 'post-id': 'unknown' };
+  containerClass?: string;
+
+  model: CommentFormData = { name: '', comment: '', 'form-name': 'post-comment-form', email: '', url: '', 'post-id': this.postId };
 
   closeError() {
     this.errorMessage = '';
   }
 
-  get name() { return this.commentForm.get('name'); }
-  get comment() { return this.commentForm.get('comment'); }
-
-  constructor(private formBuilder: FormBuilder,
-    private router: Router,
-    private netlifyForms: NetlifyFormsService) {
-    // this.title = this.postTitle || decodeURIComponent((window.location.search.match(/post[tT][iI][tT][lL][eE]=(.+)/) || [undefined, undefined])[1] || '') || ('post #' + this.computedPostId);
+  constructor(private netlifyForms: NetlifyFormsService) {
   }
 
   ngOnInit(): void {
-    this.commentForm = new FormGroup({
-      formName: new FormControl(this.commentData['form-name']),
-      name: new FormControl(this.commentData.name, Validators.required),
-      email: new FormControl(this.commentData.email, Validators.email),
-      url: new FormControl(this.commentData.url),
-      comment: new FormControl(this.commentData.comment, Validators.required),
-      postId: new FormControl(this.commentData['post-id']),
-    });
-    // console.log("this.useClass=" + this.useClass);
     this.containerClass = (this.useClass ? "comment-form-container" : "")
+    this.model['post-id'] = this.postId;
   }
 
-  submit() {
-    try {
-      // console.log("submit");
-      this.beingSubmitted = true;
-
-      this.netlifyForms.submitFeedback(this.commentForm.value as CommentFormData).subscribe({
+  ngAfterViewInit() {
+    this.form.valueChanges?.pipe(
+      debounceTime(200),
+      filter(() => this.form.valid! && !this.form.pristine!),
+      combineLatestWith(this.form.ngSubmit), 
+      tap(() => this.beingSubmitted = true),
+      switchMap(() => this.netlifyForms.submitFeedback(this.model as CommentFormData))
+    )
+      .subscribe({
         next: (v) => {
-          this.commentForm.reset();
+          this.model = { name: '', comment: '', 'form-name': 'post-comment-form', 'post-id': this.postId, email: '' };
           this.isSuccess = true;
           this.beingSubmitted = false;
         },
@@ -65,15 +55,6 @@ export class CommentFormComponent {
           this.isError = true;
           this.errorMessage = err;
         }
-    });
-
-      return false;
-      // }
-    } catch (e) {
-      this.isError = true;
-      this.beingSubmitted = false;
-      console.error(e);
-    }
-    return false;
+      });
   }
 }

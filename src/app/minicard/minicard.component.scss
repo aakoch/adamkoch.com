@@ -9,6 +9,22 @@
   // position: relative;
   // word-wrap: break-word;
 
+
+  .card {
+    display: flex;
+
+  }
+
+
+  &:hover {
+    .card {
+    cursor: pointer;
+    border-color: lighten($primary, 20%);
+    transition: .2s ease-in-out all;
+    }
+  }
+
+
   .card-body {
 
     &:hover {
@@ -43,12 +59,6 @@
     }
   }
 
-  &:hover {
-    cursor: pointer;
-    border-color: $primary;
-    transition: .2s ease-in-out all;
-  }
-
   .fas,
   .fab,
   fa-icon {
@@ -57,6 +67,7 @@
 
   fa-icon {
     display: inline-block;
+    color: $primary;
   }
 
   a i.fas,
@@ -64,11 +75,6 @@
   a fa-icon {
     font-size: 2em;
     transition: .2s ease-in-out all;
-  }
-
-  .card {
-    display: flex;
-
   }
 
 }

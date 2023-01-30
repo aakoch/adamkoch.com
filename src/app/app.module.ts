@@ -14,7 +14,7 @@ import { SharedModule } from './shared/shared.module';
 import { Router } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { FilenotfoundComponent } from './filenotfound/filenotfound.component';
 import { MinicardtestComponent } from './landing/minicardtest/minicardtest.component';
 import { HrefDirective } from './tech/href.directive';
@@ -51,7 +51,6 @@ import { HrefDirective } from './tech/href.directive';
     BrowserModule,
     FormsModule,
     NgOptimizedImage,
-    ReactiveFormsModule,
     SharedModule,
   ],
   providers: [{ provide: Window, useValue: window }],

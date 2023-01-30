@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageheaderComponent } from './pageheader/pageheader.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderSvgComponent } from './header-svg/header-svg.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -35,8 +35,8 @@ import { MinicardtestComponent } from '../landing/minicardtest/minicardtest.comp
     CommonModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule,
     FontAwesomeModule,
+    FormsModule,
   ],
   exports: [
     CommentFormComponent,
@@ -47,7 +47,6 @@ import { MinicardtestComponent } from '../landing/minicardtest/minicardtest.comp
     NavbarComponent,
     PageComponent,
     PageheaderComponent,
-    ReactiveFormsModule,
     ScrollListenerDirective,
     NavComponent,
     FontAwesomeModule

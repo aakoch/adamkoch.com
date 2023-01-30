@@ -1,0 +1,44 @@
+<div class="container" [ngClass]="containerClass">
+  <form class="needs-validation" id="commentForm" name="post-comment-form" data-netlify="true" netlify-honeypot="validate" novalidate="novalidate" #formRef="ngForm">
+    <div class="alert alert-danger mt-3" role="alert" *ngIf="isError">
+      <h4 class="alert-heading">Oh, no!</h4>
+      <div id="expandDetails" *ngIf="!expanded"><span>Something didn't work. </span><a (click)="expanded=true" role="button" style="font-size:.9em">Expand Details +</a></div>
+      <div id="errorDetails" *ngIf="expanded">
+        <h5>We sent the request but got this response:</h5>
+        <p>{{ errorMessage }}</p>
+      </div>
+      <hr />
+      <p class="mb-0">Please try reloading the page.</p>
+    </div>
+    <div class="alert alert-success mt-3" role="alert" *ngIf="isSuccess">
+      <h4 class="alert-heading">Thank you!</h4>
+      <p>Your comment was successfully submitted.</p>
+    </div>
+    <fieldset [disabled]="isSuccess" *ngIf="!isSuccess &amp;&amp; !isError"><input name="postid" type="hidden" id="postid" placeholder="model.postid" /><input type="hidden" name="model.posttitle" />
+      <div class="postTitle" *ngIf="postTitle">
+        <h2>Comment on &quot;{{ postTitle }}&quot;</h2>
+      </div>
+      <div class="mb-0 mt-3"><label class="form-label mb-0" for="name">Name: </label></div>
+      <div class="mb-3"><input class="form-control" name="name" type="text" id="name" required="required" [(ngModel)]="model.name" #name="ngModel" />
+        <div *ngIf="name?.invalid &amp;&amp; (name?.dirty || name?.touched)" style="color:#b87460">What shall I call you?</div>
+      </div>
+      <div class="mb-0"><label class="form-label mb-0" for="email">Email: </label></div>
+      <div class="mb-1"><input class="form-control" name="email" type="email" [(ngModel)]="model.email" #email="ngModel" email="model.email" /></div>
+      <div class="mb-3">
+        <div class="form-text">Not displayed but the md5 hash is used for Gravatar image.</div>
+      </div>
+      <div class="mb-0"><label class="form-label mb-0" for="url">URL: </label></div>
+      <div class="mb-3"><input class="form-control" name="url" type="text" id="url" [(ngModel)]="model.url" #url="ngModel" /></div>
+      <div class="mb-0"><label class="form-label mb-0" for="comment">Comment/s: </label></div>
+      <div class="mb-3"><textarea class="form-control" name="comment" id="comment" required="required" [(ngModel)]="model.comment" #comment="ngModel"></textarea>
+        <div *ngIf="comment?.invalid &amp;&amp; (comment?.dirty || comment?.touched)" style="color:#b87460">Umm... you wanted to say something, right?</div>
+      </div>
+      <div class="mb-0" hidden="hidden"><label class="form-label mb-0" for="validate">Validate: </label></div>
+      <div class="mb-3" hidden="hidden"><input class="form-control" id="human" type="text" name="validate" placeholder="Are you human?" /></div>
+      <div class="mb-1"><button class="btn btn-primary" type="submit" *ngIf="!beingSubmitted" id="submitButton" [disabled]="!name.valid || !comment.valid || (email.touched && email.value != '' && !email.valid)">Submit</button>
+        <div class="spinner-border text-primary" role="status" *ngIf="beingSubmitted"><span class="visually-hidden">Submitting...</span></div>
+        <div class="alert alert-primary mt-3" role="alert" *ngIf="postId">All submissions are reviewed before being posted.</div>
+      </div>
+    </fieldset>
+  </form>
+</div>

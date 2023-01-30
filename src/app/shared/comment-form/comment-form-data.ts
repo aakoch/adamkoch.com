@@ -4,6 +4,5 @@ export interface CommentFormData {
   url?: string;
   comment: string;
   "form-name": string;
-  "post-id": string;
-  "post-title"?: string;
+  "post-id"?: string;
 }
