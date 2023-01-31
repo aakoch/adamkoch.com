@@ -24,11 +24,11 @@ export class CommentFormComponent {
 
   model: CommentFormData = { name: '', comment: '', 'form-name': 'post-comment-form', email: '', url: '', 'post-id': this.postId };
 
-  closeError() {
-    this.errorMessage = '';
+  constructor(private netlifyForms: NetlifyFormsService) {
   }
 
-  constructor(private netlifyForms: NetlifyFormsService) {
+  closeError() {
+    this.errorMessage = '';
   }
 
   ngOnInit(): void {
@@ -38,19 +38,16 @@ export class CommentFormComponent {
 
   ngAfterViewInit() {
     this.form.valueChanges?.pipe(
-      debounceTime(200),
       filter(() => this.form.valid! && !this.form.pristine!),
       combineLatestWith(this.form.ngSubmit), 
       filter(() => !this.beingSubmitted),
       tap(() => this.beingSubmitted = true),
-      first(),
       switchMap(() => this.netlifyForms.submitFeedback(this.model as CommentFormData)),
     )
       .subscribe({
         next: () => {
-          this.model = { name: '', comment: '', 'form-name': 'post-comment-form', 'post-id': this.postId, email: '' };
-          this.isSuccess = true;
           this.beingSubmitted = false;
+          this.isSuccess = true;
         },
         error: (err) => {
           console.error("There was an error with form submission", err);
