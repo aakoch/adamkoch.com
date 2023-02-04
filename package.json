@@ -62,6 +62,7 @@
     "@types/jasmine": "~4.3.0",
     "@types/lodash": "^4.14.191",
     "@types/md5": "^2.3.2",
+    "@types/pug": "^2.0.6",
     "chromedriver": "^109.0.0",
     "find": "^0.3.0",
     "fontawesome-subset": "^4.3.1",

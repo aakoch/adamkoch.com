@@ -43,7 +43,9 @@
               "src/styles.scss",
               "node_modules/highlight.js/styles/github.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions":  {
+            }
           },
           "configurations": {
             "production": {

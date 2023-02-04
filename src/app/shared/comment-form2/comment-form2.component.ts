@@ -1,40 +1,26 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { combineLatestWith, concatMap, debounceTime, filter, first, Observable, Subscription, switchMap, tap } from 'rxjs';
+import { combineLatestWith, filter, Subscription, switchMap, tap } from 'rxjs';
 import { NetlifyFormsService } from '../../blog/netlify-forms.service';
-import { CommentFormData } from './comment-form-data';
+import { CommentFormData } from './comment-form2-data';
 
 @Component({
-  selector: 'app-comment-form',
-  templateUrl: './comment-form.component.html',
-  styleUrls: ['./comment-form.component.scss']
+  selector: 'app-comment-form2',
+  templateUrl: './comment-form2.component.html',
+  styleUrls: ['./comment-form2.component.scss']
 })
-export class CommentFormComponent {
+export class CommentForm2Component implements OnDestroy {
   @ViewChild('formRef')
   form!: NgForm;
-  @Input() postId = "unknown";
-  @Input() postTitle?: string;
-  @Input() useClass = true;
   beingSubmitted: boolean = false;
   isSuccess = false;
   isError = false;
-  expanded = false;
-  errorMessage?: string;
-  containerClass?: string;
+  error?: string;
 
-  model: CommentFormData = { name: '', comment: '', 'form-name': 'post-comment-form', email: '', url: '', 'post-id': this.postId };
+  model: CommentFormData = { name: '', comment: '', 'form-name': 'post-comment-form', email: '', url: '' };
   formSubscription?: Subscription;
 
   constructor(private netlifyForms: NetlifyFormsService) {
-  }
-
-  closeError() {
-    this.errorMessage = '';
-  }
-
-  ngOnInit(): void {
-    this.containerClass = (this.useClass ? "comment-form-container" : "")
-    this.model['post-id'] = this.postId;
   }
 
   ngAfterViewInit() {
@@ -53,7 +39,7 @@ export class CommentFormComponent {
         error: (err) => {
           console.error("There was an error with form submission", err);
           this.isError = true;
-          this.errorMessage = err;
+          this.error = err;
         }
       });
   }

@@ -19,9 +19,11 @@ import {
 import { faFeather, faIdCard, faMicrochip, faPaintBrush, faPencilRuler, faCube, faArchive, faCodeBranch, faExternalLinkAlt, faAngleDoubleRight, faSquare, faArrowUp, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { MinicardtestComponent } from '../landing/minicardtest/minicardtest.component';
+import { CommentForm2Component } from './comment-form2/comment-form2.component';
 
 @NgModule({
   declarations: [
+    CommentForm2Component,
     CommentFormComponent,
     HeaderSvgComponent,
     NavbarComponent,
@@ -39,6 +41,7 @@ import { MinicardtestComponent } from '../landing/minicardtest/minicardtest.comp
     FormsModule,
   ],
   exports: [
+    CommentForm2Component,
     CommentFormComponent,
     CommonModule,
     FooterComponent,

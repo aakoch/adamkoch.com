@@ -1,0 +1,22 @@
+<div class="container">
+
+  <h1>Post Comment Form</h1>
+  <form #formRef="ngForm" [hidden]="isSuccess || isError">
+    <label for="name">Name: </label>
+    <input name="name" type="text" required [(ngModel)]="model.name" #name="ngModel" />
+
+    <label for="email">Email: </label>
+    <input name="email" type="email" [(ngModel)]="model.email" #email="ngModel" email="model.email" />
+
+    <label for="url">URL: </label>
+    <input name="url" type="text" [(ngModel)]="model.url" #url="ngModel" />
+
+    <label for="comment">Comment/s: </label>
+    <textarea name="comment" required [(ngModel)]="model.comment" #comment="ngModel"></textarea>
+
+    <button type="submit" *ngIf="!beingSubmitted" id="submitButton" [disabled]="!name.valid || !comment.valid || (email.touched && email.value != '' && !email.valid)">Submit</button>
+
+  </form>
+  <div class="alert alert-danger" *ngIf="isError">There was an error with form submission: {{ error }}</div>
+  <div class="alert alert-success" *ngIf="isSuccess">Form submitted!</div>
+</div>

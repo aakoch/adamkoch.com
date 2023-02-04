@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, isDevMode, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, isDevMode, OnInit } from '@angular/core';
 import { WordPressPost } from './oldposts/wordpress-post.model';
 import OLD_POSTS from "../../data/professional_publish.json";
 import { Title } from '@angular/platform-browser';
@@ -32,6 +32,8 @@ export class BlogComponent implements OnInit, AfterViewInit {
   posts: WordPressPost[] = posts;
   allPosts: WordPressPost[] = fullPosts;
 
+  idx: number = 5;
+
   constructor(private window: Window, title: Title) {
     title.setTitle("Adam Koch - Articles")
   }
@@ -42,5 +44,18 @@ export class BlogComponent implements OnInit, AfterViewInit {
     (<any>this.window).google?.search.cse.element.go()
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: any) {
+    if (event.target.scrollingElement.scrollTop + 20 >= event.target.scrollingElement.scrollHeight - window.innerHeight) {
+      this.loadMore();
+    }
+  }
+  
+  loadMore() {
+    let more = this.allPosts.slice(this.idx, this.idx + 5)
+    let count = this.posts.push(...more)
+    this.idx += 5
+  }
 
 }
+

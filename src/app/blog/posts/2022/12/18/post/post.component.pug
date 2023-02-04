@@ -3,8 +3,10 @@ append variables
   - var title = "Box animations"
   - var posted = '2022-12-18'
   - var excerpt = '3D box animations'
-  - var prevUrl = '../../../posts/2022/06/27'
+  - var prevUrl = '../../../2022/06/27'
   - var prevTitle = 'Roe v Wade'
+  - var nextUrl = '../../../2023/01/30'
+  - var nextTitle = 'How to submit a form with Angular on Netlify using RxJS Observables'
 
 append head
   script(type="application/ld+json").
@@ -31,28 +33,28 @@ block body
     
     .box-container
       #box0.box(data-rotx="0" data-roty="0" data-rotz="0" data-translatez="0")
-        .box__face.box__face--front.box__face--color-0 front
-        .box__face.box__face--back.box__face--color-1 back
-        .box__face.box__face--right.box__face--color-2 right
-        .box__face.box__face--left.box__face--color-3 left
-        .box__face.box__face--top.box__face--color-4 top
-        .box__face.box__face--bottom.box__face--color-5 bottom
+        .side.side--front.side--color-0 front
+        .side.side--back.side--color-1 back
+        .side.side--right.side--color-2 right
+        .side.side--left.side--color-3 left
+        .side.side--top.side--color-4 top
+        .side.side--bottom.side--color-5 bottom
 
       #box1.box(data-rotx="0" data-roty="0" data-rotz="0" data-translatez="0")
-        .box__face.box__face--front.box__face--color-0 front
-        .box__face.box__face--back.box__face--color-1 back
-        .box__face.box__face--right.box__face--color-2 right
-        .box__face.box__face--left.box__face--color-3 left
-        .box__face.box__face--top.box__face--color-4 top
-        .box__face.box__face--bottom.box__face--color-5 bottom
+        .side.side--front.side--color-0 front
+        .side.side--back.side--color-1 back
+        .side.side--right.side--color-2 right
+        .side.side--left.side--color-3 left
+        .side.side--top.side--color-4 top
+        .side.side--bottom.side--color-5 bottom
 
       #box2.box(data-rotx="0" data-roty="0" data-rotz="0" data-translatez="0")
-        .box__face.box__face--front.box__face--color-0 front
-        .box__face.box__face--back.box__face--color-1 back
-        .box__face.box__face--right.box__face--color-2 right
-        .box__face.box__face--left.box__face--color-3 left
-        .box__face.box__face--top.box__face--color-4 top
-        .box__face.box__face--bottom.box__face--color-5 bottom
+        .side.side--front.side--color-0 front
+        .side.side--back.side--color-1 back
+        .side.side--right.side--color-2 right
+        .side.side--left.side--color-3 left
+        .side.side--top.side--color-4 top
+        .side.side--bottom.side--color-5 bottom
 
 
     .controls

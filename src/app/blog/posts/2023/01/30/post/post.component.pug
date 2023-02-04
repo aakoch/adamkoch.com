@@ -1,0 +1,158 @@
+append variables
+  - var title = "How to submit a form with Angular on Netlify"
+  - var posted = '2023-01-30'
+  - var excerpt = 'If that wasn\'t a long enough title, I wanted to add, "using RxJS Observables"'
+  - var prevUrl = '../../../2022/12/18'
+  - var prevTitle = 'Box animations'
+  - var commentsDisabled = false
+
+append head
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "How to submit a form with Angular on Netlify",
+      "image": [
+       ],
+      "datePublished": "2023-01-30T23:16-05:00",
+      "dateModified": "2023-01-30T23:16-05:00",
+      "author": [{
+        "@type": "Person",
+        "name": "Adam Koch",
+        "url": "https://www.adamkoch.com/"
+      }]
+    }
+  style(type="text/css").
+    blockquote {
+      padding-left: 1vw;
+      border-left: 2px solid #43464a;
+      margin-left: 1vw;
+    }
+
+block body
+  app-pageheader
+
+  .container.post(id="post-" + posted)
+    h1= title
+      |  using RxJS Observables
+    .posted= posted
+    .content
+  
+    .header-img
+      img(src="assets/img/Angular_full_color_logo.svg")
+      | + 
+      img(src="assets/img/Netlify_logo.svg")
+      | + 
+      img(src="assets/img/RxJs_Logo_Basic.svg")
+
+    a(name="intro")
+    h2 Intro 
+    //- a(href="setup") Skip
+    p I've been using 
+      a(href="https://www.netlify.com/") Netlify
+      |  for over a year now but just recently learned Angular. I was struggling to get forms working on my Netlify site so I decided to share my success. In this article I'm going to give you the steps needed to get your Angular app submitting forms. As an extra bonus, since I'm also learning RxJS, I'll show you how to implement this form both using imperative programming and using declarative or reactive programming.
+
+    p This article will go over 
+      a(href="https://angular.io/guide/forms#building-a-template-driven-form") Angular template-driven forms
+      | . Using a reactive form would follow most of the same steps but I won't be discussing how to create a reactive form.
+    
+    p I'm going to assume some basic Angular knowledge and the know-how to create a component using `ng generate`. I'm also going to assume you are familiar with Netlify since I won't go through details such as setting up or deploying your site, although I will touch on it.
+
+    a(name="netlify-forms")
+    h2 Netlify Forms
+    p Netlify's form submissions are free for up to 100 per month. To set it up on your account, it's pretty easy. As part of your deployment, Netlify will scan your HTML files looking for forms. Once it finds them it will register the form names with your site. So the first thing you have to do with your Angular app, is do something un-Angular-like. You have to code a form with form fields in your static HTML. I say static because Netlify isn't going to render your Angular pages to find an form. I put my form right inside my `index.html` file as a hidden element. 
+
+    .code
+      .code-heading index.html
+      pre.code-content: code.hljs.language-html(title="partial index.html").
+        &lt;form name="post-comment-form" netlify hidden&gt;
+          &lt;input type="text" name="name"/&gt;
+          &lt;input type="text" name="email"/&gt;
+          &lt;input type="text" name="url"/&gt;
+          &lt;input type="text" name="comment"/&gt;
+          &lt;input type="text" name="post-id"/&gt;
+        &lt;/form&gt;
+
+    p I only have 2 forms on my site so I can "get away" with putting in just in the index.html. I'm not sure how you would do it for many forms. My form includes all the fields I'll be using in both forms. 
+
+    p Let me point out the form's attributes. The "name" of the form is required and important, as this is the name of the form you have to use within your Angular code. Next is `netlify` which informs Netlify to add the form to your site. You could also use "data-netlify" if you need your form to be valid HTML.  And don't forget to add `hidden` so the form isn't visible on your page. (You'll do that later.)
+
+    h2 Angular Component
+    p Next, create an Angular component if you haven't done so already. In the same folder let's create an interface that will hold the data for our form. I've called mine `CommentFormData` with 3 required fields and 2 optional fields. The important field here is the form-name field. This is needed when submitting the form and will match the name in your hidden form you created earlier. Right now it is just a placeholder since we've created an interface. 
+
+    .code
+      .code-heading comment-form-data.ts
+      pre.code-content: code.
+        export interface CommentFormData {{ '{' }}
+          name: string;
+          email?: string;
+          url?: string;
+          comment: string;
+          "form-name": string;
+        }
+
+    p Now we're going to set up our HTML code for our component. Right out of the gate we have a form field with the name of our form, a reference to it that we'll use later and a novalidate attribute to tell the browser we'll take care of validation. I've also bound the hidden attribute to 2 flags so depending on the outcome of our submission we can hide the form. 
+    
+    .code(ngNonBindable)
+      .code-heading The form element
+      
+      pre.code-content: code.
+        &lt;form #formRef=&quot;ngForm&quot;&gt;
+          &lt;label&gt;Name: &lt;/label&gt;
+          &lt;input name=&quot;name&quot; type=&quot;text&quot; required [(ngModel)]=&quot;model.name&quot; #name=&quot;ngModel&quot; /&gt;
+
+          &lt;label&gt;Email: &lt;/label&gt;
+          &lt;input name=&quot;email&quot; type=&quot;email&quot; [(ngModel)]=&quot;model.email&quot; #email=&quot;ngModel&quot; email=&quot;model.email&quot; /&gt;
+
+          &lt;label&gt;URL: &lt;/label&gt;
+          &lt;input name=&quot;url&quot; type=&quot;text&quot; [(ngModel)]=&quot;model.url&quot; #url=&quot;ngModel&quot; /&gt;
+
+          &lt;label&gt;Comment/s: &lt;/label&gt;
+          &lt;textarea name=&quot;comment&quot; id=&quot;comment&quot; required=&quot;required&quot; [(ngModel)]=&quot;model.comment&quot; #comment=&quot;ngModel&quot; class=&quot;form-control&quot;&gt;&lt;/textarea&gt;
+
+          &lt;button type=&quot;submit&quot; *ngIf=&quot;!beingSubmitted&quot; id=&quot;submitButton&quot; [disabled]=&quot;!name.valid || !comment.valid || (email.touched &amp;&amp; email.value != '' &amp;&amp; !email.valid)&quot;&gt;Submit&lt;/button&gt;
+        &lt;/form&gt;
+
+    p Let's tie that form reference to our TypeScript. In our comment-form.component.ts file add a property named "form" with the ViewChild annotation. It should look like this:
+    
+    .code(ngNonBindable)
+      .code-heading Binding the form reference to our component
+      
+      pre.code-content: code.
+        @ViewChild('formRef')
+        form!: NgForm;
+
+
+    
+    .code(ngNonBindable)
+      .code-heading Full comment-form.component.html
+      
+      pre.code-content: code.
+        &lt;form class=&quot;needs-validation&quot; name=&quot;post-comment-form&quot; novalidate #formRef=&quot;ngForm&quot; [hidden]=&quot;isSuccess || isError&quot;&gt;
+          &lt;label for=&quot;name&quot;&gt;Name: &lt;/label&gt;
+          &lt;input name=&quot;name&quot; type=&quot;text&quot; id=&quot;name&quot; required=&quot;required&quot; [(ngModel)]=&quot;model.name&quot; #name=&quot;ngModel&quot; /&gt;
+
+          &lt;label for=&quot;email&quot;&gt;Email: &lt;/label&gt;
+          &lt;input name=&quot;email&quot; type=&quot;email&quot; id=&quot;email&quot; [(ngModel)]=&quot;model.email&quot; #email=&quot;ngModel&quot; email=&quot;model.email&quot; /&gt;
+
+          &lt;label for=&quot;url&quot;&gt;URL: &lt;/label&gt;
+          &lt;input name=&quot;url&quot; type=&quot;text&quot; id=&quot;url&quot; [(ngModel)]=&quot;model.url&quot; #url=&quot;ngModel&quot; /&gt;
+
+          &lt;label for=&quot;comment&quot;&gt;Comment/s: &lt;/label&gt;
+          &lt;textarea name=&quot;comment&quot; id=&quot;comment&quot; required=&quot;required&quot; [(ngModel)]=&quot;model.comment&quot; #comment=&quot;ngModel&quot; class=&quot;form-control&quot;&gt;&lt;/textarea&gt;
+
+          &lt;button type=&quot;submit&quot; *ngIf=&quot;!beingSubmitted&quot; id=&quot;submitButton&quot; [disabled]=&quot;!name.valid || !comment.valid || (email.touched &amp;&amp; email.value != '' &amp;&amp; !email.valid)&quot;&gt;Submit&lt;/button&gt;
+
+        &lt;/form&gt;
+        &lt;div class=&quot;alert alert-danger&quot; *ngIf=&quot;isError&quot;&gt;There was an error with form submission: {{ error }}&lt;/div&gt;
+        &lt;div class=&quot;alert alert-success&quot; *ngIf=&quot;isSuccess&quot;&gt;Form submitted!&lt;/div&gt;
+    
+    .code
+      .code-heading comment-form.component.ts
+      pre: code.language-typescript.
+        {{ codeContent }}
+
+
+    app-nav(prevUrl= prevUrl, prevTitle= prevTitle, nextUrl= nextUrl, nextTitle= nextTitle)
+
+app-footer

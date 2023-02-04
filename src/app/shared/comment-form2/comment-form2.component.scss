@@ -1,0 +1,76 @@
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../colors.scss";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+@import "../../../../node_modules/bootstrap/scss/_alert.scss";
+@import "../../../../node_modules/bootstrap/scss/_buttons.scss";
+@import "../../../../node_modules/bootstrap/scss/_forms.scss";
+
+h1 {
+  z-index: 9;
+}
+
+:host {
+  display: block;
+  margin-top: 3vh;
+  padding: 3em;
+}
+
+.ng-valid[required],
+.ng-valid.required,
+.ng-dirty.ng-valid:not(required):not(form) {
+  border-left: 5px solid #42A948;
+  /* green */
+}
+
+.ng-invalid:not(form).ng-pristine {
+  border-left: 5px solid #406275;
+  /* red */
+}
+
+.ng-invalid.ng-touched:not(form) {
+  border-left: 5px solid #a94442;
+  /* red */
+}
+
+.comment-form-container {
+  font-size: .8em;
+  max-width: 80vh;
+}
+
+input,
+textarea {
+  @extend .form-control;
+}
+
+textarea {
+  margin-bottom: 2em;
+}
+
+
+button {
+
+  @extend .btn;
+  @extend .btn-primary;
+
+}
+
+// .alert-success {
+//   color: #294e3a;
+//   background-color: #dae6df;
+//   border-color: #c7dad0;
+// }
+
+// .alert-danger {
+//   color: #6e463a;
+//   background-color: #f1e3df;
+//   border-color: #ead5cf;
+// }
+
+// .alert {
+//   padding: 1rem;
+//   margin-bottom: 1rem;
+//   border: 1px solid;
+//   border-radius: 0.375rem;
+//   position: relative;
+// }

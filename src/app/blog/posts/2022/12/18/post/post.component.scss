@@ -27,7 +27,7 @@
   #box#{$i}  { z-index: -#{$i} }
 }
 
-.box__face {
+.side {
   position: absolute;
   width: 200px;
   height: 200px;
@@ -40,15 +40,15 @@
 }
 
 @for $i from 0 through 5 {
-  .box__face--color-#{$i}  { background: hsla($i * 50, 40%, 30%, 1); }
+  .side--color-#{$i}  { background: hsla($i * 50, 40%, 30%, 1); }
 }
 
-.box__face--front  { transform: rotateY(  0deg) translateZ(100px); }
-.box__face--right  { transform: rotateY( 90deg) translateZ(100px); }
-.box__face--back   { transform: rotateY(180deg) translateZ(100px); }
-.box__face--left   { transform: rotateY(-90deg) translateZ(100px); }
-.box__face--top    { transform: rotateX( 90deg) translateZ(100px); }
-.box__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
+.side--front  { transform: rotateY(  0deg) translateZ(100px); }
+.side--right  { transform: rotateY( 90deg) translateZ(100px); }
+.side--back   { transform: rotateY(180deg) translateZ(100px); }
+.side--left   { transform: rotateY(-90deg) translateZ(100px); }
+.side--top    { transform: rotateX( 90deg) translateZ(100px); }
+.side--bottom { transform: rotateX(-90deg) translateZ(100px); }
 
 .controls {
   padding-left: 10vh;

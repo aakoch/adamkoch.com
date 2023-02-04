@@ -14,7 +14,7 @@
       <h4 class="alert-heading">Thank you!</h4>
       <p>Your comment was successfully submitted.</p>
     </div>
-    <fieldset [disabled]="isSuccess" *ngIf="!isSuccess &amp;&amp; !isError">
+    <fieldset [disabled]="isSuccess" *ngIf="!isSuccess && !isError">
       <input name="post-id" type="hidden" id="postid" value="{{postId}}" />
       <div class="postTitle" *ngIf="postTitle">
         <h2>Comment on &quot;{{ postTitle }}&quot;</h2>
@@ -36,9 +36,9 @@
       </div>
       <div class="mb-0" hidden="hidden"><label class="form-label mb-0" for="validate">Validate: </label></div>
       <div class="mb-3" hidden="hidden"><input class="form-control" id="human" type="text" name="validate" placeholder="Are you human?" /></div>
-      <div class="mb-1"><button class="btn btn-primary" type="submit" *ngIf="!beingSubmitted" id="submitButton" [disabled]="!name.valid || !comment.valid || (email.touched && email.value != '' && !email.valid)">Submit</button>
+      <div class="mb-3"><button class="btn btn-primary" type="submit" *ngIf="!beingSubmitted" id="submitButton" [disabled]="!name.valid || !comment.valid || (email.touched && email.value != '' && !email.valid)">Submit</button>
         <div class="spinner-border text-primary" role="status" *ngIf="beingSubmitted"><span class="visually-hidden">Submitting...</span></div>
-        <div class="alert alert-primary mt-3" role="alert" *ngIf="postId">All submissions are reviewed before being posted.</div>
+        <div class="alert alert-primary mt-3" role="alert" *ngIf="postId != 'unknown'">All submissions are reviewed before being posted.</div>
       </div>
     </fieldset>
   </form>
