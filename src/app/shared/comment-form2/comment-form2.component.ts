@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { combineLatestWith, filter, Subscription, switchMap, tap } from 'rxjs';
 import { NetlifyFormsService } from '../../blog/netlify-forms.service';
@@ -9,7 +9,7 @@ import { CommentFormData } from './comment-form2-data';
   templateUrl: './comment-form2.component.html',
   styleUrls: ['./comment-form2.component.scss']
 })
-export class CommentForm2Component implements OnDestroy {
+export class CommentForm2Component implements OnDestroy, AfterViewInit {
   @ViewChild('formRef')
   form!: NgForm;
   beingSubmitted: boolean = false;
@@ -17,20 +17,18 @@ export class CommentForm2Component implements OnDestroy {
   isError = false;
   error?: string;
 
-  model: CommentFormData = { name: '', comment: '', 'form-name': 'post-comment-form', email: '', url: '' };
+  model: CommentFormData = { name: '', comment: '', 'form-name': 'comment-form', email: '', url: '' };
   formSubscription?: Subscription;
 
   constructor(private netlifyForms: NetlifyFormsService) {
   }
 
   ngAfterViewInit() {
-    this.formSubscription = this.form.valueChanges?.pipe(
-      filter(() => this.form.valid! && !this.form.pristine!),
-      combineLatestWith(this.form.ngSubmit), 
-      filter(() => !this.beingSubmitted),
-      tap(() => this.beingSubmitted = true),
-      switchMap(() => this.netlifyForms.submitFeedback(this.model as CommentFormData)),
-    )
+    this.formSubscription = this.form.ngSubmit
+      .pipe(
+        tap(() => this.beingSubmitted = true),
+        switchMap(() => this.netlifyForms.submitFeedback(this.model as CommentFormData)),
+      )
       .subscribe({
         next: () => {
           this.beingSubmitted = false;
