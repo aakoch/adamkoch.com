@@ -23,7 +23,6 @@ export class CommentFormComponent {
   containerClass?: string;
 
   model: CommentFormData = { name: '', comment: '', 'form-name': 'post-comment-form', email: '', url: '', 'post-id': this.postId };
-  formSubscription?: Subscription;
 
   constructor(private netlifyForms: NetlifyFormsService) {
   }
@@ -38,13 +37,12 @@ export class CommentFormComponent {
   }
 
   ngAfterViewInit() {
-    this.formSubscription = this.form.valueChanges?.pipe(
-      filter(() => this.form.valid! && !this.form.pristine!),
-      combineLatestWith(this.form.ngSubmit), 
-      filter(() => !this.beingSubmitted),
-      tap(() => this.beingSubmitted = true),
-      switchMap(() => this.netlifyForms.submitFeedback(this.model as CommentFormData)),
-    )
+    this.form.ngSubmit
+      .pipe(
+        filter(() => !this.beingSubmitted),
+        tap(() => this.beingSubmitted = true),
+        switchMap(() => this.netlifyForms.submitFeedback(this.model as CommentFormData)),
+      )
       .subscribe({
         next: () => {
           this.beingSubmitted = false;
@@ -57,9 +55,4 @@ export class CommentFormComponent {
         }
       });
   }
-
-  ngOnDestroy() {
-    this.formSubscription?.unsubscribe();
-  }
-
 }
