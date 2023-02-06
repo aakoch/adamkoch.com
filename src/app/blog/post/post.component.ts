@@ -29,38 +29,38 @@ export class PostComponent implements OnInit {
 
 
   public onChange(event: Event): void {
-    let file = (<HTMLInputElement>event.currentTarget!).files![0];
-    let fileReader: FileReader = new FileReader();
-    let self = this;
-    fileReader.onloadend = function (x) {
-      self.data = (<any>self.sanitizer.bypassSecurityTrustHtml("<p>" + fileReader.result?.toString() + "</p>")).changingThisBreaksApplicationSecurity;
-      console.log(self.data);
-    }
-    fileReader.readAsText(file);
+    // let file = (<HTMLInputElement>event.currentTarget!).files![0];
+    // let fileReader: FileReader = new FileReader();
+    // let self = this;
+    // fileReader.onloadend = function (x) {
+    //   self.data = (<any>self.sanitizer.bypassSecurityTrustHtml("<p>" + fileReader.result?.toString() + "</p>")).changingThisBreaksApplicationSecurity;
+    //   console.log(self.data);
+    // }
+    // fileReader.readAsText(file);
   }
 
   ngOnInit(): void {
-    this.clicked = true;
+    // this.clicked = true;
 
-    var newLink = "/" + this.route.snapshot.params['year'] + '/' + this.route.snapshot.params['month'] + '/' + this.route.snapshot.params['day'] + '/index.html';
+    // var newLink = "/" + this.route.snapshot.params['year'] + '/' + this.route.snapshot.params['month'] + '/' + this.route.snapshot.params['day'] + '/index.html';
 
-    // this.content = compileFile("posts/2021/09/08/post/post.component.pug")()
+    // // this.content = compileFile("posts/2021/09/08/post/post.component.pug")()
 
 
-    this.http.get<any>(newLink).pipe(
-      map((html: any, idx: number) => {
-        // this.content = this.sanitizer.bypassSecurityTrustHtml(html);
-        this.loaded = true;
-      })
-    ).subscribe({
-      next: (data: any) => {
-      }, // success path
-      error: error => this.content = error.message, // error path
-    });
+    // this.http.get<any>(newLink).pipe(
+    //   map((html: any, idx: number) => {
+    //     // this.content = this.sanitizer.bypassSecurityTrustHtml(html);
+    //     this.loaded = true;
+    //   })
+    // ).subscribe({
+    //   next: (data: any) => {
+    //   }, // success path
+    //   error: error => this.content = error.message, // error path
+    // });
 
-    const intervalCount = interval(1000);
-    const takeFive = intervalCount.pipe(take(3));
-    this.clickSubscription = takeFive.subscribe({next: (x: any) => console.log(x), complete: () => console.log("completed")});
+    // const intervalCount = interval(1000);
+    // const takeFive = intervalCount.pipe(take(3));
+    // this.clickSubscription = takeFive.subscribe({next: (x: any) => console.log(x), complete: () => console.log("completed")});
 
     // this.clicks = fromEvent(document, 'click');
     // const result = this.clicks.pipe(switchMap(() => interval(1000).pipe(take(4))), tap(() => this.clickSubscription?.unsubscribe()));

@@ -34,3 +34,17 @@
     background-color: transparent;
   }
 }
+
+.mono {
+  font-family: monospace;
+  text-decoration: underline;
+}
+.mono {
+  font-family: monospace;
+  text-decoration: none;
+  /* letter-spacing: .8em; */
+  -webkit-highlight: yellow;
+  background-color: #eee;
+  border: solid #ddd 1px;
+  padding: .2em;
+}

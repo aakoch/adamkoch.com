@@ -12,15 +12,25 @@ import code from './code.json';
 })
 export class PostComponent implements AfterViewInit {
 
-  codeContent?: string;
 
-  constructor() {
-    this.codeContent = code.content;
+  componentCodeContent?: string;
+  serviceCodeContent?: string;
+
+  constructor(private viewContainerRef: ViewContainerRef) {
+    this.componentCodeContent = code.component;
+    this.serviceCodeContent = code.service;
   }
 
   ngAfterViewInit() {
     document.querySelectorAll('pre code').forEach((el: Element) => {
       hljs.highlightElement(<HTMLElement>el);
     });
+
+    
+    // this.viewContainerRef.element.nativeElement.innerHTML = this.viewContainerRef.element.nativeElement.innerHTML.replaceAll(/`(.*?)`/g, "<span class='short-code'>$1</span>");
+    
+    // console.log(this.viewContainerRef.element.nativeElement.innerHTML);
+
+
   }
 }
