@@ -22,17 +22,24 @@
   background-color: $primary;
   color: $white;
   margin-bottom: 1rem;
-
+  
   .code-content {
-    padding: 1em;
+    padding: .3em;
     background-color: #fff;
   }
 
   .code-heading {
-    padding: 1em;
+    padding: .5em;
     border-bottom: 2px solid $primary;
     font-size: 1.2em;
     background-color: transparent;
+  }
+
+  p.code-desc {
+    background-color: white;
+    color: black;
+    padding: .8em;
+    margin-bottom: .2em;
   }
 }
 
@@ -50,41 +57,70 @@
   padding: .2em;
 }
 
-aside {
-  @extend .code;
-  float: right;
-  margin-left: 2em;
-  background-color: adjust-hue($color: $primary, $degrees: 135);
-  border-color: adjust-hue($color: $primary, $degrees: 135);
-  position: relative;
-  transition: all 1s;
+// aside {
+//   @extend .code;
+//   float: right;
+//   margin-left: 2em;
+//   background-color: adjust-hue($color: $primary, $degrees: 135);
+//   border-color: adjust-hue($color: $primary, $degrees: 135);
+//   position: relative;
+//   transition: all 1s;
 
+//   &:hover {
+//     transition: all 1s;
+//     background-color: adjust-hue($color: $primary, $degrees: 315);
+//     border-color: adjust-hue($color: $primary, $degrees: 315);
+//   }
+
+//   .aside-content {
+//     padding-left: 3em;
+
+//     .aside-title {
+//       @extend .code-heading;
+//       font-size: 1.2em;
+//     }
+//     .aside-body {
+//       @extend .code-content;
+//       color: $dark;
+//     }
+//   }
+//   .aside-notice {
+//     position: absolute;
+//     left: 0;
+//     top: 50%;
+//     transform: rotate(90deg) translateX(-50%) scaleX(1.2);
+//     font-size: 1.2em;
+//     // color: adjust-color($white, $alpha: .2);
+//   }
+// }
+
+.shell {
+  background-color: $dark;
+  color: lightcyan;
+  padding: 1em;
+}
+
+h2 {
+  margin-top: 1em;
+  // background-color: $primary;
+  // color: $white;
+  color: black;
+  padding: 0;
+  // background: linear-gradient(160deg, $primary 45%, $white 50%, $primary 55%, $primary 75%, $white 100%);
+  // background: linear-gradient(160deg, $white 55%, adjust-color($primary, $alpha: .2) 75%);
+  // background: linear-gradient(160deg, $primary 75%, $white 100%);
+  // border-radius: .5em;
+  // border-top: 10px groove $white;
+  // border-right: 6px groove scale-color($primary, $lightness: 10%);
+  // border-bottom: 6px groove scale-color($primary, $lightness: 50%);
+  border-bottom: 3px solid $primary;
   &:hover {
-    transition: all 1s;
-    background-color: adjust-hue($color: $primary, $degrees: 315);
-    border-color: adjust-hue($color: $primary, $degrees: 315);
+    filter: saturate(90%);
   }
+}
 
-  .aside-content {
-    padding-left: 3em;
-
-    .aside-title {
-      @extend .code-heading;
-      font-size: 1.2em;
-    }
-    .aside-body {
-      @extend .code-content;
-      color: $dark;
-    }
-  }
-  .aside-notice {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: rotate(90deg) translateX(-50%) scaleX(1.2);
-    font-size: 1.2em;
-    // color: adjust-color($white, $alpha: .2);
-  }
+h3 {
+  font-size: 1.5em;
 }
 
 

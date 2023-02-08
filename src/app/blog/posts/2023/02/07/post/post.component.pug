@@ -73,11 +73,11 @@ block body
 
     p I only have 2 forms on my site so I can "get away" with putting in just in the index.html. I'm not sure how you would do it for many forms. My form includes all the fields I'll be using in both forms. 
 
-    p Let me point out the form's attributes. The "<span class="mono">name</span>" of the form is required and important, as this is the name of the form you have to use within your Angular code. Next is <span class="mono">netlify</span> which informs Netlify to add the form to your site. You could also use <span class="mono">data-netlify</span> if you need your form to be valid HTML.  And don't forget to add <span class="mono">hidden</span> so the form isn't visible on your page.
+    p Let me point out the form's attributes. The "<span class="mono">name</span>" of the form is required and important, as this is the name of the form you have to use within your Angular code. Next is <span class="mono">netlify</span> which informs Netlify to add the form to your site. You could also use <span class="mono">data-netlify</span> if you need your form to be <span title="Can you even do that with Angular?">valid HTML.</span>  And don't forget to add <span class="mono">hidden</span> so the form isn't visible on your page.
 
     h2 Angular Component
     h3 Data Class
-    p Next, create an Angular component if you haven't done so already. In the same folder let's create an class that will hold the data for our form. I've called mine <span class="mono">ExampleFormData</span> with 3 required fields and 2 optional fields. The important field here is the <span class="mono">form-name</span> field. This is needed when submitting the form to match the name in your hidden form you created earlier. 
+    p Next, create an Angular component if you haven't done so already. In the same folder let's create a class that will hold the data for our form. I've called mine <span class="mono">ExampleFormData</span> with 3 required fields and 2 optional fields. The important field here is the <span class="mono">form-name</span> field. This is needed when submitting the form to match the name in your hidden form you created earlier. 
 
     .code
       .code-heading Our data class, example-form-data.ts 
@@ -121,8 +121,6 @@ block body
         &lt;label&gt;Comment/s: &lt;/label&gt;
         &lt;textarea name=&quot;comment&quot; required [(ngModel)]=&quot;model.comment&quot; #comment=&quot;ngModel&quot;&gt;&lt;/textarea&gt;
 
-    p For each input we set the <span class="mono">[(ngModel)]</span> attribute to the field in our model class we created, CommentFormData. Each input will map to one of the class members. 
-    
     p The <span class="mono">email</span> directive is one that Angular provides for verifying if the email is valid.
 
     p I've also appended 2 <span class="mono">div</span> tags that bind to form submission. One is for displaying an error in case of an error. The other is our success message. I've put these outside of the form element so we can hide the form when it is submitted.
@@ -170,7 +168,7 @@ block body
         isError = false;
         error?: string;
 
-    p Next we create our <span class="mono">model</span> variable and assign it to a new instance of it. Instead of referencing the name of the Netlify form in our template, I'm doing it here since the value won't change. (Although my class also defaults to it.) Don't forget the <span class="mono">import</span> statement to our class.
+    p Next we create our <span class="mono">model</span> variable and assign it to a new instance of it. Instead of referencing the name of the Netlify form in our template, I'm doing it here since the value won't change. (Although my class also defaults to it.) Don't forget the <span class="mono">import</span> statement to your class.
     
     .code(ngNonBindable)
       .code-heading Form model
@@ -188,31 +186,7 @@ block body
       pre: code.language-typescript.
         {{ serviceStartCodeContent }}
 
-    aside 
-      .aside-notice Aside!
-      .aside-content
-        .aside-title Testing "server"
-        .aside-body To test my form I use a simple NodeJS program to respond to my form request. 
-        .aside-code 
-          pre: code(ngNonBindable).language-javascript.
-            const http = require("http");
-
-            const host = 'localhost';
-            const port = 8000;
-
-            const requestListener = function (req, res) &#x007B;
-              console.log("received request", req);
-              res.setHeader("Access-Control-Allow-Origin", "*")
-              res.writeHead(200);
-              res.end("success");
-            };
-
-            const server = http.createServer(requestListener);
-            server.listen(port, host, () => &#x007B;
-                console.log(`Server is running on http://$&#x007B;host}:$&#x007B;port}`);
-            });
-
-    p The meat of the service we'll put into a method called <span class="mono">submitFeedback</span>. In here we'll use the spread operator to put our form class into a new <span class="mono">HttpParams</span> class needed by the <span class="mono">HttpClient</span>. Then we call the <span class="mono">post</span> method on <span class="mono">HttpClient</span>. For testing purposes I'm using <span class="mono">isDevMode()</span>, an Angular method to determine whether we are deployed in production or not. For testing I'm standing up a separate server listening on port 8000 that just responds with a simple 200. Otherwise, you'll want to use '/' as the URL to post your data. Another important piece is you need to send your form URL encoded so add the 'Content-Type' header to your request. Lastly we'll catch any errors by using the 
+    p The meat of the service we'll put into a method called <span class="mono">submitFeedback</span>. In here we'll use the spread operator to put our form class into a new <span class="mono">HttpParams</span> class needed by the <span class="mono">HttpClient</span>. Then we call the <span class="mono">post</span> method on <span class="mono">HttpClient</span>. For testing purposes I'm using <span class="mono">isDevMode()</span>, an Angular method to determine whether we are deployed in production or not. For testing I'm standing up a separate server listening on port 8000 that just responds with a simple 200. Otherwise, you'll want to use '/' as the URL to post your data. Another important piece is you need to send your form URL encoded so add the "Content-Type" header to your request. Lastly we'll catch any errors by using the 
       a(href="https://rxjs.dev/api/index/function/catchError") <span class="mono">catchError</span> RxJS operator. 
 
       
@@ -247,18 +221,18 @@ block body
           let errMsg = '';
 
           if (err.error instanceof ErrorEvent) &#x007B;
-            errMsg = <span class="mono">A client-side error occurred: $&#x007B;err.error.message}</span>;
+            errMsg = `A client-side error occurred: $&#x007B;err.error.message}`;
           } else &#x007B;
-            errMsg = <span class="mono">A server-side error occurred. Code: $&#x007B;err.status}. Message: $&#x007B;err.message}</span>;
+            errMsg = `A server-side error occurred. Code: $&#x007B;err.status}. Message: $&#x007B;err.message}`;
           }
 
           return throwError(() => new Error(errMsg));
         }
 
     h2 RxJS 
-    p Back to the component and in the home stretch!  To finish my component, I decided to practice my reactive programming. I know I want to listen for event fired when the submit button is pressed and eventually listen to the event from our service. I start with the ngSubmit EventEmitter and pipe this into some RxJS operators. The <span class="mono">tap</span> operator is used as a way to call some code that won't affect the observable. I'm setting the <span class="mono">beingSubmitted</span> variable to true so I can hide the submit button. Then I am use the 
+    p Back to the component and in the home stretch!  To finish my component, I decided to practice my reactive programming. I know I want to listen for the event fired when the submit button is pressed and eventually listen to the event from our service. I start with the <span class="mono">ngSubmit EventEmitter</span> and pipe this into some RxJS operators. The <span class="mono">tap</span> operator is used as a way to call some code that won't affect the observable. I'm setting the <span class="mono">beingSubmitted</span> variable to <span class="mono">true</span> so I can hide the submit button. Then I am use the 
       a(href="https://rxjs.dev/api/index/function/switchMap") <span class="mono">switchMap</span> operator
-      |  to start listening to the service's Observable. I then subscribe to this new observable with the using the <span class="mono">subscribe</span> method with an object containing a method to execute when the next event is sent. It will also be the last as the HTTP client returns a "finite" Observable. (
+      |  to start listening to the service's Observable. I then subscribe to this new observable using the <span class="mono">subscribe</span> method with an object containing a method to execute when the next event is sent. It will also be the last as the HTTP client returns a "finite" Observable. (
       a(href="https://netbasal.com/when-to-unsubscribe-in-angular-d61c6b21bad3") Read more on the subject here.
       |) But because <span class="mono">subscribe</span> is used in other cases also, the method is named <span class="mono">next</span>. The <span class="mono">error</span> method, you guessed it, handles if there was an error. 
     .code
@@ -282,6 +256,16 @@ block body
             });
         }
 
+    h2 Deployment
+    p You should use your regular way to deploy to Netlify. For me, that's pushing to my Github repo. In the output of the Netlify deploy you should see something relating to your form.
+
+    .shell: pre.
+      8:11:10 PM: Detected form fields:
+        - name
+        - email
+        - url
+        - comment
+
     h2 Conclusion 
     p It's been a journey for me to Angularize my site but I've learned a lot. I hope you learned a little bit. Source code follows:
 
@@ -295,7 +279,6 @@ block body
           &lt;input type="text" name="email"/&gt;
           &lt;input type="text" name="url"/&gt;
           &lt;input type="text" name="comment"/&gt;
-          &lt;input type="text" name="post-id"/&gt;
         &lt;/form&gt;
     
     .code(ngNonBindable)
@@ -315,7 +298,6 @@ block body
           &lt;textarea name=&quot;comment&quot; id=&quot;comment&quot; required=&quot;required&quot; [(ngModel)]=&quot;model.comment&quot; #comment=&quot;ngModel&quot; class=&quot;form-control&quot;&gt;&lt;/textarea&gt;
 
           &lt;button type=&quot;submit&quot; *ngIf=&quot;!beingSubmitted&quot; id=&quot;submitButton&quot; [disabled]=&quot;!name.valid || !comment.valid || (email.touched &amp;&amp; email.value != '' &amp;&amp; !email.valid)&quot;&gt;Submit&lt;/button&gt;
-
         &lt;/form&gt;
         &lt;div class=&quot;alert alert-danger&quot; *ngIf=&quot;isError&quot;&gt;There was an error with form submission: &#x007B;&#x007B; error &#x007D;&#x007D;&lt;/div&gt;
         &lt;div class=&quot;alert alert-success&quot; *ngIf=&quot;isSuccess&quot;&gt;Form submitted!&lt;/div&gt;
@@ -329,6 +311,27 @@ block body
       .code-heading netlify-forms.service.ts
       pre: code.language-typescript.
         {{ serviceCodeContent }}
+
+    .code
+      .code-heading Testing "server"
+      p.code-desc To test my form I use a simple NodeJS program to respond to my form request. To run it: <span style="font-family: monospace">node filename.js</span>
+      pre: code(ngNonBindable).language-javascript.
+        const http = require("http");
+
+        const host = 'localhost';
+        const port = 8000;
+
+        const requestListener = function (req, res) &#x007B;
+          console.log("received request", req);
+          res.setHeader("Access-Control-Allow-Origin", "*")
+          res.writeHead(200);
+          res.end("success");
+        };
+
+        const server = http.createServer(requestListener);
+        server.listen(port, host, () => &#x007B;
+            console.log(`Server is running on http://$&#x007B;host}:$&#x007B;port}`);
+        });
 
 
     app-nav(prevUrl= prevUrl, prevTitle= prevTitle, nextUrl= nextUrl, nextTitle= nextTitle)
