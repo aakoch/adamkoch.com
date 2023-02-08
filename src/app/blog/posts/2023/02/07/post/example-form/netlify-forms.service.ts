@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable, isDevMode } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { CommentFormData } from '../shared/comment-form/comment-form-data';
+import { ExampleFormData } from './example-form-data';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class NetlifyFormsService {
 
   constructor(private http: HttpClient) { }
 
-  submitFeedback(commentEntry: CommentFormData): Observable<any> {
+  submitFeedback(commentEntry: ExampleFormData): Observable<any> {
 
     const entry = new HttpParams({
       fromObject: {

@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { combineLatestWith, concatMap, debounceTime, filter, first, Observable, Subscription, switchMap, tap } from 'rxjs';
 import { NetlifyFormsService } from '../../blog/netlify-forms.service';
@@ -9,7 +9,7 @@ import { CommentFormData } from './comment-form-data';
   templateUrl: './comment-form.component.html',
   styleUrls: ['./comment-form.component.scss']
 })
-export class CommentFormComponent {
+export class CommentFormComponent implements AfterViewInit, OnInit {
   @ViewChild('formRef')
   form!: NgForm;
   @Input() postId = "unknown";

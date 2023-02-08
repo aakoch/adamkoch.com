@@ -10,10 +10,10 @@ import { PostComponent as PostComponent20211222 } from './2021/12/22/post/post.c
 import { PostComponent as PostComponent20220430 } from './2022/04/30/post/post.component';
 import { PostComponent as PostComponent20220619 } from './2022/06/19/post/post.component';
 import { PostComponent as PostComponent20220627 } from './2022/06/27/post/post.component';
-import { PostComponent as PostComponent20230130 } from './2023/01/30/post/post.component';
+import { PostComponent as PostComponent20230207 } from './2023/02/07/post/post.component';
 
 const routes: Routes = [
-  { path: '2023/01/30', title: 'How to submit a form with Angular on Netlify', component: PostComponent20230130 },
+  { path: '2023/02/07', title: 'How to submit a form with Angular on Netlify', component: PostComponent20230207 },
   { path: '2022/06/27', title: 'Roe v Wade', component: PostComponent20220627 },
   { path: '2022/06/19', title: 'Engineering Process', component: PostComponent20220619 },
   { path: '2022/04/30', title: 'Lucid Gloves', component: PostComponent20220430 },

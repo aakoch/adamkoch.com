@@ -1,10 +1,11 @@
-@import "../../../../node_modules/bootstrap/scss/functions";
-@import "../colors.scss";
-@import "../../../../node_modules/bootstrap/scss/variables";
-@import "../../../../node_modules/bootstrap/scss/mixins";
-@import "../../../../node_modules/bootstrap/scss/_alert.scss";
-@import "../../../../node_modules/bootstrap/scss/_buttons.scss";
-@import "../../../../node_modules/bootstrap/scss/_forms.scss";
+@import "../../../../../../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../../../../shared/colors.scss";
+@import "../../../../../../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../../../../../../node_modules/bootstrap/scss/mixins";
+@import "../../../../../../../../../node_modules/bootstrap/scss/_alert.scss";
+@import "../../../../../../../../../node_modules/bootstrap/scss/_buttons.scss";
+@import "../../../../../../../../../node_modules/bootstrap/scss/_forms.scss";
+@import "../../../../../../../../../node_modules/bootstrap/scss/_forms.scss";
 
 h1 {
   z-index: 9;

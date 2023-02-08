@@ -1,4 +1,4 @@
-export class CommentFormData {
+export class ExampleFormData {
   
   constructor(name: string, comment: string, formName: string = "comment-form") {
     this.name = name;

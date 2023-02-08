@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Host, Injectable, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import hljs from '../../../../../../../../node_modules/highlight.js/lib/common';
+import hljs from 'highlight.js/lib/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import code from './code.json';
 
@@ -12,13 +12,14 @@ import code from './code.json';
 })
 export class PostComponent implements AfterViewInit {
 
-
-  componentCodeContent?: string;
-  serviceCodeContent?: string;
+  componentCodeContent: string;
+  serviceCodeContent: string;
+  serviceStartCodeContent: string;
 
   constructor(private viewContainerRef: ViewContainerRef) {
     this.componentCodeContent = code.component;
     this.serviceCodeContent = code.service;
+    this.serviceStartCodeContent = code.serviceStart;
   }
 
   ngAfterViewInit() {
