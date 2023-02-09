@@ -106,10 +106,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular2:build:production"
+              "browserTarget": "adamkoch_com:build:production"
             },
             "development": {
-              "browserTarget": "angular2:build:development"
+              "browserTarget": "adamkoch_com:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -117,7 +117,7 @@
         "extract-i18n": {
           "builder": "ngx-pug-builders:extract-i18n",
           "options": {
-            "browserTarget": "angular2:build"
+            "browserTarget": "adamkoch_com:build"
           }
         },
         "test": {
