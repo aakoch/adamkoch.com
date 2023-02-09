@@ -1,6 +1,7 @@
 import fs from 'fs'
 import find from 'find'
 import path from 'path';
+import { simpleProjectRootDir } from '@foo-dog/utils'
 const __dirname = path.resolve();
 const REPLACE_KEYWORD = '### REPLACE ###';
 
@@ -98,7 +99,7 @@ find.file(/20.*post\.component\.pug$/, __dirname + '/src/app/blog/posts/', funct
     let dateSmushed = postStats.postedDate.replaceAll('-', '')
     
     postsData.push(postStats)
-    if (element !== '/Users/aakoch/projects/angular2/src/app/blog/posts/2021/09/08/post/post.component.pug') {
+    if (element !== path.join(simpleProjectRootDir(), './src/app/blog/posts/2021/09/08/post/post.component.pug')) {
       postPreviewArr.push(`postpreview(key='${dateSmushed}' postTitle='${postStats.title}' date='${postStats.postedDate}' link='/${path.relative(__dirname + '/src', path.dirname(element))}' name='${postStats.title}' excerpt='${postStats.excerpt}')`)
     }
   });
@@ -113,7 +114,7 @@ find.file(/20.*post\.component\.pug$/, __dirname + '/src/app/blog/posts/', funct
   files.forEach(file => {
     // let page = template.replace(REPLACE_KEYWORD, postPreviewArr.reverse().join('\n' + ' '.repeat(replaceLine.indexOf(REPLACE_KEYWORD))))
 
-    if (file !== '/Users/aakoch/projects/angular2/src/app/blog/posts/2021/09/08/post/post.component.pug') {
+    if (file !== path.join(simpleProjectRootDir(), './src/app/blog/posts/2021/09/08/post/post.component.pug')) {
       let str = fs.readFileSync(file).toString('utf8');
       let excerptPos = findPos(str.split('\n'), "- var excerpt = '")
 
