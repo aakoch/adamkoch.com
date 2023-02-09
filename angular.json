@@ -36,7 +36,11 @@
               },
               "src/_redirects",
               "src/_headers",
-              "src/meta",
+              {
+                "glob": "*",
+                "input": "src/meta/",
+                "output": "/"
+              },
               "src/img"
             ],
             "styles": [
