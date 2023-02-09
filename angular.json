@@ -41,7 +41,22 @@
                 "input": "src/meta/",
                 "output": "/"
               },
-              "src/img"
+              "src/img",
+              {
+                "glob": "favicon*",
+                "input": "src/",
+                "output": "/"
+              },
+              {
+                "glob": "apple-touch-icon.png",
+                "input": "src/",
+                "output": "/"
+              },
+              {
+                "glob": "android-chrome-*",
+                "input": "src/",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.scss",
