@@ -57,6 +57,11 @@
                 "glob": "android-chrome-*",
                 "input": "src/",
                 "output": "/"
+              },
+              {
+                "glob": "sitemap.xml",
+                "input": "src/",
+                "output": "/"
               }
             ],
             "styles": [
