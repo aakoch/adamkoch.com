@@ -1,3 +1,5 @@
+@import "../../shared/colors.scss";
+
 :host {
   display: flex;
   justify-content: center;
@@ -10,4 +12,6 @@ svg {
   max-width: 600px;
   flex: 1;
   translate: 0 19%;
+  fill: $white;
+  stroke: $dark;
 }

@@ -140,3 +140,9 @@ h3 {
     margin-left: 0;
   }
 }
+
+
+
+.post, .post img {
+  max-width: min(1500px, 100vw);
+}

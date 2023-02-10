@@ -65,11 +65,14 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/highlight.js/styles/github.css"
+              "node_modules/highlight.js/styles/github.css",
+              "src/landing_critical.scss"
             ],
             "scripts": [],
             "stylePreprocessorOptions":  {
+              "includePaths": [
+                "node_modules/bootstrap/scss"
+              ]
             }
           },
           "configurations": {

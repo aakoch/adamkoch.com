@@ -48,11 +48,11 @@ block body
     h2 Intro 
     //- a(href="setup") Skip
     p I've been using 
-      a(href="https://www.netlify.com/") Netlify
+      a(href="https://www.netlify.com/" title="Netlify") Netlify
       |  for over a year now but just recently learned Angular. I was struggling to get forms working on my Netlify site so I decided to share my success. In this article I'm going to give you the steps needed to get your Angular app submitting forms. As an extra bonus, since I'm also learning RxJS, I'll show you how to implement this form using declarative or reactive programming.
 
     p This article will go over 
-      a(href="https://angular.io/guide/forms#building-a-template-driven-form") Angular template-driven forms
+      a(href="https://angular.io/guide/forms#building-a-template-driven-form" title="Angular documentation on template-driven forms") Angular template-driven forms
       | . Using a reactive form would follow most of the same steps but I won't be discussing how to create a reactive form.
     
     p I'm going to assume some basic Angular knowledge and the know-how to create a component using <span class="mono">ng generate</span>. I'm also going to assume you are familiar with Netlify since I won't go through details such as setting up or deploying your site, although I will touch on it.
@@ -64,7 +64,7 @@ block body
     
     .code
       .code-heading index.html
-      pre.code-content: code.hljs.language-html(title="partial index.html").
+      pre.code-content: code.hljs.language-html.
         &lt;form name="example-form" netlify hidden&gt;
           &lt;input type="text" name="name"/&gt;
           &lt;input type="text" name="email"/&gt;

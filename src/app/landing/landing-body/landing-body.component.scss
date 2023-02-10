@@ -128,3 +128,42 @@ body {
     // margin: 0;
   }
 }
+
+.center-row {
+  background: linear-gradient(0deg, $white 50%, $primary 50%);
+}
+
+@import "functions";
+@import "../../shared/colors.scss";
+
+// $primary: #406275;
+// $secondary: #b89160;
+// $light: #dee3e6;
+// $white: tint-color($light, 70%);
+// $dark: #43464a;
+// $success: #448261;
+// $info: #406275;
+// $warning: #b89060;
+// $danger: #b87460;
+
+$navbar-padding-x: 2rem;
+
+$font-family-base: sans-serif;
+$link-color: $primary;
+$body-bg: $white;
+
+
+@import "variables";
+@import "mixins";
+@import "_maps.scss";
+@import "_alert.scss";
+@import "_button-group.scss";
+@import "_buttons.scss";
+@import "_card.scss";
+@import "_containers.scss";
+@import "_forms.scss";
+@import "_grid.scss";
+@import "_reboot.scss";
+@import "_root.scss";
+@import "_utilities.scss";
+@import "utilities/_api.scss";

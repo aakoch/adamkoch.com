@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { combineLatestWith, concatMap, debounceTime, filter, first, Observable, Subscription, switchMap, tap } from 'rxjs';
 import { NetlifyFormsService } from '../../blog/netlify-forms.service';

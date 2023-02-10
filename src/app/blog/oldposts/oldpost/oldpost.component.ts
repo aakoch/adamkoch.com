@@ -77,6 +77,11 @@ export class PostcardComponent implements OnInit {
           // console.log("el=", el);
           hljs.highlightBlock(el);
         });
+        document.querySelectorAll('code pre').forEach((el : any) => {
+          // console.log("el=", el);
+          el.innerHTML = el.innerHTML.replaceAll("<br>", "\n");
+          hljs.highlightBlock(el);
+        });
       }, 10);
       }, // success path
       error: error => this.content = error.message, // error path

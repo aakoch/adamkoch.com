@@ -25,10 +25,12 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="msapplication-TileImage" content="/cropped-brainscan-copy-2.jpg">
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
-  
-  <script defer async src="https://www.googletagmanager.com/gtag/js?id=UA-452464-5"></script>
-  <script defer async src="https://cse.google.com/cse.js?cx=6d55acc2bd38eaf1d"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+  </noscript>  
+  <script defer="true" async="true" src="https://www.googletagmanager.com/gtag/js?id=UA-452464-5"></script>
+  <script defer="true" async="true" src="https://cse.google.com/cse.js?cx=6d55acc2bd38eaf1d"></script>
 
   <script>
   window.dataLayer = window.dataLayer || [];
@@ -72,10 +74,12 @@
 
   <app-root></app-root>
   
-  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
   <script>
-    window.cookieconsent.initialise({palette:{popup:{background:"#406275"},button:{background:"#f5f7f8",text:"#406275"}}})
+    function loadCookieConsent() {
+      window.cookieconsent.initialise({palette:{popup:{background:"#406275"},button:{background:"#f5f7f8",text:"#406275"}}})
+    }
   </script>
+  <script defer async src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false" onload="loadCookieConsent()"></script>
 </body>
 
 </html>
