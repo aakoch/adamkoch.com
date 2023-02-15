@@ -30,6 +30,7 @@
               "src/favicon.ico",
               "src/assets",
               "src/fonts",
+              "src/sitemap.xml",
               {
                 "glob": "_redirects",
                 "input": "src",
@@ -55,11 +56,6 @@
               },
               {
                 "glob": "android-chrome-*",
-                "input": "src/",
-                "output": "/"
-              },
-              {
-                "glob": "sitemap.xml",
                 "input": "src/",
                 "output": "/"
               }
