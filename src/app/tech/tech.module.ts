@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TechIDigPageComponent } from './tech-i-dig-page/tech-i-dig-page.component';
-import { CodeComponent } from './code/code.component';
+import { CodePageComponent } from './code/code-page.component';
 import { JqComponent } from './code/jq/jq.component';
 import { ShellComponent } from './code/shell/shell.component'
 import { SharedModule } from '../shared/shared.module';
@@ -15,7 +15,7 @@ import { TechComponent } from './tech.component';
     ShellComponent,
     TechIDigPageComponent,
     JqComponent,
-    CodeComponent,
+    CodePageComponent,
   ],
   imports: [
     CommonModule,

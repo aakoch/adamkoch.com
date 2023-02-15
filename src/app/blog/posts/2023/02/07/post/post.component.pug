@@ -7,21 +7,6 @@ append variables
   - var commentsDisabled = false
 
 append head
-  script(type="application/ld+json").
-    {
-      "@context": "https://schema.org",
-      "@type": "NewsArticle",
-      "headline": "How to submit a template form with Angular on Netlify using RxJS Observables",
-      "image": [
-       ],
-      "datePublished": "2023-02-07T18:44-05:00",
-      "dateModified": "2023-02-07T18:44-05:00",
-      "author": [{
-        "@type": "Person",
-        "name": "Adam Koch",
-        "url": "https://www.adamkoch.com/"
-      }]
-    }
   style(type="text/css").
     blockquote {
       padding-left: 1vw;
@@ -79,22 +64,20 @@ block body
     h3 Data Class
     p Next, create an Angular component if you haven't done so already. In the same folder let's create a class that will hold the data for our form. I've called mine <span class="mono">ExampleFormData</span> with 3 required fields and 2 optional fields. The important field here is the <span class="mono">form-name</span> field. This is needed when submitting the form to match the name in your hidden form you created earlier. 
 
-    .code
-      .code-heading Our data class, example-form-data.ts 
-      pre.code-content: code.language-typescript.
-        export class ExampleFormData &#x007B;
-          constructor(name: string, comment: string, formName: string = "example-form") &#x007B;
-            this.name = name;
-            this.comment = comment;
-            this["form-name"] = formName
-          &#x007D;
-
-          name: string;
-          email?: string;
-          url?: string;
-          comment: string;
-          "form-name": string;
+    app-code("[heading]"="'Our data class, example-form-data.ts'" "[language]"="'typescript'"): pre.
+      export class ExampleFormData &#x007B;
+        constructor(name: string, comment: string, formName: string = "example-form") &#x007B;
+          this.name = name;
+          this.comment = comment;
+          this["form-name"] = formName
         &#x007D;
+
+        name: string;
+        email?: string;
+        url?: string;
+        comment: string;
+        "form-name": string;
+      &#x007D;
 
     h3 Template
     p Now we're going to set up our HTML code for our component. Right out of the gate we have a form field with the name of our form, a reference to the form that we'll use later in our Typescript.
@@ -170,64 +153,54 @@ block body
 
     p Next we create our <span class="mono">model</span> variable and assign it to a new instance of it. Instead of referencing the name of the Netlify form in our template, I'm doing it here since the value won't change. (Although my class also defaults to it.) Don't forget the <span class="mono">import</span> statement to your class.
     
-    .code(ngNonBindable)
-      .code-heading Form model
-      pre.code-content: code.language-typescript.
-        import &#x007B; ExampleFormData &#x007D; from './example-form-data';
-        ...
-        model: ExampleFormData = &#x007B; name: '', comment: '', 'form-name': 'post-comment-form', email: '', url: '' };
+    app-code("[heading]"="'Form model'" "[language]"="'typescript'").
+      import &#x007B; ExampleFormData &#x007D; from './example-form-data';
+      ...
+      model: ExampleFormData = &#x007B; name: '', comment: '', 'form-name': 'post-comment-form', email: '', url: '' };
 
     p To finish implementing the component we're going to need a service that we can call. Let's jump over to this service I am calling NetlifyFormsService. 
 
     h2 Forms Service
     p We're going to write a service that we can call from our form component. This service will handle the actual HTTP call. Create a new file called netlify-forms.service.ts. We'll need to inject the HttpClient as well as make our service itself injectable. We're also going to use our data class and a few other things. 
-    .code
-      .code-heading netlify-forms.service.ts start
-      pre: code.language-typescript.
-        {{ serviceStartCodeContent }}
+    app-code("[heading]"="'netlify-forms.service.ts start'" "[language]"="'typescript'" "[body]"="serviceStartCodeContent")
 
     p The meat of the service we'll put into a method called <span class="mono">submitFeedback</span>. In here we'll use the spread operator to put our form class into a new <span class="mono">HttpParams</span> class needed by the <span class="mono">HttpClient</span>. Then we call the <span class="mono">post</span> method on <span class="mono">HttpClient</span>. For testing purposes I'm using <span class="mono">isDevMode()</span>, an Angular method to determine whether we are deployed in production or not. For testing I'm standing up a separate server listening on port 8000 that just responds with a simple 200. Otherwise, you'll want to use '/' as the URL to post your data. Another important piece is you need to send your form URL encoded so add the "Content-Type" header to your request. Lastly we'll catch any errors by using the 
       a(href="https://rxjs.dev/api/index/function/catchError") <span class="mono">catchError</span> RxJS operator. 
 
       
-    .code
-      .code-heading submitFeedback method
-      pre: code.language-typescript.
-        submitFeedback(commentEntry: ExampleFormData): Observable&lt;any&gt; &#x007B;
-
-          const entry = new HttpParams(&#x007B;
-            fromObject: &#x007B;
-              ...commentEntry
+    app-code("[heading]"="'submitFeedback method'" "[language]"="'typescript'"): pre.
+      submitFeedback(commentEntry: ExampleFormData): Observable&lt;any&gt; &#x007B;
+        const entry = new HttpParams(&#x007B;
+          fromObject: &#x007B;
+            ...commentEntry
+          }
+        });
+        return this.http
+          .post(
+            isDevMode() ? 'http://localhost:8000/' : '/',
+            entry.toString(),
+            &#x007B;
+              headers: &#x007B; 'Content-Type': 'application/x-www-form-urlencoded' },
+              responseType: 'text'
             }
-          });
-
-          return this.http
-            .post(
-              isDevMode() ? 'http://localhost:8000/' : '/',
-              entry.toString(),
-              &#x007B;
-                headers: &#x007B; 'Content-Type': 'application/x-www-form-urlencoded' },
-                responseType: 'text'
-              }
-            )
-            .pipe(catchError(this.handleError));
-        }
+          )
+          .pipe(catchError(this.handleError));
+      }
 
     p To finalize our service we implement the handleError method which will throw an error with our custom error message.
-    .code
-      .code-heading handleError method
-      pre: code.language-typescript.
-        private handleError(err: HttpErrorResponse) &#x007B;
-          let errMsg = '';
 
-          if (err.error instanceof ErrorEvent) &#x007B;
-            errMsg = `A client-side error occurred: $&#x007B;err.error.message}`;
-          } else &#x007B;
-            errMsg = `A server-side error occurred. Code: $&#x007B;err.status}. Message: $&#x007B;err.message}`;
-          }
+    app-code("[heading]"="'handleError method'" "[language]"="'typescript'"): pre.
+      private handleError(err: HttpErrorResponse) &#x007B;
+        let errMsg = '';
 
-          return throwError(() => new Error(errMsg));
+        if (err.error instanceof ErrorEvent) &#x007B;
+          errMsg = `A client-side error occurred: $&#x007B;err.error.message}`;
+        } else &#x007B;
+          errMsg = `A server-side error occurred. Code: $&#x007B;err.status}. Message: $&#x007B;err.message}`;
         }
+
+        return throwError(() => new Error(errMsg));
+      }
 
     h2 RxJS 
     p Back to the component and in the home stretch!  To finish my component, I decided to practice my reactive programming. I know I want to listen for the event fired when the submit button is pressed and eventually listen to the event from our service. I start with the <span class="mono">ngSubmit EventEmitter</span> and pipe this into some RxJS operators. The <span class="mono">tap</span> operator is used as a way to call some code that won't affect the observable. I'm setting the <span class="mono">beingSubmitted</span> variable to <span class="mono">true</span> so I can hide the submit button. Then I am use the 
@@ -235,26 +208,25 @@ block body
       |  to start listening to the service's Observable. I then subscribe to this new observable using the <span class="mono">subscribe</span> method with an object containing a method to execute when the next event is sent. It will also be the last as the HTTP client returns a "finite" Observable. (
       a(href="https://netbasal.com/when-to-unsubscribe-in-angular-d61c6b21bad3") Read more on the subject here.
       |) But because <span class="mono">subscribe</span> is used in other cases also, the method is named <span class="mono">next</span>. The <span class="mono">error</span> method, you guessed it, handles if there was an error. 
-    .code
-      .code-heading Component's ngAfterViewInit method
-      pre: code.language-typescript.
-        ngAfterViewInit() &#X007B;
-          this.form.ngSubmit
-            .pipe(
-              tap(() => this.beingSubmitted = true),
-              switchMap(() => this.netlifyForms.submitFeedback(this.model as ExampleFormData)),
-            )
-            .subscribe(&#X007B;
-              next: () => &#X007B;
-                this.beingSubmitted = false;
-                this.isSuccess = true;
-              },
-              error: (err) => &#X007B;
-                this.isError = true;
-                this.error = err;
-              }
-            });
-        }
+
+    app-code("[heading]"="'Component\\\'s ngAfterViewInit method'" "[language]"="'typescript'"): pre.
+      ngAfterViewInit() &#X007B;
+        this.form.ngSubmit
+          .pipe(
+            tap(() => this.beingSubmitted = true),
+            switchMap(() => this.netlifyForms.submitFeedback(this.model as ExampleFormData)),
+          )
+          .subscribe(&#X007B;
+            next: () => &#X007B;
+              this.beingSubmitted = false;
+              this.isSuccess = true;
+            },
+            error: (err) => &#X007B;
+              this.isError = true;
+              this.error = err;
+            }
+          });
+      }
 
     h2 Deployment
     p You should use your regular way to deploy to Netlify. For me, that's pushing to my Github repo. In the output of the Netlify deploy you should see something relating to your form.

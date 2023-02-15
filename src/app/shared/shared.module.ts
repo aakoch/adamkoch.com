@@ -19,6 +19,7 @@ import {
 import { faFeather, faIdCard, faMicrochip, faPaintBrush, faPencilRuler, faCube, faArchive, faCodeBranch, faExternalLinkAlt, faAngleDoubleRight, faSquare, faArrowUp, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { MinicardtestComponent } from '../landing/minicardtest/minicardtest.component';
+import { CodeComponent } from './code/code.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MinicardtestComponent } from '../landing/minicardtest/minicardtest.comp
     ScrollListenerDirective,
     FooterComponent,
     NavComponent,
+    CodeComponent,
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,8 @@ import { MinicardtestComponent } from '../landing/minicardtest/minicardtest.comp
     PageheaderComponent,
     ScrollListenerDirective,
     NavComponent,
-    FontAwesomeModule
+    FontAwesomeModule,
+    CodeComponent,
   ]
 })
 export class SharedModule {
