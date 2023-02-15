@@ -12,16 +12,17 @@ export class HrefDirective implements OnInit {
     // console.log("setting href is " + url);
   // }
 
-  constructor(
-    private viewContainer: ViewContainerRef) {
+  constructor(private viewContainer: ViewContainerRef) {
   }
 
   ngOnInit(): void {
-    const componentRef = this.viewContainer.createComponent(FaIconComponent);
-    componentRef.instance.icon = faExternalLinkAlt;
-    componentRef.instance.title = "External link indicator";
-    componentRef.instance.a11yRole = "img";
-    componentRef.instance.render();
+    if (!this.viewContainer.element.nativeElement.hasAttribute("ignoreDirective")) {
+      const componentRef = this.viewContainer.createComponent(FaIconComponent);
+      componentRef.instance.icon = faExternalLinkAlt;
+      componentRef.instance.title = "External link indicator";
+      componentRef.instance.a11yRole = "img";
+      componentRef.instance.render();
+    }
   }
 
 }

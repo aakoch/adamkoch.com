@@ -1,13 +1,18 @@
-<div class="card" (click)="goto(card.link, card.isExternal)">
+<div class="card" role="button" tabindex="0">
   <div class="card-body">
       <div class="link">
-        <a (click)="goto(card.link, card.isExternal)" [title]="card.isExternal ? 'Be careful out there' : ''">
-          <i class="fas fa-angle-double-right" *ngIf="!card.isExternal"></i>
-          <fa-icon [icon]="angleDoubleRight" *ngIf="!card.isExternal"></fa-icon>
-          <fa-icon [icon]="externalLinkAlt" *ngIf="card.isExternal" data-external></fa-icon>
+        <a *ngIf="!card.isExternal" routerLink="{{ card.link }}" tabindex="-1">
+          <fa-icon [icon]="angleDoubleRight"></fa-icon>
+        </a>
+        <a *ngIf="card.isExternal" href="{{ card.link }}" ignoreDirective tabindex="-1">
+          <fa-icon [icon]="externalLinkAlt" data-external></fa-icon>
         </a>
       </div>
-    <h4 class="cardTitle"><fa-icon class="card-img-top" [icon]="card.icon"></fa-icon>{{ card.title }}</h4>
+      <h4 class="cardTitle">
+        <fa-icon class="card-img-top" [icon]="card.icon"></fa-icon>
+        <a *ngIf="!card.isExternal" routerLink="{{ card.link }}" tabindex="-1">{{ card.title }}</a>
+        <a *ngIf="card.isExternal" href="{{ card.link }}" ignoreDirective tabindex="-1">{{ card.title }}</a>
+      </h4>
     <p class="card-text">{{ card.description }}</p>
   </div>
 </div>

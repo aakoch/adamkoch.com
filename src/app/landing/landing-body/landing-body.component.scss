@@ -1,3 +1,5 @@
+@import "../../shared/colors.scss";
+
 :host {
   display: contents;
 }
@@ -6,43 +8,14 @@
   filter: invert(white, 50%)
 }
 
-$primary: #406275;
-$secondary: #b89160;
-$light: #dee3e6;
-$white: #f5f7f8;
-$dark: #43464a;
-$success: #448261;
-$info: #406275;
-$warning: #b89060;
-$danger: #b87460;
-
 body {
   container-type: inline-size;
-}
-
-
-.page-flex {
-  // display: flex;
-  // flex-direction: row;
-  // flex-wrap: wrap;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr .2fr .1fr .3fr;
-}
-
-.page-flex {
-  flex: 1;
 }
 
 .page-grid {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr .2fr .1fr .3fr;
-}
-
-.adamis {
-  width: 50%;
-  margin-right: 50em;
 }
 
 #adamexcerpt {
@@ -64,7 +37,6 @@ body {
   order: 1;
 }
 
-
 @media screen and (max-width: 767px) {
 
   .page-header {
@@ -74,10 +46,7 @@ body {
     }
   }
 
-  .page-flex, .page-grid {
-    // display: flex;
-    // flex-direction: row;
-    // flex-wrap: wrap;
+  .page-grid {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: .1fr 1fr .1fr .3fr;
@@ -100,51 +69,45 @@ body {
     flex-direction: column;
     flex-wrap: wrap;
   }
-
 }
-
 
 .cards-container {
   display: flex;
   gap: max(1vw, 1rem);
 
   flex-flow: row wrap;
-  // margin: 0 auto;
   justify-content: center;
 }
 
 
 #moreresources {
-  // width: 50%;
   margin: 1em 3em;
   text-align: center;
-  // margin-bottom: 1em;
   min-width: 96%;
   order: 3;
+
+}
+@media screen and (max-width: 1190px) {
+  #moreresources {
+    // prevents horizontal scrollbar at certain widths
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 @media screen and (max-width: 767px) {
   #moreresources {
     min-width: unset;
-    // margin: 0;
+
   }
 }
 
-.center-row {
+.row.center-row {
   background: linear-gradient(0deg, $white 50%, $primary 50%);
+  // prevents a horizontal scrollbar
+  margin-right: 0;
 }
 
 @import "functions";
-@import "../../shared/colors.scss";
-
-// $primary: #406275;
-// $secondary: #b89160;
-// $light: #dee3e6;
-// $white: tint-color($light, 70%);
-// $dark: #43464a;
-// $success: #448261;
-// $info: #406275;
-// $warning: #b89060;
-// $danger: #b87460;
 
 $navbar-padding-x: 2rem;
 

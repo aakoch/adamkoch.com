@@ -1,5 +1,21 @@
 // @import '../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+// @import "functions";
 @import '../shared/colors.scss';
+
+// @import "variables";
+// @import "mixins";
+// @import "_maps.scss";
+// @import "_alert.scss";
+// @import "_button-group.scss";
+// @import "_buttons.scss";
+// @import "_card.scss";
+// @import "_containers.scss";
+// @import "_forms.scss";
+// @import "_grid.scss";
+// @import "_reboot.scss";
+// @import "_root.scss";
+// @import "_utilities.scss";
+// @import "utilities/_api.scss";
 
 :host {
   // background-clip: border-box;
@@ -12,15 +28,22 @@
 
   .card {
     display: flex;
-
   }
 
 
-  &:hover {
-    .card {
-    cursor: pointer;
-    border-color: lighten($primary, 20%);
-    transition: .2s ease-in-out all;
+  .card {
+
+    &:hover,
+    &:focus-visible {
+      cursor: pointer;
+      border-color: lighten($primary, 20%);
+      transition: .2s ease-in-out all;
+
+      outline: 0;
+    }
+
+    &:focus-visible {
+      box-shadow: 0px 0px 2px 1px $primary;
     }
   }
 
@@ -51,11 +74,33 @@
       // transition: .2s ease-in-out all;
     }
 
+    a {
+      text-decoration: none;
+      color: $dark;
+
+      // &:focus-visible {
+      //   outline: 0;
+      // }
+
+      // &:active, &:focus, &:focus-visible {
+      //   // $primary
+      //   color: $btn-link-hover-color;
+      //   background-color: var(--bs-btn-hover-bg);
+      //   border-color: var(--bs-btn-hover-border-color);
+      //   outline: 0;
+      //   box-shadow: var(--bs-btn-focus-box-shadow);
+      // }
+    }
+
     .link {
       float: right;
       max-height: 20px;
       position: relative;
       top: -10px;
+
+      a {
+        display: block;
+      }
     }
   }
 
@@ -76,5 +121,29 @@
     font-size: 2em;
     transition: .2s ease-in-out all;
   }
+}
 
+@media (prefers-reduced-motion) {
+  :host {
+    .card {
+      &:hover,
+      &:focus-visible {
+        transition: none;
+      }
+    }
+
+    .card-body {
+      &:hover {
+        a i.fas,
+        a fa-icon:not([data-external]) {
+          transform: none;
+          transition: none;
+        }
+        a fa-icon[data-external] {
+          transform: none;
+          transition: none;
+        }
+      }
+    }
+  }
 }

@@ -30,6 +30,11 @@ import { HrefDirective } from './tech/href.directive';
 //   faMedium,
 // } from '@fortawesome/free-brands-svg-icons';
 
+export function prefersReducedMotion(): boolean {
+  const mediaQueryList = window.matchMedia("(prefers-reduced-motion)");
+  return mediaQueryList.matches;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +52,9 @@ import { HrefDirective } from './tech/href.directive';
   ],
   imports: [
     AppRoutingModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule.withConfig({
+      disableAnimations: prefersReducedMotion()
+    }),
     BrowserModule,
     FormsModule,
     NgOptimizedImage,
