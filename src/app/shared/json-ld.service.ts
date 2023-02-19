@@ -27,22 +27,14 @@ export class JsonLdService {
 			url         :
 				'https://adamkoch.com',
 			name        :
-				'Adam Koch',
-			contactPoint: {
-				'@type'    :
-					'ContactPoint',
-				telephone  :
-					'000000000',
-				contactType:
-					'Customer service'
-			}
+				'Adam Koch'
 		});
 
 	constructor(@Inject(DOCUMENT) private _document: Document) {}
 
 	removeStructuredData(): void {
 		const els: Element[] = [];
-		[ 'structured-data', 'structured-data-org' ].forEach(c => {
+		[ 'structured-data', 'structured-breadcrumb', 'structured-data-org' ].forEach(c => {
 			els.push(...Array.from(this._document.head.getElementsByClassName(c)));
 		});
 		els.forEach(el => this._document.head.removeChild(el));
@@ -60,7 +52,7 @@ export class JsonLdService {
 		script.setAttribute('class', className);
 		script.type = JsonLdService.scriptType;
 		script.text = JSON.stringify(schema);
-    console.log("wrote to script.txt: ", JSON.stringify(schema));
+    console.log("wrote to script.text: ", JSON.stringify(schema));
 		if (shouldAppend) {
 			this._document.head.appendChild(script);
 		}

@@ -28,6 +28,13 @@ script(type="application/ld+json").
 
   .projects
 
+    +project('Team Elijah', 'Completed')
+      p This was created and put on some merch.
+      img.lg(src="/assets/design3_80.png" srcset="/assets/design3_80.png 1x, /assets/design3_80.2x.png 2x" width="100%")
+
+    +project('Coat of Arms', 'Completed')
+      img.lg(src="/assets/elftmann_coat_of_arms_new.png" title="Coat of arms"  width="100%")
+
     +project('Images', 'On going')
       h4 
       div As featured on 
@@ -38,9 +45,6 @@ script(type="application/ld+json").
         img(src="/assets/oak_leaf2.png")
         img(src="/assets/ornament.png")
         img(src="/assets/snowman.png")
-
-    +project('Team Elijah', 'Completed')
-      img.lg(src="/assets/design3_80.png" srcset="/assets/design3_80.png 1x, /assets/design3_80.2x.png 2x" width="100%")
 
     +project('A-words', 'Completed')
       p Currently hosted on 
@@ -61,16 +65,16 @@ script(type="application/ld+json").
 
     +project('Sonshine Preschool', 'Completed')
       p Just a proof of concept turned sticker for my wife's prior place of employment
-      img.md(src="/assets/sonshine.png" width="100%")
+      img.md(src="/assets/sonshine.png" title="Sticker" width="100%")
 
     +project('Troop 308 Website', 'Completed')
       a(href="https://www.troop308omaha.com/") Website
 
     +project('Troop 308 T-Shirt Design', 'Completed')
-      img.md(src="/assets/survival-tshirt.svg")
+      img.md(src="/assets/survival-tshirt.svg" title="Logo for a t-shirt")
 
     +project('Observable Parallel Sets Chart on Troop 308 Popcorn Sales for 2019', 'Completed')
       figure
-        img.md(src="/assets/observable_scouts.png" srcset="/assets/observable_scouts.png 2x" width="100%")
+        img.md(src="/assets/observable_scouts.png" srcset="/assets/observable_scouts.png 2x" width="100%" title="Graph showing popcorn sales")
         figcaption
           a(href="https://observablehq.com/@aakoch/popcorn-sales-troop308-2019") Visit on ObservableHQ.com

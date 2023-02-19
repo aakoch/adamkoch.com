@@ -17,17 +17,6 @@ mixin project(title, status, type)
           .status-wrapper Status:
             span.status #{status}
 
-script(type="application/ld+json").
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Projects"
-    }]
-  }
-
 .not-a-container
   h1 #{title}
 
