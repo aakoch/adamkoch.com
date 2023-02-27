@@ -8,11 +8,11 @@
           <fa-icon [icon]="externalLinkAlt" data-external></fa-icon>
         </a>
       </div>
-      <h4 class="cardTitle">
+      <h3 class="cardTitle">
         <fa-icon class="card-img-top" [icon]="card.icon"></fa-icon>
         <a *ngIf="!card.isExternal" routerLink="{{ card.link }}" tabindex="-1">{{ card.title }}</a>
         <a *ngIf="card.isExternal" href="{{ card.link }}" ignoreDirective tabindex="-1">{{ card.title }}</a>
-      </h4>
+      </h3>
     <p class="card-text">{{ card.description }}</p>
   </div>
 </div>

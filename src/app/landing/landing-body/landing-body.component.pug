@@ -5,10 +5,11 @@
       | are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
 
   #main
-    .row.center-row.gy-4
-      app-landing-card-list.cards-container([cards]="cards")
+    h2 Main Content
+    .cards-container
+      app-card("[card]"="card" "[first]"="isFirst" "*ngFor"="let card of cards; index as i; first as isFirst" "[ngClass]"="'card-container'")
 
   #moreresources
-    h3 More Stuff
+    h2 More Stuff
   app-minicard-list([links]="links")
 //- #end.col.g-5

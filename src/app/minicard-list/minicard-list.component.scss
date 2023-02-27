@@ -28,6 +28,7 @@
     :nth-child(2n + 1) {
       grid-column-start: 1;
     }
+
   }
 
   @media(max-width: 632px) {
@@ -41,5 +42,6 @@
     >* {
       max-width: unset;
     }
+    --min-width: 100px;
   }
 }

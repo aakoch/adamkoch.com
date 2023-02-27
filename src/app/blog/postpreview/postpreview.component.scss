@@ -1,5 +1,24 @@
 // @import url('../../../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
 
+
+@import "./functions";
+@import "../../shared/colors.scss";
+
+@import "./variables";
+@import "./mixins";
+@import "./_maps.scss";
+// @import "./_alert.scss";
+@import "./_button-group.scss";
+@import "./_buttons.scss";
+@import "./_card.scss";
+@import "./_containers.scss";
+// @import "./_forms.scss";
+// @import "./_grid.scss";
+@import "./_reboot.scss";
+@import "./_root.scss";
+
+// @import "./_grid.scss";
+
 $primary: #406275;
 div.date {
   margin-bottom: 10px;
@@ -10,7 +29,6 @@ a {
 code {
   white-space: pre;
 }
-
 .linkies {
   display: contents;
     &:hover {

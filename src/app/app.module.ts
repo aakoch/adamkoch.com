@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { LandingBodyComponent } from './landing/landing-body/landing-body.component';
 import { CardComponent } from './card/card.component';
 import { MinicardComponent } from './minicard/minicard.component';
-import { LandingCardListComponent } from './landing/landing-card-list/landing-card-list.component';
 import { LandingHeaderComponent } from './landing/landing-header/landing-header.component';
 import { MinicardListComponent } from './minicard-list/minicard-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,7 +40,6 @@ export function prefersReducedMotion(): boolean {
     CardComponent,
     ContactComponent,
     LandingBodyComponent,
-    LandingCardListComponent,
     LandingComponent,
     LandingHeaderComponent,
     MinicardComponent,
