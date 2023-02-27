@@ -4,7 +4,7 @@ import { Card } from '../card/card.model';
 
 @Component({
   selector: 'app-minicard-list',
-  templateUrl: './minicard-list.component.html',
+  templateUrl: './minicard-list.component.pug',
   styleUrls: ['./minicard-list.component.scss']
 })
 export class MinicardListComponent {

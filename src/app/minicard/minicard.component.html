@@ -1,4 +1,4 @@
-<div class="card" role="button" tabindex="0">
+<div class="card" role="button" tabindex="0" (click)="goto(card.link, card.isExternal)">
   <div class="card-body">
       <div class="link">
         <a *ngIf="!card.isExternal" routerLink="{{ card.link }}" tabindex="-1">

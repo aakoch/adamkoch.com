@@ -15,12 +15,12 @@ export class MinicardComponent {
   angleDoubleRight: IconProp = faAngleDoubleRight;
   constructor(private router: Router, private window: Window) {
   }
-  // goto(gotoLocation: string, external: boolean) {
-  //   if (external) {
-  //     window.location.href = gotoLocation;
-  //   }
-  //   else {
-  //     this.router.navigate([gotoLocation]);
-  //   }
-  // }
+  goto(gotoLocation: string, external: boolean) {
+    if (external) {
+      window.location.href = gotoLocation;
+    }
+    else {
+      this.router.navigateByUrl(gotoLocation);
+    }
+  }
 }
