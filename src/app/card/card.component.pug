@@ -1,0 +1,20 @@
+.card("(click)"="goto(card.url)" "(mouseenter)"="onHover()" "(mouseleave)"="doMouseLeave()")
+
+  .new-corner("*ngIf"="first && showNew()") New!
+
+  .icon-container
+    <fa-icon class="card-img-top" [icon]="['fas', card.icon]" [@iconFlipState]="iconFlipState"></fa-icon>
+
+  .card-body
+    <h3 class="card-title">{{ card.title }}</h3>
+    <p class="card-text">{{ card.description }}</p>
+
+  .card-footer.stacked
+    div
+      .btn-group("*ngIf"="first")
+        a("[routerLink]"="card.buttons[0].url" "[title]"="card.buttons[0].title" class="btn btn-primary") {{ card.buttons[0].label }}
+        a("[routerLink]"="card.buttons[1].url" class="btn btn-primary" title="All Posts") All
+    div
+      a("[routerLink]"="card.url" "[title]"="card.title" class="btn btn-primary" "*ngIf"="!first") {{ card.buttons[0].label }}
+      .card-footer-text("*ngIf"="card.tagline")
+        small {{card.tagline}}

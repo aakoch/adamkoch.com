@@ -1,98 +1,49 @@
 // @import url('../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
 @import '../shared/colors.scss';
 
-
-// :host {
-//   display: contents;
-// }
-
 small {
   color: $dark;
 }
 
-// powell:
 .stacked {
   display: grid;
 }
 
-.stacked > * {
+.stacked>* {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-  // background-color: transparent;
 }
 
+:host {
 
-
-// .card-body {
-//   background: white;
-//   align-self: end;
-//   margin: .5rem .5rem 2rem;
-//   padding: .5rem;
-//   box-shadow: 0 .25rem 1rem rgb(0 0 0 / .1);
-// }
-
-.card {
-
-  // powell:
-  // border: 3px solid hotpink;
-  // aspect-ratio: 1 / 1.5;
-
-  // fa-icon {
-  //   aspect-ratio: 1 / 1;
-  // }
-
-
+  min-width: 16rem;
 
   box-shadow: 12px 12px 2px 1px rgba(67, 70, 74, .5);
   border: 1px solid rgba(0, 0, 0, .175);
   border-top: 0;
   border-radius: 10px;
-
-  // padding-bottom: 1rem;
-
-
-  // height: 20rem;
-
-  // min-width: max(20vw, 375px);
-
-
   overflow: hidden;
   container-type: inline-size;
-
-
   display: grid;
   grid-auto-flow: row;
   grid-template-rows: min-content;
 
   background-color: $white;
 
-  // .card-title {
-  //   margin-bottom: var(--bs-card-title-spacer-y);
-  //   }
-    h3 {
-        font-size: 1.5rem;
-    }
-
-    // h6, h5, h4, h3, h2, h1 {
-    //     margin-top: 0;
-    //     margin-bottom: 0.5rem;
-    //     font-weight: 500;
-    //     line-height: 1.2;
-    // }
-
+  h3 {
+    font-size: 1.5rem;
+  }
 
   .card-footer {
-    > * > .btn, 
-    > * > .btn-group {
+
+    >*>.btn,
+    >*>.btn-group {
       position: absolute;
       right: 1rem;
       bottom: 1rem;
     }
 
-    
-    
-
-    > .btn-group > .btn:nth-child(1) {
+    >.btn-group>.btn:nth-child(1) {
       border-right: 2px solid #43464A66;
     }
   }
@@ -118,22 +69,17 @@ small {
     }
   }
 
-  // @container (max-width: 768px) {
-  //   .card-footer {
-  //     display: block;
-  //   }
-  // }
-
   .card-footer-text:last-child {
     border-radius: 0 0 10px 10px;
   }
-    .card-footer-text {
-        padding: 8px 16px;
-        // color: gray;
-        background-color: rgba(0, 0, 0, 0.05);
-        border-top: 1px solid rgba(0, 0, 0, .175);
-        color: #43464a;
-    }
+
+  .card-footer-text {
+    padding: 8px 16px;
+    // color: gray;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, .175);
+    color: #43464a;
+  }
 
 
   .icon-container {
@@ -149,7 +95,6 @@ small {
     color: $primary;
     background-color: $white;
     font-size: 3em;
-    // text-align: center;
     display: inherit;
     margin: 0 auto;
     width: fit-content;
@@ -157,8 +102,5 @@ small {
 
   &:hover {
     cursor: pointer;
-    // .fas {
-    //   animation: rotation .5s;
-    // }
   }
 }

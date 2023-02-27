@@ -6,7 +6,7 @@ import { faFeather, faPencilRuler, faArchive } from '@fortawesome/free-solid-svg
 
 @Component({
   selector: 'app-card',
-  templateUrl: './card.component.html',
+  templateUrl: './card.component.pug',
   styleUrls: ['./card.component.scss'],
   animations: [
     trigger('iconFlipState', [
