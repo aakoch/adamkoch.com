@@ -1,0 +1,5 @@
+{
+  "setup": "export default makeScene2D(function* (view) {",
+  "add": "view.add(\n  <Layout direction={'column'}\n    ref={group2}\n    position={() => [0, -screenHeight]}\n    layout\n    justifyContent={'start'}\n    alignItems={'center'}\n    gap={20}\n    opacity={recordOpacity}\n  >\n    <Circle\n      ref={recordCircle}\n      scale={.7}\n      width={100}\n      height={100}\n      fill={RED}\n    />\n    <Txt\n      x={-150}\n      y={-30}\n      {...textStyle}\n      fill={RED}\n    >Incoming Record</Txt>\n  </Layout>);",
+  "animate": "yield* chain(\n  waitFor(1),\n  sequence(.2, outerLayout().opacity(1, 1.5),\n    windowRect().ripple(1),),\n  waitFor(.5),\n  all(\n    timeText().opacity(1, .8),\n    timeText().position(() => [windowRectSignal() / -2, -108], 1),\n  ),\n  waitFor(1),\n  timeText().opacity(0, 1),\n  timeText().text(() => `Defined time: ${(windowRectSignal() / 10).toFixed(0)}`, 0.3),\n  timeText().opacity(1, 1),\n  waitFor(1),\n  windowRectSignal(400, 2, easeInOutCubic),\n  waitFor(.3),\n  windowRectSignal(600, 1.5, easeInOutCubic),\n  waitFor(.3),\n  windowRectSignal(500, 1, easeInOutCubic),\n  waitFor(1),\n);"
+}

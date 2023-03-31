@@ -1,0 +1,12 @@
+figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  img {
+    flex: 1;
+  }
+}
+figcaption {
+  text-align: center;
+}

@@ -19,7 +19,7 @@ import { ExampleFormComponent } from './posts/2023/02/07/post/example-form/examp
     CommentComponent,
     PostComponent,
     PostComponent20221218,
-    ExampleFormComponent
+    ExampleFormComponent,
   ],
   imports: [
     CommonModule,

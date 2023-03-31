@@ -75,7 +75,7 @@ function readPostStats(filename) {
   let title = findPostTitle(str.split('\n'));
   let excerpt = findPostExcerpt(str.split('\n'));
 
-  return { postedDate: postedDate, title: title, excerpt: excerpt }
+  return { postedDate, title, excerpt }
 }
 
 let postPreviewArr = []

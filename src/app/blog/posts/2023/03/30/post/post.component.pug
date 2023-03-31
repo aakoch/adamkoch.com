@@ -1,0 +1,86 @@
+append variables
+  - var title = "Motion Canvas Fun"
+  - var posted = '2023-03-30'
+  - var excerpt = 'Fun animation tool'
+  - var commentsDisabled = false
+  - var prevUrl = '../../../2023/02/07'
+  - var prevTitle = 'How to submit a template form with Angular on Netlify using RxJS Observables'
+
+append head
+  style(type="text/css").
+    blockquote {
+      padding-left: 1vw;
+      border-left: 2px solid #43464a;
+      margin-left: 1vw;
+    }
+
+block body
+  app-pageheader
+
+  .container.post(id="post-" + posted, )
+    h1= title
+    .posted= posted
+    .content
+  
+    .header-img
+      img(src="assets/img/motion_canvas_logo.svg" width="150")
+
+    a(name="intro")
+    h2 Intro 
+    p Some of my favorite content on YouTube are education channels that have lots of visuals to accompany the topic. Think 
+      a(href="https://www.youtube.com/@3blue1brown") 3Blue1Brown
+      |  or 
+      a(href="https://www.youtube.com/@Acegikmo") Freya Holmér
+      | . Both use animations to help explain complex topics. 
+
+    p Recently at work there was some logic that was confusing to most of us and to understand the issue better I started drawing a diagram. (I'm a visual person.) But it fell short because it was 
+      i static
+      | . I really needed a way to show the process through time. I had stumbled across 
+      a(href="https://motioncanvas.io/") Motion Canvas
+      |  a few weeks ago and honestly, couldn't get it to work the first night I tried. But I gave it another crack last night and it was fun. I only animated 1 scene and probably will only show it to the people who put up with me (my family). But I had so much fun! (I wear my geek badge with pride.)
+
+    h2 What is it?
+    p 
+      a(href="https://motioncanvas.io/") Motion Canvas
+      |  is a 
+      a(href="https://www.typescriptlang.org/") TypeScript
+      |  library to "Visualize Complex Ideas Programmatically". It is a combination of TypeScript and JSX-like syntax to animate different objects in the browser. 
+
+    p It looks like video editing software with play, forward and back buttons along with a sidebar for debug messages and other information.
+
+    figure 
+      img(ngSrc="img/motion_canvas_screenshot.png" crossOrigin="anonymous" width="952" height="561" ngSrcset="1x, 2x" loading="lazy")
+      figcaption Screenshot of Motion Canvas
+
+    p After setting up the project, you start by creating a scene and adding objects to that scene. Then you use 
+      a(href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*") Javascript generators 
+      |  to describe to the library different animations. Motion Canvas will calculate the different property values to create the animation in the browser. 
+      
+    .code
+      .code-heading Setting up the scene
+      pre: code.language-typescript.
+        {{ setupCodeContent }}
+      
+    .code
+      .code-heading Example of adding objects
+      pre: code.language-typescript.
+        {{ addCodeContent }}
+      
+    .code
+      .code-heading Example animation block
+      pre: code.language-typescript.
+        {{ animateCodeContent }}
+
+    p If you want to see my project, head on over to 
+      a(href="https://github.com/aakoch/motion-canvas-project") Github
+      | .
+
+
+    video(controls="controls")
+      source(src="img/motion_canvas.mp4" type="video/mp4")
+
+    app-nav(prevUrl= prevUrl, prevTitle= prevTitle, nextUrl= nextUrl, nextTitle= nextTitle)
+
+    app-comment-form(postTitle="Motion Canvas Fun" postId="20230330")
+
+app-footer
