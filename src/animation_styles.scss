@@ -1,0 +1,820 @@
+@import "../node_modules/bootstrap/scss/functions";
+// // @import url('../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
+// // @import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+
+/* You can add global styles to this file, and also import other style files */
+$primary: #406275;
+$secondary: #b89160;
+$light: #dee3e6;
+$white: tint-color($light, 70%);
+$dark: #43464a;
+$success: #448261;
+$info: #406275;
+$warning: #b89060;
+$danger: #b87460;
+
+$navbar-padding-x: 2rem;
+
+$font-family-base: sans-serif;
+$link-color: $primary;
+$body-bg: $white;
+
+
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/_maps.scss";
+@import "../node_modules/bootstrap/scss/_alert.scss";
+@import "../node_modules/bootstrap/scss/_button-group.scss";
+@import "../node_modules/bootstrap/scss/_buttons.scss";
+@import "../node_modules/bootstrap/scss/_card.scss";
+@import "../node_modules/bootstrap/scss/_containers.scss";
+@import "../node_modules/bootstrap/scss/_forms.scss";
+@import "../node_modules/bootstrap/scss/_grid.scss";
+@import "../node_modules/bootstrap/scss/_reboot.scss";
+@import "../node_modules/bootstrap/scss/_root.scss";
+@import "../node_modules/bootstrap/scss/_utilities.scss";
+@import "../node_modules/bootstrap/scss/utilities/_api.scss";
+
+// animations?
+
+// @import "../node_modules/bootstrap/scss/_accordion.scss";
+// @import "../node_modules/bootstrap/scss/_badge.scss";
+// @import "../node_modules/bootstrap/scss/_breadcrumb.scss";
+// @import "../node_modules/bootstrap/scss/_carousel.scss";
+// @import "../node_modules/bootstrap/scss/_close.scss";
+// @import "../node_modules/bootstrap/scss/_dropdown.scss";
+
+@import "../node_modules/bootstrap/scss/_helpers.scss";
+@import "../node_modules/bootstrap/scss/_images.scss";
+@import "../node_modules/bootstrap/scss/_list-group.scss";
+@import "../node_modules/bootstrap/scss/_modal.scss";
+@import "../node_modules/bootstrap/scss/_nav.scss";
+
+
+@import "../node_modules/bootstrap/scss/_navbar.scss";
+@import "../node_modules/bootstrap/scss/_offcanvas.scss";
+@import "../node_modules/bootstrap/scss/_pagination.scss";
+@import "../node_modules/bootstrap/scss/_placeholders.scss";
+@import "../node_modules/bootstrap/scss/_popover.scss";
+@import "../node_modules/bootstrap/scss/_progress.scss";
+@import "../node_modules/bootstrap/scss/_spinners.scss";
+@import "../node_modules/bootstrap/scss/_tables.scss";
+@import "../node_modules/bootstrap/scss/_toasts.scss";
+@import "../node_modules/bootstrap/scss/_tooltip.scss";
+@import "../node_modules/bootstrap/scss/_transitions.scss";
+@import "../node_modules/bootstrap/scss/_type.scss";
+
+// @import "../node_modules/bootstrap/scss/forms/_floating-labels.scss";
+// @import "../node_modules/bootstrap/scss/forms/_form-check.scss";
+// @import "../node_modules/bootstrap/scss/forms/_form-control.scss";
+// @import "../node_modules/bootstrap/scss/forms/_form-range.scss";
+// @import "../node_modules/bootstrap/scss/forms/_form-select.scss";
+// @import "../node_modules/bootstrap/scss/forms/_form-text.scss";
+// @import "../node_modules/bootstrap/scss/forms/_input-group.scss";
+// @import "../node_modules/bootstrap/scss/forms/_labels.scss";
+// @import "../node_modules/bootstrap/scss/forms/_validation.scss";
+
+@import "../node_modules/bootstrap/scss/helpers/_clearfix.scss";
+@import "../node_modules/bootstrap/scss/helpers/_colored-links.scss";
+@import "../node_modules/bootstrap/scss/helpers/_position.scss";
+@import "../node_modules/bootstrap/scss/helpers/_ratio.scss";
+@import "../node_modules/bootstrap/scss/helpers/_stacks.scss";
+@import "../node_modules/bootstrap/scss/helpers/_stretched-link.scss";
+@import "../node_modules/bootstrap/scss/helpers/_text-truncation.scss";
+@import "../node_modules/bootstrap/scss/helpers/_visually-hidden.scss";
+@import "../node_modules/bootstrap/scss/helpers/_vr.scss";
+
+@import "../node_modules/bootstrap/scss/mixins/_alert.scss";
+@import "../node_modules/bootstrap/scss/mixins/_backdrop.scss";
+@import "../node_modules/bootstrap/scss/mixins/_border-radius.scss";
+@import "../node_modules/bootstrap/scss/mixins/_box-shadow.scss";
+@import "../node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+// @import "../node_modules/bootstrap/scss/mixins/_buttons.scss";
+@import "../node_modules/bootstrap/scss/mixins/_caret.scss";
+@import "../node_modules/bootstrap/scss/mixins/_clearfix.scss";
+@import "../node_modules/bootstrap/scss/mixins/_color-scheme.scss";
+@import "../node_modules/bootstrap/scss/mixins/_container.scss";
+@import "../node_modules/bootstrap/scss/mixins/_deprecate.scss";
+// @import "../node_modules/bootstrap/scss/mixins/_forms.scss";
+// @import "../node_modules/bootstrap/scss/mixins/_gradients.scss";
+@import "../node_modules/bootstrap/scss/mixins/_grid.scss";
+@import "../node_modules/bootstrap/scss/mixins/_image.scss";
+// @import "../node_modules/bootstrap/scss/mixins/_list-group.scss";
+// @import "../node_modules/bootstrap/scss/mixins/_lists.scss";
+// @import "../node_modules/bootstrap/scss/mixins/_pagination.scss";
+@import "../node_modules/bootstrap/scss/mixins/_reset-text.scss";
+@import "../node_modules/bootstrap/scss/mixins/_resize.scss";
+@import "../node_modules/bootstrap/scss/mixins/_table-variants.scss";
+@import "../node_modules/bootstrap/scss/mixins/_text-truncate.scss";
+@import "../node_modules/bootstrap/scss/mixins/_transition.scss";
+@import "../node_modules/bootstrap/scss/mixins/_utilities.scss";
+@import "../node_modules/bootstrap/scss/mixins/_visually-hidden.scss";
+
+// @import "../node_modules/bootstrap/scss/vendor/_rfs.scss";
+
+html {
+  background: $white;
+
+  &:has(.filenotfound) {
+    background-color: black;
+    overflow: hidden;
+
+    .filenotfound {
+      .container2 {
+        .h1.position-absolute.top-50.start-50.translate-middle {
+          div {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  padding: 0;
+}
+
+.fonts-loaded body {
+  font-family: Georama, sans-serif;
+}
+
+@font-face {
+  font-family: 'Georama';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/georama/v1/MCo5zAn438bIEyxFf6swMnNpvPcUwW4u4yRcDh-ZjxApn9K5GvgdngEMxf5wbxXT.woff) format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+#header {
+  background-color: $primary;
+  height: 100px;
+}
+
+.page-header nav .navbar-nav {
+  .gsc-control-cse {
+    border: 0;
+    padding: 0;
+  }
+
+  form.gsc-search-box {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page-header nav .navbar-nav {
+    .gsc-control-cse {
+      display: none;
+    }
+  }
+}
+
+nav {
+  background-color: $primary;
+}
+
+nav,
+#landing-header {
+  svg {
+    fill: $white;
+    stroke: $dark;
+    // max-width: 98vw;
+  }
+}
+
+.navbar-nav {
+  margin-top: auto;
+}
+
+@media screen and (min-width: 1048px) {
+
+  nav {
+    padding-left: 40px;
+  }
+
+  .navbar-nav {
+    margin-left: 40px;
+  }
+
+  .navbar-nav {}
+}
+
+@media screen and (min-width: 942px) and (max-width: 1048px) {
+  .navbar-nav {}
+}
+
+.nav-link {
+  margin-right: 1em;
+
+  &::before {}
+}
+
+.center-row {
+  background: linear-gradient(0deg, $white 50%, $primary 50%);
+}
+
+.divider {
+  height: 20px;
+  margin-bottom: 20px;
+}
+
+#footer {
+  color: $dark;
+  text-align: center;
+  margin: 3rem 0 2em;
+
+  span {
+    margin: 0 4px;
+  }
+}
+
+.not-mono {
+  font-family: inherit;
+  font-size: inherit;
+  white-space: pre-wrap;
+}
+
+.post {
+  .posted {
+    &::before {
+      content: 'Posted on:';
+      margin-right: .3em;
+    }
+  }
+
+  .content {
+    margin-top: 20px;
+  }
+}
+
+.aside {
+  i {
+
+    margin: 0 10px;
+    color: #406275;
+    font-weight: 900;
+  }
+
+  margin: 20px 0;
+  border: 2px solid #406275;
+  padding: 10px;
+  border-left: 0;
+  width: fit-content;
+
+}
+
+ol {
+  padding-left: 0;
+}
+
+li {
+  margin-left: 2em;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+hr {
+  margin: 1em auto;
+}
+
+#more-posts {
+  text-align: center;
+  font-size: large;
+  transform: rotateZ(-15deg);
+  transition: transform .5s ease;
+  // transition: opacity 1s ease;
+}
+
+#more-posts:hover {
+  transform: rotateZ(15deg) scale(1.5);
+  // transition: .5 infinite;
+  // opacity: 0;
+  // transition: rotation 1s ease;
+}
+
+.gap {
+  height: 2em;
+}
+
+@import url('css/main.css');
+
+
+
+
+/// TEST
+:has(.filenotfound) {
+  .container2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .h1 span,
+  .h1 span span {
+    display: inline-block;
+    position: relative;
+  }
+
+  .word {
+    margin: auto 10px;
+    animation: shake 2s 20 linear 1.9s;
+  }
+
+  .letter {
+    margin: auto 0px;
+    animation: glitch 4s 20 linear 2s;
+    opacity: 1;
+
+    &:hover {
+      opacity: 0;
+    }
+  }
+
+  .h1 div {
+    position: relative
+  }
+
+  img {
+    transform-origin: bottom;
+    animation: spin 5s infinite linear;
+    z-index: -100;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotateZ(0deg) translateY(50%);
+    }
+
+    to {
+      transform: rotateZ(360deg) translateY(50%);
+    }
+  }
+
+  @keyframes glitch {
+    0% {
+      opacity: 1;
+      transform: scale(1, 1) translateY(0) translateX(0);
+      filter: blur(0) invert(0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(.5, 30) translateY(-15px) translateX(20%);
+      filter: blur(1em) invert(100%);
+    }
+
+  }
+
+  /*
+@keyframes move2 {
+from {
+  transform: translateX(0px)
+}
+to {
+  transform: translateX(-10px)
+}
+}
+*/
+
+  @keyframes shake {
+
+    1% {
+      transform: translateX(-1px);
+    }
+
+    2% {
+      transform: translateX(1px);
+    }
+
+    3% {
+      transform: translateX(-1px);
+    }
+
+    4% {
+      transform: translateX(1px);
+    }
+
+    5% {
+      transform: translateX(-1px);
+    }
+
+    6% {
+      transform: translateX(1px);
+    }
+
+    7% {
+      transform: translateX(-1px);
+    }
+
+    8% {
+      transform: translateX(1px);
+    }
+
+    9% {
+      transform: translateX(-1px);
+    }
+
+    10% {
+      transform: translateX(1px);
+    }
+
+    11% {
+      transform: translateX(-1px);
+    }
+
+    12% {
+      transform: translateX(1px);
+    }
+
+    13% {
+      transform: translateX(-1px);
+    }
+
+    14% {
+      transform: translateX(1px);
+    }
+
+    15% {
+      transform: translateX(-1px);
+    }
+
+    16% {
+      transform: translateX(1px);
+    }
+
+    17% {
+      transform: translateX(-1px);
+    }
+
+    18% {
+      transform: translateX(1px);
+    }
+
+    19% {
+      transform: translateX(-1px);
+    }
+
+    20% {
+      transform: translateX(1px);
+    }
+
+    21% {
+      transform: translateX(-1px);
+    }
+
+    22% {
+      transform: translateX(1px);
+    }
+
+    23% {
+      transform: translateX(-1px);
+    }
+
+    24% {
+      transform: translateX(1px);
+    }
+
+    25% {
+      transform: translateX(-1px);
+    }
+
+    26% {
+      transform: translateX(1px);
+    }
+
+    27% {
+      transform: translateX(-1px);
+    }
+
+    28% {
+      transform: translateX(1px);
+    }
+
+    29% {
+      transform: translateX(-1px);
+    }
+
+    30% {
+      transform: translateX(1px);
+    }
+
+    31% {
+      transform: translateX(-1px);
+    }
+
+    32% {
+      transform: translateX(1px);
+    }
+
+    33% {
+      transform: translateX(-1px);
+    }
+
+    34% {
+      transform: translateX(1px);
+    }
+
+    35% {
+      transform: translateX(-1px);
+    }
+
+    36% {
+      transform: translateX(1px);
+    }
+
+    37% {
+      transform: translateX(-1px);
+    }
+
+    38% {
+      transform: translateX(1px);
+    }
+
+    39% {
+      transform: translateX(-1px);
+    }
+
+    40% {
+      transform: translateX(1px);
+    }
+
+    41% {
+      transform: translateX(-1px);
+    }
+
+    42% {
+      transform: translateX(1px);
+    }
+
+    43% {
+      transform: translateX(-1px);
+    }
+
+    44% {
+      transform: translateX(1px);
+    }
+
+    45% {
+      transform: translateX(-1px);
+    }
+
+    46% {
+      transform: translateX(1px);
+    }
+
+    47% {
+      transform: translateX(-1px);
+    }
+
+    48% {
+      transform: translateX(1px);
+    }
+
+    49% {
+      transform: translateX(-1px);
+    }
+
+    50% {
+      transform: translateX(1px);
+    }
+
+    51% {
+      transform: translateX(-1px);
+    }
+
+    52% {
+      transform: translateX(1px);
+    }
+
+    53% {
+      transform: translateX(-1px);
+    }
+
+    54% {
+      transform: translateX(1px);
+    }
+
+    55% {
+      transform: translateX(-1px);
+    }
+
+    56% {
+      transform: translateX(1px);
+    }
+
+    57% {
+      transform: translateX(-1px);
+    }
+
+    58% {
+      transform: translateX(1px);
+    }
+
+    59% {
+      transform: translateX(-1px);
+    }
+
+    60% {
+      transform: translateX(1px);
+    }
+
+    61% {
+      transform: translateX(-1px);
+    }
+
+    62% {
+      transform: translateX(1px);
+    }
+
+    63% {
+      transform: translateX(-1px);
+    }
+
+    64% {
+      transform: translateX(1px);
+    }
+
+    65% {
+      transform: translateX(-1px);
+    }
+
+    66% {
+      transform: translateX(1px);
+    }
+
+    67% {
+      transform: translateX(-1px);
+    }
+
+    68% {
+      transform: translateX(1px);
+    }
+
+    69% {
+      transform: translateX(-1px);
+    }
+
+    70% {
+      transform: translateX(1px);
+    }
+
+    71% {
+      transform: translateX(-1px);
+    }
+
+    72% {
+      transform: translateX(1px);
+    }
+
+    73% {
+      transform: translateX(-1px);
+    }
+
+    74% {
+      transform: translateX(1px);
+    }
+
+    75% {
+      transform: translateX(-1px);
+    }
+
+    76% {
+      transform: translateX(1px);
+    }
+
+    77% {
+      transform: translateX(-1px);
+    }
+
+    78% {
+      transform: translateX(1px);
+    }
+
+    79% {
+      transform: translateX(-1px);
+    }
+
+    80% {
+      transform: translateX(1px);
+    }
+
+    81% {
+      transform: translateX(-1px);
+    }
+
+    82% {
+      transform: translateX(1px);
+    }
+
+    83% {
+      transform: translateX(-1px);
+    }
+
+    84% {
+      transform: translateX(1px);
+    }
+
+    85% {
+      transform: translateX(-1px);
+    }
+
+    86% {
+      transform: translateX(1px);
+    }
+
+    87% {
+      transform: translateX(-1px);
+    }
+
+    88% {
+      transform: translateX(1px);
+    }
+
+    89% {
+      transform: translateX(-1px);
+    }
+
+    90% {
+      transform: translateX(1px);
+    }
+
+    91% {
+      transform: translateX(-1px);
+    }
+
+    92% {
+      transform: translateX(1px);
+    }
+
+    93% {
+      transform: translateX(-1px);
+    }
+
+    94% {
+      transform: translateX(1px);
+    }
+
+    95% {
+      transform: translateX(-1px);
+    }
+
+    96% {
+      transform: translateX(1px);
+    }
+
+    97% {
+      transform: translateX(-1px);
+    }
+
+    98% {
+      transform: translateX(1px);
+    }
+
+    99% {
+      transform: translateX(-1px);
+    }
+  }
+}
+
+.post, .post img {
+  max-width: min(1500px, 100vw);
+}
+
+img {
+  height: auto;
+}
+
+.page-header nav .navbar-nav {
+  .gsc-control-cse {
+    border: 0;
+    padding: 0;
+  }
+
+  form.gsc-search-box {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page-header nav {
+    &:has(div.active) {
+      .gsc-control-cse {
+        display: block;
+      }
+    }
+    .gsc-control-cse {
+      display: none;
+    }
+    #gsc-iw-id1 {
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+  }
+}
