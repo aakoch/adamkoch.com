@@ -14,17 +14,10 @@ div
     app-postpreview(key="20211014" postTitle="Recruiter Tips" name="Recruiter Tips" excerpt="When a recruiter messaged me on...")
     app-postpreview(key="20210917" postTitle="My Stack" name="My Stack" excerpt="Getting off Wordpress offered me a lot of \"opportunities\" to learn some new tech...")
     
-    h2.mt-4 My first post on the new site! (Finally!) 🎉
-
     app-postpreview(key="20210908" postTitle="Moving off Wordpress and on to Netlify" excerpt="I'm just so excited, I don't know how to start!..." name="Moving off Wordpress and on to Netlify")
 
-    div Ignore that line about last posting in 2017. 
-      h4.arrow ⤵
-    hr
-
-    .container
-      p If you're thinking "2017 can't be the last time he posted", well, for a certain type it was.
-      p These are old posts that I am trying to keep. They require some massaging to get into a readable format. I'm included a link to the original post that might look better.
+    .container.old-posts
+      h3 These are old posts that I am trying to keep. They require some massaging to get into a readable format. I'm included a link to the original post that might look better.
       .row("*ngFor"="let post of posts")
         app-oldpost([post]="this.post")
 

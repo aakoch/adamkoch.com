@@ -16,7 +16,29 @@
 // @import url('../../../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
 // @import url('../../../../../node_modules/highlight.js/styles/github.css');
 
+
+@import "./functions";
 @import '../../../shared/colors.scss';
+
+@import "./variables";
+@import "./mixins";
+@import "./_maps.scss";
+// @import "./_alert.scss";
+@import "./_button-group.scss";
+@import "./_buttons.scss";
+@import "./_card.scss";
+@import "./_containers.scss";
+// @import "./_forms.scss";
+// @import "./_grid.scss";
+@import "./_reboot.scss";
+@import "./_root.scss";
+
+
+// :host {
+
+//   border: 1px solid rgba(0, 0, 0, .175);
+//   border-radius: 10px;
+// }
 
 div.date {
   margin-bottom: 10px;
@@ -56,3 +78,12 @@ code {
   color: lightcyan;
   padding: 1em;
 }
+
+// .card {
+//   padding: 2px;
+// }
+
+
+// .card-body {
+//   padding: 20px 30px 30px;
+// }
