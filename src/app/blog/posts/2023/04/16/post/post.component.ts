@@ -1,26 +1,25 @@
 import { AfterViewInit, Component, OnInit, ViewContainerRef } from '@angular/core';
-
 import { Meta } from '@angular/platform-browser';
 import hljs from 'highlight.js/lib/common';
 import { JsonLdService } from 'src/app/shared/json-ld.service';
-import code from './code.json';
+import code from './code_resolved.json';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.pug',
-  styleUrls: ['./post.component.scss', "../../../../../../../../node_modules/highlight.js/styles/vs.css" , '/mono.scss']
+  styleUrls: ['./post.component.scss', '../../../../../../css/mono.scss']
 })
 export class PostComponent implements OnInit, AfterViewInit {
 
-  componentCodeContent: string;
-  serviceCodeContent: string;
-  serviceStartCodeContent: string;
-
+  landingPageCode: string;
+  ssePageCode: string;
+  dbUpdatePageCode: string;
+  
   constructor(private viewContainerRef: ViewContainerRef, private meta: Meta, private jsonLdService: JsonLdService) {
-    this.componentCodeContent = code.component;
-    this.serviceCodeContent = code.service;
-    this.serviceStartCodeContent = code.serviceStart;
-    meta.addTag({ name: "keywords", content: "angular,netlify,rxjs,form,forms,submission" });
+    this.landingPageCode = code.landing_page;
+    this.ssePageCode = code.sse_page;
+    this.dbUpdatePageCode = code.db_update_page;
+    meta.addTag({ name: "keywords", content: "php,javascript,node,sse,server-sent events" });
   }
 
   ngOnInit() {
@@ -28,14 +27,11 @@ export class PostComponent implements OnInit, AfterViewInit {
       {
         "@context": "https://schema.org",
         "@type": "NewsArticle",
-        "headline": "How to submit a template form with Angular on Netlify using RxJS Observables",
+        "headline": "Server-Sent Events implemented with PHP",
         "image": [
-          "assets/img/Angular_full_color_logo.svg",
-          "assets/img/Netlify_logo.svg",
-          "assets/img/RxJs_Logo_Basic.svg"
         ],
-        "datePublished": "2023-02-07T18:44-05:00",
-        "dateModified": "2023-02-14T20:41-06:00",
+        "datePublished": "2023-04-16T23:50:51.164Z",
+        "dateModified": "2023-04-16T23:50:56.617Z",
         "author": [{
           "@type": "Person",
           "name": "Adam Koch",
@@ -43,6 +39,7 @@ export class PostComponent implements OnInit, AfterViewInit {
         }]
       }, 'structured-data-news');
   }
+
 
   ngAfterViewInit() {
     document.querySelectorAll('pre code').forEach((el: Element) => {

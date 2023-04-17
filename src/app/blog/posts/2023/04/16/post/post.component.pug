@@ -1,0 +1,188 @@
+append variables
+  - var title = "Server Sent Events"
+  - var posted = '2023-04-16'
+  - var excerpt = 'Pushing events to a browser with PHP'
+  - var commentsDisabled = false
+  - var prevUrl = '../../../2023/03/30'
+  - var prevTitle = 'Motion Canvas Fun'
+
+append head
+  style(type="text/css").
+    blockquote {
+      padding-left: 1vw;
+      border-left: 2px solid #43464a;
+      margin-left: 1vw;
+    }
+
+block body
+  app-pageheader
+
+  .container.post(id="post-" + posted, )
+    h1= title
+    .posted= posted
+    .content
+
+    a(name="intro")
+    h2 Intro 
+    p My professional experience hasn't included a lot of "push" technology, but a friend mentioned an upcoming hockey draft and how he wants to be able to push updates to a webpage. I've heard of SSE (Server-Sent Events) and wanted to implement it.
+
+    h2 What is it?
+    p 
+      a(href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events") Server-Sent Events
+      |  is a technology that allows data to be "pushed" from the server to a webpage. The browser calls an endpoint and a connection is made where the browser listens to events publish through this connection.
+
+
+    h2 How to use it
+
+    h3 Client Side Setup
+    p  The connection is made with Javascript by creating an <span class="mono">EventSource</span>. This new object takes a URL as its parameter.  A callback function is set to the <span class="mono">onmessage</span> method of the new <span class="mono">EventSource</span>. When an event is received, the <span class="mono">onmessage</span> callback function is passed an <span class="mono">
+      a(href="https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent") MessageEvent
+      | </span> object.
+
+
+    .code
+      .code-heading Client Javascript
+      pre: code.language-typescript.
+        // Creating an EventSource by calling a different endpoint
+        const eventSource = new EventSource("sse.php");
+
+        // Registering the function that gets called when an event is sent from the server
+        eventSource.onmessage = function(event) &#x007B;
+          // Do something with the event
+          console.log(event.data);
+         &#x007D;;
+
+    h3 Server Side Setup
+    p The page is pretty easy to set up; the server is a tad more involved and depends on your technology. For a Node-based solution, visit 
+      a(href="https://blog.bitsrc.io/5-ways-to-sync-web-and-server-data-in-real-time-3b5748ad2bf7") this page
+      |  where Zach has a demo of it. 
+
+    p As I don't have a server that runs Node, I created my example using PHP. I started with 
+      a(href="https://lucidar.me/en/web-dev/server-sent-event-simple-php-example/") an example
+      |  that just sent a periodic message to the browser.
+    
+    .code
+      .code-heading Example PHP code
+      pre: code.language-php.
+        &lt;?php
+        // Set file mime type event-stream
+        header(&apos;Content-Type: text/event-stream&apos;);
+        header(&apos;Cache-Control: no-cache&apos;);
+
+        // Loop until the client close the stream
+        while (true) &#x007B;
+
+          if(connection_aborted()) exit();
+
+          // Echo time
+          $time = date(&apos;r&apos;);
+          echo &quot;data: The server time is: &#x007B;$time&#x007D;\n\n&quot;;
+
+          // Flush buffer (force sending data to client)
+          flush();
+
+          // Wait 2 seconds for the next message / event
+          sleep(2);  
+         &#x007D;
+        ?&gt;
+      .credit 
+        a(href="https://lucidar.me/en/web-dev/server-sent-event-simple-php-example/") https://lucidar.me/en/web-dev/server-sent-event-simple-php-example/
+    
+    p This example was ok, but missing discussion of sessions. To get to my final solution I had to first find 
+      a(href="https://kevinchoppin.dev/blog/server-sent-events-in-php") this article
+      | . I had to disable sessions. 
+
+
+    .code
+      .code-heading Disabling sessions in PHP
+      pre: code.language-php.
+        // make session read-only
+        session_start();
+        session_write_close();
+
+    h3 Database Integration
+    p If my friend is running a draft, he'd need a way to update the data. I decided to use MySQL and myPhpAdmin. The SSE server side code would now call the database instead of just incrementing a number. This was put into the loop so any DB updates would be created and sent as an event.
+    .code(ngNonBindable)
+      .code-heading Data from the database
+      pre: code.language-typescript.
+        $sql = "SELECT * FROM messages\n"
+            . "order by id desc\n"
+            . "limit 1";
+
+        $result = $conn-&gt;query($sql);
+        if ($result-&gt;num_rows &gt; 0) &#x007B;
+          if ($row = $result-&gt;fetch_assoc()) &#x007B;
+            $latestEventId = $row[&apos;id&apos;];
+            ...
+  
+    
+    p As a way to update the data, I created a simple PHP page that would insert a record each time the page was refreshed.  
+    .code
+      .code-heading Adding rows to our DB
+      pre: code.language-php.
+        &lt;?php
+        $servername = &quot;&lt;your value>&quot;;
+        $username = &quot;&lt;your value>&quot;;
+        $password = &quot;&lt;your value>&quot;;
+        $dbname = &quot;&lt;your value>&quot;;
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn-&gt;connect_error) &#x007B;
+          die(&quot;Connection failed: &quot; . $conn-&gt;connect_error);
+        }
+
+        $sql = &quot;INSERT INTO messages () VALUES ()&quot;;
+
+        if ($conn-&gt;query($sql) === TRUE) &#x007B;
+          $data = &quot;New record created successfully&quot;;
+        } else &#x007B;
+          $data =  &quot;Error: &quot; . $sql . &quot;&lt;br&gt;&quot; . $conn-&gt;error;
+        }
+
+        $conn-&gt;close();
+        ?&gt;
+        &lt;html lang=&quot;en&quot;&gt;
+        &lt;head&gt;
+          &lt;meta charset=&quot;UTF-8&quot;&gt;
+          &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+          &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+          &lt;title&gt;Document&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+
+        &lt;section&gt;&lt;?= $data ?&gt;&lt;/section&gt;
+
+        &lt;section&gt;
+          &lt;button type=&quot;button&quot; onclick=&quot;location.reload()&quot;&gt;Reload&lt;/button&gt; the page for a new entry
+        &lt;/section&gt;
+
+          
+        &lt;/body&gt;
+        &lt;/html&gt;
+
+    h2 Conclusion
+    p This was a pretty easy POC. Other concerns before this could be used would be the number of connections to the PHP server as well as the database connections. 
+
+    h3 Source Code
+    .code
+      .code-heading Landing page
+      pre: code.language-html.
+        {{ landingPageCode }}
+
+    .code
+      .code-heading SSE page
+      pre: code.language-php.
+        {{ ssePageCode }}
+
+    .code
+      .code-heading DB updating page
+      pre: code.language-php.
+        {{ dbUpdatePageCode }}
+      
+    app-nav(prevUrl= prevUrl, prevTitle= prevTitle, nextUrl= nextUrl, nextTitle= nextTitle)
+
+    app-comment-form(postTitle="Motion Canvas Fun" postId="20230330")
+
+app-footer

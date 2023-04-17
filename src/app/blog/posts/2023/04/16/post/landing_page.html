@@ -1,0 +1,34 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSE</title>
+</head>
+
+<body>
+  <h1>SSE demo with PHP</h1>
+
+  <a href="db.php" target="_blank">Click here to open a window which will create a DB entry</a>
+  <br />
+  Each time a new entry is added to the database, an event is pushed to this page.
+  <br />
+  The link above can be refreshed to add a new event/record in the DB.
+
+  <ol id="list">
+  </ol>
+
+  <script>
+    // Create new event, the server script is sse.php
+    var eventSource = new EventSource("sse.php");
+
+    // Event when receiving a message from the server
+    eventSource.onmessage = function (event) {
+      // Append the message to the ordered list
+      document.getElementById("list").innerHTML += '<li>' + event.data + "</li>";
+    };
+  </script>
+</body>
+
+</html>

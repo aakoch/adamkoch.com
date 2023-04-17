@@ -14,6 +14,7 @@ import { PostComponent as PostComponent20210908 } from './2021/09/08/post/post.c
 import { SharedModule } from '../../shared/shared.module';
 import { PostComponent as PostComponent20230207 } from './2023/02/07/post/post.component';
 import { MotionCanvasComponent } from './2023/03/30/post/post.component';
+import { PostComponent as PostComponent20230416 } from './2023/04/16/post/post.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MotionCanvasComponent } from './2023/03/30/post/post.component';
     PostComponent20210908,
     PostComponent20230207,
     MotionCanvasComponent,
+    PostComponent20230416,
   ],
   imports: [
     CommonModule,

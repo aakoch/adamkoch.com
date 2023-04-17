@@ -1,0 +1,27 @@
+.code {
+  display: flow-root;
+  border: 2px solid $primary;
+  border-radius: .8em;
+  background-color: $primary;
+  color: $white;
+  margin-bottom: 1rem;
+  
+  .code-content {
+    padding: .3em;
+    background-color: #fff;
+  }
+
+  .code-heading {
+    padding: .5em;
+    border-bottom: 2px solid $primary;
+    font-size: 1.2em;
+    background-color: transparent;
+  }
+
+  p.code-desc {
+    background-color: white;
+    color: black;
+    padding: .8em;
+    margin-bottom: .2em;
+  }
+}

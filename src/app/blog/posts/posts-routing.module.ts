@@ -12,8 +12,10 @@ import { PostComponent as PostComponent20220619 } from './2022/06/19/post/post.c
 import { PostComponent as PostComponent20220627 } from './2022/06/27/post/post.component';
 import { PostComponent as PostComponent20230207 } from './2023/02/07/post/post.component';
 import { MotionCanvasComponent } from './2023/03/30/post/post.component';
+import { PostComponent as PostComponent20230416 } from './2023/04/16/post/post.component';
 
 const routes: Routes = [
+  { path: '2023/04/16', title: 'Server Sent Events', component: PostComponent20230416 },
   { path: '2023/03/30', title: 'Motion Canvas Fun', component: MotionCanvasComponent },
   { path: '2023/02/07', title: 'How to submit a form with Angular on Netlify', component: PostComponent20230207 },
   { path: '2022/06/27', title: 'Roe v Wade', component: PostComponent20220627 },

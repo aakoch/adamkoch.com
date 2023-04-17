@@ -1,0 +1,5 @@
+{
+  "landing_page": "!import landing_page.html",
+  "sse_page": "!import sse_page.php",
+  "db_update_page": "!import db_update_page.php"
+}
