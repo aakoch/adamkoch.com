@@ -8,6 +8,7 @@ import { ProjectsPageComponent } from './projects-page/projects-page.component';
 import { ColorChangingOutdoorLightComponent } from './color-changing-outdoor-light/color-changing-outdoor-light.component';
 import { LightBulbsComponent } from './light-bulbs/light-bulbs.component';
 import { SwampFanComponent } from './swamp-fan/swamp-fan.component';
+import { RingGameComponent } from './ring-game/ring-game.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SwampFanComponent } from './swamp-fan/swamp-fan.component';
     ProjectsPageComponent,
     ColorChangingOutdoorLightComponent,
     LightBulbsComponent,
-    SwampFanComponent
+    SwampFanComponent,
+    RingGameComponent
   ],
   imports: [
     CommonModule,

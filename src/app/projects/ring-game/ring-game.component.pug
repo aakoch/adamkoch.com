@@ -1,0 +1,53 @@
+- var title = 'Ring Swing Game'
+block variables
+mixin lastUpdatedDate(date)
+  .last-updated-date-container Last updated: #{date}  
+
+script(type="application/ld+json").
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Projects",
+      "item": "../"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Ring Swing Game"
+    }]
+  }
+
+.container.project
+  h1 #{title}
+
+  .project-description Tabletop game
+  +lastUpdatedDate('2023-06-21')
+
+  div(style="margin-top: .5em")
+  
+    ul Parts list
+      li wood
+      li PVC pipe
+      li ESP32 development board
+      li 
+        a(href="https://www.aliexpress.us/item/2251832495700653.html") addressable LEDs
+      li 
+        a(href="https://www.adafruit.com/product/640") conductive thread
+      li hooks
+      li welded rings
+      li nylon string
+      li wire
+      li screws
+      li 
+        a(href="https://www.aliexpress.us/item/2251832864053612.html") power supply
+
+    h2 Schematic
+    img(ngSrc="assets/Schematic_RingGame_2023-06-21.png" width="1169" height="828" title="schematic")
+
+  a(routerLink="../" title="Projects")
+    i.fas.fa-angle-double-left
+    |  Back to current projects
+
+app-footer
