@@ -1,5 +1,5 @@
 function run() {
-    let h1 = document.querySelector('.h1 div');
+    let h1 = document.querySelector('.large-text');
     const words = h1.innerText.split(' ');
     function wrap(word) {
       const node = document.createElement('span')
@@ -19,7 +19,6 @@ function run() {
       return node.outerHTML
     }
     h1.innerHTML = words.map(wrap).join(' ')
-    
 }
 
 export default run;

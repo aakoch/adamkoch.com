@@ -34,24 +34,24 @@ $body-bg: $white;
 // @import "../node_modules/bootstrap/scss/utilities/_api.scss";
 
 
-html {
-  background: $white;
+// html {
+//   background: $white;
 
-  &:has(.filenotfound) {
-    background-color: black;
-    overflow: hidden;
+//   .filenotfound {
+//     background-color: green;
+//     overflow: hidden;
 
-    .filenotfound {
-      .container2 {
-        .h1.position-absolute.top-50.start-50.translate-middle {
-          div {
-            color: white;
-          }
-        }
-      }
-    }
-  }
-}
+//     .filenotfound {
+//       .container2 {
+//         .h1.position-absolute.top-50.start-50.translate-middle {
+//           div {
+//             color: blue;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 .fonts-loaded body {
   font-family: Georama, sans-serif;
@@ -226,45 +226,49 @@ hr {
 
 
 
+:has(.filenotfound) * {
+  overflow: hidden;
+}
 
 /// TEST
-:has(.filenotfound) {
-  .container2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+// :has(.filenotfound) {
+//   .container2 {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
 
-  .h1 span,
-  .h1 span span {
-    display: inline-block;
-    position: relative;
-  }
+//   .h1 span,
+//   .h1 span span {
+//     display: inline-block;
+//     position: relative;
+//   }
 
-  .word {
-    margin: auto 10px;
-    animation: shake 2s 20 linear 1.9s;
-  }
+//   .word {
+//     margin: auto 10px;
+//     animation: shake 2s 20 linear 1.9s;
+//   }
 
-  .letter {
-    margin: auto 0px;
-    animation: glitch 4s 20 linear 2s;
-    opacity: 1;
+//   .letter {
+//     margin: auto 0px;
+//     animation: glitch 4s 20 linear 2s;
+//     opacity: 1;
 
-    &:hover {
-      opacity: 0;
-    }
-  }
+//     &:hover {
+//       opacity: 0;
+//     }
+//   }
 
-  .h1 div {
-    position: relative
-  }
+//   .h1 div {
+//     position: relative
+//   }
 
-  img {
-    transform-origin: bottom;
-    animation: spin 5s infinite linear;
-    z-index: -100;
-  }
+//   img {
+//     transform-origin: bottom;
+//     animation: spin 5s infinite linear;
+//     z-index: -100;
+//   }
+// }
 
   @keyframes spin {
     from {
@@ -699,7 +703,6 @@ to {
 //       transform: translateX(-1px);
 //     }
 //   }
-}
 
 .post, .post img {
   max-width: min(1500px, 100vw);

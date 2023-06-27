@@ -1,17 +1,4 @@
-//- block variables
-//-   - var title = "404 Page Not Found"
-//- html.no-js(lang="en")
-
-  //- head
-  //-   include head
-
-.filenotfound
-  .container2
-    .h1.position-absolute.top-50.start-50.translate-middle
-      div 404 Not Found
-
-    img.position-absolute.vh-100(src="assets/spiral2.jpg")
-
-    //- include footer
-
-    //- block body_scripts
+<div class="filenotfound center">
+  <div class="large-text center" [@glitchState]="glitchState">404 Not Found</div>
+  <img class="hypnotize" src="assets/spiral2.jpg"  [@rotateState]="rotateState" />
+</div>
