@@ -21,8 +21,10 @@ export class CommentFormComponent implements AfterViewInit, OnInit {
   expanded = false;
   errorMessage?: string;
   containerClass?: string;
+  count = 0;
 
   model: CommentFormData = { name: '', comment: '', 'form-name': 'post-comment-form', email: '', url: '', 'post-id': this.postId };
+  formChangeObservable: Subscription | undefined;
 
   constructor(private netlifyForms: NetlifyFormsService) {
   }
@@ -37,10 +39,16 @@ export class CommentFormComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
+    this.formChangeObservable = this.form.valueChanges
+      ?.pipe()
+      .subscribe({ next: () => this.count++});
     this.form.ngSubmit
       .pipe(
         filter(() => !this.beingSubmitted),
         tap(() => this.beingSubmitted = true),
+        filter(() => {
+          return this.model.name?.length > 0 && this.model.comment?.length > 0 && this.count > 5;          
+        }),
         switchMap(() => this.netlifyForms.submitFeedback(this.model as CommentFormData)),
       )
       .subscribe({
@@ -54,5 +62,9 @@ export class CommentFormComponent implements AfterViewInit, OnInit {
           this.errorMessage = err;
         }
       });
+  }
+
+  ngDestroy() {
+    this.formChangeObservable?.unsubscribe();
   }
 }
