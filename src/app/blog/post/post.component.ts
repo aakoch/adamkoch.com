@@ -11,7 +11,7 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit {
+export class PostComponent {
   data?: SafeHtml;
   title?: string;
   postId?: string;

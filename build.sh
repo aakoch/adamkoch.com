@@ -5,4 +5,4 @@ for f in $(find src/app/blog/ -name "post.component.pug" | sort); do echo $f | s
 ng build
 rm posts.tmp
 node postpreviews.mjs
-parcel build './src/assets/**/index.pug' './src/animations/*.pug' './src/rules/*.pug' --log-level verbose --dist-dir dist/assets --public-url "/assets"
+npx parcel build './src/assets/**/index.pug' './src/animations/*.pug' './src/rules/*.pug' --log-level verbose --dist-dir dist/assets --public-url "/assets"
