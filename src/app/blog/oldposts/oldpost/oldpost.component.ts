@@ -28,8 +28,8 @@ export class PostcardComponent implements OnInit {
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
   @Input() post?: WordPressPost;
-  clicked: boolean = false;
-  loaded: boolean = false;
+  clicked = false;
+  loaded = false;
   content: any = undefined;
   comments?: any;
 
@@ -42,7 +42,7 @@ export class PostcardComponent implements OnInit {
 
     this.clicked = true;
 
-    var newLink = "/assets/blogposts/" + this?.post?.link?.replace("https://www.adamkoch.com/", "") + "index.json";
+    const newLink = "/assets/blogposts/" + this?.post?.link?.replace("https://www.adamkoch.com/", "") + "index.json";
     // console.log("newLink=", newLink);
 
     return this.http.get<any>(newLink).pipe(

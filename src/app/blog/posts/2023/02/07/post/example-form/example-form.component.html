@@ -14,7 +14,7 @@
     <label for="comment">Comment/s: </label>
     <textarea name="comment" required [(ngModel)]="model.comment" #comment="ngModel"></textarea>
 
-    <button type="submit" *ngIf="!beingSubmitted" id="submitButton" [disabled]="!name.valid || !comment.valid || (email.touched && email.value != '' && !email.valid)">Submit</button>
+    <button type="submit" *ngIf="!beingSubmitted" id="submitButton" [disabled]="!name.valid || !comment.valid || (email.touched && email.value !== '' && !email.valid)">Submit</button>
 
   </form>
   <div class="alert alert-danger" *ngIf="isError">There was an error with form submission: {{ error }}</div>

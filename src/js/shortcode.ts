@@ -5,7 +5,7 @@ import { escapeHtml } from "@vue/shared";
 export class ShortCode {
   filter(input: string) {
 
-    let loggingEnabled = false;
+    const loggingEnabled = false;
 
     type A = {
       prefix: Function,
@@ -13,7 +13,7 @@ export class ShortCode {
       transform: Function
     };
 
-    let shortCodeReplacements: Record<string, A> = {
+    const shortCodeReplacements: Record<string, A> = {
       caption: {
         prefix: function (shortCode: { width: string }) {
           return `<div class="imageWithCaptionContainer" style="margin-left:auto;margin-right:auto;width:${shortCode.width}px;max-width:100%">`
@@ -39,7 +39,7 @@ export class ShortCode {
 
     }
 
-    let regex = /\[([a-z]*)\s([^\]]*)\]((?:.|\n|\r)*?)\[\/\1\]/m
+    const regex = /\[([a-z]*)\s([^\]]*)\]((?:.|\n|\r)*?)\[\/\1\]/m
 
     let groups = input.match(regex)
 
@@ -48,9 +48,9 @@ export class ShortCode {
     while (groups) {
 
 
-      let tagName = groups[1]
-      let attributes = groups[2]
-      let body = groups[3]
+      const tagName = groups[1]
+      const attributes = groups[2]
+      const body = groups[3]
 
       if (loggingEnabled) {
         console.dir(groups)
@@ -60,11 +60,11 @@ export class ShortCode {
       }
 
 
-      let attributesIterator : IterableIterator<RegExpMatchArray> = attributes.matchAll(/(\w*)=\"([^"]*)\"/g)
+      const attributesIterator : IterableIterator<RegExpMatchArray> = attributes.matchAll(/(\w*)="([^"]*)"/g)
 
       type ShortCode = Record<string, string>
 
-      let shortCode: ShortCode = {
+      const shortCode: ShortCode = {
         tagName: tagName,
         body: body,
       }
@@ -77,7 +77,7 @@ export class ShortCode {
 
       // \[(\w*)(?:(?=(?:\s+(\w*)=\"(\w*)\")\4)[^\]]*?\])*(.*)\[\/\1\]
 
-      let startIdx = input.indexOf(groups[0]);
+      const startIdx = input.indexOf(groups[0]);
       returnBody += input.substring(0, startIdx);
 
       if (shortCodeReplacements[tagName]) {

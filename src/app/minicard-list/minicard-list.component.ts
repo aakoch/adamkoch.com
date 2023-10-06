@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Card } from '../card/card.model';
 
 @Component({
   selector: 'app-minicard-list',
@@ -9,7 +8,7 @@ import { Card } from '../card/card.model';
 })
 export class MinicardListComponent {
   @Input() links: any[] = [];
-  
+
   constructor(private router: Router) {
   }
 

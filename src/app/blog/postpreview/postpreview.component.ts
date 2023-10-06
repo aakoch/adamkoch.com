@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { values } from 'lodash';
 import { map, of, tap } from 'rxjs';
 
 @Component({
@@ -8,12 +7,12 @@ import { map, of, tap } from 'rxjs';
   styleUrls: ['./postpreview.component.scss']
 })
 export class PostpreviewComponent implements OnInit {
-  @Input() key: string = '';
-  @Input() postTitle: string = '';
+  @Input() key = '';
+  @Input() postTitle = '';
   @Input() date?: string;
   @Input() link?: string;
   @Input() name?: string;
-  @Input() excerpt: string = '';
+  @Input() excerpt = '';
 
   private dateParts: string[] = [];
 

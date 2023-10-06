@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, HostListener, isDevMode, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { WordPressPost } from './oldposts/wordpress-post.model';
 import OLD_POSTS from "../../data/professional_publish.json";
 import { Title } from '@angular/platform-browser';
 
-let idx = 5
+const idx = 5
 const fullPosts: WordPressPost[] = sort(OLD_POSTS);
 const posts: WordPressPost[] = fullPosts.slice(0, idx)
 
@@ -28,18 +28,16 @@ function sort(posts: WordPressPost[]) {
   templateUrl: './blog.component.pug',
   styleUrls: ['./blog.component.scss']
 })
-export class BlogComponent implements OnInit, AfterViewInit {
+export class BlogComponent implements AfterViewInit {
   posts: WordPressPost[] = posts;
   allPosts: WordPressPost[] = fullPosts;
 
-  idx: number = 5;
+  idx = 5;
 
   constructor(private window: Window, title: Title) {
     title.setTitle("Adam Koch - Articles")
   }
 
-  ngOnInit(): void {
-  }
   ngAfterViewInit() {
     (<any>this.window).google?.search.cse.element.go()
   }
@@ -50,10 +48,8 @@ export class BlogComponent implements OnInit, AfterViewInit {
       this.loadMore();
     }
   }
-  
+
   loadMore() {
-    let more = this.allPosts.slice(this.idx, this.idx + 5)
-    let count = this.posts.push(...more)
     this.idx += 5
   }
 

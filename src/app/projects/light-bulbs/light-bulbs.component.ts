@@ -1,8 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, Inject, Injectable } from '@angular/core';
 
-import { fromEvent, first, tap, take } from 'rxjs';
-
 @Injectable()
 @Component({
   selector: 'app-light-bulbs',
@@ -10,7 +8,7 @@ import { fromEvent, first, tap, take } from 'rxjs';
   styleUrls: ['./light-bulbs.component.scss']
 })
 export class LightBulbsComponent implements AfterViewInit {
-  src: string = "";
+  src = "";
 
   constructor(@Inject(DOCUMENT) private document: Document) {
   }
@@ -28,7 +26,7 @@ export class LightBulbsComponent implements AfterViewInit {
     //   console.log("got event", event);
     // }), first());
     // result.subscribe({ next: x => {console.log(x); printEventListeners();} , error: e => console.error(e), complete: () => { console.log("completed"); printEventListeners(); setTimeout(printEventListeners, 100)} });
-    
+
   }
 
 }

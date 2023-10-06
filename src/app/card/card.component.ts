@@ -27,7 +27,7 @@ export class CardComponent {
   iconFlipState = 'normal';
   prefetchedLocations: string[] = [];
   @Input() card: Card | any;
-  @Input() first: boolean = false;
+  @Input() first = false;
   faFeather = faFeather;
   faPencilRuler = faPencilRuler;
   faArchive = faArchive;
@@ -45,11 +45,11 @@ export class CardComponent {
     this.iconFlipState = 'normal'
   }
 
-  showNew() { 
+  showNew() {
     try {
-      let match = this.card.tagline.match(/(\d{4})-(\d{1,2})-(\d{1,2})/)
+      const match = this.card.tagline.match(/(\d{4})-(\d{1,2})-(\d{1,2})/)
       if (match) {
-        let lastModified = new Date(match[1], match[2] - 1, match[3])
+        const lastModified = new Date(match[1], match[2] - 1, match[3])
         return new Date().getTime() - lastModified.getTime() < 1209600000
       }
     }

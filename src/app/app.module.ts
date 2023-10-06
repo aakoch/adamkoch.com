@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingComponent } from './landing/landing.component';
 import { SharedModule } from './shared/shared.module';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule } from '@angular/forms';
@@ -64,5 +64,5 @@ export function prefersReducedMotion(): boolean {
     SharedModule,
   ]
 })
-export class AppModule { 
+export class AppModule {
 }

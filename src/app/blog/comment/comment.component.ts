@@ -21,4 +21,4 @@ export class CommentComponent implements OnInit {
   ngOnInit() {
     this.hash = Md5.hashStr(this.email.toLowerCase().trim());
   }
-};
+}

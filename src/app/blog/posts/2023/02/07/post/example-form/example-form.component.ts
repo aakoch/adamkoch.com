@@ -12,7 +12,7 @@ import { ExampleFormData } from './example-form-data';
 export class ExampleFormComponent implements AfterViewInit {
   @ViewChild('formRef')
   form!: NgForm;
-  beingSubmitted: boolean = false;
+  beingSubmitted = false;
   isSuccess = false;
   isError = false;
   error?: string;

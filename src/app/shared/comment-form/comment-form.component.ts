@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { combineLatestWith, concatMap, debounceTime, filter, first, Observable, Subscription, switchMap, tap } from 'rxjs';
+import { filter, Subscription, switchMap, tap } from 'rxjs';
 import { NetlifyFormsService } from '../../blog/netlify-forms.service';
 import { CommentFormData } from './comment-form-data';
 
@@ -15,7 +15,7 @@ export class CommentFormComponent implements AfterViewInit, OnInit {
   @Input() postId = "unknown";
   @Input() postTitle?: string;
   @Input() useClass = true;
-  beingSubmitted: boolean = false;
+  beingSubmitted = false;
   isSuccess = false;
   isError = false;
   expanded = false;
@@ -47,7 +47,7 @@ export class CommentFormComponent implements AfterViewInit, OnInit {
         filter(() => !this.beingSubmitted),
         tap(() => this.beingSubmitted = true),
         filter(() => {
-          return this.model.name?.length > 0 && this.model.comment?.length > 0 && this.count > 5;          
+          return this.model.name?.length > 0 && this.model.comment?.length > 0 && this.count > 5;
         }),
         switchMap(() => this.netlifyForms.submitFeedback(this.model as CommentFormData)),
       )

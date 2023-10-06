@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Title } from '@angular/platform-browser';
 import run from './index';
@@ -52,11 +52,11 @@ export class FilenotfoundComponent implements AfterViewInit{
     setTimeout(this.oneturn, 1);
   }
   oneturn = () => {
-    this.rotateState = "1turn"; 
+    this.rotateState = "1turn";
     setTimeout(() => this.normal(), 2000);
   }
   normal = () => {
-    this.rotateState = "normal"; 
+    this.rotateState = "normal";
     setTimeout(this.oneturn, 0);
   }
 

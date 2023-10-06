@@ -10,7 +10,7 @@ import { faAngleDoubleRight, faExternalLinkAlt } from '@fortawesome/free-solid-s
 })
 export class MinicardComponent {
   @Input() card: any;
-  @Input() first: boolean = false;
+  @Input() first = false;
   externalLinkAlt: IconProp = faExternalLinkAlt;
   angleDoubleRight: IconProp = faAngleDoubleRight;
   constructor(private router: Router, private window: Window) {

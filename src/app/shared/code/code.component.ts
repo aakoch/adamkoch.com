@@ -7,10 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CodeComponent implements OnInit {
 
-  @Input() heading?: String;
-  @Input() language?: String;
-  @Input() body?: String;
-  clazzName?: String;
+  @Input() heading?: string;
+  @Input() language?: string;
+  @Input() body?: string;
+  clazzName?: string;
 
   ngOnInit() {
     this.clazzName = "language-" + this.language;

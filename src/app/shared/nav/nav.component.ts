@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { animate, state, style, transition, trigger, AnimationEvent } from '@angular/animations'
-import { faAngleDoubleLeft, faAngleDoubleRight, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { Component, Input } from '@angular/core';
+import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations'
+import { faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
@@ -28,17 +28,13 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
     ])
   ]
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
   @Input() prevUrl ?: string;
   @Input() prevTitle ?: string;
   @Input() nextUrl ?: string;
   @Input() nextTitle ?: string;
   angleDoubleLeft: IconProp = faAngleDoubleLeft;
   angleDoubleRight: IconProp = faAngleDoubleRight;
-  
-  ngOnInit(): void {
-    // console.log('this=', this);
-  }
 
   moveRight = 'start';
   moveLeft = 'start';
@@ -57,7 +53,7 @@ export class NavComponent implements OnInit {
   onEnd(event: AnimationEvent) {
     // console.log("event=", event);
     if ((event.fromState === "start" && event.toState === "end")){
-      
+
       // requestAnimationFrame(() => { if (this.isMouseOver) (<any>this)[event.triggerName] = "end2" })
     }
     else if ((event.fromState === "end" && event.toState === "end2")) {

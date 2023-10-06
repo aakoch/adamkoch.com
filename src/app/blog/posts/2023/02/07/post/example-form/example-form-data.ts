@@ -1,6 +1,6 @@
 export class ExampleFormData {
   
-  constructor(name: string, comment: string, formName: string = "comment-form") {
+  constructor(name: string, comment: string, formName = "comment-form") {
     this.name = name;
     this.comment = comment;
     this["form-name"] = formName

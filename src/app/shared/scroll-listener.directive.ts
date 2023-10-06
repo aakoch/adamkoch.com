@@ -1,4 +1,3 @@
-import { ViewportScroller } from '@angular/common';
 import { AfterContentInit, Directive, HostListener, Input, ViewContainerRef } from '@angular/core';
 
 @Directive({

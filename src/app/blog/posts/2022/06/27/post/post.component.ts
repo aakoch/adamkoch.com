@@ -1,5 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-post',
@@ -7,6 +6,6 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent  {
-  
+
 
 }
