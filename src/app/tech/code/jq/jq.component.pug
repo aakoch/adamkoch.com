@@ -37,6 +37,14 @@
         grep -v "^- var.*" $f.html | html2pug > $f.pug
       done      
 
+
+  p.mb-1 I can't remember if I even got this working:
+  code
+    pre.
+      .[] | "insert into vehicle_data values(" + (.year | tostring) + ", '" + (.make | sub("'"; "''"; "g")) + "', '" + (.model | sub("'"; "''"; "g")) + "', '" + (.trim  | sub("'"; "''"; "g")) + "');" 
+
+
+
   p: a(routerLink="..") &larr; Back to Code Samples
   p: a(routerLink="../..") &larr; Back to Tech
 
