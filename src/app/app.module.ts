@@ -17,6 +17,8 @@ import { FormsModule } from '@angular/forms';
 import { FilenotfoundComponent } from './filenotfound/filenotfound.component';
 import { MinicardtestComponent } from './landing/minicardtest/minicardtest.component';
 import { HrefDirective } from './tech/href.directive';
+import { OtherComponent } from './other/other.component'
+import { LandingFooterComponent } from './landing/landing-footer/landing-footer.component'
 
 // import {fas} from '@fortawesome/free-solid-svg-icons';
 // import {
@@ -42,11 +44,13 @@ export function prefersReducedMotion(): boolean {
     LandingBodyComponent,
     LandingComponent,
     LandingHeaderComponent,
+    LandingFooterComponent,
     MinicardComponent,
     MinicardListComponent,
     FilenotfoundComponent,
     MinicardtestComponent,
-    HrefDirective
+    HrefDirective,
+    OtherComponent,
   ],
   imports: [
     AppRoutingModule,

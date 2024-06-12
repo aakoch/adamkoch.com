@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faAngleDoubleRight, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { Component, Input } from '@angular/core'
+import { Router } from '@angular/router'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faAngleDoubleRight, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-minicard',

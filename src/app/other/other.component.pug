@@ -1,0 +1,11 @@
+app-pageheader
+
+#moreresources
+  h2 More Stuff
+
+.cards-container
+  app-card("[card]"="card" "[first]"="false" "*ngFor"="let card of cards; index as i" "[ngClass]"="'card-container'")
+
+app-minicard-list([links]="links")
+
+app-footer

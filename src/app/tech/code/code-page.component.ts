@@ -10,5 +10,4 @@ export class CodePageComponent {
   constructor(pageTitle: Title) {
     pageTitle.setTitle("Adam Koch - Tech - Code Samples");
   }
-
 }

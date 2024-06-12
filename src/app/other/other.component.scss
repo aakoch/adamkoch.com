@@ -1,0 +1,42 @@
+
+#moreresources {
+  margin: 1em 3em;
+  text-align: center;
+  min-width: 96%;
+  order: 3;
+
+}
+@media screen and (max-width: 1190px) {
+  #moreresources {
+    // prevents horizontal scrollbar at certain widths
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+}
+@media screen and (max-width: 767px) {
+  #moreresources {
+    min-width: unset;
+  }
+}
+
+
+.cards-container {
+  display: grid;;
+  grid-template-columns: repeat(auto-fit, 30vw);
+  gap: 1.5rem;
+  width: 80%;
+  margin: auto;
+  padding-bottom: 2em;
+  justify-content: center;
+}
+
+@media screen and (max-width: 767px) {
+  .cards-container {
+    display: block;
+  }
+  .card-container {
+    margin-bottom: 1rem;
+  }
+}
+

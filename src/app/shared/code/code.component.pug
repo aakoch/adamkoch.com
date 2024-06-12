@@ -1,5 +1,4 @@
 .code
   .code-heading {{ heading }}
-  pre.code-content: code("[ngClass]"="clazzName")
-    ng-content(ngNonBindable)
+  pre.code-content.code(ngNonBindable): code("[ngClass]"="clazzName")
     | {{ body }}

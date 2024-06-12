@@ -5,6 +5,7 @@ import { ContactComponent } from './contact/contact.component';
 import { FilenotfoundComponent } from './filenotfound/filenotfound.component';
 import { LandingComponent } from './landing/landing.component';
 import { MinicardtestComponent } from './landing/minicardtest/minicardtest.component';
+import { OtherComponent } from './other/other.component'
 
 @Injectable({ providedIn: 'root' })
 export class TemplatePageTitleStrategy extends TitleStrategy {
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'tech', loadChildren: () => import('./tech/tech.module').then(m => m.TechModule) },
   { path: 'design', loadChildren: () => import('./design/design.module').then(m => m.DesignModule) },
   { path: 'contact', title: 'Contact Me', component: ContactComponent },
+  { path: 'other', title: 'Other Stuff', component: OtherComponent },
   { path: 'minicardtest', component: MinicardtestComponent },
   { path: '', component: LandingComponent, pathMatch: 'full' },
   { path: '**', component: FilenotfoundComponent },

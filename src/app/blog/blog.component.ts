@@ -3,9 +3,8 @@ import { WordPressPost } from './oldposts/wordpress-post.model';
 import OLD_POSTS from "../../data/professional_publish.json";
 import { Title } from '@angular/platform-browser';
 
-const idx = 5
 const fullPosts: WordPressPost[] = sort(OLD_POSTS);
-const posts: WordPressPost[] = fullPosts.slice(0, idx)
+let initialPosts: WordPressPost[] = fullPosts.slice(0, 5)
 
 function sort(posts: WordPressPost[]) {
   return posts.sort((post1: any, post2: any) => {
@@ -29,7 +28,7 @@ function sort(posts: WordPressPost[]) {
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements AfterViewInit {
-  posts: WordPressPost[] = posts;
+  posts: WordPressPost[] = initialPosts;
   allPosts: WordPressPost[] = fullPosts;
 
   idx = 5;
@@ -50,7 +49,10 @@ export class BlogComponent implements AfterViewInit {
   }
 
   loadMore() {
+    console.log("load more. idx = " + this.idx)
     this.idx += 5
+    this.posts = fullPosts.slice(0, this.idx)
+    console.log("posts = " + this.posts)
   }
 
 }

@@ -18,8 +18,6 @@
 
           div(v-if="loaded")
             .postContent([innerHtml]="content")
-            div.mt-2
-              a(href="{{post?.link?.replace('https://www.adamkoch.com/', 'https://wordpress.adamkoch.com/')}}") Original post
 
             //- div(*ngFor="let comment of post?.comments")
             //-   app-comment([comment]=comment)

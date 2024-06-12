@@ -23,11 +23,11 @@ block body
     .content
 
     a(name="intro")
-    h2 Intro 
+    h2 Intro
     p My professional experience hasn't included a lot of "push" technology, but a friend mentioned an upcoming hockey draft and how he wants to be able to push updates to a webpage. I've heard of SSE (Server-Sent Events) and wanted to implement it.
 
     h2 What is it?
-    p 
+    p
       a(href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events") Server-Sent Events
       |  is a technology that allows data to be "pushed" from the server to a webpage. The browser calls an endpoint and a connection is made where the browser listens to events publish through this connection.
 
@@ -53,14 +53,14 @@ block body
          &#x007D;;
 
     h3 Server Side Setup
-    p The page is pretty easy to set up; the server is a tad more involved and depends on your technology. For a Node-based solution, visit 
+    p The page is pretty easy to set up; the server is a tad more involved and depends on your technology. For a Node-based solution, visit
       a(href="https://blog.bitsrc.io/5-ways-to-sync-web-and-server-data-in-real-time-3b5748ad2bf7") this page
-      |  where Zach has a demo of it. 
+      |  where Zach has a demo of it.
 
-    p As I don't have a server that runs Node, I created my example using PHP. I started with 
+    p As I don't have a server that runs Node, I created my example using PHP. I started with
       a(href="https://lucidar.me/en/web-dev/server-sent-event-simple-php-example/") an example
       |  that just sent a periodic message to the browser.
-    
+
     .code
       .code-heading Example PHP code
       pre: code.language-php.
@@ -82,15 +82,15 @@ block body
           flush();
 
           // Wait 2 seconds for the next message / event
-          sleep(2);  
+          sleep(2);
          &#x007D;
         ?&gt;
-      .credit 
+      .credit
         a(href="https://lucidar.me/en/web-dev/server-sent-event-simple-php-example/") https://lucidar.me/en/web-dev/server-sent-event-simple-php-example/
-    
-    p This example was ok, but missing discussion of sessions. To get to my final solution I had to first find 
+
+    p This example was ok, but missing discussion of sessions. To get to my final solution I had to first find
       a(href="https://kevinchoppin.dev/blog/server-sent-events-in-php") this article
-      | . I had to disable sessions. 
+      | . I had to disable sessions.
 
 
     .code
@@ -114,9 +114,9 @@ block body
           if ($row = $result-&gt;fetch_assoc()) &#x007B;
             $latestEventId = $row[&apos;id&apos;];
             ...
-  
-    
-    p As a way to update the data, I created a simple PHP page that would insert a record each time the page was refreshed.  
+
+
+    p As a way to update the data, I created a simple PHP page that would insert a record each time the page was refreshed.
     .code
       .code-heading Adding rows to our DB
       pre: code.language-php.
@@ -131,15 +131,15 @@ block body
         // Check connection
         if ($conn-&gt;connect_error) &#x007B;
           die(&quot;Connection failed: &quot; . $conn-&gt;connect_error);
-        }
+        &#64;
 
         $sql = &quot;INSERT INTO messages () VALUES ()&quot;;
 
         if ($conn-&gt;query($sql) === TRUE) &#x007B;
           $data = &quot;New record created successfully&quot;;
-        } else &#x007B;
+        &#64; else &#x007B;
           $data =  &quot;Error: &quot; . $sql . &quot;&lt;br&gt;&quot; . $conn-&gt;error;
-        }
+        &#64;
 
         $conn-&gt;close();
         ?&gt;
@@ -158,12 +158,12 @@ block body
           &lt;button type=&quot;button&quot; onclick=&quot;location.reload()&quot;&gt;Reload&lt;/button&gt; the page for a new entry
         &lt;/section&gt;
 
-          
+
         &lt;/body&gt;
         &lt;/html&gt;
 
     h2 Conclusion
-    p This was a pretty easy POC. Other concerns before this could be used would be the number of connections to the PHP server as well as the database connections. 
+    p This was a pretty easy POC. Other concerns before this could be used would be the number of connections to the PHP server as well as the database connections.
 
     h3 Source Code
     .code
@@ -180,7 +180,7 @@ block body
       .code-heading DB updating page
       pre: code.language-php.
         {{ dbUpdatePageCode }}
-      
+
     app-nav(prevUrl= prevUrl, prevTitle= prevTitle, nextUrl= nextUrl, nextTitle= nextTitle)
 
     app-comment-form(postTitle="Motion Canvas Fun" postId="20230330")

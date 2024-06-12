@@ -1,15 +1,16 @@
 
 .page-grid
   #adamexcerpt
-    p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things"
-      | are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
+    div
+      p Adam is a tinkerer with hobbies of "making things". Sometimes those "things" are 3D printed models, but more often his "things" 
+        | are in digital form. He enjoys writing code the most, but has his hands in CAD, publishing, video editing, music and more.
 
   #main
     h2 Main Content
     .cards-container
       app-card("[card]"="card" "[first]"="isFirst" "*ngFor"="let card of cards; index as i; first as isFirst" "[ngClass]"="'card-container'")
 
-  #moreresources
-    h2 More Stuff
-  app-minicard-list([links]="links")
-//- #end.col.g-5
+  .gcse-search-container
+    .gcse-search
+
+  app-landing-footer

@@ -1,11 +1,12 @@
-hr(width="80%" align="center")
 
+script(async,src="https://cse.google.com/cse.js?cx=6d55acc2bd38eaf1d")
+hr(width="80%" align="center")
 
 .botton-nav
   a.linkies(routerLink="{{prevUrl}}", rel="prev" "(mouseenter)"="onHover('moveLeft')" "(mouseleave)"="doMouseLeave('moveLeft')" )
     fa-icon([icon]="angleDoubleLeft")&attributes({"[@moveLeft]": "moveLeft", "(@moveLeft.done)": "onEnd($event)"})
     span {{prevTitle}}
-  #more-posts More articles!      
+  #more-posts More articles!
   div("*ngIf"="!!nextUrl; else elseBlock")
     a.linkies(routerLink="{{nextUrl}}" rel="next" "(mouseenter)"="onHover('moveRight')" "(mouseleave)"="doMouseLeave('moveRight')") {{nextTitle}}
       fa-icon([icon]="angleDoubleRight")&attributes({"[@moveRight]": "moveRight", "(@moveRight.done)": "onEnd($event)"})

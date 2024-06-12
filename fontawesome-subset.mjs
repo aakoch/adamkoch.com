@@ -6,7 +6,7 @@ import { fontawesomeSubset } from "fontawesome-subset";
 
 fontawesomeSubset(
   {
-      solid: ['feather', 'pencil-ruler', 'angle-double-right', 'external-link-alt', 'archive', 'microchip', 'paint-brush', 'code-branch', 'cube', 'id-card'],
+      solid: ['feather', 'pencil-ruler', 'angle-double-right', 'external-link-alt', 'archive', 'microchip', 'paint-brush', 'code-branch', 'cube', 'id-card', 'sink'],
       brands: ["twitter', 'github"],
   },
   "sass/webfonts"

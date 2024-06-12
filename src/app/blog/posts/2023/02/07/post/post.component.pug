@@ -1,12 +1,5 @@
 
 
-
-
-
-
-
-
-
 append variables
   - var title = "How to submit a template form with Angular on Netlify using RxJS Observables"
   - var posted = '2023-02-07'
@@ -31,32 +24,32 @@ block body
     h1= title
     .posted= posted
     .content
-  
+
     .header-img
       img(src="assets/img/Angular_full_color_logo.svg")
-      | + 
+      | +
       img(src="assets/img/Netlify_logo.svg")
-      | + 
+      | +
       img(src="assets/img/RxJs_Logo_Basic.svg")
 
     a(name="intro")
-    h2 Intro 
+    h2 Intro
     //- a(href="setup") Skip
-    p I've been using 
+    p I've been using
       a(href="https://www.netlify.com/" title="Netlify") Netlify
       |  for over a year now but just recently learned Angular. I was struggling to get forms working on my Netlify site so I decided to share my success. In this article I'm going to give you the steps needed to get your Angular app submitting forms. As an extra bonus, since I'm also learning RxJS, I'll show you how to implement this form using declarative or reactive programming.
 
-    p This article will go over 
+    p This article will go over
       a(href="https://angular.io/guide/forms#building-a-template-driven-form" title="Angular documentation on template-driven forms") Angular template-driven forms
       | . Using a reactive form would follow most of the same steps but I won't be discussing how to create a reactive form.
-    
+
     p I'm going to assume some basic Angular knowledge and the know-how to create a component using <span class="mono">ng generate</span>. I'm also going to assume you are familiar with Netlify since I won't go through details such as setting up or deploying your site, although I will touch on it.
 
     a(name="netlify-forms")
     h2 Netlify Forms
     p Netlify's form submissions are free for up to 100 submissions per month. To set it up on your account, it's pretty easy. As part of your deployment, Netlify will scan your HTML files looking for forms. Once it finds them it will register the form names with your site. So the first thing you have to do with your Angular app, is do something un-Angular-like. You have to code a form with form fields in your static HTML. I say static because Netlify isn't going to render your Angular pages to find an form. I put my form right inside my <span class="mono">index.html</span> file as a hidden element;
 
-    
+
     .code
       .code-heading index.html
       pre.code-content: code.hljs.language-html.
@@ -66,13 +59,13 @@ block body
           ...
         &lt;/form&gt;
 
-    p I only have 2 forms on my site so I can "get away" with putting in just in the index.html. I'm not sure how you would do it for many forms. My form includes all the fields I'll be using in both forms. 
+    p I only have 2 forms on my site so I can "get away" with putting in just in the index.html. I'm not sure how you would do it for many forms. My form includes all the fields I'll be using in both forms.
 
     p Let me point out the form's attributes. The "<span class="mono">name</span>" of the form is required and important, as this is the name of the form you have to use within your Angular code. Next is <span class="mono">netlify</span> which informs Netlify to add the form to your site. You could also use <span class="mono">data-netlify</span> if you need your form to be <span title="Can you even do that with Angular?">valid HTML.</span>  And don't forget to add <span class="mono">hidden</span> so the form isn't visible on your page.
 
     h2 Angular Component
     h3 Data Class
-    p Next, create an Angular component if you haven't done so already. In the same folder let's create a class that will hold the data for our form. I've called mine <span class="mono">ExampleFormData</span> with 3 required fields and 2 optional fields. The important field here is the <span class="mono">form-name</span> field. This is needed when submitting the form to match the name in your hidden form you created earlier. 
+    p Next, create an Angular component if you haven't done so already. In the same folder let's create a class that will hold the data for our form. I've called mine <span class="mono">ExampleFormData</span> with 3 required fields and 2 optional fields. The important field here is the <span class="mono">form-name</span> field. This is needed when submitting the form to match the name in your hidden form you created earlier.
 
     app-code("[heading]"="'Our data class, example-form-data.ts'" "[language]"="'typescript'"): pre.
       export class ExampleFormData &#x007B;
@@ -91,7 +84,7 @@ block body
 
     h3 Template
     p Now we're going to set up our HTML code for our component. Right out of the gate we have a form field with the name of our form, a reference to the form that we'll use later in our Typescript.
-    
+
     .code(ngNonBindable)
       .code-heading The opening tag for the form element
       pre.code-content: code.
@@ -99,8 +92,8 @@ block body
           ...
         &lt;/form&gt;
 
-    p Next we add our fields, tying them to our component using <span class="mono">[(ngModel)]</span> and creating a <span class="mono">template variable</span> using the hash symbol. <span class="mono">#name</span>, <span class="mono">#email</span>, and so on for each form input. If we assign them <span class="mono">ngModel</span> we can use their states (valid, dirty, etc) in our template to control other behaviors. For simplicity, we'll only use them to enable our submit button but you could use it to determine when to show validation errors. 
-    
+    p Next we add our fields, tying them to our component using <span class="mono">[(ngModel)]</span> and creating a <span class="mono">template variable</span> using the hash symbol. <span class="mono">#name</span>, <span class="mono">#email</span>, and so on for each form input. If we assign them <span class="mono">ngModel</span> we can use their states (valid, dirty, etc) in our template to control other behaviors. For simplicity, we'll only use them to enable our submit button but you could use it to determine when to show validation errors.
+
     .code(ngNonBindable)
       .code-heading Form input fields
       pre.code-content: code.
@@ -117,7 +110,7 @@ block body
     p The <span class="mono">email</span> directive is one that Angular provides for verifying if the email is valid.
 
     p I've also appended 2 <span class="mono">div</span> tags that bind to form submission. One is for displaying an error in case of an error. The other is our success message. I've put these outside of the form element so we can hide the form when it is submitted.
-    
+
     .code(ngNonBindable)
       .code-heading Form submission messages
       pre.code-content: code.
@@ -126,32 +119,32 @@ block body
         &lt;div class=&quot;alert alert-success&quot; *ngIf=&quot;isSuccess&quot;&gt;Form submitted!&lt;/div&gt;
 
     h3 Component
-    p When using Angular's generator, you should have a Typescript file with the similar code: 
+    p When using Angular's generator, you should have a Typescript file with the similar code:
 
     .code
       .code-heading comment-form.component.ts generated code
       pre.code-content: code.language-typescript.
-        import &#x007B; Component &#x007D; from '@angular/core';
-        import &#x007B; NgForm &#x007D; from '@angular/forms';
+        import &#x007B; Component &#x007D; from '&#64;angular/core';
+        import &#x007B; NgForm &#x007D; from '&#64;angular/forms';
 
-        @Component(&#x007B;
+        &#64;Component(&#x007B;
           selector: 'app-example-form',
           templateUrl: './example-form.component.html',
           styleUrls: ['./example-form.component.scss']
         &#x007D;)
         export class ExampleFormComponent &#x007B;
         &#x007D;
-    
+
     p To tie in our form we add a property named "<span class="mono">form</span>" with the <span class="mono">ViewChild</span> annotation. The annotation takes in the name of the form reference in our template. In our case, this is "formRef".  The code should look like this:
     .code
       .code-heading Binding the form reference to our component
       pre.code-content: code.language-typescript.
-        @ViewChild('formRef')
+        &#64;ViewChild('formRef')
         form!: NgForm;
-    
-    p This will let listen to the form's 
+
+    p This will let listen to the form's
       a(href="https://angular.io/api/forms/NgForm#properties") <span class="mono">ngSubmit</span> <span class="mono">EventEmitter</span>
-      | . It will emit an event when the form is submitted. Before we get to that let's set up the rest of our class members. We'll add a member to hide the submit button when the form is submitting plus the variables to tell our template if the submission was successful or not. 
+      | . It will emit an event when the form is submitted. Before we get to that let's set up the rest of our class members. We'll add a member to hide the submit button when the form is submitting plus the variables to tell our template if the submission was successful or not.
 
     .code(ngNonBindable)
       .code-heading Helper variables
@@ -162,40 +155,40 @@ block body
         error?: string;
 
     p Next we create our <span class="mono">model</span> variable and assign it to a new instance of it. Instead of referencing the name of the Netlify form in our template, I'm doing it here since the value won't change. (Although my class also defaults to it.) Don't forget the <span class="mono">import</span> statement to your class.
-    
+
     app-code("[heading]"="'Form model'" "[language]"="'typescript'").
       import &#x007B; ExampleFormData &#x007D; from './example-form-data';
       ...
-      model: ExampleFormData = &#x007B; name: '', comment: '', 'form-name': 'post-comment-form', email: '', url: '' };
+      model: ExampleFormData = &#x007B; name: '', comment: '', 'form-name': 'post-comment-form', email: '', url: '' &#125;;
 
-    p To finish implementing the component we're going to need a service that we can call. Let's jump over to this service I am calling NetlifyFormsService. 
+    p To finish implementing the component we're going to need a service that we can call. Let's jump over to this service I am calling NetlifyFormsService.
 
     h2 Forms Service
-    p We're going to write a service that we can call from our form component. This service will handle the actual HTTP call. Create a new file called netlify-forms.service.ts. We'll need to inject the HttpClient as well as make our service itself injectable. We're also going to use our data class and a few other things. 
+    p We're going to write a service that we can call from our form component. This service will handle the actual HTTP call. Create a new file called netlify-forms.service.ts. We'll need to inject the HttpClient as well as make our service itself injectable. We're also going to use our data class and a few other things.
     app-code("[heading]"="'netlify-forms.service.ts start'" "[language]"="'typescript'" "[body]"="serviceStartCodeContent")
 
-    p The meat of the service we'll put into a method called <span class="mono">submitFeedback</span>. In here we'll use the spread operator to put our form class into a new <span class="mono">HttpParams</span> class needed by the <span class="mono">HttpClient</span>. Then we call the <span class="mono">post</span> method on <span class="mono">HttpClient</span>. For testing purposes I'm using <span class="mono">isDevMode()</span>, an Angular method to determine whether we are deployed in production or not. For testing I'm standing up a separate server listening on port 8000 that just responds with a simple 200. Otherwise, you'll want to use '/' as the URL to post your data. Another important piece is you need to send your form URL encoded so add the "Content-Type" header to your request. Lastly we'll catch any errors by using the 
-      a(href="https://rxjs.dev/api/index/function/catchError") <span class="mono">catchError</span> RxJS operator. 
+    p The meat of the service we'll put into a method called <span class="mono">submitFeedback</span>. In here we'll use the spread operator to put our form class into a new <span class="mono">HttpParams</span> class needed by the <span class="mono">HttpClient</span>. Then we call the <span class="mono">post</span> method on <span class="mono">HttpClient</span>. For testing purposes I'm using <span class="mono">isDevMode()</span>, an Angular method to determine whether we are deployed in production or not. For testing I'm standing up a separate server listening on port 8000 that just responds with a simple 200. Otherwise, you'll want to use '/' as the URL to post your data. Another important piece is you need to send your form URL encoded so add the "Content-Type" header to your request. Lastly we'll catch any errors by using the
+      a(href="https://rxjs.dev/api/index/function/catchError") <span class="mono">catchError</span> RxJS operator.
 
-      
+
     app-code("[heading]"="'submitFeedback method'" "[language]"="'typescript'"): pre.
       submitFeedback(commentEntry: ExampleFormData): Observable&lt;any&gt; &#x007B;
         const entry = new HttpParams(&#x007B;
           fromObject: &#x007B;
             ...commentEntry
-          }
-        });
+          &#125;
+        &#125;);
         return this.http
           .post(
             isDevMode() ? 'http://localhost:8000/' : '/',
             entry.toString(),
             &#x007B;
-              headers: &#x007B; 'Content-Type': 'application/x-www-form-urlencoded' },
+              headers: &#x007B; 'Content-Type': 'application/x-www-form-urlencoded' &#125;,
               responseType: 'text'
-            }
+            &#125;
           )
           .pipe(catchError(this.handleError));
-      }
+      &#125;
 
     p To finalize our service we implement the handleError method which will throw an error with our custom error message.
 
@@ -204,20 +197,20 @@ block body
         let errMsg = '';
 
         if (err.error instanceof ErrorEvent) &#x007B;
-          errMsg = `A client-side error occurred: $&#x007B;err.error.message}`;
-        } else &#x007B;
-          errMsg = `A server-side error occurred. Code: $&#x007B;err.status}. Message: $&#x007B;err.message}`;
-        }
+          errMsg = `A client-side error occurred: $&#x007B;err.error.message&#125;`;
+        &#125; else &#x007B;
+          errMsg = `A server-side error occurred. Code: $&#x007B;err.status&#125;. Message: $&#x007B;err.message&#125;`;
+        &#125;
 
         return throwError(() => new Error(errMsg));
-      }
+      &#125;
 
-    h2 RxJS 
-    p Back to the component and in the home stretch!  To finish my component, I decided to practice my reactive programming. I know I want to listen for the event fired when the submit button is pressed and eventually listen to the event from our service. I start with the <span class="mono">ngSubmit EventEmitter</span> and pipe this into some RxJS operators. The <span class="mono">tap</span> operator is used as a way to call some code that won't affect the observable. I'm setting the <span class="mono">beingSubmitted</span> variable to <span class="mono">true</span> so I can hide the submit button. Then I am use the 
+    h2 RxJS
+    p Back to the component and in the home stretch!  To finish my component, I decided to practice my reactive programming. I know I want to listen for the event fired when the submit button is pressed and eventually listen to the event from our service. I start with the <span class="mono">ngSubmit EventEmitter</span> and pipe this into some RxJS operators. The <span class="mono">tap</span> operator is used as a way to call some code that won't affect the observable. I'm setting the <span class="mono">beingSubmitted</span> variable to <span class="mono">true</span> so I can hide the submit button. Then I am use the
       a(href="https://rxjs.dev/api/index/function/switchMap") <span class="mono">switchMap</span> operator
       |  to start listening to the service's Observable. I then subscribe to this new observable using the <span class="mono">subscribe</span> method with an object containing a method to execute when the next event is sent. It will also be the last as the HTTP client returns a "finite" Observable. (
       a(href="https://netbasal.com/when-to-unsubscribe-in-angular-d61c6b21bad3") Read more on the subject here.
-      |) But because <span class="mono">subscribe</span> is used in other cases also, the method is named <span class="mono">next</span>. The <span class="mono">error</span> method, you guessed it, handles if there was an error. 
+      |) But because <span class="mono">subscribe</span> is used in other cases also, the method is named <span class="mono">next</span>. The <span class="mono">error</span> method, you guessed it, handles if there was an error.
 
     app-code("[heading]"="'Component\\\'s ngAfterViewInit method'" "[language]"="'typescript'"): pre.
       ngAfterViewInit() &#X007B;
@@ -230,13 +223,13 @@ block body
             next: () => &#X007B;
               this.beingSubmitted = false;
               this.isSuccess = true;
-            },
+            &#125;,
             error: (err) => &#X007B;
               this.isError = true;
               this.error = err;
-            }
-          });
-      }
+            &#125;
+          &#125;);
+      &#125;
 
     h2 Deployment
     p You should use your regular way to deploy to Netlify. For me, that's pushing to my Github repo. In the output of the Netlify deploy you should see something relating to your form.
@@ -248,7 +241,7 @@ block body
         - url
         - comment
 
-    h2 Conclusion 
+    h2 Conclusion
     p It's been a journey for me to Angularize my site but I've learned a lot. I hope you learned a little bit. Source code follows:
 
     h2 Source code
@@ -262,7 +255,7 @@ block body
           &lt;input type="text" name="url"/&gt;
           &lt;input type="text" name="comment"/&gt;
         &lt;/form&gt;
-    
+
     .code(ngNonBindable)
       .code-heading Full example-form.component.html
       pre.code-content: code.
@@ -283,7 +276,7 @@ block body
         &lt;/form&gt;
         &lt;div class=&quot;alert alert-danger&quot; *ngIf=&quot;isError&quot;&gt;There was an error with form submission: &#x007B;&#x007B; error &#x007D;&#x007D;&lt;/div&gt;
         &lt;div class=&quot;alert alert-success&quot; *ngIf=&quot;isSuccess&quot;&gt;Form submitted!&lt;/div&gt;
-    
+
     .code
       .code-heading example-form.component.ts
       pre: code.language-typescript.
@@ -308,12 +301,12 @@ block body
           res.setHeader("Access-Control-Allow-Origin", "*")
           res.writeHead(200);
           res.end("success");
-        };
+        &#64;;
 
         const server = http.createServer(requestListener);
         server.listen(port, host, () => &#x007B;
-            console.log(`Server is running on http://$&#x007B;host}:$&#x007B;port}`);
-        });
+            console.log(`Server is running on http://$&#x007B;host&#64;:$&#x007B;port&#64;`);
+        &#64;);
 
 
     app-nav(prevUrl= prevUrl, prevTitle= prevTitle, nextUrl= nextUrl, nextTitle= nextTitle)

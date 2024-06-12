@@ -7,10 +7,10 @@ import { catchError, map, retry } from 'rxjs/operators';
 
 // declare var hljs: any;
 
-// declare let ShortCode: any;
-// import {ShortCode} from "../../../../js/shortcode";
 // import * as comment from "./comment";
 import { ShortCode } from "src/js/shortcode"
+// declare let ShortCode: any;
+// let shortcode: any = new ShortCode();
 
 import hljs from '../../../../../node_modules/highlight.js/lib/core';
 import java from 'highlight.js/lib/languages/java';
@@ -109,20 +109,20 @@ export class PostcardComponent implements OnInit {
     //     console.log("postJson=", postJson);
     //     this.content = shortcode(postJson["content:encoded"]).replaceAll("\r\n\r\n", "<br>");
     //     this.loaded = true;
-
+    //
     //     if (postJson["wp:comment"]) {
     //       postJson["wp:comment"].sort((comment1: {"wp:comment_id": string[]}, comment2: {"wp:comment_id": string[]}) => {
     //           parseInt(comment1["wp:comment_id"][0]) -
     //           parseInt(comment2["wp:comment_id"][0])
     //       });
-
+    //
     //       this.comments = postJson["wp:comment"];
     //     }
-
+    //
     //     // if (history.pushState) {
     //     //   history.pushState(this.postContent, null, '/posts/' + this.link.replace('https://www.adamkoch.com/', ''))
     //     // }
-
+    //
     //   })
     //   .then(() => {
     //     document.querySelectorAll('pre code').forEach((el : any) => {

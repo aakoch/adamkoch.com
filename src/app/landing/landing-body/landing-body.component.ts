@@ -32,9 +32,9 @@ export class LandingBodyComponent implements OnInit {
     },
     {
       id: 2,
-      title: "Current Projects",
+      title: "Projects",
       icon: "pencil-ruler",
-      description: "Things I'm working on now",
+      description: "Things I'm working on",
       buttons: [
         {
           label: "Dive in",
@@ -44,63 +44,15 @@ export class LandingBodyComponent implements OnInit {
     },
     {
       id: 3,
-      title: "Past Projects",
-      icon: "archive",
-      description: "Old or abandoned projects",
-      url: "/past_projects",
+      title: "The Rest",
+      icon: "sink",
+      description: "The kitchen sink, as they say",
+      url: "/other",
       buttons: [
         {
-          label: "Dig Deep",
+          label: "Let it flow",
         },
       ],
-    },
-  ]
-  public links: any[] = [
-    {
-      id: 5,
-      title: "Tech",
-      icon: "microchip",
-      description: "Some hardware, but mostly software",
-      link: "/tech",
-    },
-    {
-      id: 6,
-      title: "Design",
-      icon: "paint-brush",
-      description: "Drawings, websites, music",
-      link: "/design",
-    },
-    {
-      id: 1,
-      title: "GitHub",
-      icon: "code-branch",
-      description: "Source code",
-      link: "https://github.com/aakoch/",
-      isExternal: true,
-    },
-    {
-      id: 2,
-      title: "Thingiverse",
-      icon: "cube",
-      description: "3D designs",
-      link: "https://www.thingiverse.com/aakoch/designs",
-      isExternal: true,
-    },
-    {
-      id: 3,
-      title: "Resume",
-      icon: "id-card",
-      description: "CV",
-      link: "https://aakoch.github.io/",
-      isExternal: true,
-    },
-    {
-      id: 4,
-      title: "Twitter",
-      icon: ["fab", "twitter"],
-      description: "Tweet",
-      link: "https://twitter.com/aakoch",
-      isExternal: true,
     },
   ]
 

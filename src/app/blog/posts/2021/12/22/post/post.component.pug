@@ -41,32 +41,32 @@ block body
     .posted= posted
     .content
 
-      p I was looking to publish a small NPM package but when I tried it said I hadn't paid for a private repo. 
+      p I was looking to publish a small NPM package but when I tried it said I hadn't paid for a private repo.
       pre: code.text.
         npm ERR! code E402
-        npm ERR! 402 Payment Required - PUT https://registry.npmjs.org/@aakoch%2futils - You must sign up for private packages
+        npm ERR! 402 Payment Required - PUT https://registry.npmjs.org/&#64;aakoch%2futils - You must sign up for private packages
 
-      p Well, I didn't want or intend for that. Did some searching and I just needed to publish with a flag like so: 
+      p Well, I didn't want or intend for that. Did some searching and I just needed to publish with a flag like so:
         code npm publish --access public
-      
+
       p But again I got an error:
       pre: code.text.
         npm ERR! code E403
-        npm ERR! 403 403 Forbidden - PUT https://registry.npmjs.org/@aakoch%2futils - Forbidden
+        npm ERR! 403 403 Forbidden - PUT https://registry.npmjs.org/&#64;aakoch%2futils - Forbidden
         npm ERR! 403 In most cases, you or one of your dependencies are requesting
         npm ERR! 403 a package version that is forbidden by your security policy, or
         npm ERR! 403 on a server you do not have access to.
-      
+
       p It's then that I remembered that my NPM username was taken so I had to use "aakochnpm" when I signed up. Bummer. So, I changed the scope and it worked. But then I thought, can I use an organization's scope to publish under and is it free to register an organization? Yes and yes. So I got the organization name "foo-dog" on NPM and can publish packages with that scope. Great.
 
-      p Now, is that username taken at GitHub? [type-type-typity-type] Gah! It is! That lead me to 
+      p Now, is that username taken at GitHub? [type-type-typity-type] Gah! It is! That lead me to
         a(href="https://github.community/t/inactive-username-cant-be-claimed/189177/20") a discussion on GH about inactive accounts
         | . Good discussion. I was going to reply with my "story" when I noticed the notice asking if my reply was adding to the conversation. Hmm... no, not really. But I know someplace I can post it. Here!
 
       blockquote
-        p I agree with most of the sentiment here: it sucks, but I can also see the problems it could create as @tajmone has pointed out. 
+        p I agree with most of the sentiment here: it sucks, but I can also see the problems it could create as &#64;tajmone has pointed out.
 
-        p I created my GitHub account in 2009 but didn't get an NPM account until this year. So my NPM account name has "npm" appended to my username. So now I can't release under my GitHub account name. I know, I'll create an NPM organization! So I did and it was available. Score! I went over to GH and... the account is taken! (Dormant since 2014) Augh! So my repos are under one username, published under a different name (the org for now) which on GH is an inactive account. 
+        p I created my GitHub account in 2009 but didn't get an NPM account until this year. So my NPM account name has "npm" appended to my username. So now I can't release under my GitHub account name. I know, I'll create an NPM organization! So I did and it was available. Score! I went over to GH and... the account is taken! (Dormant since 2014) Augh! So my repos are under one username, published under a different name (the org for now) which on GH is an inactive account.
 
 
 

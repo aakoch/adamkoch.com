@@ -1,26 +1,43 @@
 import { Component } from '@angular/core';
+import { Card } from '../card/card.model'
+import latestPost from '../../../blog.json'
 
 @Component({
-  selector: 'app-minicardtest',
-  template: `<app-minicard-list [links]="links"></app-minicard-list>`
+  selector: 'app-other',
+  templateUrl: './other.component.pug',
+  styleUrl: './other.component.scss'
 })
-export class MinicardtestComponent {
+export class OtherComponent {
 
-  public links: any[] = [
+  public cards: Card[] = [
     {
       id: 5,
       title: "Tech",
       icon: "microchip",
       description: "Some hardware, but mostly software",
-      link: "/tech",
+      url: "/tech",
+      buttons: [
+        {
+          label: "Nerd out"
+        }
+      ]
     },
     {
       id: 6,
       title: "Design",
       icon: "paint-brush",
       description: "Drawings, websites, music",
-      link: "/design",
+      url: "/design",
+      buttons: [
+        {
+          label: "Dive in",
+          url: "test"
+        }
+      ],
     },
+  ]
+
+    public links: any[] = [
     {
       id: 1,
       title: "GitHub",
