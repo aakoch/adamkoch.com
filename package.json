@@ -2,7 +2,7 @@
   "name": "adamkoch_com",
   "version": "2.4.0",
   "description": "Adam Koch homepage",
-  "author": "Adam Koch",
+  "author": "Adam Koch (aakoch)",
   "scripts": {
     "ng": "ng",
     "build": "./build.sh",
