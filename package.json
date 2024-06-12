@@ -10,7 +10,7 @@
     "test:unit": "mocha",
     "test:system": "nightwatch tests/system/basic.js",
     "test:ng": "ng test",
-    "clean": "rm -rf ./dist/ && mkdir dist;",
+    "clean": "rm -rf ./dist/ && rm -rf ./.parcel-cache/",
     "help": "echo \"npm run watch or npm run build\"",
     "postversion": "jq '.version' package.json | xargs -I{} tar -a -cf archive/{}.bz2 dist/* && git push && git push --tags",
     "serve": "npx serve dist/ -s",
