@@ -18,10 +18,10 @@ const keys = Object.keys(code);
 for (let index = 0; index < keys.length; index++) {
   const key = keys[index];
   const value = code[key];
-  
+
   if (value.indexOf('!import') == 0) {
     const filename = value.substring('!import'.length + 1);
-    const resolvedPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), filename); 
+    const resolvedPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), filename);
     debug("resolvedPath=", resolvedPath);
 
     try {

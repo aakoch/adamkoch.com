@@ -9,5 +9,5 @@ fontawesomeSubset(
       solid: ['feather', 'pencil-ruler', 'angle-double-right', 'external-link-alt', 'archive', 'microchip', 'paint-brush', 'code-branch', 'cube', 'id-card', 'sink'],
       brands: ["twitter', 'github"],
   },
-  "sass/webfonts"
+  "dist/fonts"
 );

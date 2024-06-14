@@ -27,14 +27,16 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "output": "/assets/",
+                "ignore": [
+                  "*.pug"
+                ]
+              },
               "src/fonts",
               "src/sitemap.xml",
-              {
-                "glob": "_redirects",
-                "input": "src",
-                "output": "/"
-              },
               "src/_redirects",
               "src/_headers",
               {
@@ -42,6 +44,7 @@
                 "input": "src/meta/",
                 "output": "/"
               },
+              "src/serve.json",
               "src/img",
               {
                 "glob": "favicon*",
@@ -129,7 +132,14 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "output": "/assets/",
+                "ignore": [
+                  "*.pug"
+                ]
+              }
             ],
             "styles": [
               "src/styles.scss"
