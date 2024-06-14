@@ -1,4 +1,3 @@
-//- script(type="module" src="~/node_modules/bootstrap/js/dist/collapse")
 nav.navbar.navbar-expand-md.navbar-dark
   .navbar-brand 
     a(href="/")
@@ -12,47 +11,15 @@ nav.navbar.navbar-expand-md.navbar-dark
       else
         a(href="/posts").nav-link Articles
     .nav-item
-      if title=="Current Projects"
-        .nav-link.active(aria-current="page") Current Projects
+      if title=="Projects"
+        .nav-link.active(aria-current="page") Projects
       else
-        a(href="/projects").nav-link Current Projects
+        a(href="/projects").nav-link Projects
     .nav-item
-      if title=="Past Projects"
-        .nav-link.active(aria-current="page") Past Projects
+      if title=="Other"
+        .nav-link.active(aria-current="page") Other
       else
-        a(href="/past_projects").nav-link Past Projects
-    .nav-item
-      if title=="Tech I Dig"
-        .nav-link.active(aria-current="page") Tech
-      else
-        a(href="/tech").nav-link Tech
-    .nav-item
-      if title=="Design"
-        .nav-link.active(aria-current="page") Design
-      else
-        a(href="/design").nav-link Design
+        a(href="/other").nav-link Other
     .nav-item
       .gcse-search
-    
-//- nav.navbar.navbar-expand-md.navbar-dark.bg-dark
-//-   .navbar-brand 
-//-     include ../img/header_name.svg
-//-   .navbar-nav
-//-     .nav-item
-//-       a(href="/").nav-link Home
-//-     .nav-item
-//-       if title=="Blog"
-//-         .nav-link.active Blog
-//-       else
-//-         a(href="/posts").nav-link Blog
-//-     .nav-item
-//-       if title=="Current Projects"
-//-         .nav-link.active Current Projects
-//-       else
-//-         a(href="/projects").nav-link Current Projects
-//-     .nav-item
-//-       if title=="Past Projects"
-//-         .nav-link.active Past Projects
-//-       else
-//-         a(href="/past_projects").nav-link Past Projects
     

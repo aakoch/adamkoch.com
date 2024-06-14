@@ -1,4 +1,8 @@
 {
   "cleanUrls": true,
-  "renderSingle": true
+  "renderSingle": true,
+  "rewrites": [
+    { "source": "posts", "destination": "/index.html" },
+    { "source": "projects", "destination": "/index.html" }
+  ]
 }
