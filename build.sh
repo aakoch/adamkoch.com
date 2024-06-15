@@ -27,6 +27,8 @@ fi
 
 npx parcel build --no-cache './src/assets/**/index.pug' './src/animations/*.pug' './src/rules/*.pug' --log-level verbose --dist-dir dist/assets --public-url "/assets"
 
+npx parcel build --no-cache './src/char160test.pug' './src/2009/07/25/white-space-and-character-160/index.pug' --log-level verbose --dist-dir dist --public-url "/"
+
 if [ $? -eq 0 ]; then
   echo "Parcel built"
 else
