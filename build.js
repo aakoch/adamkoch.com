@@ -68,7 +68,7 @@ function readPostStats(filename) {
 let postPreviewArr = []
 let postsData = []
 
-function doThing() {
+function postpreviews() {
   find.file(/20.*post\.component\.pug$/, __dirname + '/src/app/blog/posts/',
     function(files) {
       console.log(files.length)
@@ -173,7 +173,7 @@ async function createPostPreview() {
     .slice(-1)[0]
 
   fs.writeFile('./blog.json', `{"latestPost": "${content.trim()}"}`, (e) => {
-    doThing()
+    postpreviews()
     shell.exec(
       `npx parcel build --no-cache './src/assets/**/index.pug' './src/animations/*.pug' './src/rules/*.pug' --log-level verbose --dist-dir dist/assets --public-url "/assets"`)
   })
@@ -195,3 +195,4 @@ for (const filename of
   renderFile(filename)
 }
 
+shell.exec('ng build')
