@@ -1,3 +1,5 @@
+const { debug } = require('util');
+
 const shell = require('shelljs')
 const pug = require('pug')
 const fs = require('fs')
@@ -21,7 +23,7 @@ async function* walk(dir) {
 async function renderBlogPosts() {
   for await (const p of await walk('src/app/blog/')) {
     if (p.includes('post.component.pug')) {
-      console.log('p=' + p)
+      debug('in the future I will render: ' + p)
     }
   }
 }
@@ -71,15 +73,15 @@ let postsData = []
 function postpreviews() {
   find.file(/20.*post\.component\.pug$/, __dirname + '/src/app/blog/posts/',
     function(files) {
-      console.log(files.length)
+      debug(files.length)
       files.forEach(element => {
 
-        console.log('element=', element)
+        debug('element=', element)
 
         let postStats = readPostStats(element)
 
-        console.log('postStats=', postStats)
-        console.log('postStats.postedDate=', postStats.postedDate)
+        debug('postStats=', postStats)
+        debug('postStats.postedDate=', postStats.postedDate)
 
         if (!postStats.postedDate) {
           throw new Error(
@@ -134,7 +136,9 @@ function postpreviews() {
                 }
               }
 
-              let page = str.split('\n').splice(0, excerptPos + 1).join('\n')
+              let page = str.split('\n')
+                  .splice(0, excerptPos + 1)
+                  .join('\n')
                 + prevNextContent + '\n' + str.split('\n').splice(
                   excerptPos + 1).join('\n')
 
@@ -182,7 +186,7 @@ async function createPostPreview() {
 createPostPreview()
 
 async function renderFile(filename) {
-  console.log(`Processing ${filename}...`)
+  debug(`Processing ${filename}...`)
   const base = basename(filename, '.pug')
   const dir = dirname(filename)
   fs.mkdirSync(`./dist/${dir}/`, { recursive: true })
