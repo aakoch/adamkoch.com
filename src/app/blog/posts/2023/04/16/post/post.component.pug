@@ -28,7 +28,7 @@ block body
 
     h2 What is it?
     p
-      a(href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events") Server-Sent Events
+      a(href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events") Server-Sent Events 
       |  is a technology that allows data to be "pushed" from the server to a webpage. The browser calls an endpoint and a connection is made where the browser listens to events publish through this connection.
 
 
@@ -53,11 +53,11 @@ block body
          &#x007D;;
 
     h3 Server Side Setup
-    p The page is pretty easy to set up; the server is a tad more involved and depends on your technology. For a Node-based solution, visit
-      a(href="https://blog.bitsrc.io/5-ways-to-sync-web-and-server-data-in-real-time-3b5748ad2bf7") this page
+    p The page is pretty easy to set up; the server is a tad more involved and depends on your technology. For a Node-based solution, visit 
+      a(href="https://blog.bitsrc.io/5-ways-to-sync-web-and-server-data-in-real-time-3b5748ad2bf7") this page 
       |  where Zach has a demo of it.
 
-    p As I don't have a server that runs Node, I created my example using PHP. I started with
+    p As I don't have a server that runs Node, I created my example using PHP. I started with 
       a(href="https://lucidar.me/en/web-dev/server-sent-event-simple-php-example/") an example
       |  that just sent a periodic message to the browser.
 
@@ -88,7 +88,7 @@ block body
       .credit
         a(href="https://lucidar.me/en/web-dev/server-sent-event-simple-php-example/") https://lucidar.me/en/web-dev/server-sent-event-simple-php-example/
 
-    p This example was ok, but missing discussion of sessions. To get to my final solution I had to first find
+    p This example was ok, but missing discussion of sessions. To get to my final solution I had to first find 
       a(href="https://kevinchoppin.dev/blog/server-sent-events-in-php") this article
       | . I had to disable sessions.
 
@@ -131,15 +131,15 @@ block body
         // Check connection
         if ($conn-&gt;connect_error) &#x007B;
           die(&quot;Connection failed: &quot; . $conn-&gt;connect_error);
-        &#64;
+        &#125;
 
         $sql = &quot;INSERT INTO messages () VALUES ()&quot;;
 
         if ($conn-&gt;query($sql) === TRUE) &#x007B;
           $data = &quot;New record created successfully&quot;;
-        &#64; else &#x007B;
+        &#125; else &#x007B;
           $data =  &quot;Error: &quot; . $sql . &quot;&lt;br&gt;&quot; . $conn-&gt;error;
-        &#64;
+        &#125;
 
         $conn-&gt;close();
         ?&gt;

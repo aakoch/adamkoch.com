@@ -14,12 +14,10 @@ export class PostComponent implements OnInit, AfterViewInit {
 
   componentCodeContent: string;
   serviceCodeContent: string;
-  serviceStartCodeContent: string;
 
   constructor(private viewContainerRef: ViewContainerRef, private meta: Meta, private jsonLdService: JsonLdService) {
     this.componentCodeContent = code.component;
     this.serviceCodeContent = code.service;
-    this.serviceStartCodeContent = code.serviceStart;
     meta.addTag({ name: "keywords", content: "angular,netlify,rxjs,form,forms,submission" });
   }
 

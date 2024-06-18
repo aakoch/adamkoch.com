@@ -9,7 +9,7 @@ append variables
   - var nextTitle = 'Motion Canvas Fun'
 
 append head
-  style(type="text/css").
+  style.
     blockquote {
       padding-left: 1vw;
       border-left: 2px solid #43464a;
@@ -19,7 +19,7 @@ append head
 block body
   app-pageheader
 
-  .container.post(id="post-" + posted, )
+  .container.post(id="post-" + posted)
     h1= title
     .posted= posted
     .content
@@ -31,7 +31,7 @@ block body
       | +
       img(src="assets/img/RxJs_Logo_Basic.svg")
 
-    a(name="intro")
+    a(id="intro")
     h2 Intro
     //- a(href="setup") Skip
     p I've been using
@@ -44,7 +44,7 @@ block body
 
     p I'm going to assume some basic Angular knowledge and the know-how to create a component using <span class="mono">ng generate</span>. I'm also going to assume you are familiar with Netlify since I won't go through details such as setting up or deploying your site, although I will touch on it.
 
-    a(name="netlify-forms")
+    a(id="netlify-forms")
     h2 Netlify Forms
     p Netlify's form submissions are free for up to 100 submissions per month. To set it up on your account, it's pretty easy. As part of your deployment, Netlify will scan your HTML files looking for forms. Once it finds them it will register the form names with your site. So the first thing you have to do with your Angular app, is do something un-Angular-like. You have to code a form with form fields in your static HTML. I say static because Netlify isn't going to render your Angular pages to find an form. I put my form right inside my <span class="mono">index.html</span> file as a hidden element;
 
@@ -164,13 +164,29 @@ block body
 
     h2 Forms Service
     p We're going to write a service that we can call from our form component. This service will handle the actual HTTP call. Create a new file called netlify-forms.service.ts. We'll need to inject the HttpClient as well as make our service itself injectable. We're also going to use our data class and a few other things.
-    app-code("[heading]"="'netlify-forms.service.ts start'" "[language]"="'typescript'" "[body]"="serviceStartCodeContent")
+    app-code("[heading]"="'netlify-forms.service.ts start'" "[language]"="'typescript'")
+      pre.code-content: code.
+        import {{ '{' }} HttpClient, HttpErrorResponse, HttpParams &#125; from '&#64;angular/common/http';
+        import {{ '{' }} Injectable, isDevMode &#125; from '&#64;angular/core';
+        import {{ '{' }} Observable, throwError &#125; from 'rxjs';
+        import {{ '{' }} catchError &#125; from 'rxjs/operators';
+        import {{ '{' }} ExampleFormData &#125; from './example-form-data';
+
+        &#64;Injectable({{ '{' }}
+          providedIn: 'root'
+        &#125;)
+        export class NetlifyFormsService {{ '{' }}
+
+          constructor(private http: HttpClient) {{ '{' }} &#125;
+
+        &#125;
+      
 
     p The meat of the service we'll put into a method called <span class="mono">submitFeedback</span>. In here we'll use the spread operator to put our form class into a new <span class="mono">HttpParams</span> class needed by the <span class="mono">HttpClient</span>. Then we call the <span class="mono">post</span> method on <span class="mono">HttpClient</span>. For testing purposes I'm using <span class="mono">isDevMode()</span>, an Angular method to determine whether we are deployed in production or not. For testing I'm standing up a separate server listening on port 8000 that just responds with a simple 200. Otherwise, you'll want to use '/' as the URL to post your data. Another important piece is you need to send your form URL encoded so add the "Content-Type" header to your request. Lastly we'll catch any errors by using the
       a(href="https://rxjs.dev/api/index/function/catchError") <span class="mono">catchError</span> RxJS operator.
 
 
-    app-code("[heading]"="'submitFeedback method'" "[language]"="'typescript'"): pre.
+    app-code("[heading]"="'submitFeedback method'" "[language]"="'typescript'"): pre.code-content.
       submitFeedback(commentEntry: ExampleFormData): Observable&lt;any&gt; &#x007B;
         const entry = new HttpParams(&#x007B;
           fromObject: &#x007B;
