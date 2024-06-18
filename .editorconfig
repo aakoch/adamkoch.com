@@ -1135,8 +1135,9 @@ ij_http-request_space_before_comma = true
 ij_http-request_spaces_around_assignment_operators = true
 
 [{*.jade,*.pug}]
-indent_size = 4
-tab_width = 4
+indent_size = 2
+tab_width = 2
+insert_final_newline = true
 
 [{*.jsf,*.jsp,*.jspf,*.tag,*.tagf,*.xjsp}]
 indent_size = 4
