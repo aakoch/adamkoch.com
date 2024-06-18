@@ -209,7 +209,11 @@ hr {
 
 
 .post, .post img {
-  max-width: min(1500px, 100vw);
+  max-width: min(1500px, 90vw);
+}
+
+.container.post {
+  padding-inline: 5%;
 }
 
 img {
